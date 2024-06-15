@@ -1,1 +1,1 @@
-node jduparty.js
+node server.js
