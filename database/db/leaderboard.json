@@ -1,0 +1,17 @@
+{
+    "__class": "LeaderboardList",
+    "entries": [{
+            "__class": "LeaderboardEntry_Online",
+            "profileId": "acfe6905-f1e5-4d37-afbf-088794a71938",
+            "rank": 751,
+            "score": 251,
+            "name": "Adrian_Flopper",
+            "avatar": 376,
+            "country": 8521,
+            "platformId": "",
+            "jdPoints": 23210,
+            "portraitBorder": 26
+        }
+    ],
+    "playerCount": 1
+}

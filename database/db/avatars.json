@@ -1,0 +1,409 @@
+{
+  "__class": "JD_CarouselContent",
+  "categories": [
+    {
+      "__class": "Category",
+      "title": "Just Dance 2022",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2022,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "99a0e5f8-61f9-48a7-aff4-a5884887b23d"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2021",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2021,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "e737f5e8-bd4a-4fe7-b035-389de576ff20"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2020",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2020,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "bcea88b1-3dc3-4e06-8cee-feaf56480114"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2019",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2019,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "bcea88b1-3dc3-4e06-8cee-feaf56480114"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2018",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2018,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "1147833f-0634-45ee-a9bf-fbb05d20353b"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2017",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2017,
+            "lockType": 20,
+            "sortBy": 0,
+            "uuid": "c1712549-8b73-44d6-9c17-e3cac56d5590"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2016",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2016,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "33ba21de-94cb-435a-8f4c-95a11509baec"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2015",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2015,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "0c5259c2-4146-44b8-8875-a9541c81abd6"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2014",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 5,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "c0a08068-edf7-419f-b30a-5c1a7f3f107c"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 4",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 4,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "ddffcbe0-8a73-418a-9702-9fea97a10b0e"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 3",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 3,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "d660937f-0d2d-414a-a42c-365e66c308bd"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 2",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "387d5eb9-9df3-4561-a32d-9a7406157c24"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance 1",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 1,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "250d5f55-c963-4833-b0a4-3ddcf5a54b71"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance Kids",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 123,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "ba9fa20d-d995-4a4a-abec-9688d4782a61"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "ABBA: You Can Dance",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 4884,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "84bb11f5-cdc3-49a6-a996-41020177fc09"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Mojo",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": -1,
+            "lockType": 1,
+            "sortBy": 1,
+            "uuid": "657232bf-d5f2-4553-b9d0-c1cf070c8e90"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Dance Quest",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2017,
+            "lockType": 9,
+            "sortBy": 0,
+            "uuid": "9a3885fa-b5aa-4362-a6a9-3f0b5b7e9769"
+          }
+        },
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 9999,
+            "lockType": 9,
+            "sortBy": 0,
+            "uuid": "04942341-ee4a-4681-a583-9fecf7e2670f"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Game mode progression",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": -1,
+            "lockType": 10,
+            "sortBy": 0,
+            "uuid": "ae334024-badd-47f1-8b3d-3a2af9607eb6"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Ubisoft Club",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2017,
+            "lockType": 6,
+            "sortBy": 0,
+            "uuid": "8ef22b56-d864-40e4-b061-001c3cdee05d"
+          }
+        },
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 2017,
+            "lockType": 16,
+            "sortBy": 0,
+            "uuid": "9071654f-c131-418c-b785-5bc809d1403e"
+          }
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Just Dance Unlimited exclusive",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "items": [
+        {
+          "__class": "Item",
+          "offlineRequest": {
+            "__class": "JD_CarouselCustomizableItemRequest",
+            "itemType": 0,
+            "jdVersion": 9999,
+            "lockType": 0,
+            "sortBy": 0,
+            "uuid": "db38fe17-7653-4b89-8e9c-d841a48ece38"
+          }
+        }
+      ]
+    }
+  ],
+  "actionLists": {},
+  "songItemLists": {}
+}

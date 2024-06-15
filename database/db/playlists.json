@@ -1,0 +1,697 @@
+{
+  "__class": "JD_CarouselContent",
+  "categories": [
+    {
+      "__class": "Category",
+      "title": "Recommended",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "categoryType": "playlist",
+      "items": [
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "reco-top_country",
+              "displayCode": 1,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "reco-discover",
+              "displayCode": 2,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "reco-for_you",
+              "displayCode": 3,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "reco-top_played",
+              "displayCode": 4,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "reco-top_replayed",
+              "displayCode": 5,
+              "displayMethod": "manual"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__class": "Category",
+      "title": "Themed Playlists",
+      "act": "ui_carousel",
+      "isc": "grp_row",
+      "categoryType": "playlist",
+      "items": [
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "00sGems",
+              "displayCode": 6,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "10sGems",
+              "displayCode": 7,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "70sGems",
+              "displayCode": 8,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "80sGems",
+              "displayCode": 9,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "90sGems",
+              "displayCode": 10,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BeastlyBeats",
+              "displayCode": 11,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_1",
+              "displayCode": 12,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_2",
+              "displayCode": 13,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_3",
+              "displayCode": 14,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_4",
+              "displayCode": 15,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_14",
+              "displayCode": 16,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_15",
+              "displayCode": 17,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_16",
+              "displayCode": 18,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_17",
+              "displayCode": 19,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_18",
+              "displayCode": 20,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "BestOfJD_19",
+              "displayCode": 21,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "CakeManiaCollection",
+              "displayCode": 22,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Caps",
+              "displayCode": 23,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Crowns",
+              "displayCode": 24,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "DisneyHits",
+              "displayCode": 25,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "EasternInsirations",
+              "displayCode": 26,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "ElectroBeats",
+              "displayCode": 27,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Extreme",
+              "displayCode": 28,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Fitness",
+              "displayCode": 29,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "GirlsBands",
+              "displayCode": 30,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Guests",
+              "displayCode": 31,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "GurlPowa",
+              "displayCode": 32,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "HappyBirthday",
+              "displayCode": 33,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "HappyTimes",
+              "displayCode": 34,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Hats",
+              "displayCode": 35,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "HeyHandsome",
+              "displayCode": 36,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "IndianInspirations",
+              "displayCode": 37,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "KPop2020",
+              "displayCode": 38,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "LatinFever",
+              "displayCode": 39,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "NeonTouch",
+              "displayCode": 40,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "Sporty",
+              "displayCode": 41,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "StreetCred",
+              "displayCode": 42,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "SuperHeroes",
+              "displayCode": 43,
+              "displayMethod": "manual"
+            }
+          ]
+        },
+        {
+          "__class": "Item",
+          "isc": "grp_row",
+          "act": "ui_carousel",
+          "actionList": "_None",
+          "actionListUpsell": "_None",
+          "components": [
+            {
+              "__class": "JD_CarouselContentComponent_Playlist",
+              "playlistID": "UnidentifiedLivingObjects",
+              "displayCode": 44,
+              "displayMethod": "manual"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actionLists": {
+    "_None": {
+      "__class": "ActionList",
+      "actions": [
+        {
+          "__class": "Action",
+          "title": "None",
+          "type": "do-nothing"
+        }
+      ],
+      "itemType": "map"
+    }
+  },
+  "songItemLists": {}
+}

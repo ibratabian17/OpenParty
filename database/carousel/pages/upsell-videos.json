@@ -1,0 +1,303 @@
+{
+    "__class": "JD_CarouselContent",
+    "categories": [{
+            "__class": "Category",
+            "title": "Upsell Videos",
+            "act": "ui_carousel",
+            "isc": "grp_row",
+            "items": [{
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Diggin"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Diggin"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Diggin"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Diggin"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Diggin"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Cheerleader"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "GangnamStyleDLC"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "LetItGo"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Happy"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "BeautyAndABeatDLC"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "SexyAndIKnowItDLC"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "BlurredLines"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Starships"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "JustDance"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "GoodFeeling"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Rasputin"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "MovesLikeDLC"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "BuiltForThis"
+                        }
+                    ],
+                    "actionList": "upsell"
+                }
+            ]
+        }, {
+            "__class": "Category",
+            "title": "Upsell Videos Kids",
+            "act": "ui_carousel",
+            "isc": "grp_row",
+            "items": [{
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "LetItGo"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "AngryBirds"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "PrinceAli"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Cmon"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "Ghostbusters"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "UnderTheSea"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }, {
+                    "__class": "Item",
+                    "isc": "grp_cover",
+                    "act": "ui_component_base",
+                    "components": [{
+                            "__class": "JD_CarouselContentComponent_Song",
+                            "mapName": "CopaCabana"
+                        }
+                    ],
+                    "actionList": "kidsMap"
+                }
+            ]
+        }, {
+            "__class": "Category",
+            "title": "WhatsNew Videos",
+            "act": "avatar_carousel",
+            "isc": "avatar_row",
+            "items": []
+        }
+    ],
+    "actionLists": {
+        "kidsMap": {
+            "__class": "ActionList",
+            "actions": [{
+                    "__class": "Action",
+                    "bannerContext": "kids",
+                    "bannerTheme": "DEFAULT",
+                    "bannerType": "song",
+                    "title": "Dance",
+                    "type": "play-song"
+                }
+            ],
+            "itemType": "map"
+        },
+        "upsell": {
+            "__class": "ActionList",
+            "actions": [{
+                    "__class": "Action",
+                    "bannerTheme": "DEFAULT",
+                    "bannerType": "song",
+                    "title": "Subscribe",
+                    "type": "display-upsell"
+                }
+            ],
+            "itemType": "map"
+        }
+    },
+    "songItemLists": {}
+}

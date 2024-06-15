@@ -1,0 +1,27 @@
+{
+	"entities": [{
+		"entityId": "aa359245-8b6f-4a7d-81a6-0c91f52cc388",
+		"spaceId": "f1ae5b84-db7c-481e-9867-861cf1852dc8",
+		"type": "server",
+		"name": "prod",
+		"tags": [],
+		"obj": {
+			"name": "JMCS PROD",
+			"url": "http://jdp.justdancenext.xyz"
+		},
+		"lastModified": "",
+		"revision": 3
+	}, {
+		"entityId": "cd8593dc-2d53-449c-9dbd-cc43ebb7d3d4",
+		"spaceId": "f1ae5b84-db7c-481e-9867-861cf1852dc8",
+		"type": "server",
+		"name": "default",
+		"tags": [],
+		"obj": {
+			"name": "JMCS PROD",
+			"url": "http://jdp.justdancenext.xyz"
+		},
+		"lastModified": "",
+		"revision": 3
+	}]
+}

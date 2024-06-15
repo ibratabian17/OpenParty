@@ -1,0 +1,73 @@
+{
+  "__class": "HomeService::HomeData",
+  "tileList": [{
+    "__class": "HomeService::HomeTile",
+    "type": 2,
+    "creationTime": 1613578222360,
+    "locked": false,
+    "new": true,
+    "lockDuration": 0,
+    "contentExpiry": 0,
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "newsTileInfo": {
+      "__class": "HomeService::NewsTileInfo",
+      "type": 2,
+      "title": "Welcome to Just Dance Party",
+      "text": "",
+      "imageUrl": "https://s3.amazonaws.com/cdn-efds.justdancenext.xyz/assets/icon.png",
+      "winnerPid": "00000000-0000-0000-0000-000000000000",
+      "winnerPlatform": "",
+      "winnerName": "",
+      "winnerNameSuffix": 0,
+      "winnerCountry": 4294967295,
+      "winnerAvatar": 4294967295,
+      "winnerAlias": 4294967295,
+      "offlineNewID": ""
+    }
+  },
+  {
+    "__class": "HomeService::HomeTile",
+    "type": 2,
+    "creationTime": 1613578222360,
+    "locked": false,
+    "new": true,
+    "lockDuration": 0,
+    "contentExpiry": 0,
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "newsTileInfo": {
+      "__class": "HomeService::NewsTileInfo",
+      "type": 2,
+      "title": "Join our Discord server!",
+      "text": "Here is the link: https://discord.gg/H7SeBSTS",
+      "imageUrl": "https://cdn.glitch.global/62326fe4-c1d6-4a0d-bf57-06b57a460c36/discord.png",
+      "winnerPid": "00000000-0000-0000-0000-000000000000",
+      "winnerPlatform": "",
+      "winnerName": "",
+      "winnerNameSuffix": 0,
+      "winnerCountry": 4294967295,
+      "winnerAvatar": 4294967295,
+      "winnerAlias": 4294967295,
+      "offlineNewID": ""
+    }
+  }, {
+    "__class": "HomeService::HomeTile",
+    "type": 0,
+    "creationTime": 1590943627,
+    "locked": false,
+    "new": true,
+    "lockDuration": 0,
+    "contentExpiry": 0,
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "mapTileInfo": {
+      "__class": "HomeService::MapTileInfo",
+      "type": 6,
+      "mapName": "NeverBe"
+    }
+  }],
+  "timestampLastRequest": 1613578407,
+  "timestampLastManualContent": 1612964700,
+  "timestampLastMapContent": 0,
+  "timestampLastVideoContent": 0,
+  "timestampLastPlaylistContent": 0,
+  "timestampLastLocalTrack": 1540857600
+}

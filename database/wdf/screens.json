@@ -1,0 +1,439 @@
+{
+    "__class": "ScreenList",
+    "screens": [{
+            "__class": "Screen",
+            "type": "in-game",
+            "startTime": 1677247358.3359149,
+            "endTime": 1677247524.9519148,
+            "theme": "vote",
+            "mapName": "AmIWrong",
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "waiting-screen",
+            "startTime": 1677247524.9519148,
+            "endTime": 1677247544.9519148,
+            "theme": "vote",
+            "mapName": "JohnCena",
+            "waitingScreenInfo": {
+                "__class": "WaitingScreenInfo",
+                "getRecapTime": 1677247537.9519148
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "vote-recap",
+            "startTime": 1677247544.9519148,
+            "endTime": 1677247564.9519148,
+            "theme": "vote",
+            "mapName": "PARTY",
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, 
+        {
+            "__class": "Screen",
+            "type": "in-game",
+            "startTime": 1677247358.3359149,
+            "endTime": 1677247524.9519148,
+            "theme": "vote",
+            "mapName": "INeedYourLoveDLC",
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "waiting-screen",
+            "startTime": 1677247524.9519148,
+            "endTime": 1677247544.9519148,
+            "theme": "vote",
+            "mapName": "ThankUNext",
+            "waitingScreenInfo": {
+                "__class": "WaitingScreenInfo",
+                "getRecapTime": 1677247537.9519148
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "vote-recap",
+            "startTime": 1677247544.9519148,
+            "endTime": 1677247564.9519148,
+            "theme": "vote",
+            "mapName": "LoveIsAll",
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        },
+        {
+            "__class": "Screen",
+            "type": "in-game",
+            "startTime": 1677247358.3359149,
+            "endTime": 1677247524.9519148,
+            "theme": "vote",
+            "mapName": "Misunderstood",
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "waiting-screen",
+            "startTime": 1677247524.9519148,
+            "endTime": 1677247544.9519148,
+            "theme": "vote",
+            "mapName": "ThatPower",
+            "waitingScreenInfo": {
+                "__class": "WaitingScreenInfo",
+                "getRecapTime": 1677247537.9519148
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "vote-recap",
+            "startTime": 1677247544.9519148,
+            "endTime": 1677247564.9519148,
+            "theme": "vote",
+            "mapName": "KIDSHickoryDickoryDock",
+            "schedule": {
+                "type": "probability",
+                "theme": "MapVote",
+                "occurance": {
+                    "next": 1677247294335.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "tournament-presentation",
+            "startTime": 1677247564.9519148,
+            "endTime": 1677247574.9519148,
+            "theme": "tournament",
+            "mapName": "Rhythm",
+            "tournamentInfo": {
+                "__class": "TournamentScreenInfo",
+                "tournamentType": "default",
+                "tournamentLogo": "https://jd-s3.cdn.ubi.com/public/wdf/tournament/Regular_tournament_cup/c3236d5d336c2cb59f8d72d4aec6c3fd.png",
+                "roundNumber": 1,
+                "playListSize": 3,
+                "rewards": [{
+                        "type": "skin",
+                        "value": 48
+                    }, {
+                        "type": "skin",
+                        "value": 49
+                    }, {
+                        "type": "skin",
+                        "value": 50
+                    }, {
+                        "type": "mojo",
+                        "value": 700
+                    }
+                ]
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "tournament-lobby",
+            "startTime": 1677247574.9519148,
+            "endTime": 1677247586.9519148,
+            "theme": "tournament",
+            "mapName": "WorthItALT",
+            "tournamentInfo": {
+                "__class": "TournamentScreenInfo",
+                "tournamentType": "default",
+                "tournamentLogo": "https://jd-s3.cdn.ubi.com/public/wdf/tournament/Regular_tournament_cup/c3236d5d336c2cb59f8d72d4aec6c3fd.png",
+                "roundNumber": 1,
+                "playListSize": 3,
+                "rewards": [{
+                        "type": "skin",
+                        "value": 48
+                    }, {
+                        "type": "skin",
+                        "value": 49
+                    }, {
+                        "type": "skin",
+                        "value": 50
+                    }, {
+                        "type": "mojo",
+                        "value": 700
+                    }
+                ]
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "in-game",
+            "startTime": 1677247586.9519148,
+            "endTime": 1677247768.1759148,
+            "theme": "tournament",
+            "mapName": "WorthItALT",
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "waiting-screen",
+            "startTime": 1677247768.1759148,
+            "endTime": 1677247788.1759148,
+            "theme": "tournament",
+            "mapName": "NeverCanSay",
+            "waitingScreenInfo": {
+                "__class": "WaitingScreenInfo",
+                "getRecapTime": 1677247781.1759148
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "tournament-recap",
+            "startTime": 1677247788.1759148,
+            "endTime": 1677247830.1759148,
+            "theme": "tournament",
+            "mapName": "NeverCanSay",
+            "tournamentInfo": {
+                "__class": "TournamentScreenInfo",
+                "tournamentType": "default",
+                "tournamentLogo": "https://jd-s3.cdn.ubi.com/public/wdf/tournament/Regular_tournament_cup/c3236d5d336c2cb59f8d72d4aec6c3fd.png",
+                "roundNumber": 1,
+                "playListSize": 3,
+                "rewards": [{
+                        "type": "skin",
+                        "value": 48
+                    }, {
+                        "type": "skin",
+                        "value": 49
+                    }, {
+                        "type": "skin",
+                        "value": 50
+                    }, {
+                        "type": "mojo",
+                        "value": 700
+                    }
+                ]
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        },
+        {
+            "__class": "Screen",
+            "type": "tournament-presentation",
+            "startTime": 1677247564.9519148,
+            "endTime": 1677247574.9519148,
+            "theme": "tournament",
+            "mapName": "Rabiosa",
+            "tournamentInfo": {
+                "__class": "TournamentScreenInfo",
+                "tournamentType": "default",
+                "tournamentLogo": "https://jd-s3.cdn.ubi.com/public/wdf/tournament/Regular_tournament_cup/c3236d5d336c2cb59f8d72d4aec6c3fd.png",
+                "roundNumber": 1,
+                "playListSize": 3,
+                "rewards": [{
+                        "type": "skin",
+                        "value": 48
+                    }, {
+                        "type": "skin",
+                        "value": 49
+                    }, {
+                        "type": "skin",
+                        "value": 50
+                    }, {
+                        "type": "mojo",
+                        "value": 700
+                    }
+                ]
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "tournament-lobby",
+            "startTime": 1677247574.9519148,
+            "endTime": 1677247586.9519148,
+            "theme": "tournament",
+            "mapName": "IFeelItComing",
+            "tournamentInfo": {
+                "__class": "TournamentScreenInfo",
+                "tournamentType": "default",
+                "tournamentLogo": "https://jd-s3.cdn.ubi.com/public/wdf/tournament/Regular_tournament_cup/c3236d5d336c2cb59f8d72d4aec6c3fd.png",
+                "roundNumber": 1,
+                "playListSize": 3,
+                "rewards": [{
+                        "type": "skin",
+                        "value": 48
+                    }, {
+                        "type": "skin",
+                        "value": 49
+                    }, {
+                        "type": "skin",
+                        "value": 50
+                    }, {
+                        "type": "mojo",
+                        "value": 700
+                    }
+                ]
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "in-game",
+            "startTime": 1677247586.9519148,
+            "endTime": 1677247768.1759148,
+            "theme": "tournament",
+            "mapName": "Kuliki",
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "waiting-screen",
+            "startTime": 1677247768.1759148,
+            "endTime": 1677247788.1759148,
+            "theme": "tournament",
+            "mapName": "Kuliki",
+            "waitingScreenInfo": {
+                "__class": "WaitingScreenInfo",
+                "getRecapTime": 1677247781.1759148
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }, {
+            "__class": "Screen",
+            "type": "tournament-recap",
+            "startTime": 1677247788.1759148,
+            "endTime": 1677247830.1759148,
+            "theme": "tournament",
+            "mapName": "INeedYourLoveDLC",
+            "tournamentInfo": {
+                "__class": "TournamentScreenInfo",
+                "tournamentType": "default",
+                "tournamentLogo": "https://jd-s3.cdn.ubi.com/public/wdf/tournament/Regular_tournament_cup/c3236d5d336c2cb59f8d72d4aec6c3fd.png",
+                "roundNumber": 1,
+                "playListSize": 3,
+                "rewards": [{
+                        "type": "skin",
+                        "value": 48
+                    }, {
+                        "type": "skin",
+                        "value": 49
+                    }, {
+                        "type": "skin",
+                        "value": 50
+                    }, {
+                        "type": "mojo",
+                        "value": 700
+                    }
+                ]
+            },
+            "schedule": {
+                "type": "probability",
+                "theme": "RegularTournament",
+                "occurance": {
+                    "next": 1677247564951.9148,
+                    "prev": null
+                }
+            }
+        }
+    ]
+}

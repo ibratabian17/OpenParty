@@ -1,0 +1,163 @@
+{
+    "__class": "NewsfeedList",
+    "entries": [{
+            "activationTime": 1467358200,
+            "active": true,
+            "defaultLanguage": "en",
+            "displayDuration": 3,
+            "locId": 13602,
+            "pool": "Priority2_Stats",
+            "textLocId": 13506,
+            "themeType": "boss",
+            "type": "automatic",
+            "variables": {
+                "pictureUrl": [],
+                "text": [],
+                "title": ["boss-currentWeekMostBossesBeatenPlayer"]
+            },
+            "playerBasedEntry": true,
+            "playerInfo": {
+                "name": "Adrian",
+                "avatar": 998,
+                "country": 8490,
+                "skin": 101,
+                "platform": "pc",
+                "portraitBorder": 34,
+                "jdPoints": 461488,
+                "tournamentBadge": false,
+                "isSubscribed": false,
+                "pid": "bb805585-4178-41f5-9c71-e4d55c0ff9d9",
+                "__class": "NewsFeedPlayerInfo"
+            },
+            "pictureUrl": "https://ubistatic-a.akamaihd.net/0060/uat/newsfeed/m_1500468052.png",
+            "text": "has beaten the most bosses this week!",
+            "title": "Adrian",
+            "__class": "NewsfeedEntry"
+        }, {
+            "activationTime": 1498834800,
+            "active": true,
+            "defaultLanguage": "en",
+            "displayDuration": 3,
+            "locId": 13596,
+            "pool": "Priority2_Stats",
+            "textLocId": 13498,
+            "themeType": "tournament",
+            "type": "automatic",
+            "variables": {
+                "pictureUrl": [],
+                "text": [],
+                "title": ["tournament-weeklyScheduledTournamentWinner"]
+            },
+            "playerBasedEntry": true,
+            "playerInfo": {
+                "name": "Rex",
+                "avatar": 1013,
+                "country": 8459,
+                "skin": 101,
+                "platform": "nx",
+                "portraitBorder": 0,
+                "jdPoints": 303300,
+                "tournamentBadge": false,
+                "isSubscribed": false,
+                "pid": "f8cb988e-8aa7-4ff0-a573-9067a4d0cfd0",
+                "__class": "NewsFeedPlayerInfo"
+            },
+            "pictureUrl": "https://ubistatic-a.akamaihd.net/0060/uat/newsfeed/m_1500468052.png",
+            "text": "has won the latest Weekly Tournament!",
+            "title": "Rex",
+            "__class": "NewsfeedEntry"
+        }, 
+        {
+            "activationTime": 1466778600,
+            "active": true,
+            "defaultLanguage": "en",
+            "displayDuration": 3,
+            "locId": 13597,
+            "pool": "Priority2_Stats",
+            "textLocId": 13499,
+            "themeType": "tournament",
+            "type": "automatic",
+            "variables": {
+                "pictureUrl": [],
+                "text": [],
+                "title": ["tournament-currentWeekMostTournamentsWinner"]
+            },
+            "playerBasedEntry": true,
+            "playerInfo": {
+                "name": "ibratatain17",
+                "avatar": 1007,
+                "country": 8483,
+                "skin": 101,
+                "platform": "pc",
+                "portraitBorder": 0,
+                "jdPoints": 110015,
+                "tournamentBadge": false,
+                "isSubscribed": false,
+                "pid": "ed950db9-4f97-4f2a-a4b1-8da10b9bb2e8",
+                "__class": "NewsFeedPlayerInfo"
+            },
+            "pictureUrl": "https://ubistatic-a.akamaihd.net/0060/uat/newsfeed/m_1500468052.png",
+            "text": "has won the most tournaments this week!",
+            "title": "ibratatain17",
+            "__class": "NewsfeedEntry"
+        },
+        {
+            "activationTime": 1467050400,
+            "active": true,
+            "defaultLanguage": "en",
+            "displayDuration": 3,
+            "locId": 13502,
+            "pool": "Priority2_Stats",
+            "textLocId": 13505,
+            "themeType": "boss",
+            "type": "automatic",
+            "variables": {
+                "pictureUrl": ["boss-boss1PictureUrl"],
+                "text": ["boss-boss1BeatenCount"],
+                "title": ["boss-boss1Name"]
+            },
+            "pictureUrl": "https://jd-s3.cdn.ubi.com/public/wdf-bosses/Clint/Clint.png/56bc806b38213ca00cc06cbb182b7d80.png",
+            "text": "has been beaten 522 times.",
+            "title": "Clint",
+            "__class": "NewsfeedEntry"
+        }, {
+            "activationTime": 1467039600,
+            "active": true,
+            "defaultLanguage": "en",
+            "displayDuration": 3,
+            "locId": 13503,
+            "pool": "Priority2_Stats",
+            "textLocId": 13600,
+            "themeType": "boss",
+            "type": "automatic",
+            "variables": {
+                "pictureUrl": ["boss-boss2PictureUrl"],
+                "text": ["boss-boss2BeatenCount"],
+                "title": ["boss-boss2Name"]
+            },
+            "pictureUrl": "https://jd-s3.cdn.ubi.com/public/wdf-bosses/Monty/Monty.png/d664ef4f8f57bfa4512bb74856f0c094.png",
+            "text": "has been beaten 370 times.",
+            "title": "Monty",
+            "__class": "NewsfeedEntry"
+        }, {
+            "activationTime": 1467050400,
+            "active": true,
+            "defaultLanguage": "en",
+            "displayDuration": 3,
+            "locId": 13504,
+            "pool": "Priority2_Stats",
+            "textLocId": 13601,
+            "themeType": "boss",
+            "type": "automatic",
+            "variables": {
+                "pictureUrl": ["boss-boss3PictureUrl"],
+                "text": ["boss-boss3BeatenCount"],
+                "title": ["boss-boss3Name"]
+            },
+            "pictureUrl": "https://jd-s3.cdn.ubi.com/public/wdf-bosses/Ori/Ori.png/114022534eebad232f8d8401c91bb142.png",
+            "text": "has been beaten 119 times.",
+            "title": "Ori",
+            "__class": "NewsfeedEntry"
+        }
+    ]
+}

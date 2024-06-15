@@ -1,0 +1,31 @@
+{
+    "__class": "OnlineQuestDb",
+    "quests": [
+        {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/quest_logo.png/816427293e03aea07ae754fb359e76df.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/nx/quest_cover.tga.ckd/dee0111206bc753393441e97e19a2be9.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/nx/quest_logo.tga.ckd/a709e1f8a8dbd05a054146299d8bbc7f.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/nx/quest_logo_shaded.tga.ckd/cf05d311fa38bbe31db8fd4d0ee00227.ckd"
+            },
+            "id": "30",
+            "locked": 0,
+            "playlist": ["BornThisWay", "IKissed", "Titanium"],
+            "title": "Pride Quest"
+        },
+        {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/quest_logo.png/02234d2f68340f5803c995be4369c7d0.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/nx/quest_cover.tga.ckd/8eb79a90941444236c46f5902b51abb7.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/nx/quest_logo.tga.ckd/36754784ce44fb8978b8a2f39fd6ba2f.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/nx/quest_logo_shaded.tga.ckd/207b98cefea547d70bf36d6ca82ea18a.ckd"
+            },
+            "id": "31",
+            "locked": 0,
+            "playlist": ["Xmas", "LastChristmas", "BollywoodXmas"],
+            "title": "Christmas"
+        }
+    ]
+}

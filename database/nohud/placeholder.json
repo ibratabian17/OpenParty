@@ -1,0 +1,12 @@
+{
+	"__class" : "ContentAuthorizationEntry",
+	"duration" : 300,
+	"changelist" : 466919,
+	"urls" : {
+		"jmcs://jd-contents/{Placeholder}/{Placeholder}_ULTRA.webm" : "https://cdn.bc5f39.workers.dev/maps/nohud/{Placeholder}/{Placeholder}_ULTRA.webm",
+		"jmcs://jd-contents/{Placeholder}/{Placeholder}_MID.webm" : "https://cdn.bc5f39.workers.dev/maps/nohud/{Placeholder}/{Placeholder}_MID.webm",
+		"jmcs://jd-contents/{Placeholder}/{Placeholder}_LOW.webm" : "https://cdn.bc5f39.workers.dev/maps/nohud/{Placeholder}/{Placeholder}_LOW.webm",
+		"jmcs://jd-contents/{Placeholder}/{Placeholder}_HIGH.webm" : "https://cdn.bc5f39.workers.dev/maps/nohud/{Placeholder}/{Placeholder}_HIGH.webm",
+		"jmcs://jd-contents/{Placeholder}/{Placeholder}.ogg" : "https://cdn.bc5f39.workers.dev/maps/nohud/{Placeholder}/{Placeholder}.ogg"
+	}
+}

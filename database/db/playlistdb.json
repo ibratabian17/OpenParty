@@ -1,0 +1,574 @@
+{
+    "__class": "PlaylistDbResponse",
+    "db": {
+        "00sGems": {
+            "filters": true,
+            "maps": ["BadRomance", "DynamiteQUAT", "HotNCold", "Girlfriend", "Promiscuous", "TheWeekend", "SomethinStupid", "HeyYa"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Dancing into the 2000s",
+            "description": "Y2K never scared us...",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-09-11_00sGems/b225b3ae2dc5380ec756442311ca8693.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "10sGems": {
+            "filters": true,
+            "maps": ["BreakFreeDLC", "LittleParty", "SingleLadies", "BeautyAndABeatDLC", "TeenageDream", "Senorita", "PartyRock", "Finesse"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "The 2010s Were Banging",
+            "description": "Iconic!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_10sGems/189549a9617c54d38fe529962a4778ab.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "70sGems": {
+            "filters": true,
+            "maps": ["KungFu", "IWasMadeQUAT", "NeverCanSay", "ThatsTheWay", "HeartOfGlass", "HotStuff", "WalkThisWay", "Alexandrie"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "The Groovy 70s",
+            "description": "Peace and love, baby! Get your groove on with these golden oldies from the Seventies",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_70sGems/acd0dea3ba60dfe8efa313cd64a61b78.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "80sGems": {
+            "filters": true,
+            "maps": ["GimmeGimmeOSC", "LetsGroove", "HoldingOut", "ImStillStanding", "JumpGA", "GirlsJustWant", "Ghostbusters", "SpinMeRound"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "The Epic 80s",
+            "description": "Watch out for that aesthetic... The Eighties never left",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_80sGems/82666e10558a167afbb3e2ba4d3c6130.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "90sGems": {
+            "filters": true,
+            "maps": ["GetGetDown", "Macarena", "Blue", "AlwaysLookOn", "LastChristmas", "Bailando1997", "Cotton", "CantTouchThis"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "The Poppin' 90s",
+            "description": "Let's take a trip down memory lane!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_90sGems/197d716e79a6cdf1321a4af7f1d0759d.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BeastlyBeats": {
+            "filters": true,
+            "maps": ["IstanbulQUAT", "CanCan", "WaterMe", "ConCalma", "Kuliki", "DogsOut", "BabyShark", "DibbyDibby"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Beastly Beats",
+            "description": "Hey, if it's got legs, it can dance!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_BeastlyBeats/5cc0e8cf8c4b7e10f6a60bfe09f43c6d.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_1": {
+            "filters": true,
+            "maps": ["HeartOfGlass", "GetAround", "LeFreak", "Potato", "EyeOfTheTiger", "Fame", "ThatsTheWay", "GirlsJustWant"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 1",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-23_BestOfJD_1/83959f48fee8b4466455a5a90b761b27.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_14": {
+            "filters": true,
+            "maps": ["YMCA", "IWillSurvive", "PoundTheAlarm", "WakeMeUpDLC", "Danse", "Moskau", "Gentleman", "Cmon"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2014",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-24_BestOfJD_14/1924d1ee66b0cf1d39eb28c9bdef1121.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_15": {
+            "filters": true,
+            "maps": ["BadRomance", "Macarena", "WalkThisWay", "BreakFreeDLC", "Birthday", "LoveIsAll", "FindYourMove", "BoomClapDLC"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2015",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-24_BestOfJD_15/24778ecdaca186e9db9d7894b958f817.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_16": {
+            "filters": true,
+            "maps": ["StadiumFlow", "Cheerleader", "Fancy", "Lights", "ShutUp", "GetUgly", "AngryBirds", "JuntoATi"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2016",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-24_BestOfJD_16/3558dd6d1ed8bb865df12a61d932b9a9.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_17": {
+            "filters": true,
+            "maps": ["Groove", "TeDominar", "ILoveRock", "Bonbon", "IntoYou", "DragosteaDinTei", "DontStopMe", "Natoo"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2017",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-24_BestOfJD_17/1bc18fc05cd18feb71e4b2b6b117605f.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_18": {
+            "filters": true,
+            "maps": ["GotThat", "Diggy", "Copperhead", "Dharma", "KissingStrangers", "Despacito", "SwishSwish", "Carmen"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2018",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-24_BestOfJD_18/876bb15a8ad0206f1d91a3f013ef51aa.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_19": {
+            "filters": true,
+            "maps": ["DDUDU", "MakeMeFeel", "LittleParty", "ImStillStanding", "Criminal", "Finesse", "NotYourOrdinary", "IFeelItComing"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2019",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-24_BestOfJD_19/b0cf98dfe1c66be6dfeb9c6aa741cbf7.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_2": {
+            "filters": true,
+            "maps": ["Holiday", "MugsyBaloney", "KattiKalandal", "BigGirl", "MonsterMash", "ProfesseurDLC", "Futebol", "Rockafeller"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 2",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-23_BestOfJD_2/a644b6310a842fc247cc124f458bf548.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_3": {
+            "filters": true,
+            "maps": ["BoogieWonderQUAT", "HungarianDance", "CrazyLittle", "JamboMambo", "Mamasita", "PartyRock", "DynamiteQUAT", "SomethinStupid"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 3",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-23_BestOfJD_3/d6c9c2a94e2d6261c1aa7dd997d1d1da.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "BestOfJD_4": {
+            "filters": true,
+            "maps": ["IstanbulQUAT", "YouReTheFirst", "GlamorousCusto", "Diggin", "RockNRoll", "WeRWhoWeRDLC", "Oath", "IDidItAgainQUAT"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Just Dance 4",
+            "description": "Go back in time for a nostalgic trip!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_BestOfJD_4/0d815e92fb36eedb8c2bc503e2c4ca69.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "CakeManiaCollection": {
+            "maps": ["KIDSShout", "MagneticMU", "FollowTheLeader", "FollowTheLeaderALT", "BillieJean"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Season 2: Cake Mania Collection",
+            "description": "ihir rela leka",
+            "coverURL": "https://s3.amazonaws.com/cdn-efds.justdancenext.xyz/public/playlists/covers/ceb33ab64809c932d38925e5d719afdd.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "Caps": {
+            "filters": true,
+            "maps": ["TheChoice", "ItsYou", "DespacitoALT", "CantFeelMyFace", "YoLeLlego", "StuckOnAFeeling", "IDontCare", "FitButYouKnow"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Cap It Off",
+            "description": "Pull on that snapback and report to the dance floor!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Caps/ad5ed4269f100412ccc5428c1fe76c11.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "Crowns": {
+            "filters": true,
+            "maps": ["ILoveRock", "FeelSpecial", "LeanOnALT", "Starships", "Thumbs", "WalkLike", "Alexandrie", "AintMy"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Royally Cool",
+            "description": "A Playlist fit for royalty",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Crowns/4ccaaebedb0cc5066dab7f67bdaa6210.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "DisneyHits": {
+            "filters": true,
+            "maps": ["JuntoATi", "PrinceAli", "UnderTheSea", "LetItGoDLC", "LetItGo", "Lullaby", "PocoLoco", "HowFar"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Disney Hits",
+            "description": "The best from the Mouse House",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_DisneyHits/dfb5881a49e4449c7611a93ccf739d8e.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "EasternInsirations": {
+            "filters": true,
+            "maps": ["SayonaraRetake", "KungFunk", "HeyMamaALT", "DDUDU", "NewWorld", "BubblePop", "Zenit", "KillThisLove"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Eastern Inspirations",
+            "description": "From India to Bali, to Japan, South Korea, and China... Discover the inspirations for these beautiful worlds",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_EasternInsirations/8a2080935355157da440c2a69296cf6c.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "ElectroBeats": {
+            "filters": true,
+            "maps": ["Albatraoz", "Bangarang", "Animals", "Dharma", "DontYouWorryDLC", "Automaton", "RockNRoll", "Radical"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Electro Beats",
+            "description": "Hit that electro beat... Do not add water",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_ElectroBeats/c5f92dfbf1eb28f878cfdababdbf745c.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "Extreme": {
+            "filters": true,
+            "maps": ["JohnWALT", "AnimalsALT", "CircusALT", "DespacitoALT", "SorryALT", "GoodFeelingALT", "TumBumALT", "WalkThisWayALT"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Extreme Moves",
+            "description": "Warm up before attempting this Playlist...",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Extreme/791f2360aa195b044af97135391128f6.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "Fitness": {
+            "filters": true,
+            "maps": ["RabiosaALT", "IAmTheBest", "IDontCare", "IKissedSWT", "SeptemberALT", "DibbyDibby", "Skibidi", "GentlemanSWT"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Break a Sweat",
+            "description": "Get through this Playlist, and you're allowed to skip the gym today!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Fitness/904ffea3d6d6136e2ec53aaa2eee638a.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "GirlsBands": {
+            "filters": true,
+            "maps": ["Macarena", "BewareOf", "BabyOneMoreQUAT", "QueTirePaLante", "7Rings", "Sorbet", "Circus", "DDUDU"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Girl Squad",
+            "description": "Better together!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_GirlsBands/41df8a7a9ce5b65f7504d43dfa42530c.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "Guests": {
+            "filters": true,
+            "maps": ["Lullaby", "FriendInMe", "BabyShark", "WakeMeUpALT", "LetItGoDLC", "UnderTheSea", "Barbie", "PocoLoco"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Fave Friends",
+            "description": "A Playlist featuring our best friends!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Guests/4a59845dc471b30025236c8fa9cdce4c.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "GurlPowa": {
+            "filters": true,
+            "maps": ["TillTheWorldEnds", "AintMy", "365", "HeyMama", "BadBoy", "ConAltura", "ILoveRock", "FancyTwice"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Girl Power",
+            "description": "The future is female, and so is this Playlist",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_GurlPowa/1ac5770771a887848dc6d7d1c04b709b.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "HappyBirthday": {
+            "filters": true,
+            "maps": ["ImStillStanding", "MeToo", "BornThisWay", "Birthday", "TheFinalCountdown", "IWillSurvive", "DontWorry", "Bailando1997"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Birthday Beats",
+            "description": "It's your birthday! Or even if it's not, get down to these celebratory beats",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_HappyBirthday/854666933fe5e1933ed379cf61495616.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "HappyTimes": {
+            "filters": true,
+            "maps": ["Sugar", "Footloose", "PacaDance", "StopMovin", "InTheNavy", "Fun", "SoyYo", "Happy"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Happy Vibes",
+            "description": "Simply happy :)",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_HappyTimes/8f7b8cfe76c96547a1b4591827cffcdb.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "Hats": {
+            "filters": true,
+            "maps": ["NineAfternoon", "StepByStep", "SangriaWine", "WakingUp", "HeyMama", "TasteTheFeeling", "BlackMamba", "Joone"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Put a Lid on It",
+            "description": "Top off your dancing with these spect-hat-ular songs",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Hats/5ca2f41359fd5d306038e028436b4e6a.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "HeyHandsome": {
+            "filters": true,
+            "maps": ["AdoreYou", "IFeelItComing", "FeelIt", "Talk", "Georgia", "WantToWantMe", "RiskyBusiness", "OtherSideSZA"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Hey Handsome!",
+            "description": "Do you dance as good as you look?",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_HeyHandsome/0a7c1cab477bbdade35c0aee9f59bc16.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "IndianInspirations": {
+            "filters": true,
+            "maps": ["CheapThrillsALT", "KattiKalandal", "JaiHo", "LeanOn", "BewareOf", "BollywoodXmas", "Kurio", "FancyALT"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "South Asian Sounds",
+            "description": "Love that desi flavor",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_IndianInspirations/88226835fc9082e9859eed6d2ff0a780.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "JD22_PL_Online_Sku_Marathon": {
+            "filters": [[{
+                        "__class": "JD_CarouselSkuFilter",
+                        "gameVersion": ["jd2022"]
+                    }
+                ]],
+            "maps": ["Buttons", "Jopping", "TGIF", "China", "Judas", "RockYourBody", "Boombayah", "LoveStory"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Marathon",
+            "description": "Test your endurance with longer songs",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/JD22_PL_SKU_Marathon/f02eaa7891a867ada7aa06fcab83b2ed.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "JD22_PL_Online_Sku_Must_Dance_2022": {
+            "filters": [[{
+                        "__class": "JD_CarouselSkuFilter",
+                        "gameVersion": ["jd2022"]
+                    }
+                ]],
+            "maps": ["GirlLikeMe", "Judas", "Levitating", "Boombayah", "PopStars", "Mood", "WhoRun", "RockYourBody"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Get a taste of Just Dance 2022",
+            "description": "The most iconic songs from Just Dance 2022",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/JD22_PL_SKU_MustDance2022/316ac6c48d5d7c720671978be5ad407a.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "JD22_PL_Online_Sku_Play_and_Go": {
+            "filters": [[{
+                        "__class": "JD_CarouselSkuFilter",
+                        "gameVersion": ["jd2022"]
+                    }
+                ]],
+            "maps": ["PopStars", "China", "SmalltownBoy", "ThinkAboutThings", "Levitating", "TGIF", "Chandelier", "Funk"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Play and Go 2022",
+            "description": "Get a taste of Just Dance 2022",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/JD22_PL_SKU_PlayAndGo2022/934b911d7aa803ffd6e75c68d346afc7.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "JD22_PL_Online_Sku_Teaming_Up": {
+            "filters": [[{
+                        "__class": "JD_CarouselSkuFilter",
+                        "gameVersion": ["jd2022"]
+                    }
+                ]],
+            "maps": ["Jopping", "BlackMam", "China", "LevelUp", "FlashPose", "PopStars", "Jerusalema", "Boombayah"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Teaming Up",
+            "description": "Have a blast with your friends!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/JD22_PL_SKU_TeamingUp/25e05327057085a889b715c8d9c78f7a.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "KPop2020": {
+            "filters": true,
+            "maps": ["KillThisLove", "BubblePop", "Bang2019", "IAmTheBest", "FeelSpecial", "NewFace", "KickIt", "Gentleman"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "K-pop",
+            "description": "The essentials of Korean Pop music",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_KPop2020/0a2d0aa52b23d1e73bcf44b867f63701.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "LatinFever": {
+            "filters": true,
+            "maps": ["ILikeIt", "Buscando", "Bailar", "ConAltura", "ObsessionRetake", "Havana", "TakiTaki", "Rabiosa"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Latin Flavors",
+            "description": "These songs will have you feeling the heat",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_LatinFever/7110e36374d03626b9cd0ac8482ca59e.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "NeonTouch": {
+            "filters": true,
+            "maps": ["RockNRoll", "SpectronizerQUAT", "Titanium", "RadicalALT", "Automaton", "Runaway", "LikeIWould", "BlindingLights"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "High Voltage",
+            "description": "Don't touch, just dance!",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_NeonTouch/7c297bc5877826fb9e6dcf6c5ee21e7a.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "RecoFallback": {
+            "fallback": true,
+            "filters": true,
+            "fixedMapOrder": true,
+            "maps": ["Bangarang", "MiGente", "HandClap", "GirlLikeMe", "Mood", "TGIF", "Albatraoz", "SaveYourTears"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Placeholder",
+            "description": "Placeholder",
+            "coverURL": "https://ubistatic-a.akamaihd.net/0060/uat/playlist/cover_1561468252.png",
+            "pinned": false
+        },
+        "Sporty": {
+            "filters": true,
+            "maps": ["EyeOfTheTiger", "SexyAndIKnowItDLC", "SideToALT", "QueTirePaLante", "WhatAFeeling", "Juice", "AnotherOneALT", "Fame"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Work Work",
+            "description": "Athleisure is so in right now",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_Sporty/811d102a359a9e40fd5786c0e92b4a72.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "StreetCred": {
+            "filters": true,
+            "maps": ["Finesse", "HabibiYaeni", "Policeman", "YoLeLlego", "FitButYouKnow", "GetUgly", "MiGente", "NotYourOrdinary"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Street Cred",
+            "description": "Urban beats to move your feet",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_StreetCred/6f9cdcf081094af09d870056956fc376.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "SuperHeroes": {
+            "filters": true,
+            "maps": ["BassaSababa", "CosmicGirl", "HoldingOut", "BreakFreeDLC", "IDidItAgainQUAT", "AnotherOneALT", "WithoutMe", "CantTakeMyEyesALT"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "With Great Power...",
+            "description": "Get on the dance floor with these Super Girls and Boys",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_SuperHeroes/1383f67fd479b22800f29c53a6bfa327.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "UnidentifiedlivingObjects": {
+            "filters": true,
+            "maps": ["RaveIn", "CanCan", "LoveWard", "Vodovorot", "WakeMeUpALT", "SweetSensation", "Blue", "BassaSababa"],
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Anyone Can Dance",
+            "description": "And we mean... ANYONE",
+            "coverURL": "https://jd-s3.cdn.ubi.com/public/playlists/covers/19-10-29_UnidentifiedlivingObjects/a3035e2a9d08537cceb9dd87f66e764e.png",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "reco-top_played": {
+            "maps": ["DansVanDeFarao", "Natoo", "Sun", "Buttons", "Chacarron", "Error", "Mood", "Levitating"],
+            "colors": {
+                "base_color": "5FB61EFF",
+                "grad_color": "17CDBAFF"
+            },
+            "type": "recommended",
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Top Played Worldwide",
+            "description": "The most popular songs around the world",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "reco-top_replayed": {
+            "maps": ["TasteTheFeeling", "Buttons", "KickIt", "BangarangALT", "SugarDance", "WantToWantMeALT", "Malibu", "MagicHalloweenKids"],
+            "colors": {
+                "base_color": "5FB61EFF",
+                "grad_color": "17CDBAFF"
+            },
+            "type": "recommended",
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Top Replayed",
+            "description": "The songs the community dances to on a loop",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "reco-for_you": {
+            "maps": ["Levitating", "DansVanDeFarao", "Sun", "Chacarron", "Mood", "USA", "Natoo", "Believer"],
+            "colors": {
+                "base_color": "FF4582FF",
+                "grad_color": "FFA100FF"
+            },
+            "type": "recommended",
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Recommended for You",
+            "description": "Songs you will like",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "reco-discover": {
+            "maps": ["Levitating", "DansVanDeFarao", "Sun", "Chacarron", "Mood", "USA", "Natoo", "Believer"],
+            "colors": {
+                "base_color": "5FB61EFF",
+                "grad_color": "17CDBAFF"
+            },
+            "type": "recommended",
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Discovery",
+            "description": "Try something new!",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        },
+        "reco-top_country": {
+            "maps": ["Sun", "Chacarron", "Buttons", "Kuliki", "DanceMonkey", "Uno", "Bangarang", "Boombayah"],
+            "colors": {
+                "base_color": "BD01ABFF",
+                "grad_color": "69C2E0FF"
+            },
+            "type": "recommended",
+            "__class": "PlaylistDbService::Playlist",
+            "title": "Top Country",
+            "description": "The most popular songs in your country",
+            "fixedMapOrder": false,
+            "fallback": false,
+            "pinned": false
+        }
+    }
+}

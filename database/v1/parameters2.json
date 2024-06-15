@@ -1,0 +1,863 @@
+{
+    "parameters": {
+        "us-sdkClientSettingsSecondaryStoreSync": {
+            "fields": {
+                "maxCount": 10,
+                "restPeriodMsec": 30000,
+                "retryMaxDelayMsec": 3600000,
+                "retryRandomDelayMsec": 5000,
+                "retryInitialDelayMsec": 5000,
+                "retryIncrementFactorMsec": 5000,
+                "subscriptionAutomaticSyncPeriodInHoursGDK": 0
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientNotificationsSpaceIds": {
+            "fields": {
+                "FriendsService": "abb909cd-ebaa-4ba5-a4a5-afa75cae8195",
+                "BlocklistService": "45d58365-547f-4b45-ab5b-53ed14cc79ed",
+                "PlayerPrivilegesService": "2d2f687d-cf94-4757-9157-b8736284c438"
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientSettingsCacheTTL": {
+            "fields": {
+                "defaultSec": 120,
+                "spacesNewsSec": 900,
+                "friendsListSec": 1800,
+                "ssiRulesAllSec": 86400,
+                "profilesNewsSec": 900,
+                "profilesActionsSec": 120,
+                "profilesRewardsSec": 120,
+                "ssiAttributesAllSec": 86400,
+                "profilesChallengesSec": 120,
+                "ssiListsOfAttributesAllSec": 86400,
+                "challengesDefinitionSeasonSec": 180,
+                "battlepassSeasonProgressionSec": 60,
+                "profilesChallengesStatusSeasonSec": 60,
+                "friendsConfigSec": 1800,
+                "spacesParametersSec": 120,
+                "applicationsParametersSec": 120
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientSettingsHttpGame": {
+            "fields": {
+                "maxCount": 3,
+                "retryMaxDelayMsec": 5000,
+                "retryRandomDelayMsec": 5000,
+                "retryInitialDelayMsec": 5000,
+                "timeoutInitialDelayMsec": 30000,
+                "retryIncrementFactorMsec": 5000,
+                "timeoutIncrementFactorMsec": 5000
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientMocks": {
+            "fields": {
+                "Ugc": "",
+                "Club": "",
+                "News": "",
+                "Stats": "",
+                "Users": "",
+                "Events": "",
+                "Friends": "",
+                "Persona": "",
+                "Entities": "",
+                "Profiles": "",
+                "Blocklist": "",
+                "Voicechat": "",
+                "Battlepass": "",
+                "Challenges": "",
+                "Moderation": "",
+                "Population": "",
+                "Connections": "",
+                "GamesPlayed": "",
+                "Matchmaking": "",
+                "Applications": "",
+                "Leaderboards": "",
+                "Notification": "",
+                "Localizations": "",
+                "PlayerReports": "",
+                "SecondaryStore": "",
+                "ApplicationUsed": "",
+                "Recommendations": "",
+                "EventsDefinitions": "",
+                "PlayerOnlineStatus": "",
+                "SecondaryStoreInstanciation": "",
+                "SecondaryStoreInventoryRules": "",
+                "Party": "",
+                "Token": "",
+                "Groups": "",
+                "Trades": "",
+                "Calendar": "",
+                "Telemetry": "",
+                "Reputation": "",
+                "RichPresence": "",
+                "UsersPolicies": "",
+                "PlayerActivity": "",
+                "PlayerConsents": "",
+                "PlayerPrivileges": "",
+                "GroupsInvitations": "",
+                "PlayerPreferences": ""
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientSettingsHttpInternal": {
+            "fields": {
+                "maxCount": 3,
+                "retryMaxDelayMsec": 3600000,
+                "retryRandomDelayMsec": 5000,
+                "retryInitialDelayMsec": 5000,
+                "timeoutInitialDelayMsec": 30000,
+                "retryIncrementFactorMsec": 5000,
+                "timeoutIncrementFactorMsec": 5000
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientSettings": {
+            "fields": {
+                "popEventsTimeoutMsec": 5000,
+                "primaryStoreSyncDelayMsec": 250,
+                "createSessionRestPeriodMSec": 3000,
+                "createSessionRestRandomMSec": 5000,
+                "secondaryStoreInventoryRulesMode": "Disabled",
+                "xboxOneResumeFromSuspendedDelayMsec": 5000,
+                "xboxOneCloseWebsocketOnSuspendingMode": "All",
+                "notificationTypesUpdateRandomDelayMsec": 3000,
+                "waitRemoteLogCompletionOnDeleteSession": false,
+                "secondaryStoreInventoryRulesRetryDelayMsec": 5000,
+                "minBackgroundDurationForInventoryInvalidationMsec": 5000,
+                "createSessionRestPeriodAfterConcurrentConnectDetectedMSec": 60000,
+                "partyClientXblComplianceMethod": "mpsd",
+                "enableCrossPlayPreferenceSyncForXbox": false,
+                "enablePartyClientFirstPartyCompliance": false
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientSettingsWebSocketGame": {
+            "fields": {
+                "maxCount": 50,
+                "retryMaxDelayMsec": 5000,
+                "retryRandomDelayMsec": 5000,
+                "retryInitialDelayMsec": 5000,
+                "timeoutInitialDelayMsec": 30000,
+                "retryIncrementFactorMsec": 5000,
+                "connectionPingIntervalSec": 30,
+                "timeoutIncrementFactorMsec": 5000
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientSettingsWebSocketInternal": {
+            "fields": {
+                "maxCount": 50,
+                "retryMaxDelayMsec": 900000,
+                "retryRandomDelayMsec": 5000,
+                "retryInitialDelayMsec": 0,
+                "timeoutInitialDelayMsec": 30000,
+                "retryIncrementFactorMsec": 1500,
+                "connectionPingIntervalSec": 30,
+                "timeoutIncrementFactorMsec": 5000
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientUrls": {
+            "fields": {
+                "news": "{baseurl_aws}/{version}/profiles/me/news",
+                "tLog": "https://tglog.datamore.qq.com/{appId}/report/",
+                "users": "{baseurl_aws}/{version}/users",
+                "events": "{baseurl_aws}/{version}/profiles/{profileId}/events",
+                "friends": "{baseurl_aws}/{version}/profiles/me/friends",
+                "policies": "{baseurl_aws}/{version}/policies",
+                "profiles": "{baseurl_aws}/{version}/profiles",
+                "sessions": "{baseurl_aws}/{version}/profiles/sessions",
+                "blocklist": "{baseurl_aws}/{version}/profiles/{profileId}/blocks",
+                "challenge": "{baseurl_aws}/{version}/spaces/{spaceId}/challenges",
+                "sandboxes": "{baseurl_aws}/{version}/spaces/{spaceId}/sandboxes",
+                "moderation": "{baseurl_aws}/{version}/spaces/{spaceId}/moderation/{text}",
+                "remoteLogs": "{baseurl_aws}/{version}/profiles/me/remotelog",
+                "spacesNews": "{baseurl_aws}/{version}/spaces/news",
+                "connections": "{baseurl_aws}/{version}/profiles/{profileId}/connections",
+                "gamesPlayed": "{baseurl_aws}/{version}/profiles/{profileId}/gamesplayed",
+                "spacesItems": "{baseurl_aws}/{version}/spaces/{spaceId}/items",
+                "spacesStats": "{baseurl_aws}/{version}/spaces/{spaceId}/communitystats",
+                "applications": "{baseurl_aws}/{version}/applications/{applicationId}/configuration",
+                "localization": "{baseurl_aws}/{version}/spaces/{spaceId}/localizations/strings",
+                "personaSpace": "{baseurl_aws}/{version}/profiles/persona",
+                "spacesOffers": "{baseurl_aws}/{version}/spaces/{spaceId}/offers",
+                "configsEvents": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/events",
+                "profilesStats": "{baseurl_aws}/{version}/profiles/{profileId}/stats",
+                "spacesActions": "{baseurl_aws}/{version}/spaces/{spaceId}/actions",
+                "spacesRewards": "{baseurl_aws}/{version}/spaces/{spaceId}/rewards",
+                "allConnections": "{baseurl_aws}/{version}/profiles/connections",
+                "allSpacesItems": "{baseurl_aws}/{version}/spaces/items",
+                "moderationPOST": "{baseurl_aws}/{version}/spaces/{spaceId}/moderation",
+                "personaProfile": "{baseurl_aws}/{version}/profiles/{profileId}/persona",
+                "spacesEntities": "{baseurl_aws}/{version}/spaces/{spaceId}/entities",
+                "allSpacesOffers": "{baseurl_aws}/{version}/spaces/offers",
+                "localizationAll": "{baseurl_aws}/{version}/spaces/{spaceId}/localizations/strings/all",
+                "profilesActions": "{baseurl_aws}/{version}/profiles/{profileId}/club/actions",
+                "profilesFriends": "{baseurl_aws}/{version}/profiles/{profileId}/friends",
+                "profilesRewards": "{baseurl_aws}/{version}/profiles/{profileId}/club/rewards",
+                "recommendations": "{baseurl_aws}/{version}/profiles/{profileId}/recommendations",
+                "spacesStatsCard": "{baseurl_aws}/{version}/spaces/{spaceId}/communitystatscard",
+                "websocketServer": "{baseurl_ws}",
+                "allProfilesStats": "{baseurl_aws}/{version}/profiles/stats",
+                "blocklistUnblock": "{baseurl_aws}/{version}/profiles/{profileId}/blocks/{blockedProfileId}",
+                "profilesEntities": "{baseurl_aws}/{version}/profiles/{profileId}/entities",
+                "profilesExternal": "{baseurl_aws}/{version}/profiles/external",
+                "profilesMeEvents": "{baseurl_aws}/{version}/profiles/me/events",
+                "profilesUgcViews": "{baseurl_aws}/{version}/profiles/ugc/{contentId}/views",
+                "spacesChallenges": "{baseurl_aws}/{version}/spaces/global/ubiconnect/challenges/api/legacy/empty",
+                "spacesConfigsUgc": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/ugc",
+                "spacesParameters": "{baseurl_aws}/{version}/spaces/{spaceId}/parameters",
+                "allSpacesEntities": "{baseurl_aws}/{version}/spaces/entities",
+                "eventsDefinitions": "{baseurl_aws}/{version}/spaces/{spaceId}/eventsDefinitions",
+                "profilesInventory": "{baseurl_aws}/{version}/profiles/{profileId}/inventory",
+                "profilesStatsCard": "{baseurl_aws}/{version}/profiles/statscard",
+                "profilesUgcPhotos": "{baseurl_aws}/{version}/profiles/ugc/photos",
+                "spacesLeaderboard": "{baseurl_aws}/{version}/spaces/{spaceId}/leaderboards",
+                "blocklistBlockedBy": "{baseurl_aws}/{version}/profiles/{profileId}/blocks/blockedBy",
+                "profilesChallenges": "{baseurl_aws}/{version}/spaces/global/ubiconnect/challenges/api/legacy/empty",
+                "profilesUgcRatings": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/ratings",
+                "spacesBattlepasses": "{baseurl_aws}/{version}/spaces/{spaceId}/battlepasses",
+                "allProfilesEntities": "{baseurl_aws}/{version}/profiles/entities",
+                "profilesLeaderboard": "{baseurl_aws}/{version}/profiles/ranks",
+                "usersOnlineStatuses": "{baseurl_aws}/{version}/users/onlineStatuses",
+                "voicechatTokenVivox": "{baseurl_aws}/{version}/profiles/{profileId}/voicechattoken/vivox",
+                "applicationsMetadata": "{baseurl_aws}/{version}/applications",
+                "challengeProgression": "{baseurl_aws}/{version}/profiles/{profileId}/challenges/progressions",
+                "playerReportsProfile": "{baseurl_aws}/{version}/profiles/{profileId}/reports",
+                "profilesApplications": "{baseurl_aws}/{version}/profiles/me/applications",
+                "profilesUgcFavorites": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/favorites",
+                "profilesUgcPhotosOwn": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/photos",
+                "spacesChallengepools": "{baseurl_aws}/{version}/spaces/global/ubiconnect/challenges/api/legacy/empty",
+                "voicechatConfigVivox": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/voicechat/vivox",
+                "profilesMeLeaderboard": "{baseurl_aws}/{version}/profiles/me/ranks",
+                "profilesNotifications": "{baseurl_aws}/{version}/profiles/{profileId}/notifications",
+                "spacesConfigsSsiRules": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/secondarystore/instances/rules",
+                "usersMeOnlineStatuses": "{baseurl_aws}/{version}/users/me/onlineStatuses",
+                "applicationsParameters": "{baseurl_aws}/{version}/applications/{applicationId}/parameters",
+                "spacesSeasonChallenges": "{baseurl_aws}/{version}/spaces/{spaceId}/club/seasonchallenges",
+                "websocketNotifications": "{baseurl_ws}/{version}/websocket",
+                "allProfilesApplications": "{baseurl_aws}/{version}/profiles/applications",
+                "profilesUgcUpdateRating": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/{contentId}/ratings",
+                "profilesSeasonChallenges": "{baseurl_aws}/{version}/profiles/{profileId}/club/seasonchallenges?spaceId={spaceId}",
+                "profilesMeRoamingProfiles": "{baseurl_aws}/{version}/users/me/roamingProfiles",
+                "profilesProfileChallenges": "{baseurl_aws}/{version}/spaces/global/ubiconnect/challenges/api/legacy/empty",
+                "profilesUgcExternalVideos": "{baseurl_aws}/{version}/profiles/ugc/externalvideos",
+                "profilesUgcUpdateFavorite": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/{contentId}/favorites",
+                "spacesBattlepassesSeasons": "{baseurl_aws}/{version}/spaces/{spaceId}/battlepasses/seasons",
+                "spacesCommunityChallenges": "{baseurl_aws}/{version}/spaces/global/ubiconnect/challenges/api/legacy/empty",
+                "spacesConfigsPrimarystore": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/primarystore",
+                "profilesInventoryInstances": "{baseurl_aws}/{version}/profiles/{profileId}/inventory/instances",
+                "profilesNotificationsBatch": "{baseurl_aws}/{version}/profiles/notifications",
+                "spacesConfigsSsiAttributes": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/secondarystore/instances/attributes",
+                "playerReportsSpaceCategories": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/reports/categories",
+                "profilesInventoryPrimarystore": "{baseurl_aws}/{version}/profiles/{profileId}/inventory/primarystore",
+                "profilesInventoryTransactions": "{baseurl_aws}/{version}/profiles/{profileId}/inventory/transactions",
+                "profilesMeBattlepassesSeasons": "{baseurl_aws}/{version}/profiles/me/battlepasses/seasons",
+                "profilesMeCommunityChallenges": "{baseurl_aws}/{version}/spaces/global/ubiconnect/challenges/api/legacy/empty",
+                "profilesInventoryExpiredDetails": "{baseurl_aws}/{version}/profiles/{profileId}/inventory/expiredDetails",
+                "profilesMeInventoryPrimarystore": "{baseurl_aws}/{version}/profiles/me/inventory/primarystore",
+                "profilesPreciseMatchmakingMatch": "{baseurl_aws}/{version}/profiles/{profileId}/matches/precise/matchstate",
+                "profilesPreciseMatchmakingClient": "{baseurl_aws}/{version}/profiles/{profileId}/matches/precise/clientstate",
+                "spacesBattlepassesSeasonsSeasonId": "{baseurl_aws}/{version}/spaces/{spaceId}/battlepasses/seasons/{seasonId}",
+                "spacesConfigsSsiListsOfAttributes": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/secondarystore/instances/listsOfAttributes",
+                "usersMeOnlineStatusesManualStatus": "{baseurl_aws}/{version}/users/me/onlineStatuses/manualStatus",
+                "profilesMeBattlepassesSeasonsSeasonId": "{baseurl_aws}/{version}/profiles/me/battlepasses/seasons/{seasonId}",
+                "secondaryStoreInventoryRulesExecution": "{baseurl_aws}/{version}/profiles/{profileId}/inventory/rulesexecution",
+                "profilesInventoryInstancesTransactions": "{baseurl_aws}/{version}/profiles/{profileId}/inventory/instances/transactions",
+                "groups": "{baseurl_aws}/{version}/groups",
+                "calendar": "{baseurl_aws}/{version}/spaces/{spaceId}/calendarentries",
+                "groupType": "{baseurl_aws}/{version}/spaces/{spaceId}/grouptypes/{groupTypeId}",
+                "telemetry": "{baseurl_aws}/{version}/spaces/{spaceId}/global/tgdp/telemetry/receiver/telemetry",
+                "tokenSpace": "{baseurl_aws}/{version}/spaces/{spaceId}/tokens",
+                "tokenProfile": "{baseurl_aws}/{version}/profiles/{profileId}/tokens",
+                "allgroupTypes": "{baseurl_aws}/{version}/spaces/{spaceId}/grouptypes",
+                "calendarLists": "{baseurl_aws}/{version}/spaces/{spaceId}/calendarentrylists",
+                "groupsMembers": "{baseurl_aws}/{version}/groups/{groupId}/members",
+                "partyXboxSync": "{baseurl_aws}/{version}/spaces/{spaceId}/parties/{partyId}/firstPartyParameters/xblMultiplayerSessionReferenceUri",
+                "profilesToken": "{baseurl_aws}/{version}/profiles/{profileId}/tokens/{token}",
+                "spacesParties": "{baseurl_aws}/{version}/spaces/{spaceId}/parties",
+                "usersPolicies": "{baseurl_aws}/{version}/users/{userId}/policies",
+                "friendsConfigs": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/friends",
+                "playerConsents": "{baseurl_aws}/{version}/profiles/{profileId}/consents/categories",
+                "profilesGroups": "{baseurl_aws}/{version}/profiles/{profileId}/groups",
+                "profilesParties": "{baseurl_aws}/{version}/profiles/{profileId}/parties",
+                "tradesItemsGifts": "{baseurl_aws}/{version}/profiles/{profileId}/trades/itemsgifts",
+                "tradesOfferGifts": "{baseurl_aws}/{version}/profiles/{profileId}/trades/offergifts",
+                "profilesReputation": "{baseurl_aws}/{version}/profiles/{profileId}/reputation",
+                "gamesPlayedProfiles": "{baseurl_aws}/{version}/profiles/gamesplayed",
+                "groupsRichPresences": "{baseurl_aws}/{version}/groups/{groupId}/richpresences",
+                "spacesRichPresences": "{baseurl_aws}/{version}/spaces/{spaceId}/richpresences",
+                "spacesPlayerActivity": "{baseurl_aws}/{version}/spaces/{spaceId}/playeractivities/activities",
+                "groupsRetentionExpiry": "{baseurl_aws}/{version}/groups/{groupId}/policies/retention/expiry",
+                "profilesRichPresences": "{baseurl_aws}/{version}/profiles/{profileId}/richpresences",
+                "challengeManualBanking": "{baseurl_aws}/{version}/profiles/{profileId}/challenges/{challengeId}",
+                "playerActivityProfiles": "{baseurl_aws}/{version}/profiles/{profileId}/playeractivities/activities",
+                "playerConsentsCategory": "{baseurl_aws}/{version}/profiles/{profileId}/consents/categories/{categoryName}",
+                "tradesItemsGiftsConfig": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/trades/itemsgifts",
+                "tradesOfferGiftsConfig": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/trades/offergifts",
+                "ubiConnectRewardsSpace": "{baseurl_aws}/{version}/spaces/{spaceId}/global/ubiconnect/rewards/api",
+                "voicechatConfigPlayfab": "{baseurl_aws}/{version}/spaces/{spaceId}/configs/voicechat/playfab",
+                "groupsInvitationsConfig": "{baseurl_aws}/{version}/groups/{groupId}/configs/groupsinvitations",
+                "playerPrivilegesProfile": "{baseurl_aws}/{version}/profiles/{profileId}/playerprivileges",
+                "voicechatNetworkPlayfab": "{baseurl_aws}/{version}/spaces/{spaceId}/voicechatnetworks/playfab",
+                "groupsInvitationsInvites": "{baseurl_aws}/{version}/groups/{groupId}/groupsinvitations/invitations",
+                "playerConsentsNextConfig": "{baseurl_aws}/{version}/spaces/configs/consents",
+                "profilesUgcReportContent": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/{contentId}/reports",
+                "ubiConnectRewardsProfile": "{baseurl_aws}/{version}/profiles/{profileId}/global/ubiconnect/rewards/api",
+                "groupsInvitationsProfiles": "{baseurl_aws}/{version}/profiles/{profileId}/groupsInvitations",
+                "playerConsentsNextProfile": "{baseurl_aws}/{version}/profiles/{profileId}/consents",
+                "profilesInventoryReserves": "{baseurl_aws}/{version}/profiles/{profileId}/items/reserves",
+                "groupsInvitationsLockState": "{baseurl_aws}/{version}/groups/{groupId}/groupsinvitations/lockstate",
+                "profilesBattlepassesSeasons": "{baseurl_aws}/{version}/profiles/{profileId}/battlepasses/seasons",
+                "groupsInvitationsJoinRequests": "{baseurl_aws}/{version}/groups/{groupId}/groupsinvitations/joinrequests",
+                "groupsInvitationsUpdateInvite": "{baseurl_aws}/{version}/groups/{groupId}/groupsinvitations/invitations/{inviteeProfileId}/state",
+                "playerConsentsNextAcceptances": "{baseurl_aws}/{version}/profiles/{profileId}/consents/acceptances",
+                "matchmakingGroupsMatchesPrecise": "{baseurl_aws}/{version}/groups/{groupId}/matches/precise",
+                "spacesPlayerPreferencesStandard": "{baseurl_aws}/{version}/spaces/{spaceId}/standardpreferences",
+                "profilesBattlepassesSeasonsTiers": "{baseurl_aws}/{version}/profiles/{profileId}/battlepasses/seasons/{seasonId}/tiers",
+                "profilesPlayerPreferencesStandard": "{baseurl_aws}/{version}/profiles/{profileId}/standardpreferences",
+                "profilesUgcRequestReportedContent": "{baseurl_aws}/{version}/profiles/{profileId}/ugc/reports",
+                "groupsInvitationsUpdateJoinRequest": "{baseurl_aws}/{version}/groups/{groupId}/groupsinvitations/joinrequests/{requesterProfileId}/state",
+                "ubiConnectCommunityChallengesSpace": "{baseurl_aws}/{version}/spaces/{spaceId}/global/ubiconnect/challenges/api/community",
+                "matchmakingSpaceGlobalHarboursocial": "{baseurl_aws}/{version}/spaces/{spaceId}/global/harboursocial/matchmaking",
+                "spacesPartiesPartyIdMembersProfileId": "{baseurl_aws}/{version}/spaces/{spaceId}/parties/{partyId}/members/{profileId}",
+                "ubiConnectCommunityChallengesProfile": "{baseurl_aws}/{version}/profiles/{profileId}/global/ubiconnect/challenges/api/community",
+                "ubiConnectTimeLimitedChallengesSpace": "{baseurl_aws}/{version}/spaces/{spaceId}/global/ubiconnect/challenges/api/timelimited",
+                "matchmakingProfilesGlobalHarboursocial": "{baseurl_aws}/{version}/profiles/{profileId}/global/harboursocial/matchmaking",
+                "ubiConnectTimeLimitedChallengesProfile": "{baseurl_aws}/{version}/profiles/{profileId}/global/ubiconnect/challenges/api/timelimited",
+                "ubiConnectApplicableTimeLimitedChallengesProfiles": "{baseurl_aws}/{version}/profiles/global/ubiconnect/challenges/api/timelimited/applicable"
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientStorm": {
+            "fields": {
+                "detectConfig": "EnableDebug=false;ValidateDetect=true",
+                "detectProvisioningUrl": "https://ncsa-storm.ubi.com/v1/natdetect",
+                "routerProvisioningUrl": "https://apac-storm.ubi.com/v1/router;https://emea-storm.ubi.com/v1/router;https://ncsa-storm.ubi.com/v1/router;https://ap-southeast-2-storm.ubi.com/v1/router",
+                "matchmakingSandboxName": "SM_PC_LNCH_A",
+                "traversalProvisioningUrl": "https://ncsa-storm.ubi.com/v1/nattraversal",
+                "matchmakingSandboxSpaceId": "4c29e04e-14d2-4245-a3c4-bf4703461119"
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientRemoteLogsInternal": {
+            "fields": {
+                "job": "None",
+                "ugc": "Warning",
+                "club": "None",
+                "core": "None",
+                "http": "None",
+                "news": "None",
+                "tLog": "Warning",
+                "task": "None",
+                "test": "None",
+                "user": "None",
+                "async": "None",
+                "event": "None",
+                "mocks": "None",
+                "stats": "None",
+                "uplay": "None",
+                "entity": "None",
+                "friend": "None",
+                "overlay": "Warning",
+                "persona": "None",
+                "profile": "None",
+                "blocklist": "None",
+                "challenge": "None",
+                "remoteLog": "None",
+                "scheduler": "None",
+                "voicechat": "None",
+                "websocket": "None",
+                "battlepass": "Warning",
+                "connection": "None",
+                "httpEngine": "None",
+                "moderation": "Warning",
+                "parameters": "Warning",
+                "population": "None",
+                "gamesPlayed": "None",
+                "leaderboard": "None",
+                "matchmaking": "None",
+                "userContent": "None",
+                "localization": "None",
+                "notification": "None",
+                "primaryStore": "None",
+                "configuration": "None",
+                "maxTextLength": 32768,
+                "playerReports": "None",
+                "authentication": "None",
+                "secondaryStore": "None",
+                "applicationUsed": "None",
+                "mobileExtension": "None",
+                "recommendations": "None",
+                "coreNotification": "None",
+                "playerOnlineStatus": "None",
+                "applicationInformation": "None",
+                "secondaryStoreInstantiation": "None",
+                "secondaryStoreInventoryRules": "None",
+                "party": "None",
+                "token": "None",
+                "groups": "Warning",
+                "trades": "None",
+                "calendar": "Warning",
+                "telemetry": "None",
+                "reputation": "None",
+                "remoteGaming": "Warning",
+                "richPresence": "None",
+                "usersPolicies": "None",
+                "playerActivity": "None",
+                "playerConsents": "None",
+                "playerPrivileges": "None",
+                "groupsInvitations": "Warning",
+                "playerPreferences": "None"
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientRemoteLogsGame": {
+            "fields": {
+                "url": "",
+                "maxTextLength": 32768,
+                "uncategorized": "None"
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientNotificationsInternal": {
+            "fields": {
+                "BLOCKLIST_ADD": true,
+                "BLOCKLIST_ADDED": true,
+                "BLOCKLIST_REMOVE": true,
+                "BLOCKLIST_REMOVED": true,
+                "CLUB_BADGE_ACQUIRED": true,
+                "SSI_INSTANCES_UPDATE": true,
+                "CLUB_ACTION_COMPLETED": true,
+                "CLUB_CHALLENGE_BANKED": true,
+                "CLUB_REWARD_PURCHASED": true,
+                "BATTLEPASS_TIERS_BANKED": true,
+                "CLUB_CHALLENGE_COMPLETED": true,
+                "CHALLENGES_REWARDS_BANKED": true,
+                "US_APP_PARAMS_FULL_UPDATE": true,
+                "US_APP_PARAMS_GROUP_UPDATE": true,
+                "FRIENDS_RELATIONSHIP_UPDATE": true,
+                "US_NOTIFICATION_MAINTENANCE": true,
+                "US_SPACE_PARAMS_FULL_UPDATE": true,
+                "CLUB_CHALLENGE_PARTICIPATION": true,
+                "US_SPACE_PARAMS_GROUP_UPDATE": true,
+                "US_CONCURRENT_CONNECT_DETECTED": true,
+                "CHALLENGES_PROGRESSION_COMPLETED": true,
+                "CLUB_CHALLENGE_THRESHOLD_REACHED": true,
+                "US_CLIENT_SECONDARY_STORE_UPDATE": true,
+                "TRADE_UPDATED": true,
+                "PARTY_MEMBER_ADDED": true,
+                "GROUPS_MEMBER_ADDED": true,
+                "PARTY_PARTY_CREATED": true,
+                "PARTY_PARTY_DELETED": true,
+                "PARTY_PARTY_UPDATED": true,
+                "FRIENDS_INFO_UPDATED": true,
+                "GROUPS_GROUP_DELETED": true,
+                "GROUPS_GROUP_UPDATED": true,
+                "PARTY_MEMBER_REMOVED": true,
+                "PARTY_MEMBER_UPDATED": true,
+                "GROUPS_MEMBER_REMOVED": true,
+                "GROUPS_MEMBER_UPDATED": true,
+                "MM_ASK_GROUP_METADATA": true,
+                "PARTY_INVITATION_SENT": true,
+                "FRIENDS_STATUS_CHANGED": true,
+                "PARTY_JOINREQUEST_SENT": true,
+                "PARTY_PARTY_MOVE_FAILED": true,
+                "PERSONA_PERSONA_CREATED": true,
+                "PERSONA_PERSONA_DELETED": true,
+                "PERSONA_PERSONA_UPDATED": true,
+                "BATTLEPASS_TIERS_REACHED": true,
+                "PARTY_INVITATION_EXPIRED": true,
+                "PARTY_INVITATION_ACCEPTED": true,
+                "PARTY_INVITATION_DECLINED": true,
+                "PARTY_JOINREQUEST_EXPIRED": true,
+                "PARTY_PARTY_OWNER_UPDATED": true,
+                "GROUPS_GROUP_OWNER_UPDATED": true,
+                "PARTY_INVITATION_CANCELLED": true,
+                "PARTY_JOINREQUEST_ACCEPTED": true,
+                "PARTY_JOINREQUEST_DECLINED": true,
+                "PARTY_PARTY_EXPIRY_RENEWED": true,
+                "PARTY_JOINREQUEST_CANCELLED": true,
+                "UBICONNECT_REWARD_PURCHASED": false,
+                "FRIENDS_RELATIONSHIP_TRIGGER": true,
+                "PARTY_ACCESSREQUEST_ACCEPTED": true,
+                "PARTY_PARTY_LOCKSTATE_UPDATED": true,
+                "GROUPSINVITATIONS_GROUP_UPDATED": true,
+                "PLAYERACTIVITY_ACTIVITIES_CLOSED": true,
+                "GROUPSINVITATIONS_INVITATION_SENT": true,
+                "PARTY_INVITATION_WORKFLOW_STARTED": true,
+                "PLAYERACTIVITY_ACTIVITIES_CREATED": true,
+                "PLAYERACTIVITY_ACTIVITIES_UPDATED": true,
+                "GROUPSINVITATIONS_JOINREQUEST_SENT": true,
+                "PLAYERPRIVILEGES_PRIVILEGES_UPDATED": true,
+                "GROUPSINVITATIONS_GROUP_LOCK_UPDATED": true,
+                "GROUPSINVITATIONS_INVITATION_EXPIRED": true,
+                "PARTY_LIMITS_MAXIMUM_MEMBERS_UPDATED": true,
+                "REPUTATION_PLAYERFACINGLEVEL_UPDATED": true,
+                "GROUPSINVITATIONS_INVITATION_ACCEPTED": true,
+                "GROUPSINVITATIONS_INVITATION_DECLINED": true,
+                "GROUPSINVITATIONS_JOINREQUEST_EXPIRED": true,
+                "PARTY_PARTY_INVITATIONSCONFIG_UPDATED": true,
+                "GROUPSINVITATIONS_INVITATION_CANCELLED": true,
+                "GROUPSINVITATIONS_JOINREQUEST_ACCEPTED": true,
+                "GROUPSINVITATIONS_JOINREQUEST_DECLINED": true,
+                "GROUPS_POLICY_RETENTION_EXPIRY_RENEWED": true,
+                "PARTY_JOINREQUEST_PLAYER_PREAUTHORIZED": true,
+                "PARTY_PARTY_JOINREQUESTSCONFIG_UPDATED": true,
+                "GROUPSINVITATIONS_JOINREQUEST_CANCELLED": true,
+                "RICHPRESENCE_PLAYER_RICHPRESENCE_CHANGED": true
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientNotificationsGame": {
+            "fields": {
+                "additionalSpaces": [],
+                "INITIATE_PUNCH_PHONE_PAIRING": true
+            },
+            "relatedPopulation": null
+        },
+        "us-GlobalSpaceConfig": {
+            "fields": {
+                "friendsSpaceId": "45d58365-547f-4b45-ab5b-53ed14cc79ed",
+                "blocklistSpaceId": "45d58365-547f-4b45-ab5b-53ed14cc79ed"
+            },
+            "relatedPopulation": null
+        },
+        "us-sdkClientFeaturesSwitches": {
+            "fields": {
+                "ugc": true,
+                "news": true,
+                "tlog": true,
+                "event": true,
+                "mocks": false,
+                "party": true,
+                "stats": true,
+                "token": true,
+                "uplay": true,
+                "users": true,
+                "groups": true,
+                "trades": true,
+                "persona": true,
+                "rewards": true,
+                "calendar": true,
+                "profiles": true,
+                "blocklist": true,
+                "challenge": true,
+                "telemetry": true,
+                "voicechat": true,
+                "battlepass": true,
+                "httpClient": true,
+                "moderation": true,
+                "parameters": true,
+                "reputation": true,
+                "clubService": true,
+                "gamesPlayed": true,
+                "matchmaking": true,
+                "populations": true,
+                "localization": true,
+                "primaryStore": true,
+                "remoteGaming": true,
+                "richPresence": true,
+                "createSession": true,
+                "entitiesSpace": true,
+                "extendSession": true,
+                "friendsLookup": true,
+                "leaderboardMe": true,
+                "playerReports": true,
+                "friendsRequest": true,
+                "playerActivity": true,
+                "playerConsents": true,
+                "secondaryStore": true,
+                "ubisoftConnect": true,
+                "applicationUsed": true,
+                "clubApplication": true,
+                "entitiesProfile": true,
+                "recommendations": true,
+                "webSocketClient": true,
+                "clubDynamicPanel": true,
+                "notificationSend": true,
+                "playerPrivileges": true,
+                "usersLegalOptins": true,
+                "eventsDefinitions": true,
+                "groupsInvitations": true,
+                "leaderboardSpaces": true,
+                "playerPreferences": true,
+                "playerOnlineStatus": true,
+                "usersCreateAndLink": true,
+                "friendsUplayProfile": true,
+                "leaderboardProfiles": true,
+                "friendsSpaceSpecific": true,
+                "notificationSendBatch": true,
+                "notificationWebsocket": true,
+                "primaryStoreSendEvent": true,
+                "applicationInformation": true,
+                "notificationSendNoBroker": true,
+                "notificationDynamicUpdate": true,
+                "populationsAutomaticUpdate": true,
+                "primaryStoreAutomaticFetch": true,
+                "secondaryStoreTransactions": true,
+                "secondaryStoreInstantiation": true,
+                "secondaryStoreInventoryRules": true,
+                "mobileExtensionUsersManagement": true,
+                "notificationRequestConnections": true,
+                "mobileExtensionProfilesExternal": true,
+                "notificationRemoteLogReceivedData": false,
+                "primaryStoreCatalogGetGameMediaType": false,
+                "primarySecondaryStoreForceSyncAtLogin": true,
+                "firstPartyAccessToMultiplayerInformation": true,
+                "syncOnResumeToForegroundForNintendoSwitch": false,
+                "usersPolicies": true,
+                "playerCodeOfConduct": true
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsWall": {
+            "fields": {
+                "FriendsWall": {
+                    "max_msg": 7,
+                    "refresh_time": 122
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsFriends": {
+            "fields": {
+                "FriendsUGC": {
+                    "refresh_time": 120
+                },
+                "FriendsPresence": {
+                    "refresh_time": 121
+                },
+                "FriendListService": {
+                    "refresh_interval": 120
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsJDVersion": {
+            "fields": {
+                "Override": {
+                    "123": "Kids",
+                    "4884": "ABBA : You Can Dance",
+                    "9999": "2022"
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsUnlockable": {
+            "fields": {
+                "AAAMap": {
+                    "map2": "Thumbs",
+                    "LockAAAMap2": 1
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsQuickplayDesignRules": {
+            "fields": {
+                "FatigueRule1Config": {
+                    "MapCount": 1
+                },
+                "FatigueRule2Config": {
+                    "MapCount": 3
+                },
+                "RulesNamesToEnable": [],
+                "DiscoveryRuleConfig": {
+                    "MapCount": 3
+                },
+                "DifficultyRuleConfig": {
+                    "MapCount": 1
+                },
+                "MultiplayerRuleConfig": {
+                    "MapCount": 2
+                },
+                "StartDifficultyRuleConfig": {
+                    "MapCount": 2,
+                    "StartDifficultyRuleConfig": [1, 2],
+                    "AcceptableSweatDifficulties": [1, 2]
+                },
+                "TaggedDiscoveryRuleConfig": {
+                    "MapCount": 2,
+                    "AcceptableTags": ["ExcluJD21_Quickplay"]
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsQuickplayTimer": {
+            "fields": {
+                "FeatureSwitch": {
+                    "value": true
+                },
+                "TimerDuration": {
+                    "recapTimer": 10,
+                    "lobbyTimerDefault": 12,
+                    "lobbyTimerNoChoice": 8,
+                    "lobbyTimerRefreshForCoop": 5
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-customFeatureSwitches": {
+            "fields": {
+                "relatedSongs": true,
+                "anthologyMode": true,
+                "customRecoLine": false
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsSongsSortingByRecommendation": {
+            "fields": {
+                "isActive": {
+                    "value": true
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsQuickplayFallbackLists": {
+            "fields": {
+                "EditoFallbackList": {
+                    "list": ["RainOnMe", "PacaDance", "Medicina", "BlindingLights", "NaeNae", "Sorbet", "Lullaby", "Temperature", "WomanLikeMe", "QueTirePaLante", "OldTownRoad", "Blue", "WithoutMe", "7Rings", "Bang2019", "Zenit", "ThatPower", "DibbyDibby", "1999", "Magenta", "GangnamStyleDLC", "Juice", "MiMiMi", "BadGuy", "SambaDeJaneiro", "Animals"]
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsWDF": {
+            "fields": {
+                "Recap": {
+                    "recap_retry_interval": 2
+                },
+                "UpdateScore": {
+                    "update_score_interval": 5,
+                    "update_failure_allowance": 10
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsUpsell": {
+            "fields": {
+                "streamedVideo": {
+                    "version": 2,
+                    "description": 12345,
+                    "trackingTag": "Demo_Home_Video",
+                    "thumbnailUrl": "https://jd-s3.cdn.ubi.com/public/home/WelcomeVideoJD2020/thumbsnail/558862fc616a732816595cb949729935.png",
+                    "videoDataUrl": "https://jd-s3.cdn.ubi.com/public/streamed-videos/Demo_Home_Video/metadata/74d6299d04d544622f9f2b58a9ba58ac.json"
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsSubscription_Service": {
+            "fields": {
+                "ECTokenFetch": {
+                    "retry_count": 3,
+                    "retry_interval": 598
+                },
+                "ServerRefresh": {
+                    "retry_interval": 60,
+                    "refresh_interval": 600,
+                    "retry_interval_s2s": 600
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsRelatedSongsAutoplayTimer": {
+            "fields": {
+                "durationInSeconds": {
+                    "value": 12
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsRelatedSongsAutoplay": {
+            "fields": {
+                "featureSwitch": {
+                    "value": true
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsRelatedSongs": {
+            "fields": {
+                "Fetch": {
+                    "retry_value": 120
+                },
+                "Patterns": {
+                    "Subscribed": ["replay", "any", "any", "any"],
+                    "Unsubscribed": ["replay", "disk", "disk", "jdu"]
+                },
+                "LocalHistory": {
+                    "maxSizePerSession": 3
+                },
+                "minimumSongsToDisplayScreen": {
+                    "value": 2
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsRecommendation": {
+            "fields": {
+                "Fetch": {
+                    "retry_interval": 120
+                },
+                "OnlineRecoConfig": {
+                    "numberOfSongsPlayedInPartyModeToSwitchToClassicReco": 2
+                },
+                "EditorialRecoList": {
+                    "maps": ["BlindingLights", "KickIt", "AdoreYou", "WithoutMe", "QueTirePaLante", "Juice"]
+                },
+                "RecoLineConfigForNonSubscribers": {
+                    "maxJDUSongsInRecoLine": 2
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsQuest": {
+            "fields": {
+                "minimumScore": {
+                    "value": 1000
+                },
+                "questOverride": {
+                    "value": []
+                },
+                "sessionCountUntilQuestKill": {
+                    "value": 10
+                },
+                "sessionCountUntilDiscoveryKill": {
+                    "value": 6
+                },
+                "sessionCountUntilFirstDiscoveryKill": {
+                    "value": 2
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsHttp": {
+            "fields": {
+                "FileStreaming": {
+                    "slow_bit_rate_in_bps": 512000
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-constantsHome": {
+            "fields": {
+                "Fetch": {
+                    "played_maps_count": 2,
+                    "new_session_tiles_count": 3,
+                    "during_session_tiles_count": 1
+                }
+            },
+            "relatedPopulation": null
+        },
+        "jd-serverInfo": {
+            "fields": {
+                "url": "https://jdp.justdancenext.xyz",
+                "name": "PROD"
+            },
+            "relatedPopulation": null
+        }
+    }
+}

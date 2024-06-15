@@ -1,0 +1,15 @@
+{
+    "server": {
+        "SaveData": {
+            "windows": "{Home}/AppData/Roaming/openparty/",
+            "linux": "{Home}/.openparty/"
+        },
+        "port": 80,
+        "forcePort": false,
+        "isPublic": true,
+        "serverstatus": {
+            "isMaintenance": false,
+            "channel": "prod"
+        }
+    }
+}

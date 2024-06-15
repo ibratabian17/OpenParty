@@ -1,0 +1,123 @@
+{
+    "__class": "JD_CarouselContent",
+    "categories": [
+        {
+            "__class": "Category",
+            "title": " Dancer Cards",
+            "act": "ui_carousel",
+            "isc": "grp_row",
+            "items": [
+                {
+                    "__class": "Item",
+                    "offlineRequest": {
+                        "__class": "JD_CarouselDancerCardRequest",
+                        "isSaveItem": true,
+                        "uuid": "f02934b9-647d-46b3-9d8f-d9983e7cfd7d"
+                    }
+                },
+                {
+                    "__class": "Item",
+                    "offlineRequest": {
+                        "__class": "JD_CarouselDancerCardRequest",
+                        "actionListName": "main-dancer-card",
+                        "main": true,
+                        "uuid": "0ff6ad3b-a0fb-4253-b12a-ef01e813874f"
+                    }
+                },
+                {
+                    "__class": "Item",
+                    "offlineRequest": {
+                        "__class": "JD_CarouselDancerCardRequest",
+                        "actionListName": "dancer-card",
+                        "uuid": "a22c81fd-4e56-439c-a42d-74d17c55a6c0"
+                    }
+                },
+                {
+                    "__class": "Item",
+                    "offlineRequest": {
+                        "__class": "JD_CarouselDancerCardRequest",
+                        "actionListName": "create-dancer-card",
+                        "create": true,
+                        "uuid": "69478a6a-20ad-47ee-9cfa-c42af702984a"
+                    }
+                }
+            ]
+        }
+    ],
+    "actionLists": {
+        "main-dancer-card": {
+            "__class": "ActionList",
+            "actions": [
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Change avatar",
+                    "type": "change-avatar"
+                },
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Change your skin",
+                    "type": "change-skin"
+                },
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Edit nickname",
+                    "type": "edit-nickname"
+                }
+            ],
+            "itemType": "dancer-card"
+        },
+        "dancer-card": {
+            "__class": "ActionList",
+            "actions": [
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Activate",
+                    "type": "set-as-main"
+                },
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Change avatar",
+                    "type": "change-avatar"
+                },
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Change skin",
+                    "type": "change-skin"
+                },
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Edit nickname",
+                    "type": "edit-nickname"
+                },
+                {
+                    "__class": "Action",
+                    "bannerType": "dancer",
+                    "title": "Delete",
+                    "type": "delete-dancer-card"
+                }
+            ],
+            "itemType": "dancer-card"
+        },
+        "create-dancer-card": {
+            "__class": "ActionList",
+            "actions": [
+                {
+                    "__class": "Action",
+                    "bannerContext": "CONTEXT_ADD",
+                    "bannerType": "dancer",
+                    "title": "Create Dancer Card",
+                    "type": "create-dancer-card"
+                }
+            ],
+            "itemType": "dancer-card"
+        }
+    },
+    "songItemLists": {}
+}

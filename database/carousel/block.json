@@ -1,0 +1,128 @@
+{
+  "ChallengeMatch": {
+    "CreateChallenge": {
+      "wait_after_share": 5
+    }
+  },
+  "Friends": {
+    "FriendListService": {
+      "refresh_interval": 120
+    },
+    "FriendsPresence": {
+      "max_msg": 6,
+      "refresh_time": 121
+    },
+    "FriendsUGC": {
+      "max_msg": 5,
+      "refresh_time": 120
+    }
+  },
+  "Home": {
+    "Fetch": {
+      "during_session_tiles_count": 1,
+      "new_session_tiles_count": 3,
+      "played_maps_count": 2
+    }
+  },
+  "JDVersion": {
+    "Override": {
+      "1": "",
+      "123": "Kids",
+      "1230": "Kids 2",
+      "1234": "Kids 2014",
+      "31": "Wii",
+      "32": "Wii 2",
+      "51": "Wii U",
+      "2023": "2023 Edition",
+      "2024": "2024 Edition",
+      "5001": "Disney Party",
+      "5002": "Disney Party 2",
+      "6020": "2020 China",
+      "6017": "2017 China",
+      "6015": "2015 China",
+      "4884": "ABBA: You Can Dance",
+      "8001": "Michael Jackson: The Experience",
+      "8002": "Hip Hop Dance Experience",
+      "8003": "Black Eyed Peas Experience",
+      "8004": "The Smurfs: Dance Party",
+      "1000": "Plus",
+      "9999": "Unlimited"
+    }
+  },
+  "originalJDVersion": {
+    "Override": {
+      "1": "",
+      "123": "Kids",
+      "1230": "Kids 2",
+      "1234": "Kids 2014",
+      "31": "Wii",
+      "32": "Wii 2",
+      "51": "Wii U",
+      "2023": "2023 Edition",
+      "2024": "2024 Edition",
+      "5001": "Disney Party",
+      "5002": "Disney Party 2",
+      "6020": "2020 China",
+      "6017": "2017 China",
+      "6015": "2015 China",
+      "4884": "ABBA: You Can Dance",
+      "8001": "Michael Jackson: The Experience",
+      "8002": "Hip Hop Dance Experience",
+      "8003": "Black Eyed Peas Experience",
+      "8004": "The Smurfs: Dance Party",
+      "1000": "Plus",
+      "9999": "Unlimited"
+    }
+  },
+  "Quest": {
+    "minimumScore": {
+      "value": 1000
+    },
+    "questOverride": {
+      "value": []
+    },
+    "sessionCountUntilDiscoveryKill": {
+      "value": 4
+    },
+    "sessionCountUntilFirstDiscoveryKill": {
+      "value": 2
+    },
+    "sessionCountUntilQuestKill": {
+      "value": 10
+    }
+  },
+  "Subscription_Service": {
+    "ECTokenFetch": {
+      "retry_count": 3,
+      "retry_interval": 598
+    },
+    "ServerRefresh": {
+      "refresh_interval": 600,
+      "retry_interval": 60,
+      "retry_interval_s2s": 600
+    }
+  },
+  "Unlockables": {
+    "AAAMap": {
+      "LockAAAMap2": 1,
+      "considerLocking": 1,
+      "map1": "1",
+      "map2": "Thumbs"
+    }
+  },
+  "WDF": {
+    "Recap": {
+      "recap_retry_interval": 2
+    },
+    "UpdateScore": {
+      "update_failure_allowance": 10,
+      "update_score_interval": 5
+    }
+  },
+  "Wall": {
+    "FriendsWall": {
+      "max_msg": 7,
+      "refresh_time": 122
+    }
+  }
+}

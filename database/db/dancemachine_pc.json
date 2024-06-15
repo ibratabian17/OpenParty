@@ -1,0 +1,2070 @@
+{
+  "__class": "OnlineBlockDb",
+  "blocks": {
+    "JDMApplauseConcert": {
+      "__class": "OnlineBlock",
+      "artist": "JDMApplauseConcert Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMApplauseConcert/pc/JDMApplauseConcert_Cover_Generic.tga.ckd/f5b19d46f548e39acf7618d4e36729df.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMApplauseConcert/pc/JDMApplauseConcert_Cover_Online.tga.ckd/cf70739917a25072c19b2d2cda9aea57.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.5,
+      "mapName": "JDMApplauseConcert",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMApplauseConcert_mapContent"
+      },
+      "parentMapName": "JDMApplauseConcert",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMApplauseConcert",
+      "isPlayable": true
+    },
+    "JDMBallerina": {
+      "__class": "OnlineBlock",
+      "artist": "JDMBallerina Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBallerina/pc/JDMBallerina_Cover_Generic.tga.ckd/7ef53d9a23d87f618d9e5b41e94006ba.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBallerina/pc/JDMBallerina_Cover_Online.tga.ckd/598d68b9ee0248421c05f8f6fe7a7a28.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 31.729999999999998,
+      "mapName": "JDMBallerina",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMBallerina_mapContent"
+      },
+      "parentMapName": "JDMBallerina",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMBallerina",
+      "isPlayable": true
+    },
+    "JDMBallerinaALT01": {
+      "__class": "OnlineBlock",
+      "artist": "JDMBallerina Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBallerinaALT01/pc/JDMBallerinaALT01_Cover_Generic.tga.ckd/63c1c9aa20f646522400512424fec7b3.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBallerinaALT01/pc/JDMBallerinaALT01_Cover_Online.tga.ckd/b1397a8d19f00b1b5d1212f6f20d3641.ckd"
+      },
+      "coachCount": 1,
+      "credits": "Empty Credits",
+      "customTypeNameId": 8610,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 31.729999999999998,
+      "mapName": "JDMBallerinaALT01",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMBallerinaALT01_mapContent"
+      },
+      "parentMapName": "JDMBallerina",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMBallerina - ALTERNATE01",
+      "isPlayable": true
+    },
+    "JDMBallerinaBS": {
+      "__class": "OnlineBlock",
+      "artist": "JDMBallerina Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBallerinaBS/pc/JDMBallerinaBS_Cover_Generic.tga.ckd/f939c7ef5251a63f54ca25f1cfb982f9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBallerinaBS/pc/JDMBallerinaBS_Cover_Online.tga.ckd/ae76a9f73798333d13c5e0a3f0a42a8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_BonusStage"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.677999999999999,
+      "mapName": "JDMBallerinaBS",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMBallerinaBS_mapContent"
+      },
+      "parentMapName": "JDMBallerinaBS",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["JDMBS"],
+      "title": "JDMBallerina - BONUS STAGE",
+      "isPlayable": true
+    },
+    "JDMBollywood": {
+      "__class": "OnlineBlock",
+      "artist": "JDMBollywood Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBollywood/pc/JDMBollywood_Cover_Generic.tga.ckd/ac2cb73000cf2abb261095105c6820c6.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBollywood/pc/JDMBollywood_Cover_Online.tga.ckd/a0c44288a7ff1296e92dccf0dd4292e4.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.4,
+      "mapName": "JDMBollywood",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMBollywood_mapContent"
+      },
+      "parentMapName": "JDMBollywood",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMBollywood",
+      "isPlayable": true
+    },
+    "JDMBollywoodALT01": {
+      "__class": "OnlineBlock",
+      "artist": "JDMBollywood Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBollywoodALT01/pc/JDMBollywoodALT01_Cover_Generic.tga.ckd/ca72608b971055c6613b4bb1430971d4.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBollywoodALT01/pc/JDMBollywoodALT01_Cover_Online.tga.ckd/b4fd4364798d9060ffbbc0dbb1b3bd1d.ckd"
+      },
+      "coachCount": 1,
+      "credits": "Empty Credits",
+      "customTypeNameId": 8610,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.4,
+      "mapName": "JDMBollywoodALT01",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMBollywoodALT01_mapContent"
+      },
+      "parentMapName": "JDMBollywood",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMBollywood - ALTERNATE01",
+      "isPlayable": true
+    },
+    "JDMBruceLee": {
+      "__class": "OnlineBlock",
+      "artist": "JDMBruceLee Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBruceLee/pc/JDMBruceLee_Cover_Generic.tga.ckd/44740939e41956b67501bd3980653800.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMBruceLee/pc/JDMBruceLee_Cover_Online.tga.ckd/fc49985bc376562a53c287273e09c3af.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.718,
+      "mapName": "JDMBruceLee",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMBruceLee_mapContent"
+      },
+      "parentMapName": "JDMBruceLee",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMBruceLee",
+      "isPlayable": true
+    },
+    "JDMCharleston": {
+      "__class": "OnlineBlock",
+      "artist": "JDMCharleston Artist",
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.297,
+      "mapName": "JDMCharleston",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "parentMapName": "JDMCharleston",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMCharleston",
+      "isPlayable": true
+    },
+    "JDMCharlestonALT01": {
+      "__class": "OnlineBlock",
+      "artist": "JDMCharleston Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMCharlestonALT01/pc/JDMCharlestonALT01_Cover_Generic.tga.ckd/7f52fde49e2f511f5534e5c2741bb66d.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMCharlestonALT01/pc/JDMCharlestonALT01_Cover_Online.tga.ckd/9bbe041ab1e851fe3a7aa2eab54282d1.ckd"
+      },
+      "coachCount": 1,
+      "credits": "Empty Credits",
+      "customTypeNameId": 8610,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.296999999999998,
+      "mapName": "JDMCharlestonALT01",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMCharlestonALT01_mapContent"
+      },
+      "parentMapName": "JDMCharleston",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMCharleston - ALTERNATE01",
+      "isPlayable": true
+    },
+    "JDMCharlestonBS": {
+      "__class": "OnlineBlock",
+      "artist": "JDMCharleston Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMCharlestonBS/pc/JDMCharlestonBS_Cover_Generic.tga.ckd/f939c7ef5251a63f54ca25f1cfb982f9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMCharlestonBS/pc/JDMCharlestonBS_Cover_Online.tga.ckd/ae76a9f73798333d13c5e0a3f0a42a8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_BonusStage"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.779999999999999,
+      "mapName": "JDMCharlestonBS",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMCharlestonBS_mapContent"
+      },
+      "parentMapName": "JDMCharlestonBS",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["JDMBS"],
+      "title": "JDMCharleston - BONUS STAGE",
+      "isPlayable": true
+    },
+    "JDMCheerleader": {
+      "__class": "OnlineBlock",
+      "artist": "JDMCheerleader Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMCheerleader/pc/JDMCheerleader_Cover_Generic.tga.ckd/0267bfd7c8fdf45b3c040b34fe3c6dfd.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMCheerleader/pc/JDMCheerleader_Cover_Online.tga.ckd/c4f6de89d85e7b33d55768d3951804aa.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 31.049,
+      "mapName": "JDMCheerleader",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMCheerleader_mapContent"
+      },
+      "parentMapName": "JDMCheerleader",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMCheerleader",
+      "isPlayable": true
+    },
+    "JDMEgyptian": {
+      "__class": "OnlineBlock",
+      "artist": "JDMEgyptian Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMEgyptian/pc/JDMEgyptian_Cover_Generic.tga.ckd/5f2f0ebe8ba213ce2c15dd825bc42a5a.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMEgyptian/pc/JDMEgyptian_Cover_Online.tga.ckd/c0dca9f54b366615d102b6322d057a85.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 24.49,
+      "mapName": "JDMEgyptian",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMEgyptian_mapContent"
+      },
+      "parentMapName": "JDMEgyptian",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMEgyptian",
+      "isPlayable": true
+    },
+    "JDMEgyptianBS": {
+      "__class": "OnlineBlock",
+      "artist": "JDMEgyptian Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMEgyptianBS/pc/JDMEgyptianBS_Cover_Generic.tga.ckd/f939c7ef5251a63f54ca25f1cfb982f9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMEgyptianBS/pc/JDMEgyptianBS_Cover_Online.tga.ckd/ae76a9f73798333d13c5e0a3f0a42a8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_BonusStage"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.964,
+      "mapName": "JDMEgyptianBS",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMEgyptianBS_mapContent"
+      },
+      "parentMapName": "JDMEgyptianBS",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["JDMBS"],
+      "title": "JDMEgyptian - BONUS STAGE",
+      "isPlayable": true
+    },
+    "JDMFlamenco": {
+      "__class": "OnlineBlock",
+      "artist": "JDMFlamenco Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMFlamenco/pc/JDMFlamenco_Cover_Generic.tga.ckd/ffdae6ae8927895ccb3eecfe25d4cc88.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMFlamenco/pc/JDMFlamenco_Cover_Online.tga.ckd/37bc56d38ed652bff81c698d1c5adbc2.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.464,
+      "mapName": "JDMFlamenco",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMFlamenco_mapContent"
+      },
+      "parentMapName": "JDMFlamenco",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMFlamenco",
+      "isPlayable": true
+    },
+    "JDMFlamencoALT01": {
+      "__class": "OnlineBlock",
+      "artist": "JDMFlamenco Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMFlamencoALT01/pc/JDMFlamencoALT01_Cover_Generic.tga.ckd/6fd5e404b010a2139d2d11eb28e7867e.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMFlamencoALT01/pc/JDMFlamencoALT01_Cover_Online.tga.ckd/7f6bc6c0a5a995eb68c7dbee6e308927.ckd"
+      },
+      "coachCount": 1,
+      "credits": "Empty Credits",
+      "customTypeNameId": 8610,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30,
+      "mapName": "JDMFlamencoALT01",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMFlamencoALT01_mapContent"
+      },
+      "parentMapName": "JDMFlamenco",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMFlamenco - ALTERNATE01",
+      "isPlayable": true
+    },
+    "JDMFrenchCancan": {
+      "__class": "OnlineBlock",
+      "artist": "JDMFrenchCancan Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMFrenchCancan/pc/JDMFrenchCancan_Cover_Generic.tga.ckd/85416c9cd7c665d9e556a8347f6e2d93.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMFrenchCancan/pc/JDMFrenchCancan_Cover_Online.tga.ckd/d34ee4ed6e47e9f3fbe0993f59ad1a55.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.409,
+      "mapName": "JDMFrenchCancan",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMFrenchCancan_mapContent"
+      },
+      "parentMapName": "JDMFrenchCancan",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMFrenchCancan",
+      "isPlayable": true
+    },
+    "JDMGymnast": {
+      "__class": "OnlineBlock",
+      "artist": "JDMGymnast Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMGymnast/pc/JDMGymnast_Cover_Generic.tga.ckd/928c3835f5ff768fa610d21816feca86.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMGymnast/pc/JDMGymnast_Cover_Online.tga.ckd/886bd970f7b0d4657b050f73d25e5975.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 25.366,
+      "mapName": "JDMGymnast",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMGymnast_mapContent"
+      },
+      "parentMapName": "JDMGymnast",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMGymnast",
+      "isPlayable": true
+    },
+    "JDMGymnastALT01": {
+      "__class": "OnlineBlock",
+      "artist": "JDMGymnast Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMGymnastALT01/pc/JDMGymnastALT01_Cover_Generic.tga.ckd/010ff981c918b6f850bcc8cfd6cbbe34.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMGymnastALT01/pc/JDMGymnastALT01_Cover_Online.tga.ckd/ce24cd7f69fe320558f62f950411b295.ckd"
+      },
+      "coachCount": 1,
+      "credits": "Empty Credits",
+      "customTypeNameId": 8610,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 25.366,
+      "mapName": "JDMGymnastALT01",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMGymnastALT01_mapContent"
+      },
+      "parentMapName": "JDMGymnast",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMGymnast - ALTERNATE01",
+      "isPlayable": true
+    },
+    "JDMHaka": {
+      "__class": "OnlineBlock",
+      "artist": "JDMHaka Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMHaka/pc/JDMHaka_Cover_Generic.tga.ckd/e1550a0f135d37d553a37e9be4e7bf82.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMHaka/pc/JDMHaka_Cover_Online.tga.ckd/2ca065e3f108e13df88bcd1456bd7bf0.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 20.308,
+      "mapName": "JDMHaka",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMHaka_mapContent"
+      },
+      "parentMapName": "JDMHaka",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMHaka",
+      "isPlayable": true
+    },
+    "JDMIsidora": {
+      "__class": "OnlineBlock",
+      "artist": "JDMIsidora Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMIsidora/pc/JDMIsidora_Cover_Generic.tga.ckd/0dc2cafcf54def22b9a0155efe8f674e.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMIsidora/pc/JDMIsidora_Cover_Online.tga.ckd/978924e718571ce887bbd301a71953f5.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.026999999999999,
+      "mapName": "JDMIsidora",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMIsidora_mapContent"
+      },
+      "parentMapName": "JDMIsidora",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMIsidora",
+      "isPlayable": true
+    },
+    "JDMKungFu": {
+      "__class": "OnlineBlock",
+      "artist": "JDMKungFu Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMKungFu/pc/JDMKungFu_Cover_Generic.tga.ckd/fd5763a67d211fb2591bdf02cb4baf54.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMKungFu/pc/JDMKungFu_Cover_Online.tga.ckd/848a3c9a82e30e538ba97aec6b474e83.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 34.091,
+      "mapName": "JDMKungFu",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMKungFu_mapContent"
+      },
+      "parentMapName": "JDMKungFu",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMKungFu",
+      "isPlayable": true
+    },
+    "JDMKungFuALT01": {
+      "__class": "OnlineBlock",
+      "artist": "JDMKungFu Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMKungFuALT01/pc/JDMKungFuALT01_Cover_Generic.tga.ckd/37d2ee91a0bc1db42ff64deaf06eb623.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMKungFuALT01/pc/JDMKungFuALT01_Cover_Online.tga.ckd/e22ed948a40bd68eac4d48f8d9400239.ckd"
+      },
+      "coachCount": 1,
+      "credits": "Empty Credits",
+      "customTypeNameId": 8610,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 34.091,
+      "mapName": "JDMKungFuALT01",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMKungFuALT01_mapContent"
+      },
+      "parentMapName": "JDMKungFu",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMKungFu - ALTERNATE01",
+      "isPlayable": true
+    },
+    "JDMLimbo": {
+      "__class": "OnlineBlock",
+      "artist": "JDMLimbo Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMLimbo/pc/JDMLimbo_Cover_Generic.tga.ckd/ff8ffe96ae317f70b9f5215da2b5239b.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMLimbo/pc/JDMLimbo_Cover_Online.tga.ckd/a99da58746a98986ca9dc81348112026.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.695999999999999,
+      "mapName": "JDMLimbo",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMLimbo_mapContent"
+      },
+      "parentMapName": "JDMLimbo",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMLimbo",
+      "isPlayable": true
+    },
+    "JDMLimboBS": {
+      "__class": "OnlineBlock",
+      "artist": "JDMLimbo Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMLimboBS/pc/JDMLimboBS_Cover_Generic.tga.ckd/f939c7ef5251a63f54ca25f1cfb982f9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMLimboBS/pc/JDMLimboBS_Cover_Online.tga.ckd/ae76a9f73798333d13c5e0a3f0a42a8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDMBS"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 34.756,
+      "mapName": "JDMLimboBS",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMLimboBS_mapContent"
+      },
+      "parentMapName": "JDMLimboBS",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["JDMBS"],
+      "title": "JDMLimbo - BONUS STAGE",
+      "isPlayable": true
+    },
+    "JDMMaestro": {
+      "__class": "OnlineBlock",
+      "artist": "JDMMaestro Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMMaestro/pc/JDMMaestro_Cover_Generic.tga.ckd/ceb74c0b6235786c6c10c4bc603ea2d0.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMMaestro/pc/JDMMaestro_Cover_Online.tga.ckd/4c56013e3f48744560f71f5ece6f63a2.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 31.616999999999999,
+      "mapName": "JDMMaestro",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMMaestro_mapContent"
+      },
+      "parentMapName": "JDMMaestro",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMMaestro",
+      "isPlayable": true
+    },
+    "JDMMagicMike": {
+      "__class": "OnlineBlock",
+      "artist": "JDMMagicMike Artist",
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.968,
+      "mapName": "JDMMagicMike",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "parentMapName": "JDMMagicMike",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMMagicMike",
+      "isPlayable": true
+    },
+    "JDMMetalGuitar": {
+      "__class": "OnlineBlock",
+      "artist": "JDMMetalGuitar Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMMetalGuitar/pc/JDMMetalGuitar_Cover_Generic.tga.ckd/d5a110de80f9a7c95909426bee62ba4d.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMMetalGuitar/pc/JDMMetalGuitar_Cover_Online.tga.ckd/312ad43de78a59d2ef8e326728e86e90.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 21.686999999999999,
+      "mapName": "JDMMetalGuitar",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMMetalGuitar_mapContent"
+      },
+      "parentMapName": "JDMMetalGuitar",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMMetalGuitar",
+      "isPlayable": true
+    },
+    "JDMOrientalDance": {
+      "__class": "OnlineBlock",
+      "artist": "JDMOrientalDance Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMOrientalDance/pc/JDMOrientalDance_Cover_Generic.tga.ckd/83d05ee685a035233d1dba79e4cba0f6.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMOrientalDance/pc/JDMOrientalDance_Cover_Online.tga.ckd/40930347856f86935af28df876be0436.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.645,
+      "mapName": "JDMOrientalDance",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMOrientalDance_mapContent"
+      },
+      "parentMapName": "JDMOrientalDance",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMOrientalDance",
+      "isPlayable": true
+    },
+    "JDMRapper": {
+      "__class": "OnlineBlock",
+      "artist": "JDMRapper Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRapper/pc/JDMRapper_Cover_Generic.tga.ckd/b46663e3ba14350ed5dd55c1ce752370.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRapper/pc/JDMRapper_Cover_Online.tga.ckd/5ea71f65f354718da1f33fe625742d31.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.691,
+      "mapName": "JDMRapper",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMRapper_mapContent"
+      },
+      "parentMapName": "JDMRapper",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMRapper",
+      "isPlayable": true
+    },
+    "JDMRaveParty": {
+      "__class": "OnlineBlock",
+      "artist": "JDMRaveParty Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRaveParty/pc/JDMRaveParty_Cover_Generic.tga.ckd/c74d9c93b0e5539a00ce53ad4f1672b3.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRaveParty/pc/JDMRaveParty_Cover_Online.tga.ckd/6e57acfbfb9ec5d8f7f958e45139efab.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.4,
+      "mapName": "JDMRaveParty",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMRaveParty_mapContent"
+      },
+      "parentMapName": "JDMRaveParty",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMRaveParty",
+      "isPlayable": true
+    },
+    "JDMRobot": {
+      "__class": "OnlineBlock",
+      "artist": "JDMRobot Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRobot/pc/JDMRobot_Cover_Generic.tga.ckd/f5e4710b321978f2470ed84f96a58b6a.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRobot/pc/JDMRobot_Cover_Online.tga.ckd/cf010d8d5fbf7861377f98a43e3cd83b.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30,
+      "mapName": "JDMRobot",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMRobot_mapContent"
+      },
+      "parentMapName": "JDMRobot",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMRobot",
+      "isPlayable": true
+    },
+    "JDMRunningMan": {
+      "__class": "OnlineBlock",
+      "artist": "JDMRunningMan Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRunningMan/pc/JDMRunningMan_Cover_Generic.tga.ckd/1c69acdb9852095e8d7ab9868ac1a807.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRunningMan/pc/JDMRunningMan_Cover_Online.tga.ckd/4b1bb648af2f8378e990675416da31e2.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.474999999999999,
+      "mapName": "JDMRunningMan",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMRunningMan_mapContent"
+      },
+      "parentMapName": "JDMRunningMan",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMRunningMan",
+      "isPlayable": true
+    },
+    "JDMRunningManBS": {
+      "__class": "OnlineBlock",
+      "artist": "JDMRunningMan Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRunningManBS/pc/JDMRunningManBS_Cover_Generic.tga.ckd/f939c7ef5251a63f54ca25f1cfb982f9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRunningManBS/pc/JDMRunningManBS_Cover_Online.tga.ckd/ae76a9f73798333d13c5e0a3f0a42a8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_BonusStage"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.743,
+      "mapName": "JDMRunningManBS",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMRunningManBS_mapContent"
+      },
+      "parentMapName": "JDMRunningManBS",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["JDMBS"],
+      "title": "JDMRunningMan - BONUS STAGE",
+      "isPlayable": true
+    },
+    "JDMRussian": {
+      "__class": "OnlineBlock",
+      "artist": "JDMRussian Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRussian/pc/JDMRussian_Cover_Generic.tga.ckd/6b42b1e12a1c70292802dea39f38f271.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMRussian/pc/JDMRussian_Cover_Online.tga.ckd/2755e85d77f3b2ad1030d6ee05baf269.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.596999999999999,
+      "mapName": "JDMRussian",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMRussian_mapContent"
+      },
+      "parentMapName": "JDMRussian",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMRussian",
+      "isPlayable": true
+    },
+    "JDMSaloon": {
+      "__class": "OnlineBlock",
+      "artist": "JDMSaloon Artist",
+      "assets": {
+        "coach1ImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMSaloon/pc/JDMSaloon_Coach_1.tga.ckd/b9394a9a7b10216ab8de50ec9acfb123.ckd",
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMSaloon/pc/JDMSaloon_Cover_Generic.tga.ckd/23cc671381b23442153170b79e91139a.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMSaloon/pc/JDMSaloon_Cover_Online.tga.ckd/7cfd49c22bb7d2398daf477bc9868b8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.909,
+      "mapName": "JDMSaloon",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMSaloon_mapContent"
+      },
+      "parentMapName": "JDMSaloon",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMSaloon",
+      "isPlayable": true
+    },
+    "JDMSirtaki": {
+      "__class": "OnlineBlock",
+      "artist": "JDMSirtaki Artist",
+      "assets": {
+        "coach1ImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMSirtaki/pc/JDMSirtaki_Coach_1.tga.ckd/b9394a9a7b10216ab8de50ec9acfb123.ckd",
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMSirtaki/pc/JDMSirtaki_Cover_Generic.tga.ckd/13e1b00254df9838f3ccd6b715fe0ae9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMSirtaki/pc/JDMSirtaki_Cover_Online.tga.ckd/0a4cdb9b9b800a9427eecc3c80d12349.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.215999999999999,
+      "mapName": "JDMSirtaki",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMSirtaki_mapContent"
+      },
+      "parentMapName": "JDMSirtaki",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMSirtaki",
+      "isPlayable": true
+    },
+    "JDMStripteaseBurlesque": {
+      "__class": "OnlineBlock",
+      "artist": "JDMStripteaseBurlesque Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMStripteaseBurlesque/pc/JDMStripteaseBurlesque_Cover_Generic.tga.ckd/fd351fb19cc09d760ce940d417b21ccb.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMStripteaseBurlesque/pc/JDMStripteaseBurlesque_Cover_Online.tga.ckd/8898f327a85c3422214ee21cc83161b2.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 27.884999999999999,
+      "mapName": "JDMStripteaseBurlesque",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMStripteaseBurlesque_mapContent"
+      },
+      "parentMapName": "JDMStripteaseBurlesque",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMStripteaseBurlesque",
+      "isPlayable": true
+    },
+    "JDMTectonic": {
+      "__class": "OnlineBlock",
+      "artist": "JDMTectonic Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTectonic/pc/JDMTectonic_Cover_Generic.tga.ckd/88af20288f83e7bc9b67c84d4a338c98.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTectonic/pc/JDMTectonic_Cover_Online.tga.ckd/ddaf07b91c2fbf38b8a2fc47aee7251f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.346,
+      "mapName": "JDMTectonic",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMTectonic_mapContent"
+      },
+      "parentMapName": "JDMTectonic",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMTectonic",
+      "isPlayable": true
+    },
+    "JDMTwerk": {
+      "__class": "OnlineBlock",
+      "artist": "JDMTwerk Artist",
+      "assets": {
+        "coach1ImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTwerk/pc/JDMTwerk_Coach_1.tga.ckd/b9394a9a7b10216ab8de50ec9acfb123.ckd",
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTwerk/pc/JDMTwerk_Cover_Generic.tga.ckd/b2b8ab4d1d3c67b8052f57cd0276b838.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTwerk/pc/JDMTwerk_Cover_Online.tga.ckd/31b274b02dd6c8546733002c2d86142e.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.544999999999999,
+      "mapName": "JDMTwerk",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMTwerk_mapContent"
+      },
+      "parentMapName": "JDMTwerk",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMTwerk",
+      "isPlayable": true
+    },
+    "JDMTwerkBS": {
+      "__class": "OnlineBlock",
+      "artist": "JDMTwerk Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTwerkBS/pc/JDMTwerkBS_Cover_Generic.tga.ckd/f939c7ef5251a63f54ca25f1cfb982f9.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMTwerkBS/pc/JDMTwerkBS_Cover_Online.tga.ckd/ae76a9f73798333d13c5e0a3f0a42a8f.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_BonusStage"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.285,
+      "mapName": "JDMTwerkBS",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMTwerkBS_mapContent"
+      },
+      "parentMapName": "JDMTwerkBS",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["JDMBS"],
+      "title": "JDMTwerk - BONUS STAGE",
+      "isPlayable": true
+    },
+    "JDMUAirHostess": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUAirHostess/pc/JDMUAirHostess_Cover_Generic.tga.ckd/f61ea694e72a2e430acdf9fa6f1cffc8.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUAirHostess/pc/JDMUAirHostess_Cover_Online.tga.ckd/1b1cec19286f1062a8df95f513131fe4.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.141,
+      "mapName": "JDMUAirHostess",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUAirHostess_mapContent"
+      },
+      "parentMapName": "JDMUAirHostess",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUBaroque": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUBaroque/pc/JDMUBaroque_Cover_Generic.tga.ckd/5daf8fc8edf609cffd20ca95eefadf33.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUBaroque/pc/JDMUBaroque_Cover_Online.tga.ckd/4a5cd886a3ce7d77e36f6863090981be.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 27.945,
+      "mapName": "JDMUBaroque",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUBaroque_mapContent"
+      },
+      "parentMapName": "JDMUBaroque",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUBathroomSinger": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUBathroomSinger/pc/JDMUBathroomSinger_Cover_Generic.tga.ckd/f6abc8f865ebab1db2809461e32ae26c.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUBathroomSinger/pc/JDMUBathroomSinger_Cover_Online.tga.ckd/13cd7472d3825514206edeb3bde04d76.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 31.459,
+      "mapName": "JDMUBathroomSinger",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUBathroomSinger_mapContent"
+      },
+      "parentMapName": "JDMUBathroomSinger",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUBoxer": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUBoxer/pc/JDMUBoxer_Cover_Generic.tga.ckd/1a674ac448c9f19b9c159f4152ea47b7.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUBoxer/pc/JDMUBoxer_Cover_Online.tga.ckd/9e884dbd632acccfcb6961359329754a.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.403,
+      "mapName": "JDMUBoxer",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUBoxer_mapContent"
+      },
+      "parentMapName": "JDMUBoxer",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUChef": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUChef/pc/JDMUChef_Cover_Generic.tga.ckd/d01d8f6fbaae0b5d0e0139ea6cec8025.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUChef/pc/JDMUChef_Cover_Online.tga.ckd/1108373dc99fccd174f2be46a1baf933.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.127,
+      "mapName": "JDMUChef",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUChef_mapContent"
+      },
+      "parentMapName": "JDMUChef",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUCrab": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUCrab/pc/JDMUCrab_Cover_Generic.tga.ckd/f0bfad51e2b708beef06896de17b1d95.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUCrab/pc/JDMUCrab_Cover_Online.tga.ckd/e369921fade7bc3ef795c81ef74ba43a.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.198,
+      "mapName": "JDMUCrab",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUCrab_mapContent"
+      },
+      "parentMapName": "JDMUCrab",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUCrazyBallerina": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUCrazyBallerina/pc/JDMUCrazyBallerina_Cover_Generic.tga.ckd/1779ac6e7caef88920f99eca2363eaf2.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUCrazyBallerina/pc/JDMUCrazyBallerina_Cover_Online.tga.ckd/8cb0162eb2b334caa0d5642ab0f6bcaa.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.663,
+      "mapName": "JDMUCrazyBallerina",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUCrazyBallerina_mapContent"
+      },
+      "parentMapName": "JDMUCrazyBallerina",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUGeisha": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUGeisha/pc/JDMUGeisha_Cover_Generic.tga.ckd/1d563e8c93982d007350a7e7c5ac1b53.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUGeisha/pc/JDMUGeisha_Cover_Online.tga.ckd/6b9aaa8dc78f9249ca758382e0f6c868.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 27.383,
+      "mapName": "JDMUGeisha",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUGeisha_mapContent"
+      },
+      "parentMapName": "JDMUGeisha",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUGlassCleaner": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUGlassCleaner/pc/JDMUGlassCleaner_Cover_Generic.tga.ckd/c3f024be8181550e55787ef20f044be1.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUGlassCleaner/pc/JDMUGlassCleaner_Cover_Online.tga.ckd/3150bd39def6902aa284929a9eb7c926.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 26.71,
+      "mapName": "JDMUGlassCleaner",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUGlassCleaner_mapContent"
+      },
+      "parentMapName": "JDMUGlassCleaner",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUHurdle": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUHurdle/pc/JDMUHurdle_Cover_Generic.tga.ckd/822ac6b7dc7cf63f801d15f93dca05f3.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUHurdle/pc/JDMUHurdle_Cover_Online.tga.ckd/459c8cc4a9d2b271be48ea9bcb94a058.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.831,
+      "mapName": "JDMUHurdle",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUHurdle_mapContent"
+      },
+      "parentMapName": "JDMUHurdle",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUPirate": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUPirate/pc/JDMUPirate_Cover_Generic.tga.ckd/479abc4ee32f376dccd9b00dc0080566.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUPirate/pc/JDMUPirate_Cover_Online.tga.ckd/f594e07dd5e5a54b86b861f361272760.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 23.837,
+      "mapName": "JDMUPirate",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUPirate_mapContent"
+      },
+      "parentMapName": "JDMUPirate",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUSecretaryTypewriter": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUSecretaryTypewriter/pc/JDMUSecretaryTypewriter_Cover_Generic.tga.ckd/d6a2349882b2d567d2855ed52df12e76.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUSecretaryTypewriter/pc/JDMUSecretaryTypewriter_Cover_Online.tga.ckd/5e538d0452cf6800c0dccfa38374ee49.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 30.649,
+      "mapName": "JDMUSecretaryTypewriter",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUSecretaryTypewriter_mapContent"
+      },
+      "parentMapName": "JDMUSecretaryTypewriter",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUSuperHero": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUSuperHero/pc/JDMUSuperHero_Cover_Generic.tga.ckd/a7de1a01a299317a63accd2da13679ee.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUSuperHero/pc/JDMUSuperHero_Cover_Online.tga.ckd/9143447fcdc9c896983437a5fadb6c25.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Cool"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 28.688,
+      "mapName": "JDMUSuperHero",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUSuperHero_mapContent"
+      },
+      "parentMapName": "JDMUSuperHero",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUSupporter": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUSupporter/pc/JDMUSupporter_Cover_Generic.tga.ckd/122d3d2e927e9355831c07306a70e37d.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUSupporter/pc/JDMUSupporter_Cover_Online.tga.ckd/3e569c431f645c3890567fc315f3f174.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 26.751,
+      "mapName": "JDMUSupporter",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUSupporter_mapContent"
+      },
+      "parentMapName": "JDMUSupporter",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUTapDance": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUTapDance/pc/JDMUTapDance_Cover_Generic.tga.ckd/487c5fd750ba130fd43cc94d51c24c89.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUTapDance/pc/JDMUTapDance_Cover_Online.tga.ckd/e0578fdb18526dec01d959e3a1d272f7.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Speed"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 27.229,
+      "mapName": "JDMUTapDance",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUTapDance_mapContent"
+      },
+      "parentMapName": "JDMUTapDance",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUWizard": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUWizard/pc/JDMUWizard_Cover_Generic.tga.ckd/3a5f906018e4f8a8adfb64ec3b20258d.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUWizard/pc/JDMUWizard_Cover_Online.tga.ckd/b4fc0b47df1c585b294cfe6e782f25c9.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 27.131,
+      "mapName": "JDMUWizard",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUWizard_mapContent"
+      },
+      "parentMapName": "JDMUWizard",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUZombie": {
+      "__class": "OnlineBlock",
+      "artist": "",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUZombie/pc/JDMUZombie_Cover_Generic.tga.ckd/2db6e5dffefc5c2f41d596f06d1feeea.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUZombie/pc/JDMUZombie_Cover_Online.tga.ckd/79d56bb3a7e60f0c70e4e22d4a05b44a.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 26.207,
+      "mapName": "JDMUZombie",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUZombie_mapContent"
+      },
+      "parentMapName": "JDMUZombie",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "",
+      "isPlayable": true
+    },
+    "JDMUnderwater": {
+      "__class": "OnlineBlock",
+      "artist": "JDMUnderwater Artist",
+      "assets": {
+        "coach1ImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUnderwater/pc/JDMUnderwater_Coach_1.tga.ckd/b9394a9a7b10216ab8de50ec9acfb123.ckd",
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUnderwater/pc/JDMUnderwater_Cover_Generic.tga.ckd/0de62706f6a84ce83263f9048664d878.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMUnderwater/pc/JDMUnderwater_Cover_Online.tga.ckd/1bba54d9bdd755f970c0c2008f970e32.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_WhatTheFuck"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 33,
+      "mapName": "JDMUnderwater",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMUnderwater_mapContent"
+      },
+      "parentMapName": "JDMUnderwater",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 6,
+      "tags": ["DanceMachine"],
+      "title": "JDMUnderwater",
+      "isPlayable": true
+    },
+    "JDMWestCoast": {
+      "__class": "OnlineBlock",
+      "artist": "JDMWestCoast Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMWestCoast/pc/JDMWestCoast_Cover_Generic.tga.ckd/941e1938c028747b6ab26bb23de26dd0.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMWestCoast/pc/JDMWestCoast_Cover_Online.tga.ckd/d608a0037db580c722ea818afa10d51a.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 26.666999999999999,
+      "mapName": "JDMWestCoast",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMWestCoast_mapContent"
+      },
+      "parentMapName": "JDMWestCoast",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMWestCoast",
+      "isPlayable": true
+    },
+    "JDMYodel": {
+      "__class": "OnlineBlock",
+      "artist": "JDMYodel Artist",
+      "assets": {
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMYodel/pc/JDMYodel_Cover_Generic.tga.ckd/9e47938d0f842a2364ae0f07e692ddce.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMYodel/pc/JDMYodel_Cover_Online.tga.ckd/008c5a97e91bf51d7d0e0bdfd5a7d3c0.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 29.227,
+      "mapName": "JDMYodel",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMYodel_mapContent"
+      },
+      "parentMapName": "JDMYodel",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMYodel",
+      "isPlayable": true
+    },
+    "JDMYoga": {
+      "__class": "OnlineBlock",
+      "artist": "JDMYoga Artist",
+      "assets": {
+        "coach1ImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMYoga/pc/JDMYoga_Coach_1.tga.ckd/b9394a9a7b10216ab8de50ec9acfb123.ckd",
+        "coverImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMYoga/pc/JDMYoga_Cover_Generic.tga.ckd/05763b6bdd562e70b4f26f63aee39354.ckd",
+        "cover_smallImageUrl": "https://jd-s3.bc5f39.workers.dev/public/dance-machine/JDMYoga/pc/JDMYoga_Cover_Online.tga.ckd/2672d7692805affd6c143a4573f5de89.ckd"
+      },
+      "coachCount": 1,
+      "credits": "CREDITS STRING TO BE FILLED",
+      "customTypeNameId": -1,
+      "difficulty": 2,
+      "jdmAttributes": ["JDM_Normal"],
+      "lyricsColor": "FF0000FF",
+      "lyricsType": 0,
+      "mainCoach": -1,
+      "mapLength": 31.714,
+      "mapName": "JDMYoga",
+      "mode": 6,
+      "originalJDVersion": 2017,
+      "packages": {
+        "mapContent": "JDMYoga_mapContent"
+      },
+      "parentMapName": "JDMYoga",
+      "songColors": {
+        "songColor_1A": "444444FF",
+        "songColor_1B": "111111FF",
+        "songColor_2A": "AAAAAAFF",
+        "songColor_2B": "777777FF"
+      },
+      "status": 3,
+      "tags": ["DanceMachine"],
+      "title": "JDMYoga",
+      "isPlayable": true
+    }
+  }
+}

@@ -1,0 +1,344 @@
+{
+    "__class": "OnlineQuestDb",
+    "quests": [
+        {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/quest_logo.png/816427293e03aea07ae754fb359e76df.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/pc/quest_cover.tga.ckd/b514e9fabbc39152d2ee9362437a1fb2.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/pc/quest_logo.tga.ckd/9c6630baf9b2ab30e8fd75b0699f2cc8.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/pc/quest_logo_shaded.tga.ckd/aa100767755dfc65ce74708dc09b94c7.ckd"
+            },
+            "id": "30",
+            "locked": 0,
+            "playlist": ["BornThisWay", "IKissed", "Titanium"],
+            "title": "Pride Quest"
+        },
+        {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/quest_logo.png/02234d2f68340f5803c995be4369c7d0.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/jd2016-pc-all/quest_cover.tga.ckd/e9ad251548b89569b26d874e35b4995e.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/jd2016-pc-all/quest_logo.tga.ckd/0ba02470475bdfb34868398bfcd637a4.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/jd2016-pc-all/quest_logo_shaded.tga.ckd/dd695d93c4f213aacbe94b0ee60d6c3c.ckd"
+            },
+            "id": "31",
+            "locked": 0,
+            "playlist": ["Xmas", "LastChristmas", "BollywoodXmas"],
+            "title": "Christmas"
+        },
+        {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/29/quest_logo.png/338798c51107cf010220f72c654ca171.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/29/pc/quest_cover.tga.ckd/159924ac35e6a6a2c1f23da728d486cc.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/29/pc/quest_logo.tga.ckd/dbcd6b999232ab1e0abf5e21920472f0.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/29/pc/quest_logo_shaded.tga.ckd/13f2bd9d8f3179633b563787d623185d.ckd"
+            },
+            "id": "29",
+            "locked": 0,
+            "playlist": ["FindYourMove", "MrSaxobeat", "WakeMeUpALT"],
+            "title": "Watermelon"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/28/quest_logo.png/24d1ec60e83494e05969e83ed7d4e74d.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/28/pc/quest_cover.tga.ckd/9b879d2b3207d89c32cc0fc0baaf3baf.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/28/pc/quest_logo.tga.ckd/7d11df956cb40aae9f30666a640aed95.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/28/pc/quest_logo_shaded.tga.ckd/95a627e06ae3e962f713367014815524.ckd"
+            },
+            "id": "28",
+            "locked": 0,
+            "playlist": ["BreakFreeDLC", "KaboomPow", "HowDeep"],
+            "title": "Comics"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/27/quest_logo.png/bf3cec27e8de577f657208cfd51d932e.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/27/pc/quest_cover.tga.ckd/7091424e7cbb1da6b736bb7ffea9ff34.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/27/pc/quest_logo.tga.ckd/82b818785da971cbba0d262da0cd1a73.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/27/pc/quest_logo_shaded.tga.ckd/ce1e9c6e49a146ff5222082d112e6b24.ckd"
+            },
+            "id": "27",
+            "locked": 0,
+            "playlist": ["AintMy", "Aquarius", "MrSaxobeat"],
+            "title": "Surfboard"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/26/quest_logo.png/df5720ad8387c4852d848af60994820b.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/26/pc/quest_cover.tga.ckd/a11a110c3d6e00324bfc1dbd90828b7f.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/26/pc/quest_logo.tga.ckd/a7e54eed42f69369a15750b470413582.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/26/pc/quest_logo_shaded.tga.ckd/0c5c79972355cd0a97855132016f5125.ckd"
+            },
+            "id": "26",
+            "locked": 0,
+            "playlist": ["DontLet", "RockNRollDLC", "TurnUpTheLoveALT"],
+            "title": "Origami"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/quest_logo.png/816427293e03aea07ae754fb359e76df.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/pc/quest_cover.tga.ckd/b514e9fabbc39152d2ee9362437a1fb2.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/pc/quest_logo.tga.ckd/9c6630baf9b2ab30e8fd75b0699f2cc8.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/25/pc/quest_logo_shaded.tga.ckd/aa100767755dfc65ce74708dc09b94c7.ckd"
+            },
+            "id": "25",
+            "locked": 0,
+            "playlist": ["HandClap", "JailHouse", "AmericanGirlDLC"],
+            "title": "Cactus"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/24/quest_logo.png/f9bf9b9dea0a07aead88872148ee7e9d.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/24/pc/quest_cover.tga.ckd/c64c4a33421a5d48e6715f38dfe623f7.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/24/pc/quest_logo.tga.ckd/ed7d9fb1d2b327069f61d5505d22c2d6.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/24/pc/quest_logo_shaded.tga.ckd/d32ef16e1b5c06c89cfa4b0db38b8d16.ckd"
+            },
+            "id": "24",
+            "locked": 0,
+            "playlist": ["MeToo", "LoveIsAll", "SomethinStupid"],
+            "title": "Kiss"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/23/quest_logo.png/7628092640bc7f0e1461e6dcf807d2fa.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/23/pc/quest_cover.tga.ckd/c03b910b00cb2d61a21a83a2bf7ede47.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/23/pc/quest_logo.tga.ckd/1100664f144f0b5024091e4d29977b95.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/23/pc/quest_logo_shaded.tga.ckd/440d9fbb0feef0f19c1662f886586172.ckd"
+            },
+            "id": "23",
+            "locked": 0,
+            "playlist": ["DontWorryMadcon", "Gigolo", "GotMeDancing"],
+            "title": "Dandy"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/21/quest_logo.png/53e8b57342a6b5ed488714feb9accd28.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/21/pc/quest_cover.tga.ckd/caf1e9f1c011e5740f03dac55f956799.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/21/pc/quest_logo.tga.ckd/611dfe4496f37be09ff25783fbe88749.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/21/pc/quest_logo_shaded.tga.ckd/bf9db0ef763fc0375abfa942c3636113.ckd"
+            },
+            "id": "21",
+            "locked": 0,
+            "playlist": ["TheGreatest", "CaliforniaGurls", "WantUBack"],
+            "title": "Unicorn"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/20/quest_logo.png/cae9fe5093b162228e249d0ac951f923.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/20/pc/quest_cover.tga.ckd/b930b1cf962639524ce2a7871630c676.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/20/pc/quest_logo.tga.ckd/7faa506e28513e297720559ec2380fe9.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/20/pc/quest_logo_shaded.tga.ckd/afd285b2a524a077ad439f06708ec88b.ckd"
+            },
+            "id": "20",
+            "locked": 0,
+            "playlist": ["TimeWarpQUAT", "MonsterMash", "Youth"],
+            "title": "Zombi"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/19/quest_logo.png/5e68281231e324dd8c15476e612332a3.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/19/pc/quest_cover.tga.ckd/9ecc4616494ebf59eacab34d22be4d1f.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/19/pc/quest_logo.tga.ckd/9a86fa38b320607040a1d25dbfa743a2.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/19/pc/quest_logo_shaded.tga.ckd/58b4949cfb2782fec097c008ad925326.ckd"
+            },
+            "id": "19",
+            "locked": 0,
+            "playlist": ["Summer", "KetchupSong", "TheWorldDLC"],
+            "title": "Summer"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/18/quest_logo.png/b1986839a0d5c6a55de4621194b8686c.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/18/pc/quest_cover.tga.ckd/b77701a7d8e3637b22a206cf6f77d738.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/18/pc/quest_logo.tga.ckd/87600b39ff5f8aad2c4afac0ceb417cb.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/18/pc/quest_logo_shaded.tga.ckd/2bc36ac5414da2f024f793eb466aeffa.ckd"
+            },
+            "id": "18",
+            "locked": 0,
+            "playlist": ["Birthday", "Lollipop", "OhNo"],
+            "title": "Lollipop"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/17/quest_logo.png/d2b910447666d0f7ad02996c5b1a927a.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/17/pc/quest_cover.tga.ckd/dcb3d330a657f4dda87cc1a9bf3a438f.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/17/pc/quest_logo.tga.ckd/8de883906eeef3163662aba2d4c621fc.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/17/pc/quest_logo_shaded.tga.ckd/97a218cad6ecf28e1b5c98b21e3e9191.ckd"
+            },
+            "id": "17",
+            "locked": 0,
+            "playlist": ["Maneater", "HoldMyHand", "BeautyAndABeatDLC"],
+            "title": "Grimoire"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/16/quest_logo.png/c36e933fa8144f76be1f5ebbbebbf698.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/16/pc/quest_cover.tga.ckd/fbc1ab6e28738917420548852154e336.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/16/pc/quest_logo.tga.ckd/95cfb9df65b01ded7438396879fe5457.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/16/pc/quest_logo_shaded.tga.ckd/34eb7a055d4a61d4bfe1e392b40a9f96.ckd"
+            },
+            "id": "16",
+            "locked": 0,
+            "playlist": ["Domino", "Luftballons", "LoveYouLike"],
+            "title": "Lily of the Valley"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/15/quest_logo.png/635664f2aa6021ce9df498bc0b7b9406.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/15/pc/quest_cover.tga.ckd/489ec14fed3e6e705d766617cca6c7c3.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/15/pc/quest_logo.tga.ckd/fc600396b9a8d67475fb8d9146e076c7.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/15/pc/quest_logo_shaded.tga.ckd/47d40401a61b3562e402fc3e1db2e702.ckd"
+            },
+            "id": "15",
+            "locked": 0,
+            "playlist": ["Balance", "AmIWrong", "Gentleman"],
+            "title": "Cupcake"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/14/quest_logo.png/c0a65c3ee3f1deed33ea802cf6258573.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/14/pc/quest_cover.tga.ckd/0cc249321525cc309424af91273e8d95.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/14/pc/quest_logo.tga.ckd/851972c6213a1d0afd95b0e9349edc4a.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/14/pc/quest_logo_shaded.tga.ckd/eae358efcd2fa9b63e40fdd57c789689.ckd"
+            },
+            "id": "14",
+            "locked": 0,
+            "playlist": ["BlurredLines", "DontYouWorryDLC", "DynamiteQUAT"],
+            "title": "Mushroom"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/13/quest_logo.png/74f502356412b40a623d7b95660ae76f.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/13/pc/quest_cover.tga.ckd/8149d51dca9a7b9a321547e8100de201.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/13/pc/quest_logo.tga.ckd/aaf7d376b312436abaf8d762e793ca6c.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/13/pc/quest_logo_shaded.tga.ckd/fbeb1f5454ef05ad9d0dc5038cf8de0c.ckd"
+            },
+            "id": "13",
+            "locked": 0,
+            "playlist": ["BreakFreeDLC", "PartyRock", "IndiaWaale"],
+            "title": "Special Easter"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/12/quest_logo.png/5311d0135ede4c0f8347e423047b9778.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/12/pc/quest_cover.tga.ckd/db1a9316ef932e95729b707fa0deddaf.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/12/pc/quest_logo.tga.ckd/de582030f36091eabc583d8af3c4c41f.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/12/pc/quest_logo_shaded.tga.ckd/7baef08ecbf787edd8fbe3eceecf38d7.ckd"
+            },
+            "id": "12",
+            "locked": 0,
+            "playlist": ["SexyAndIKnowItDLC", "TasteTheFeeling", "Wild"],
+            "title": "Lucky"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/11/quest_logo.png/abbefb0ab56600e7917e3ba522d2c59b.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/11/jd2016-pc-all/quest_cover.tga.ckd/c567b0c89d8ae453e281dadc8e6308aa.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/11/jd2016-pc-all/quest_logo.tga.ckd/57be10a1e786909f8a7127976ae20ac8.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/11/jd2016-pc-all/quest_logo_shaded.tga.ckd/a2f662a8933e61706dcc08c49fd3851a.ckd"
+            },
+            "id": "11",
+            "locked": 0,
+            "playlist": ["BoomClapDLC", "YouReTheFirst", "FindYou"],
+            "title": "Special Valentine"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/quest_logo.png/02234d2f68340f5803c995be4369c7d0.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/jd2016-pc-all/quest_cover.tga.ckd/e9ad251548b89569b26d874e35b4995e.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/jd2016-pc-all/quest_logo.tga.ckd/0ba02470475bdfb34868398bfcd637a4.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/9/jd2016-pc-all/quest_logo_shaded.tga.ckd/dd695d93c4f213aacbe94b0ee60d6c3c.ckd"
+            },
+            "id": "9",
+            "locked": 0,
+            "playlist": ["LetItGo", "Xmas", "Rasputin"],
+            "title": "Special New Year"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/8/quest_logo.png/7cffa3bfde67292fc6db4b6d71135216.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/8/jd2016-pc-all/quest_cover.tga.ckd/53f073649fa623de7a2ce9c2068fee8e.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/8/jd2016-pc-all/quest_logo.tga.ckd/83edfd18c0170287bf4f53ca021632a8.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/8/jd2016-pc-all/quest_logo_shaded.tga.ckd/77c9195cbc07a065cf2bb4f651eed324.ckd"
+            },
+            "id": "8",
+            "locked": 0,
+            "playlist": ["MovesLikeDLC", "ShutUp", "TurnUpTheLove"],
+            "title": "Royal Key"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/7/quest_logo.png/10e2e3fa08edae8efebd021f06350cdf.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/7/jd2016-pc-all/quest_cover.tga.ckd/24677a442f399f91b3f940a87b15b247.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/7/jd2016-pc-all/quest_logo.tga.ckd/898de48f6d617d1f416735e0c44e2b70.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/7/jd2016-pc-all/quest_logo_shaded.tga.ckd/533c9c7f5bfc0df7198dd084275d2e94.ckd"
+            },
+            "id": "7",
+            "locked": 0,
+            "playlist": ["Mad", "HeyYa", "BetterWhen"],
+            "title": "Castle"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/6/quest_logo.png/6751c7a26488a99c3fa1a3f68744e658.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/6/jd2016-pc-all/quest_cover.tga.ckd/f1a42d8cd25b5ffb9246d19e1bb9c2c9.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/6/jd2016-pc-all/quest_logo.tga.ckd/f6a9aefdc0ea779f745d717c3ac2dc5f.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/6/jd2016-pc-all/quest_logo_shaded.tga.ckd/6e21cbba14f40d5294bfd700818a2a9e.ckd"
+            },
+            "id": "6",
+            "locked": 0,
+            "playlist": ["GoodFeeling", "IDidItAgainQUAT", "BuiltForThis"],
+            "title": "Royal"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/5/quest_logo.png/809c25c0e6f365305c15cd47c9a6bb6b.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/5/jd2016-pc-all/quest_cover.tga.ckd/b0a7fbe83595de3ccd1e3b582f18bb51.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/5/jd2016-pc-all/quest_logo.tga.ckd/4a5431acf99c575761caf4f298ebc010.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/5/jd2016-pc-all/quest_logo_shaded.tga.ckd/081b5061adc87f66e2b01381ad7cceba.ckd"
+            },
+            "id": "5",
+            "locked": 0,
+            "playlist": ["HalloweenQUAT", "IWillSurvive", "Ghostbusters"],
+            "title": "Special Halloween"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/4/quest_logo.png/fb7b37c10b5527a8b202a94575725295.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/4/jd2016-pc-all/quest_cover.tga.ckd/c7f1e3ffa46db464491b14735803eb13.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/4/jd2016-pc-all/quest_logo.tga.ckd/a90165516797cfbe16b6d258ba2c14ba.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/4/jd2016-pc-all/quest_logo_shaded.tga.ckd/0d461a70699fe07db316c47e0fe7156d.ckd"
+            },
+            "id": "4",
+            "locked": 0,
+            "playlist": ["Happy", "Cmon", "PoundTheAlarm"],
+            "title": "Ring"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/3/quest_logo.png/4ddd43c50a3fc4a625e75712541e304d.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/3/jd2016-pc-all/quest_cover.tga.ckd/4f50e3e612b389ecfd6a86ddd94c89b1.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/3/jd2016-pc-all/quest_logo.tga.ckd/37a776c63bd96a87d21fd3bbb4b2af68.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/3/jd2016-pc-all/quest_logo_shaded.tga.ckd/0d89016437bdfca9e0082a3a89acd889.ckd"
+            },
+            "id": "3",
+            "locked": 0,
+            "playlist": ["JustDance", "Americano", "ThatPower"],
+            "title": "Scepter"
+        }, {
+            "__class": "OnlineQuest",
+            "assetUrls": {
+                "phoneImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/2/quest_logo.png/451367e761e147544cbbd7a7f25e777f.png",
+                "coverImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/2/jd2016-pc-all/quest_cover.tga.ckd/658bb292c680d3b4aaf552e070442de4.ckd",
+                "logoImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/2/jd2016-pc-all/quest_logo.tga.ckd/dbc4f4818f1055c566307367784fcb6e.ckd",
+                "logoShadedImageURL": "https://jd-s3.bc5f39.workers.dev/public/quests/2/jd2016-pc-all/quest_logo_shaded.tga.ckd/0d89016437bdfca9e0082a3a89acd889.ckd"
+            },
+            "id": "2",
+            "locked": 0,
+            "playlist": ["GangnamStyleDLC", "Cheerleader", "BadRomance"],
+            "title": "Throne"
+        }
+    ]
+}
