@@ -223,6 +223,12 @@ exports.initroute = (app, express, server) => {
   });
 
 
+  //Pong!
+  app.get("/status/v1/ping", (req, res) => {
+    res.send([]);
+  });
+
+
   app.get("/profile/v2/country", function (request, response) {
     var country = requestCountry(request);
     if (country == false) {
