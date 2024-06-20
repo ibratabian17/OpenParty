@@ -17,6 +17,7 @@ function init(app, express) {
     require('./route/account').initroute(app);
     require('./route/leaderboard').initroute(app);
     require('./route/ubiservices').initroute(app);
+    require('./wdf/fakewdf').initroute(app);
     
     //hide error when prod 
     app.get('*', function(req, res){
