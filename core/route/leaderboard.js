@@ -304,18 +304,6 @@ const initroute = (app) => {
             res.setHeader('Access-Control-Allow-Origin', '*');
             res.send({
                 "__class": "DancerOfTheWeek",
-                "profileId": "00000000-0000-0000-0000-000000000000",
-                "score": 69,
-                "gameVersion": "jd2019",
-                "rank": 1,
-                "name": "NO DOTW",
-                "avatar": 1,
-                "country": 0,
-                "platformId": "3935074714266132752",
-                "alias": 0,
-                "aliasGender": 0,
-                "jdPoints": 0,
-                "portraitBorder": 0
             });
         }
     });

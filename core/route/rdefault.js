@@ -11,6 +11,7 @@ const core = {
 const path = require('path');
 const signer = require('../lib/signUrl')
 const deployTime = Date.now()
+const url = 'Replace your url here!'
 
 function checkAuth(req, res) {
   if (!(req.headers["x-skuid"].startsWith("jd") || req.headers["x-skuid"].startsWith("JD")) || !req.headers["authorization"].startsWith("Ubi")) {
@@ -88,8 +89,8 @@ exports.initroute = (app, express, server) => {
   app.get("/songdb/v2/songs", (req, res) => {
     var sku = req.header('X-SkuId');
     const songDBPlatform = sku && sku.startsWith('jd2019-wiiu') ? 'wiiu' : 'nx';
-    const songDBUrl = signer.generateSignedURL(`https://jdp.justdancenext.xyz/private/songdb/prod/${req.headers["x-skuid"]}.${md5(JSON.stringify(core.main.songdb['2019'][songDBPlatform]))}.json`);
-    const localizationDB = signer.generateSignedURL(`https://jdp.justdancenext.xyz/private/songdb/prod/localisation.${md5(JSON.stringify(core.main.localisation))}.json`);
+    const songDBUrl = signer.generateSignedURL(url + `/private/songdb/prod/${req.headers["x-skuid"]}.${md5(JSON.stringify(core.main.songdb['2019'][songDBPlatform]))}.json`);
+    const localizationDB = signer.generateSignedURL(url + `/private/songdb/prod/localisation.${md5(JSON.stringify(core.main.localisation))}.json`);
     res.send({
       "requestSpecificMaps": require('../../database/db/requestSpecificMaps.json'),
       "localMaps": [],
@@ -286,7 +287,7 @@ exports.initroute = (app, express, server) => {
     if (req.headers["x-skuid"].includes("pc")) {
       res.send(core.main.dancemachine_pc);
     }
-    else if (req.headers["x-skuid"].includes("pc")) {
+    else if (req.headers["x-skuid"].includes("nx")) {
       res.send(core.main.dancemachine_nx);
     }
     else {
