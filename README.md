@@ -19,7 +19,7 @@ This project is a ibratabian17 effort to provide an alternative server to Just D
 
 3. ran thi server:
     ```bash
-    node server.js
+    pm2 start server.js --name server --no-daemon
     ```
 
 ## Struktur Direktori

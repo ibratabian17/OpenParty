@@ -1,6 +1,7 @@
 //Game
 console.log(`[DEFROUTE] Initializing....`)
 var requestCountry = require("request-country");
+const settings = require('../../settings.json');
 var md5 = require('md5');
 const core = {
   main: require('../var').main,
@@ -13,83 +14,96 @@ const signer = require('../lib/signUrl')
 const deployTime = Date.now()
 
 function checkAuth(req, res) {
-  if (!(req.headers["x-skuid"].startsWith("jd") || req.headers["x-skuid"].startsWith("JD")) || !req.headers["authorization"].startsWith("Ubi")) {
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  if (req.header('X-SkuId')) {
+    if (!(req.header('X-SkuId').startsWith("jd") || req.header('X-SkuId').startsWith("JD")) || !req.headers["authorization"].startsWith("Ubi")) {
+      const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+      res.status(400).send({
+        'error': 400,
+        'message': 'Bad request! Oops you didn\'t specify what file should we give you, try again'
+      });
+      return false;
+    }
+    return true;
+  } else {
     res.status(400).send({
       'error': 400,
-      'message': 'Bad request! Oops you didn\'t specify what file should we give you, try again'
+      'message': 'Oopsie! We can\'t check that ur Request is valid',
+      'headder': req.headers
     });
-    return false;
   }
-  return true;
 }
+
 function returnSongdb(input, res) {
   const songdb = core.main.songdb;
-  switch (true) {
-    case input.startsWith("jd2017-pc"):
-      res.send(songdb['2017'].pc);
-      break;
-    case input.startsWith("jd2017-durango"):
-      res.send(songdb['2017'].pc);
-      break;
-    case input.startsWith("jd2017-orbis"):
-      res.send(songdb['2017'].pc);
-      break;
-    case input.startsWith("jd2017-nx"):
-      res.send(songdb['2017'].nx);
-      break;
-    case input.startsWith("openparty-pc"):
-      res.send(songdb['2017'].pcparty);
-      break;
-    case input.startsWith("jd2023pc-next"):
-      res.send(songdb['2017'].pcdreyn);
-      break;
-    case input.startsWith("jd2024pc-next"):
-      res.send(songdb['2017'].pcdreyn);
-      break;
-    case input.startsWith("jd2018-nx"):
-      res.send(songdb['2018'].nx);
-      break;
-    case input.startsWith("jd2019-nx"):
-      res.send(songdb['2019'].nx);
-      break;
-    case input.startsWith("jd2017-nx"):
-      res.send(songdb['2017'].nx);
-      break;
-    case input.startsWith("openparty-nx"):
-      res.send(songdb['2018'].nx);
-      break;
-    case input.startsWith("jd2018-pc"):
-      res.send(songdb['2017'].pc);
-      break;
-    case input.startsWith("JD2021PC"):
-      res.send(songdb['2017'].pcparty);
-      break;
-    case input.startsWith("jd2022-pc"):
-      res.send(songdb['2017'].pcparty);
-      break;
-    case input.startsWith("jd2019-wiiu"):
-      res.send(songdb['2019'].wiiu);
-      break;
-    default:
-      res.send('Invalid Game');
-      break;
+  const year = input.match(/jd(\d{4})/i)?.[1];
+  const platform = input.match(/-(pc|durango|orbis|nx|wiiu)/i)?.[1];
+  const isParty = input.startsWith("openparty");
+  const isDreynMOD = input.startsWith("jd2023pc-next") || input.startsWith("jd2024pc-next");
+  const isPCParty = input.startsWith("JD2021PC") || input.startsWith("jd2022-pc");
+
+  if (isParty && platform === 'pc') {
+    res.send(songdb['2017'].pcparty);
+  } else if (isParty && platform === 'nx') {
+    res.send(songdb['2018'].nx);
+  } else if (isDreynMOD) {
+    res.send(songdb['2017'].pcdreyn);
+  } else if (isPCParty) {
+    res.send(songdb['2017'].pcparty);
+  } else if (year && platform) {
+    switch (year) {
+      case '2017':
+        if (platform === 'pc' || platform === 'durango' || platform === 'orbis') {
+          res.send(songdb['2017'].pc);
+        } else if (platform === 'nx') {
+          res.send(songdb['2017'].nx);
+        }
+        break;
+      case '2018':
+        if (platform === 'nx') {
+          res.send(songdb['2018'].nx);
+        } else if (platform === 'pc') {
+          res.send(songdb['2017'].pc);
+        }
+        break;
+      case '2019':
+        if (platform === 'nx') {
+          res.send(songdb['2019'].nx);
+        } else if (platform === 'wiiu') {
+          res.send(songdb['2019'].wiiu);
+        }
+        break;
+      default:
+        res.send('Invalid Game');
+        break;
+    }
+  } else {
+    res.send('Invalid Game');
   }
 }
+
 
 
 exports.initroute = (app, express, server) => {
   app.get("/songdb/v1/songs", (req, res) => {
     if (checkAuth(req, res)) {
-      returnSongdb(req.headers["x-skuid"], res);
+      returnSongdb(req.header('X-SkuId'), res);
     }
   });
 
   app.get("/songdb/v2/songs", (req, res) => {
     var sku = req.header('X-SkuId');
-    const songDBPlatform = sku && sku.startsWith('jd2019-wiiu') ? 'wiiu' : 'nx';
-    const songDBUrl = signer.generateSignedURL(`https://jdp.justdancenext.xyz/private/songdb/prod/${req.headers["x-skuid"]}.${md5(JSON.stringify(core.main.songdb['2019'][songDBPlatform]))}.json`);
-    const localizationDB = signer.generateSignedURL(`https://jdp.justdancenext.xyz/private/songdb/prod/localisation.${md5(JSON.stringify(core.main.localisation))}.json`);
+    var isHttps = settings.server.enableSSL ? "https" : "http";
+
+    // Parse the SKU ID
+    var skuParts = sku ? sku.split('-') : [];
+    var version = parseInt(skuParts[0].replace('jd', '')); // Example: jd2020 -> 2020
+    var platform = skuParts[1]; // Example: nx
+
+    // Generate URLs
+    const songDBUrl = signer.generateSignedURL(`${isHttps}://${settings.server.domain}/private/songdb/prod/${sku}.${md5(JSON.stringify(core.main.songdb[version][platform]))}.json`);
+    const localizationDB = signer.generateSignedURL(`${isHttps}://${settings.server.domain}/private/songdb/prod/localisation.${md5(JSON.stringify(core.main.localisation))}.json`);
+
+    // Send response
     res.send({
       "requestSpecificMaps": require('../../database/db/requestSpecificMaps.json'),
       "localMaps": [],
@@ -98,27 +112,53 @@ exports.initroute = (app, express, server) => {
     });
   });
 
+
   app.get("/private/songdb/prod/:filename", (req, res) => {
     if (signer.verifySignedURL(req.originalUrl)) {
       if (req.path.split('/')[4].startsWith('localisation')) {
         res.send(core.main.localisation);
       } else {
-        var sku = req.header('X-SkuId');
-        const songDBPlatform = sku && sku.startsWith('jd2019-wiiu') ? 'wiiu' : 'nx';
-        res.send(core.main.songdb['2019'][songDBPlatform]);
+        var filename = req.path.split('/')[4].split('.')[0];
+        var sku = filename.split('.')[0];
+        if (sku) {
+          // Parse the SKU ID
+          var skuParts = sku.split('-');
+          var version = parseInt(skuParts[0].replace('jd', '')); // Example: jd2020 -> 2020
+          var platform = skuParts[1]; // Example: nx
+
+          if (core.main.songdb[version] && core.main.songdb[version][platform]) {
+            res.send(core.main.songdb[version][platform]);
+          } else {
+            res.status(404).send({
+              'error': 404,
+              'message': 'Song database not found for the given version and platform'
+            });
+          }
+        } else {
+          res.status(400).send({
+            'error': 400,
+            'message': 'You are not permitted to receive a response'
+          });
+        }
       }
     } else {
-      res.send('Unauthorizated');
+      res.status(401).send('Unauthorized');
     }
   });
 
   app.get('/packages/v1/sku-packages', function (req, res) {
     if (checkAuth(req, res)) {
-      if (req.headers["x-skuid"].includes("wiiu")) res.send(core.main.skupackages.wiiu);
-      if (req.headers["x-skuid"].includes("nx")) res.send(core.main.skupackages.nx);
-      if (req.headers["x-skuid"].includes("pc")) res.send(core.main.skupackages.pc);
-      if (req.headers["x-skuid"].includes("durango")) res.send(core.main.skupackages.durango);
-      if (req.headers["x-skuid"].includes("orbis")) res.send(core.main.skupackages.orbis);
+      const skuId = req.header('X-SkuId');
+      const skuPackages = core.main.skupackages;
+
+      const platforms = ['wiiu', 'nx', 'pc', 'durango', 'orbis'];
+
+      for (const platform of platforms) {
+        if (skuId.includes(platform)) {
+          res.send(skuPackages[platform]);
+          return; // Exit the function once the response is sent
+        }
+      }
     }
   });
 
@@ -283,10 +323,10 @@ exports.initroute = (app, express, server) => {
   });
 
   app.get("/dance-machine/v1/blocks", (req, res) => {
-    if (req.headers["x-skuid"].includes("pc")) {
+    if (req.header('X-SkuId').includes("pc")) {
       res.send(core.main.dancemachine_pc);
     }
-    else if (req.headers["x-skuid"].includes("pc")) {
+    else if (req.header('X-SkuId').includes("pc")) {
       res.send(core.main.dancemachine_nx);
     }
     else {
