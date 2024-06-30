@@ -3,7 +3,7 @@
 const express = require("express");
 const app = express();
 console.log(`[MAIN] Starting daemon`);
-process.title = "Just Dance Unlimited Server";
+process.title = "OpenParty | Custom Just Dance Unlimited Server";
 
 const settings = require('./settings.json');
 const core = require('./core/core');
