@@ -854,7 +854,7 @@
         },
         "jd-serverInfo": {
             "fields": {
-                "url": "https://jdp.justdancenext.xyz",
+                "url": "https://{SettingServerDomainVarOJDP}",
                 "name": "PROD"
             },
             "relatedPopulation": null

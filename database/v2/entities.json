@@ -7,7 +7,7 @@
 		"tags": [],
 		"obj": {
 			"name": "JMCS PROD",
-			"url": "http://jdp.justdancenext.xyz"
+			"url": "http://{SettingServerDomainVarOJDP}"
 		},
 		"lastModified": "",
 		"revision": 3
@@ -19,7 +19,7 @@
 		"tags": [],
 		"obj": {
 			"name": "JMCS PROD",
-			"url": "http://jdp.justdancenext.xyz"
+			"url": "http://{SettingServerDomainVarOJDP}"
 		},
 		"lastModified": "",
 		"revision": 3

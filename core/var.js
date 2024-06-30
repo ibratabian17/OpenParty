@@ -1,7 +1,25 @@
-const axios = require('axios')
-const fs = require('fs')
-const songdb = require('./lib/songdb').songdbF
-console.log(`[VAR] Initializing....`)
+const axios = require('axios');
+const fs = require('fs');
+const songdb = require('./lib/songdb').songdbF;
+const settings = require('../settings.json');
+
+console.log('[VAR] Initializing....');
+
+const replaceDomainPlaceholder = (obj, domain) => {
+  if (typeof obj === 'string') {
+    return obj.replace('{SettingServerDomainVarOJDP}', domain);
+  } else if (Array.isArray(obj)) {
+    return obj.map(item => replaceDomainPlaceholder(item, domain));
+  } else if (obj !== null && typeof obj === 'object') {
+    const newObj = {};
+    for (const key in obj) {
+      newObj[key] = replaceDomainPlaceholder(obj[key], domain);
+    }
+    return newObj;
+  }
+  return obj;
+};
+
 const main = {
   skupackages: {
     pc: require('../database/Platforms/jd2017-pc/sku-packages.json'),
@@ -10,8 +28,8 @@ const main = {
     durango: require('../database/Platforms/jd2017-durango/sku-packages.json'),
     orbis: require('../database/Platforms/jd2017-orbis/sku-packages.json')
   },
-  entities: require('../database/v2/entities.json'),
-  configuration: require('../database/v1/configuration.json'),
+  entities: replaceDomainPlaceholder(require('../database/v2/entities.json'), settings.server.domain),
+  configuration: replaceDomainPlaceholder(require('../database/v1/configuration.json'), settings.server.domain),
   subscription: require('../database/db/subscription.json'),
   packages: require('../database/packages.json'),
   block: require('../database/carousel/block.json'),
@@ -33,10 +51,10 @@ const main = {
   create_playlist: require("../database/carousel/pages/create_playlist.json"),
   songdb: { "2016": {}, "2017": {}, "2018": {}, "2019": {}, "2020": {}, "2021": {}, "2022": {} },
   localisation: require('../database/Platforms/openparty-all/localisation.json')
-}
+};
 
-main.songdb = songdb.generateSonglist()
+main.songdb = songdb.generateSonglist();
 
 module.exports = {
-  main
+  main 
 }

@@ -258,7 +258,7 @@
 			"version": 1
 		}, {
 			"name": "spaces/entities",
-			"url": "http://jdp.justdancenext.xyz/{version}/spaces/{spaceId}/entities",
+			"url": "http://{SettingServerDomainVarOJDP}/{version}/spaces/{spaceId}/entities",
 			"version": 2
 		}, {
 			"name": "spaces/items",

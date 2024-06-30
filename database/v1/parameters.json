@@ -62,7 +62,7 @@
                 },
                 "baseurl_aws": {
                     "China": "https://public-ubiservices.ubisoft.cn",
-                    "Standard": "https://jdp.justdancenext.xyz",
+                    "Standard": "https://{SettingServerDomainVarOJDP}",
                     "China_GAAP": "https://gaap.ubiservices.ubi.com:12000"
                 },
                 "baseurl_msr": {
@@ -101,12 +101,12 @@
         "us-sdkClientFleet": {
             "fields": {
                 "title": "",
-                "spaces": "https://jdp.justdancenext.xyz/{version}/spaces/{spaceId}/title/{title}/",
-                "profiles": "https://jdp.justdancenext.xyz/{version}/profiles/{profileId}/title/{title}/",
-                "spaces_all": "https://jdp.justdancenext.xyz/{version}/spaces/title/{title}/",
-                "applications": "https://jdp.justdancenext.xyz/{version}/applications/{applicationId}/title/{title}/",
-                "profiles_all": "https://jdp.justdancenext.xyz/{version}/profiles/title/{title}/",
-                "applications_all": "https://jdp.justdancenext.xyz/{version}/applications/title/{title}/"
+                "spaces": "https://{SettingServerDomainVarOJDP}/{version}/spaces/{spaceId}/title/{title}/",
+                "profiles": "https://{SettingServerDomainVarOJDP}/{version}/profiles/{profileId}/title/{title}/",
+                "spaces_all": "https://{SettingServerDomainVarOJDP}/{version}/spaces/title/{title}/",
+                "applications": "https://{SettingServerDomainVarOJDP}/{version}/applications/{applicationId}/title/{title}/",
+                "profiles_all": "https://{SettingServerDomainVarOJDP}/{version}/profiles/title/{title}/",
+                "applications_all": "https://{SettingServerDomainVarOJDP}/{version}/applications/title/{title}/"
             },
             "relatedPopulation": null
         },
