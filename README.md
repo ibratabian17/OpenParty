@@ -1,6 +1,6 @@
 # OpenParty
 
-OpenParty is a community-driven project developed by ibratabian17 as an alternative server solution for Just Dance Unlimited enthusiasts. This server allows you to enjoy the Just Dance Unlimited experience independently of official servers, which are no longer available.
+OpenParty is a community-driven project developed by PartyTeam and LunarTeam as an alternative server solution for Just Dance Unlimited enthusiasts. This server allows you to enjoy the Just Dance Unlimited experience independently of official servers, which are no longer available.
 
 ## About
 
@@ -19,7 +19,7 @@ This initiative aims to fill the void left by the discontinued official service,
 - Node.js
 - Git
 - Server (duh, we can't pay it)
-- Just Dance Certificate (Optional) (For PS4, JD17-18,JD19-22 for NX, ?? for Wii U)
+- Just Dance Certificate (Optional) (For PS4, JD17-22 for NX, for JD16-18?? Wii U)
 - 
 
 ### Setup
@@ -94,12 +94,16 @@ Defines the paths where the server will save data for different operating system
   - `"secretKey": "OpenParty."`: Secret key used to generate HMAC.
   - `"userEncrypt": "DoNotShareThisFileToAnyone"`: Encryption key used for user data files. if the value is empty then the files are not encrypted.
 
-## Credit
+## Usage
+OpenParty provides a straightforward setup process to get you up and running quickly. Once installed, customize your experience using the settings.json file and manage song databases effortlessly.
 
-- Wodson - JDCosmos Code
-- Rama - His Leaked JDU Code 
-- Devvie - JDO Code
-- Connor - JDWorld Code
-- Mfadamo - Helped with JDU
-- alexandregreff - JDU code
-- XFelixBlack - JDU Code
+## Contribution
+Contributions are welcome to enhance features, improve performance, or expand platform support. 
+
+Support
+For any issues or inquiries, feel free to reach out via GitHub Issues or our community channels.
+
+## Credits
+We gratefully acknowledge the contributions of the following individuals, whose efforts have been instrumental in the development and success of OpenParty: Wodson for JDCosmos Code, Rama for his leaked JDU Code, Devvie for JDO Code, Connor for JDWorld Code, and Mfadamo for his assistance with JDU. Special thanks to alexandregreff, XFelixBlack for their JDU code contributions, JJRoyale for JD19-22 back-end assistance, JustRex for logging Ubiserver, klucva for general help and support, adrian_flopper as the first back-end developer, and nic for various fixes and improvements.
+
+Each of these contributors has played a vital role in making OpenParty what it is today. Thank you for your hard work and dedication!
