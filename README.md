@@ -1,26 +1,44 @@
 # OpenParty
 
-OpenParty is a replacement server code for the Just Dance Unlimited server.
+OpenParty is a community-driven project developed by ibratabian17 as an alternative server solution for Just Dance Unlimited enthusiasts. This server allows you to enjoy the Just Dance Unlimited experience independently of official servers, which are no longer available.
 
 ## About
 
-This project is an effort by ibratabian17 to provide an alternative server to Just Dance Unlimited. With OpenParty, you can enjoy the JDU experience without relying on official servers. (they killed it, so disappointing)
+This initiative aims to fill the void left by the discontinued official service, offering a reliable and enhanced alternative. OpenParty is crafted entirely from scratch, ensuring transparency and user trust. It strives to provide a seamless experience comparable to or even better than existing solutions like JDParty.
 
-100% handmade legit, At least better than JDParty.
+## Features
 
-## Usage
+- **Independence**: Enjoy Just Dance Unlimited without reliance on official servers (not 100% yet).
+- **Community-Driven**: Developed with contributions from the community, ensuring continuous improvement.
+- **Multi-platform**: This project supports various platforms such as PC, Switch, PS4, Xbox One (duh), Wii U
 
-1. Clone my repository:
-    ```bash
-    git clone https://github.com/ibratabian17/openparty.git
-    cd openparty
-    npm i
-    ```
+## Installation
 
-2. Run the server:
-    ```bash
-    pm2 start server.js --name server --no-daemon
-    ```
+### Prerequisites
+
+- Node.js
+- Git
+- Server (duh, we can't pay it)
+- Just Dance Certificate (Optional) (For PS4, JD17-18,JD19-22 for NX, ?? for Wii U)
+- 
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ibratabian17/openparty.git
+   cd openparty
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the server:
+   ```bash
+   pm2 start server.js --name openparty-server --no-daemon
+   ```
 
 ## Directory Structure
 
@@ -39,10 +57,8 @@ The directory structure of OpenParty is organized to facilitate ease of access a
 - **Description**: This directory includes platform-specific SKU packages, which are bundles of songs and content specific to a version or platform of Just Dance. These can be tailored to suit different platforms such as PC, Xbox, or PlayStation. The platform-specific files in the `SaveData` directory will override these if available, providing an easy way to customize content per platform without altering the base server files.
 
 ### SaveData Directory
-- **Purpose**: Overrides default settings and data.
-- **Description**: The `SaveData` directory is used to store user-specific or modified versions of the data files and settings. If a file exists in this directory, it will automatically override the corresponding file in the `database` directory. This hierarchical file structure allows users to make changes to configurations, song lists, and other settings without touching the core server code. They can simply reload the server to apply changes, enhancing flexibility and user control.
-
-In summary, the directory structure and the layered data in OpenParty make it easy for users to customize and manage the server. By placing custom files in the `SaveData` directory, users can override default settings and data provided by the server, ensuring that modifications are both simple and reversible.
+- **Purpose**: Save server data, you can also change default settings and data.
+- **Description**: The `SaveData` directory is used to save user-specific or modified versions of data files and settings and also stores data owned by the server. If there is a Platforms folder and a nohud folder, this will replace the data from `database` without touching the core server code. This helps you update code without breaking Git
 
 ## Configuration of settings.json
 
