@@ -8,7 +8,6 @@ const core = {
     CloneObject: require('../helper').CloneObject, getSavefilePath: require('../helper').getSavefilePath,
     generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed
 }
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const DOTW_PATH = path.join(core.getSavefilePath(), 'leaderboard/dotw/');
 
 function generateToolNickname() {
@@ -27,29 +26,34 @@ function generateToolNickname() {
     }
 
 }
-const getProfileData = (req) => {
-    return new Promise((resolve, reject) => {
+
+const getProfileData = async (req) => {
+    try {
         const ticket = req.header("Authorization");
         const sku = req.header('X-SkuId');
         const prodwsurl = "https://prod.just-dance.com/";
-        const xhr33 = new XMLHttpRequest();
 
-        xhr33.open(req.method, prodwsurl + req.url, true);
-        xhr33.setRequestHeader("X-SkuId", sku);
-        xhr33.setRequestHeader("Authorization", ticket);
-        xhr33.setRequestHeader("Content-Type", "application/json");
+        const response = await axios({
+            method: req.method,
+            url: prodwsurl + req.url,
+            headers: {
+                "X-SkuId": sku,
+                "Authorization": ticket,
+                "Content-Type": "application/json"
+            },
+            data: req.body
+        });
 
-        xhr33.onload = () => {
-            if (xhr33.status >= 200 && xhr33.status < 300) {
-                resolve(JSON.parse(xhr33.responseText));
-            } else {
-                reject(new Error(`HTTP status ${xhr33.status}`));
-            }
-        };
-
-        xhr33.onerror = () => reject(new Error('Network error'));
-        xhr33.send(JSON.stringify(req.body));
-    });
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            throw new Error(`HTTP status ${error.response.status}`);
+        } else if (error.request) {
+            throw new Error('Network error');
+        } else {
+            throw new Error(error.message);
+        }
+    }
 };
 
 const getGameVersion = (req) => {

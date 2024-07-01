@@ -1,5 +1,6 @@
+var axios = require("axios");
+
 function initroute(app) {
-    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var prodwsurl = "https://jmcs-prod.just-dance.com"
     app.post("/wdf/v1/assign-room", (req, res) => {
       res.send(require("../../database/wdf/assign-room-pc.json"));
@@ -272,30 +273,45 @@ function initroute(app) {
         })
       });
     
-      app.get("/wdf/v1/rooms/" + "FAKEWDF" + "/*", (req, res) => {
-        var ticket = req.header("Authorization")
-        var xhr = new XMLHttpRequest();
-        var n = req.url.lastIndexOf('/');
-        var result = req.url.substr(0)
-        xhr.open('GET', prodwsurl + result, false);
-        xhr.setRequestHeader('X-SkuId');
-        xhr.setRequestHeader('Authorization', ticket);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send();
-        res.send(xhr.responseText);
+      app.get("/wdf/v1/rooms/" + "FAKEWDF" + "/*", async (req, res) => {
+        try {
+          const ticket = req.header("Authorization");
+          const result = req.url;  // This gets the full URL path including the FAKEWDF and additional path segments
+      
+          const response = await axios.get(prodwsurl + result, {
+            headers: {
+              'X-SkuId': '',
+              'Authorization': ticket,
+              'Content-Type': 'application/json'
+            }
+          });
+      
+          res.send(response.data);
+        } catch (error) {
+          console.error(error);
+          res.status(error.response ? error.response.status : 500).send(error.message);
+        }
       });
-    
-      app.post("/wdf/v1/rooms/" + "FAKEWDF" + "/*", (req, res) => {
-        var ticket = req.header("Authorization")
-        var xhr = new XMLHttpRequest();
-        var n = req.url.lastIndexOf('/');
-        var result = req.url.substr(0)
-        xhr.open('POST', prodwsurl + result, false);
-        xhr.setRequestHeader('X-SkuId');
-        xhr.setRequestHeader('Authorization', ticket);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(req.body, null, 2));
-        res.send(xhr.responseText);
+      
+      app.post("/wdf/v1/rooms/" + "FAKEWDF" + "/*", async (req, res) => {
+        try {
+          const ticket = req.header("Authorization");
+          const result = req.url;  // This gets the full URL path including the FAKEWDF and additional path segments
+      
+          const response = await axios.post(prodwsurl + result, req.body, {
+            headers: {
+              'X-SkuId': '',
+              'Authorization': ticket,
+              'Content-Type': 'application/json'
+            }
+          });
+      
+          res.send(response.data);
+        } catch (error) {
+          console.error(error);
+          res.status(error.response ? error.response.status : 500).send(error.message);
+        }
       });
+      
   }
   module.exports = { initroute }

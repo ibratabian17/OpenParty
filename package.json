@@ -16,10 +16,8 @@
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "md5": "^2.3.0",
-    "mongoose": "^5.13.22",
     "pm2": "^5.3.0",
-    "request-country": "^0.1.2",
-    "xmlhttprequest": "^1.8.0"
+    "request-country": "^0.1.2"
   },
   "engines": {
     "node": ">=16.0.0",
