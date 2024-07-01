@@ -1,5 +1,6 @@
 const crypto = require('crypto');
-const secretKey = 'JDPartyLekasAmSuperShai';
+const settings = require('../../settings.json')
+const secretKey = settings.server.encrpytion.secretKey;
 
 exports.generateSignedURL = (originalURL) => {
     // Set expiration time (in seconds)

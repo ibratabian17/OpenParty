@@ -4,29 +4,10 @@ const fs = require("fs");
 const axios = require("axios");
 const path = require('path')
 const { getSavefilePath } = require('../helper');
+const settings = require('../../settings.json');
+const {encrypt, decrypt} = require('../lib/encryptor')
 
-
-const hidepass = btoa('SkROZXh0Q2F1dGlvblBsZWFzZURvTm90U3RlYWxVc2VyRGF0YS4xMg==');
-
-function encrypt(str, secretKey) {
-  const encodedResult = Buffer.from(str).toString('base64');
-  let result = '';
-  for (let i = 0; i < str.length; i++) {
-    const charCode = str.charCodeAt(i) ^ secretKey.charCodeAt(i % secretKey.length);
-    result += String.fromCharCode(charCode);
-  }
-  return encodedResult;
-}
-
-function decrypt(str, secretKey) {
-  const decodedStr = Buffer.from(str, 'base64').toString('ascii');
-  let result = '';
-  for (let i = 0; i < decodedStr.length; i++) {
-    const charCode = decodedStr.charCodeAt(i) ^ secretKey.charCodeAt(i % secretKey.length);
-    result += String.fromCharCode(charCode);
-  }
-  return result;
-}
+const secretKey = settings.server.encrpytion.userEncrypt;
 
 exports.initroute = (app) => {
   const ubiwsurl = "https://public-ubiservices.ubi.com";
@@ -40,9 +21,13 @@ exports.initroute = (app) => {
     let decryptedData;
     try {
       const encryptedData = fs.readFileSync(dataFilePath, 'utf8'); // Read encrypted user data
-      decryptedData = JSON.parse(encryptedData); // Parse decrypted user data
+      decryptedData = JSON.parse(decrypt(encryptedData, secretKey)); // Parse decrypted user data
     } catch (err) {
       decryptedData = {}; // Set empty object if data cannot be parsed
+      console.log('[ACC] Unable to read user.json')
+      console.log('[ACC] Is the key correct? are the files corrupted?')
+      console.log('[ACC] Ignore this message if this first run')
+      console.log('[ACC] Resetting All User Data...')
     }
 
     // Map over profileIds to retrieve corresponding user profiles or create default profiles
@@ -57,7 +42,7 @@ exports.initroute = (app) => {
       }
     });
 
-    const encryptedUserProfiles = JSON.stringify(decryptedData); // Stringify decrypted data
+    const encryptedUserProfiles = encrypt(JSON.stringify(decryptedData), secretKey); // Stringify decrypted data
     fs.writeFileSync(dataFilePath, encryptedUserProfiles); // Write updated data to file
     res.send(responseProfiles); // Send response containing user profiles
   });
@@ -70,9 +55,13 @@ exports.initroute = (app) => {
     let decryptedData;
     try {
       const encryptedData = fs.readFileSync(dataFilePath, 'utf8'); // Read encrypted user data
-      decryptedData = JSON.parse(encryptedData); // Parse decrypted user data
+      decryptedData = JSON.parse(decrypt(encryptedData, secretKey)); // Parse decrypted user data
     } catch (err) {
       decryptedData = {}; // Set empty object if data cannot be parsed
+      console.log('[ACC] Unable to read user.json')
+      console.log('[ACC] Is the key correct? are the files corrupted?')
+      console.log('[ACC] Ignore this message if this first run')
+      console.log('[ACC] Resetting All User Data...')
     }
 
     // Find a matching profile based on name or IP address (only one profile)
@@ -89,7 +78,7 @@ exports.initroute = (app) => {
 
     if (matchedProfileId) {
       decryptedData[matchedProfileId] = content; // Update existing profile with posted content
-      const encryptedUserProfiles = JSON.stringify(decryptedData); // Stringify decrypted data
+      const encryptedUserProfiles = encrypt(JSON.stringify(decryptedData), secretKey); // Stringify decrypted data
       fs.writeFileSync(dataFilePath, encryptedUserProfiles); // Write updated data to file
       res.send(encryptedUserProfiles); // Send updated encrypted data as response
     } else {

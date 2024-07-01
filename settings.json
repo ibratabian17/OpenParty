@@ -12,6 +12,10 @@
         "serverstatus": {
             "isMaintenance": false,
             "channel": "prod"
+        },
+        "encrpytion": {
+            "secretKey": "OpenParty.",
+            "userEncrypt": "DoNotShareThisFileToAnyone"
         }
     }
 }
