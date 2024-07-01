@@ -1,7 +1,7 @@
 {
     "server": {
         "SaveData": {
-            "windows": "{Home}/AppData/Roaming/openparty/",
+            "windows": "{Home}\\AppData\\Roaming\\openparty\\",
             "linux": "{Home}/.openparty/"
         },
         "port": 80,

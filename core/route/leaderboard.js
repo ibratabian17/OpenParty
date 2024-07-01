@@ -2,12 +2,14 @@ console.log(`[LEADERBOARD] Initializing....`);
 
 const fs = require("fs");
 const axios = require("axios");
+const path = require("path");
 const core = {
     main: require('../var').main,
-    CloneObject: require('../helper').CloneObject,
+    CloneObject: require('../helper').CloneObject, getSavefilePath: require('../helper').getSavefilePath,
     generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed
 }
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const DOTW_PATH = path.join(core.getSavefilePath(), 'leaderboard/dotw/');
 
 function generateToolNickname() {
     const prefixes = ["Wordkeeper", "Special", "Krakenbite", "DinosaurFan", "Definehub", "Termtracker", "Lexiconet", "Vocabvault", "Lingolink", "Glossarygenius", "Thesaurustech", "Synonymster", "Definitionary", "Jargonjot", "Idiomizer", "Phraseforge", "Meaningmaker", "Languageledger", "Etymologyengine", "Grammarguard", "Syntaxsense", "Semanticsearch", "Orthographix", "Phraseology", "Vernacularvault", "Dictionet", "Slangscroll", "Lingualist", "Grammargrid", "Lingoledge", "Termtoolbox", "Wordware", "Lexigizmo", "Synosearch", "Thesaurustech", "Phrasefinder", "Vocabvortex", "Meaningmatrix", "Languageledger", "Etymologist", "Grammargate", "Syntaxsphere", "Semanticsearch", "Orthographix", "Phraseplay", "Vernacularvault", "Dictionator", "Slangstack", "Lingolink", "Grammarguide", "Lingopedia", "Termtracker", "Wordwizard", "Lexilist", "Synomate", "Thesaurustool", "Definitizer", "Jargonjunction", "Idiomgenius", "Phrasemaker", "Meaningmate", "Duolingo", "Languagelink", "Etymoengine", "Grammarguru", "Syntaxsage", "Semanticsuite", "Orthography", "Phrasefinder", "Vocabverse", "Lexipedia", "Synoscribe", "Thesaurusware", "Definitionary", "Jargonscribe", "Idiomster", "Phrasetech", "Meaningmax", "Flop", "Slayguy", "Languagelex", "Etymoedge", "Grammargenie", "Syntaxsync", "Semanticsearch", "Orthography", "Phraseforge", "Vernacularex", "Dictionmaster", "Slangster", "Lingoware", "Grammargraph", "Lingomate", "Termmate", "Wordwork", "Lexixpert", "Synostar", "Thesaurusmax", "OculusVision", "FlowerPower", "RustySilver", "Underfire", "Shakeawake", "Truthhand", "Kittywake", "Definize", "Jargonize", "Idiomify", "Phrasemaster", "Meaningmark", "Lingualine", "Etymogenius", "Grammarguard", "Syntaxsmart", "Semanticsearch", "Orthography", "Phrasedex", "Vocabmax", "Lexilock", "Synomind", "Thesaurusmart", "Definify", "Jargonmatrix", "Idiomnet", "Phraseplay", "Meaningmate", "Lingolink", "Etymoexpert", "Grammargetter", "Syntaxsage", "Semanticsearch", "Orthography", "Phrasepad", "Vernacularvibe", "Dictiondom", "Slangster", "Lingolytics", "Grammargenie", "Lingotutor", "Termtracker", "Wordwarp", "Lexisync", "Synomind", "Thesaurusmate", "Definizer", "Jargonify", "Idiomster", "Phraselab", "Meaningmark", "Languageleaf", "Etymoedge", "Grammargrid", "Syntaxsync", "Semanticsuite", "Orthographix", "Phraseforge", "Vernacularvibe", "Dictiondom", "Slangster", "Lingolytics", "Grammargenie", "Lingotutor", "Termtracker", "Wordwarp", "Lexisync", "Synomind", "Thesaurusmate", "Definizer", "Jargonify", "Idiomster", "Phraselab", "Meaningmark", "Languageleaf", "Etymoedge", "Grammargrid", "Syntaxsync", "Semanticsuite", "Orthographix"];
@@ -25,6 +27,35 @@ function generateToolNickname() {
     }
 
 }
+const getProfileData = (req) => {
+    return new Promise((resolve, reject) => {
+        const ticket = req.header("Authorization");
+        const sku = req.header('X-SkuId');
+        const prodwsurl = "https://prod.just-dance.com/";
+        const xhr33 = new XMLHttpRequest();
+
+        xhr33.open(req.method, prodwsurl + req.url, true);
+        xhr33.setRequestHeader("X-SkuId", sku);
+        xhr33.setRequestHeader("Authorization", ticket);
+        xhr33.setRequestHeader("Content-Type", "application/json");
+
+        xhr33.onload = () => {
+            if (xhr33.status >= 200 && xhr33.status < 300) {
+                resolve(JSON.parse(xhr33.responseText));
+            } else {
+                reject(new Error(`HTTP status ${xhr33.status}`));
+            }
+        };
+
+        xhr33.onerror = () => reject(new Error('Network error'));
+        xhr33.send(JSON.stringify(req.body));
+    });
+};
+
+const getGameVersion = (req) => {
+    const sku = req.header('X-SkuId');
+    return sku.substring(0, 6);
+};
 
 const initroute = (app) => {
     app.post("/leaderboard/v1/maps/:mapName/friends", async (req, res) => {
@@ -231,73 +262,57 @@ const initroute = (app) => {
         }
     });
 
-    app.post("/profile/v2/map-ended", (req, res) => {
-        var codename = req.body;
-        for (let i = 0; i < codename.length; i++) {
-            var song = codename[i];
-            core.updateMostPlayed(song)
-            if (fs.existsSync("./../../database/leaderboard/dotw/" + song.mapName + ".json")) {
-                const readFile = fs.readFileSync(
-                    "./../../database/leaderboard/dotw/" + song.mapName + ".json"
-                );
-                var JSONParFile = JSON.parse(readFile);
-                if (JSONParFile.score > song.score) {
-                    res.send(`1`);
-                }
-            } else {
-                var ticket = req.header("Authorization");
-                var xhr33 = new XMLHttpRequest();
-                var sku = req.header('X-SkuId');
-                var gameVer = sku.substring(0, 6);
-                var prodwsurl = "https://prod.just-dance.com/"
-                xhr33.open(req.method, prodwsurl + req.url, true);
-                xhr33.setRequestHeader("X-SkuId", sku);
-                xhr33.setRequestHeader("Authorization", ticket);
-                xhr33.setRequestHeader("Content-Type", "application/json");
-                xhr33.send(JSON.stringify(req.body), null, 2);
-                var getprofil1 = xhr33.responseText.toString();
-                for (let i = 0; i < getprofil1.length; i++) {
-                    var profiljson = getprofil1[i];
-                }
+    app.post("/profile/v2/map-ended", async (req, res) => {
+        const codename = req.body;
 
-                console.log(profiljson)
+        try {
+            for (let song of codename) {
+                core.updateMostPlayed(song);
 
-                // Creates the local DOTW file
-                var profiljson1 = JSON.parse(profiljson);
-                console.log(profiljson1)
-                var jsontodancerweek = {
-                    __class: "DancerOfTheWeek",
-                    score: song.score,
-                    profileId: profiljson1.profileId,
-                    gameVersion: gameVer,
-                    rank: profiljson1.rank,
-                    name: profiljson1.name,
-                    avatar: profiljson1.avatar,
-                    country: profiljson1.country,
-                    platformId: profiljson1.platformId,
-                    //"platformId": "2535467426396224",
-                    alias: profiljson1.alias,
-                    aliasGender: profiljson1.aliasGender,
-                    jdPoints: profiljson1.jdPoints,
-                    portraitBorder: profiljson1.portraitBorder,
-                };
-                fs.writeFile("./../../database/leaderboard/dotw/" + song.mapName + ".json", jsontodancerweek, function (err) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log("DOTW file for" + song.mapName + "created!");
+                const dotwFilePath = path.join(DOTW_PATH, `${song.mapName}.json`);
+                if (fs.existsSync(dotwFilePath)) {
+                    const readFile = fs.readFileSync(dotwFilePath, 'utf-8');
+                    const JSONParFile = JSON.parse(readFile);
+                    if (JSONParFile.score > song.score) {
+                        return res.send('1');
                     }
+                } else {
+                    const profiljson1 = await getProfileData(req);
+                    if (!profiljson1) {
+                        return res.status(500).send('Error fetching profile data');
+                    }
+
+                    const jsontodancerweek = {
+                        __class: "DancerOfTheWeek",
+                        score: song.score,
+                        profileId: profiljson1.profileId,
+                        gameVersion: getGameVersion(req),
+                        rank: profiljson1.rank,
+                        name: profiljson1.name,
+                        avatar: profiljson1.avatar,
+                        country: profiljson1.country,
+                        platformId: profiljson1.platformId,
+                        alias: profiljson1.alias,
+                        aliasGender: profiljson1.aliasGender,
+                        jdPoints: profiljson1.jdPoints,
+                        portraitBorder: profiljson1.portraitBorder,
+                    };
+
+                    fs.writeFileSync(dotwFilePath, JSON.stringify(jsontodancerweek, null, 2));
+                    console.log(`DOTW file for ${song.mapName} created!`);
+                    res.send(profiljson1);
                 }
-                );
-                res.send(profiljson);
             }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
         }
     });
 
     app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
-        const checkFile = fs.existsSync("./../../database/leaderboard/dotw/" + req.params.map + ".json");
-        if (checkFile) {
-            const readFile = fs.readFile("./../../database/leaderboard/dotw/" + req.params.map + ".json");
+        const dotwFilePath = path.join(DOTW_PATH, `${req.params.map}.json`);
+        if (fs.existsSync(dotwFilePath)) {
+            const readFile = fs.readFileSync(dotwFilePath, 'utf-8');
             res.send(readFile);
         } else {
             res.setHeader('Content-Type', 'application/json; charset=utf-8');

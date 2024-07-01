@@ -2,9 +2,17 @@ console.log(`[CAROUSEL] Initializing....`);
 
 const { CloneObject, readDatabaseJson } = require('../helper');
 const fs = require('fs');
+const path = require('path');
 const cClass = require("./classList.json");
 const songdb = require("../../database/Platforms/openparty-all/songdbs.json");
-const mostPlayed = require(`${__dirname}/../../database/carousel/mostplayed.json`);
+const helper = require('../helper')
+var mostPlayed = {}
+
+if (fs.existsSync(path.join(helper.getSavefilePath(), 'carousel/mostplayed.json'))) {
+  mostPlayed = require(path.join(helper.getSavefilePath(), 'carousel/mostplayed.json'));
+} else if (fs.existsSync(`${__dirname}/../../database/carousel/mostplayed.json`)) {
+  mostPlayed = require(`${__dirname}/../../database/carousel/mostplayed.json`)
+}
 var carousel = {}; //avoid list cached
 
 const WEEKLY_PLAYLIST_PREFIX = 'DFRecommendedFU';
@@ -13,7 +21,7 @@ function updateMostPlayed(maps) {
   const currentWeek = getWeekNumber();
   mostPlayed[currentWeek] = mostPlayed[currentWeek] || {};
   mostPlayed[currentWeek][maps] = (mostPlayed[currentWeek][maps] || 0) + 1;
-  fs.writeFileSync(`${__dirname}/../../database/carousel/mostplayed.json`, JSON.stringify(mostPlayed, null, 2));
+  fs.writeFileSync(path.join(helper.getSavefilePath(), 'carousel/mostplayed.json'), JSON.stringify(mostPlayed, null, 2));
 }
 
 function addCategories(categories) {
