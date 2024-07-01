@@ -1,5 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
+const { loadJsonFile } = require('./helper');
 const songdb = require('./lib/songdb').songdbF;
 const settings = require('../settings.json');
 
@@ -22,11 +23,11 @@ const replaceDomainPlaceholder = (obj, domain) => {
 
 const main = {
   skupackages: {
-    pc: require('../database/Platforms/jd2017-pc/sku-packages.json'),
-    nx: require('../database/Platforms/jd2017-nx/sku-packages.json'),
-    wiiu: require('../database/Platforms/jd2017-wiiu/sku-packages.json'),
-    durango: require('../database/Platforms/jd2017-durango/sku-packages.json'),
-    orbis: require('../database/Platforms/jd2017-orbis/sku-packages.json')
+    pc: loadJsonFile('Platforms/jd2017-pc/sku-packages.json', '../database/Platforms/jd2017-pc/sku-packages.json'),
+    nx: loadJsonFile('Platforms/jd2017-nx/sku-packages.json', '../database/Platforms/jd2017-nx/sku-packages.json'),
+    wiiu: loadJsonFile('Platforms/jd2017-wiiu/sku-packages.json', '../database/Platforms/jd2017-wiiu/sku-packages.json'),
+    durango: loadJsonFile('Platforms/jd2017-durango/sku-packages.json', '../database/Platforms/jd2017-durango/sku-packages.json'),
+    orbis: loadJsonFile('Platforms/jd2017-orbis/sku-packages.json', '../database/Platforms/jd2017-orbis/sku-packages.json'),
   },
   entities: replaceDomainPlaceholder(require('../database/v2/entities.json'), settings.server.domain),
   configuration: replaceDomainPlaceholder(require('../database/v1/configuration.json'), settings.server.domain),
@@ -50,11 +51,11 @@ const main = {
   playlists: require("../database/db/playlists.json"),
   create_playlist: require("../database/carousel/pages/create_playlist.json"),
   songdb: { "2016": {}, "2017": {}, "2018": {}, "2019": {}, "2020": {}, "2021": {}, "2022": {} },
-  localisation: require('../database/Platforms/openparty-all/localisation.json')
+  localisation: loadJsonFile('Platforms/openparty-all/localisation.json', '../database/Platforms/openparty-all/localisation.json')
 };
 
 main.songdb = songdb.generateSonglist();
 
 module.exports = {
-  main 
+  main
 }

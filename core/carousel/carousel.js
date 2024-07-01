@@ -1,18 +1,14 @@
 console.log(`[CAROUSEL] Initializing....`);
 
-const { CloneObject, readDatabaseJson } = require('../helper');
+const { CloneObject, readDatabaseJson, loadJsonFile } = require('../helper');
 const fs = require('fs');
 const path = require('path');
 const cClass = require("./classList.json");
-const songdb = require("../../database/Platforms/openparty-all/songdbs.json");
+const songdb = loadJsonFile('Platforms/openparty-all/songdbs.json', '../database/Platforms/openparty-all/songdbs.json');
 const helper = require('../helper')
 var mostPlayed = {}
 
-if (fs.existsSync(path.join(helper.getSavefilePath(), 'carousel/mostplayed.json'))) {
-  mostPlayed = require(path.join(helper.getSavefilePath(), 'carousel/mostplayed.json'));
-} else if (fs.existsSync(`${__dirname}/../../database/carousel/mostplayed.json`)) {
-  mostPlayed = require(`${__dirname}/../../database/carousel/mostplayed.json`)
-}
+mostPlayed = loadJsonFile('carousel/mostplayed.json', '../database/carousel/mostplayed.json');
 var carousel = {}; //avoid list cached
 
 const WEEKLY_PLAYLIST_PREFIX = 'DFRecommendedFU';

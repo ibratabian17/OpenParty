@@ -12,6 +12,7 @@ function CloneObject(ObjectC) {
 function readDatabaseJson(path) {
   return JSON.parse(fs.readFileSync(`${__dirname}/../database/${path}`, 'utf8'));
 }
+var donotlog = {}
 
 downloader.getJson = async (url, options) => {
   const response = await axios.get(url, options);
@@ -56,7 +57,20 @@ if (!fs.existsSync(getSavefilePath())) {
   fs.mkdirSync(path.join(getSavefilePath(), 'server-log'), { recursive: true });
 }
 
+function loadJsonFile(layeredPath, originalPath) {
+  const savedDataPath = path.join(getSavefilePath(), layeredPath);
+  if (fs.existsSync(savedDataPath)) {
+    return require(savedDataPath);
+  } else {
+    if (!donotlog[path.basename(savedDataPath)]) {
+      console.log(`[HELPER] Serving ${path.basename(savedDataPath)} from Static Database`)
+      donotlog[path.basename(savedDataPath)] = true
+    }
+    return require(originalPath);
+  }
+}
+
 
 module.exports = {
-  CloneObject, readDatabaseJson, downloader, extractSkuIdInfo, getSavefilePath
+  CloneObject, readDatabaseJson, downloader, extractSkuIdInfo, getSavefilePath, loadJsonFile
 }

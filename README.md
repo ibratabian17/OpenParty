@@ -24,9 +24,25 @@ This project is an effort by ibratabian17 to provide an alternative server to Ju
 
 ## Directory Structure
 
-- **database/Platforms/openparty-all/songdbs.json**: contains the song database.
-- **database/nohud/chunk.json**: contains no-HUD configuration.
-- **database/Platforms/jd2017-{Platform}/**: contains sku packages.
+The directory structure of OpenParty is organized to facilitate ease of access and modification of the server's functionalities and data. Here's a detailed breakdown:
+
+### `database/Platforms/openparty-all/songdbs.json`
+- **Purpose**: Contains the song database.
+- **Description**: This JSON file holds the list of songs available on the server. Users can edit this file to customize the song list without changing the server code. If a song list is found in the `SaveData`, it will override this file, allowing dynamic changes without needing to restart the server.
+
+### `database/nohud/chunk.json`
+- **Purpose**: Contains no-HUD Videos.
+- **Description**: This JSON file manages the HUD-less video of the game. Similar to the song database, if a configuration file is in `SaveData`, it will take precedence over this file, making it easy to quickly adjust settings.
+
+### `database/Platforms/jd2017-{Platform}/sku-packages.json`
+- **Purpose**: Contains SKU packages.
+- **Description**: This directory includes platform-specific SKU packages, which are bundles of songs and content specific to a version or platform of Just Dance. These can be tailored to suit different platforms such as PC, Xbox, or PlayStation. The platform-specific files in the `SaveData` directory will override these if available, providing an easy way to customize content per platform without altering the base server files.
+
+### SaveData Directory
+- **Purpose**: Overrides default settings and data.
+- **Description**: The `SaveData` directory is used to store user-specific or modified versions of the data files and settings. If a file exists in this directory, it will automatically override the corresponding file in the `database` directory. This hierarchical file structure allows users to make changes to configurations, song lists, and other settings without touching the core server code. They can simply reload the server to apply changes, enhancing flexibility and user control.
+
+In summary, the directory structure and the layered data in OpenParty make it easy for users to customize and manage the server. By placing custom files in the `SaveData` directory, users can override default settings and data provided by the server, ensuring that modifications are both simple and reversible.
 
 ## Configuration of settings.json
 

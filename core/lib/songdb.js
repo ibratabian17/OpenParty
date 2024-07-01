@@ -1,28 +1,29 @@
 //Songdbs Property
+const settings = require('../../settings.json')
+const fs = require('fs');
+const path = require('path')
+const { loadJsonFile } = require('../helper')
 const songdbF = {}
 const main = {
   songdb: { "2016": {}, "2017": {}, "2018": {}, "2019": {}, "2020": {}, "2021": {}, "2022": {} },
-  localisation: require('../../database/Platforms/openparty-all/localisation.json')
+  localisation: {}
 }
+songdbF.db = {}
 
-songdbF.db = require('../../database/Platforms/openparty-all/songdbs.json')
+//Use layered songdb if available
+main.localisation = loadJsonFile('Platforms/openparty-all/localisation.json', '../database/Platforms/openparty-all/localisation.json');
+songdbF.db = loadJsonFile('Platforms/openparty-all/songdbs.json', '../database/Platforms/openparty-all/songdbs.json');
+
 songdbF.missingAssets = { pc: [] }
 songdbF.assetsPlaceholder = {
   "banner_bkgImageUrl": "https://cdn.discordapp.com/attachments/1119503808653959218/1119518680733192222/New_Project_82_Copy_0ED1403.png",
   "coach1ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Coach_1.tga.ckd/5e3b1feb1e38f523cbab509a1590df59.ckd",
-  "phoneCoach1ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/WantUBack_Coach_1_Phone.png/5541105eacbc52648bd1462e564d2680.png",
   "coach2ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Coach_1.tga.ckd/5e3b1feb1e38f523cbab509a1590df59.ckd",
-  "phoneCoach2ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/WantUBack_Coach_1_Phone.png/5541105eacbc52648bd1462e564d2680.png",
   "coach3ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Coach_1.tga.ckd/5e3b1feb1e38f523cbab509a1590df59.ckd",
-  "phoneCoach3ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/WantUBack_Coach_1_Phone.png/5541105eacbc52648bd1462e564d2680.png",
   "coach4ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Coach_1.tga.ckd/5e3b1feb1e38f523cbab509a1590df59.ckd",
-  "phoneCoach4ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/WantUBack_Coach_1_Phone.png/5541105eacbc52648bd1462e564d2680.png",
   "coverImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Cover_Generic.tga.ckd/f61d769f960444bec196d94cfd731185.ckd",
-  "cover_1024ImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/WantUBack_Cover_1024.png/9e82873097800b27569f197e0ce848cd.png",
   "cover_smallImageUrl": "https://cdn.discordapp.com/attachments/1119503808653959218/1119518681039384627/New_Project_82_8981698.png",
-  "expandBkgImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Cover_AlbumBkg.tga.ckd/6442844a971a9690bd2bf43f1f635696.ckd",
   "expandCoachImageUrl": "https://jd-s3.cdn.ubi.com/public/map/WantUBack/x1/WantUBack_Cover_AlbumCoach.tga.ckd/dc01eb7b94e0b10c0f52a0383e51312e.ckd",
-  "phoneCoverImageUrl": "https://cdn.discordapp.com/attachments/1119503808653959218/1119518681039384627/New_Project_82_8981698.png",
   "videoPreviewVideoURL": "",
   "map_bkgImageUrl": "https://cdn.discordapp.com/attachments/1119503808653959218/1119518680733192222/New_Project_82_Copy_0ED1403.png"
 }

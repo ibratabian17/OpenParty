@@ -6,12 +6,16 @@ var md5 = require('md5');
 const core = {
   main: require('../var').main,
   CloneObject: require('../helper').CloneObject,
+  loadJsonFile: require('../helper').loadJsonFile,
   generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
   signer: require('../lib/signUrl')
 }
 const path = require('path');
 const signer = require('../lib/signUrl')
 const deployTime = Date.now()
+
+//load nohud list
+const chunk = core.loadJsonFile('nohud/chunk.json', '../database/nohud/chunk.json');
 
 function checkAuth(req, res) {
   if (req.header('X-SkuId')) {
@@ -337,7 +341,6 @@ exports.initroute = (app, express, server) => {
   app.get('/content-authorization/v1/maps/*', (req, res) => {
     if (checkAuth(req, res)) {
       var maps = req.url.split("/").pop();
-      const chunk = require('../../database/nohud/chunk.json');
       try {
         if (chunk[maps]) {
           var placeholder = core.CloneObject(require('../../database/nohud/placeholder.json'))
