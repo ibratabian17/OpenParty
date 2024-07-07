@@ -4,12 +4,12 @@ const fs = require("fs");
 const axios = require("axios");
 const path = require('path')
 const { getSavefilePath } = require('../helper');
-const settings = require('../../settings.json');
-const {encrypt, decrypt} = require('../lib/encryptor')
+const { encrypt, decrypt } = require('../lib/encryptor')
 
 const secretKey = require('../../database/encryption.json').encrpytion.userEncrypt;
 const ubiwsurl = "https://public-ubiservices.ubi.com";
 const prodwsurl = "https://prod.just-dance.com";
+var decryptedData = {}
 
 exports.initroute = (app) => {
 
@@ -18,10 +18,11 @@ exports.initroute = (app) => {
     const ticket = req.header("Authorization") || ''; // Extract Authorization header
     const profilesid = req.query.profileIds.split(','); // Split profileIds into an array
     const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`); // Path to user data file
-    let decryptedData;
     try {
-      const encryptedData = fs.readFileSync(dataFilePath, 'utf8'); // Read encrypted user data
-      decryptedData = JSON.parse(decrypt(encryptedData, secretKey)); // Parse decrypted user data
+      if (decryptedData == {}) {
+        const encryptedData = fs.readFileSync(dataFilePath, 'utf8'); // Read encrypted user data
+        decryptedData = JSON.parse(decrypt(encryptedData, secretKey)); // Parse decrypted user data
+      }
     } catch (err) {
       decryptedData = {}; // Set empty object if data cannot be parsed
       console.log('[ACC] Unable to read user.json')
@@ -52,10 +53,11 @@ exports.initroute = (app) => {
     const ticket = req.header("Authorization"); // Extract Authorization header
     const content = req.body; // Extract content from request body
     const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`); // Path to user data file
-    let decryptedData;
     try {
-      const encryptedData = fs.readFileSync(dataFilePath, 'utf8'); // Read encrypted user data
-      decryptedData = JSON.parse(decrypt(encryptedData, secretKey)); // Parse decrypted user data
+      if (decryptedData == {}) {
+        const encryptedData = fs.readFileSync(dataFilePath, 'utf8'); // Read encrypted user data
+        decryptedData = JSON.parse(decrypt(encryptedData, secretKey)); // Parse decrypted user data
+      }
     } catch (err) {
       decryptedData = {}; // Set empty object if data cannot be parsed
       console.log('[ACC] Unable to read user.json')
