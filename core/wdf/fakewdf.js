@@ -288,7 +288,6 @@ function initroute(app) {
       
           res.send(response.data);
         } catch (error) {
-          console.error(error);
           res.status(error.response ? error.response.status : 500).send(error.message);
         }
       });
@@ -308,7 +307,6 @@ function initroute(app) {
       
           res.send(response.data);
         } catch (error) {
-          console.error(error);
           res.status(error.response ? error.response.status : 500).send(error.message);
         }
       });
