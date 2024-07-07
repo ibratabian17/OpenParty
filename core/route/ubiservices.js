@@ -6,6 +6,7 @@ const core = {
     generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
     signer: require('../lib/signUrl')
 }
+const settings = require('../../settings.json')
 const { v4: uuidv4 } = require('uuid');
 
 const replaceDomainPlaceholder = (obj, domain) => {
@@ -89,9 +90,11 @@ exports.initroute = (app, express, server) => {
     });
 
     app.get("/v1/applications/34ad0f04-b141-4793-bdd4-985a9175e70d/parameters", (req, res) => {
+        //JD22
         res.send(replaceDomainPlaceholder(require("../../database/v1/parameters.json"), settings.server.domain));
     });
     app.get("/v1/spaces/041c03fa-1735-4ea7-b5fc-c16546d092ca/parameters", (req, res) => {
+        //JD18
         res.send(replaceDomainPlaceholder(require("../../database/v1/parameters2.json"), settings.server.domain))
     });
 
