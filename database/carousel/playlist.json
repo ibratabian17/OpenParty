@@ -2,6 +2,14 @@
     {
         "name": "Test Playlist",
         "RecommendedName": "Test Playlist",
+        "id": "TestPlaylist",
+        "description": "IHIR888 LEKAS",
+        "coverURL": "https://imgur.com/QB3Ixkl.png",
+        "showOnCarousel": false,
+        "filters": true,
+        "fixedMapOrder": false,
+        "fallback": false,
+        "pinned": false,
         "songlist": [
             "Despacito"
         ]

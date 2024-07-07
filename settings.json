@@ -9,6 +9,7 @@
         "isPublic": true,
         "enableSSL": true,
         "domain": "jdp.justdancenext.xyz",
+        "modName": "Just Dance Unlimited Mod",
         "serverstatus": {
             "isMaintenance": false,
             "channel": "prod"

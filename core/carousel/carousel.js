@@ -6,6 +6,7 @@ const path = require('path');
 const cClass = require("./classList.json");
 const songdb = loadJsonFile('Platforms/openparty-all/songdbs.json', '../database/Platforms/openparty-all/songdbs.json');
 const helper = require('../helper')
+const settings = require('../../settings.json')
 var mostPlayed = {}
 
 mostPlayed = loadJsonFile('carousel/mostplayed.json', '../database/carousel/mostplayed.json');
@@ -197,11 +198,11 @@ exports.generateCarousel = (search, type = "partyMap") => {
 
 
   // Dynamic Carousel System
-  addCategories(generateCategories("Just Dance Unlimited Mod", filterSongs(songdbs, song => true), type));
+  addCategories(generateCategories(settings.server.modName, filterSongs(songdbs, song => true), type));
   addCategories(generateCategories("Recommended For You", CloneObject(shuffleArray(songdbs), type)));
   addCategories(generateCategories("[icon:PLAYLIST]Recently Added!", CloneObject(filterSongsByTags(songdbs, 'NEW')), type));
-  generateWeeklyRecommendedSong(readDatabaseJson("carousel/playlist.json"), type);
-  processPlaylists(readDatabaseJson("carousel/playlist.json"), type);
+  generateWeeklyRecommendedSong(loadJsonFile('carousel/playlist.json', '../database/carousel/playlist.json'), type);
+  processPlaylists(loadJsonFile('carousel/playlist.json', '../database/carousel/playlist.json'), type);
   addJDVersion(songdbs, type);
   addCategories(generateCategories(`Most Played Weekly!`, CloneObject(getGlobalPlayedSong()), type));
   addCategories(Object.assign({}, cClass.searchCategoryClass));

@@ -5,6 +5,7 @@ const settings = require('../../settings.json');
 var md5 = require('md5');
 const core = {
   main: require('../var').main,
+  generatePlaylist: require('../lib/playlist').generatePlaylist,
   CloneObject: require('../helper').CloneObject,
   loadJsonFile: require('../helper').loadJsonFile,
   generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
@@ -226,19 +227,6 @@ exports.initroute = (app, express, server) => {
     response.send(core.main.quests);
   });
 
-  app.post("/carousel/v2/pages/jd2019-playlists", (request, response) => {
-    response.send(core.main.playlists);
-  });
-  app.post("/carousel/v2/pages/jd2020-playlists", (request, response) => {
-    response.send(core.main.playlists);
-  });
-  app.post("/carousel/v2/pages/jd2021-playlists", (request, response) => {
-    response.send(core.main.playlists);
-  });
-  app.post("/carousel/v2/pages/jd2022-playlists", (request, response) => {
-    response.send(core.main.playlists);
-  });
-
   app.post("/sessions/v1/session", (request, response) => {
     response.send({
       "pairingCode": "000000",
@@ -263,7 +251,19 @@ exports.initroute = (app, express, server) => {
 
   // Playlists
   app.get("/playlistdb/v1/playlists", function (request, response) {
-    response.send(core.main.playlistdb);
+    response.send(core.generatePlaylist().playlistdb);
+  });
+  app.post("/carousel/v2/pages/jd2019-playlists", (request, response) => {
+    response.send(core.generatePlaylist().playlistcategory);
+  });
+  app.post("/carousel/v2/pages/jd2020-playlists", (request, response) => {
+    response.send(core.generatePlaylist().playlistcategory);
+  });
+  app.post("/carousel/v2/pages/jd2021-playlists", (request, response) => {
+    response.send(core.generatePlaylist().playlistcategory);
+  });
+  app.post("/carousel/v2/pages/jd2022-playlists", (request, response) => {
+    response.send(core.generatePlaylist().playlistcategory);
   });
 
 
