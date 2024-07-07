@@ -7,11 +7,11 @@ const { getSavefilePath } = require('../helper');
 const settings = require('../../settings.json');
 const {encrypt, decrypt} = require('../lib/encryptor')
 
-const secretKey = settings.server.encrpytion.userEncrypt;
+const secretKey = require('../../database/encryption.json').encrpytion.userEncrypt;
+const ubiwsurl = "https://public-ubiservices.ubi.com";
+const prodwsurl = "https://prod.just-dance.com";
 
 exports.initroute = (app) => {
-  const ubiwsurl = "https://public-ubiservices.ubi.com";
-  const prodwsurl = "https://prod.just-dance.com";
 
   // Endpoint to get profiles based on profileIds
   app.get("/profile/v2/profiles", (req, res) => {

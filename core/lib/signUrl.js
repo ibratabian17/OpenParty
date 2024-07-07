@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const settings = require('../../settings.json')
-const secretKey = settings.server.encrpytion.secretKey;
+const secretKey = require('../../database/encryption.json').encrpytion.secretKey;
 
 exports.generateSignedURL = (originalURL) => {
     // Set expiration time (in seconds)
