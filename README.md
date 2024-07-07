@@ -1,3 +1,4 @@
+
 # OpenParty
 
 OpenParty is a community-driven project developed by PartyTeam and LunarTeam as an alternative server solution for Just Dance Unlimited enthusiasts. This server allows you to enjoy the Just Dance Unlimited experience independently of official servers, which are no longer available.
@@ -20,7 +21,6 @@ This initiative aims to fill the void left by the discontinued official service,
 - Git
 - Server (duh, we can't pay it)
 - Just Dance Certificate (Optional) (For PS4, JD17-22 for NX, for JD16-18?? Wii U)
-- 
 
 ### Setup
 
@@ -56,9 +56,13 @@ The directory structure of OpenParty is organized to facilitate ease of access a
 - **Purpose**: Contains SKU packages.
 - **Description**: This directory includes platform-specific SKU packages, which are bundles of songs and content specific to a version or platform of Just Dance. These can be tailored to suit different platforms such as PC, Xbox, or PlayStation. The platform-specific files in the `SaveData` directory will override these if available, providing an easy way to customize content per platform without altering the base server files.
 
+### `database/encryption.json`
+- **Purpose**: Contains encryption settings.
+- **Description**: This JSON file holds the encryption settings for the server, including keys for generating HMAC and user data encryption.
+
 ### SaveData Directory
 - **Purpose**: Save server data, you can also change default settings and data.
-- **Description**: The `SaveData` directory is used to save user-specific or modified versions of data files and settings and also stores data owned by the server. If there is a Platforms folder and a nohud folder, this will replace the data from `database` without touching the core server code. This helps you update code without breaking Git
+- **Description**: The `SaveData` directory is used to save user-specific or modified versions of data files and settings and also stores data owned by the server. If there is a Platforms folder and a nohud folder, this will replace the data from `database` without touching the core server code. This helps you update code without breaking Git.
 
 ## Configuration of settings.json
 
@@ -85,14 +89,16 @@ Defines the paths where the server will save data for different operating system
 - `"domain": "jdp.justdancenext.xyz"`: Specifies the domain name for the server.
 
 ### Server Status
-- `"serverstatus": { "isMaintenance": false, "channel": "prod" }`: Indicates whether the server is in maintenance mode and specifies the server channel. 
+- `"serverstatus": {}`: Indicates whether the server is in maintenance mode and specifies the server channel. 
   - `"isMaintenance": false`: Server is not in maintenance mode.
   - `"channel": "prod"`: Specifies the server channel, here set to "prod" (production).
 
-### Encryption
-- `"encryption": { "secretKey": "OpenParty.", "userEncrypt": "DoNotShareThisFileToAnyone" }`: Encryption settings for the server.
-  - `"secretKey": "OpenParty."`: Secret key used to generate HMAC.
-  - `"userEncrypt": "DoNotShareThisFileToAnyone"`: Encryption key used for user data files. if the value is empty then the files are not encrypted.
+### Modules
+- `"modules": []`: Defines server modules, their descriptions, file paths, and execution behavior.
+  - `"name": ""`: The name of your modules
+  - `"description": ""`: The description of your modules
+  - `"path": ""`: The path where the server calls the module
+  - `"execution": ""`: When will the server run. `pre-load' or `init`
 
 ## Usage
 OpenParty provides a straightforward setup process to get you up and running quickly. Once installed, customize your experience using the settings.json file and manage song databases effortlessly.
@@ -100,7 +106,7 @@ OpenParty provides a straightforward setup process to get you up and running qui
 ## Contribution
 Contributions are welcome to enhance features, improve performance, or expand platform support. 
 
-Support
+## Support
 For any issues or inquiries, feel free to reach out via GitHub Issues or our community channels.
 
 ## Credits

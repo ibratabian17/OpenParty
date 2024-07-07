@@ -14,5 +14,13 @@
             "isMaintenance": false,
             "channel": "prod"
         }
-    }
+    },
+    "modules": [
+        {
+            "name": "FAKEWDF",
+            "description": "Create a fake response for WDF so that the mod can run on older version",
+            "path": "{dirname}/core/wdf/fakewdf.js",
+            "execution": "init"
+        }
+    ]
 }

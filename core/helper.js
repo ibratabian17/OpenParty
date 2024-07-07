@@ -70,7 +70,13 @@ function loadJsonFile(layeredPath, originalPath) {
   }
 }
 
+function resolvePath(input=""){
+  var new_input = input.replace('{dirname}', process.cwd())
+  new_input = new_input.replace('{Home}', os.homedir())
+  return new_input
+}
+
 
 module.exports = {
-  CloneObject, readDatabaseJson, downloader, extractSkuIdInfo, getSavefilePath, loadJsonFile
+  CloneObject, readDatabaseJson, downloader, extractSkuIdInfo, getSavefilePath, loadJsonFile, resolvePath
 }

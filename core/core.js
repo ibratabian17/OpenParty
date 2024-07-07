@@ -1,4 +1,6 @@
 var { main } = require('./var')
+var { resolvePath } = require('./helper')
+var { modules } = require('../settings.json')
 var fs = require("fs");  // require https module
 
 
@@ -13,11 +15,20 @@ function init(app, express) {
     });
 
     //initialize route module
+    modules.forEach((item) => {
+        if(item.execution == "pre-load")
+        require(resolvePath(item.path)).initroute(app);
+    })
+
     require('./route/rdefault').initroute(app);
     require('./route/account').initroute(app);
     require('./route/leaderboard').initroute(app);
     require('./route/ubiservices').initroute(app);
-    require('./wdf/fakewdf').initroute(app);
+
+    modules.forEach((item) => {
+        if(item.execution == "init")
+        require(resolvePath(item.path)).initroute(app);
+    })
     
     //hide error when prod 
     app.get('*', function(req, res){
