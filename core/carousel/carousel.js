@@ -107,11 +107,11 @@ function filterSongsBySearch(songdbs, search) {
   return sortByTitle(filterSongs(songdbs, item => {
     const song = songdb[item];
     return (
-      song.title.toLowerCase().includes(search.toLowerCase()) ||
-      song.artist.toLowerCase().includes(search.toLowerCase()) ||
-      song.mapName.toLowerCase().includes(search.toLowerCase()) ||
-      song.originalJDVersion == search ||
-      song.tags.includes(search)
+      (song.title && song.title.toLowerCase().includes(search.toLowerCase())) ||
+      (song.artist && song.artist.toLowerCase().includes(search.toLowerCase())) ||
+      (song.mapName && song.mapName.toLowerCase().includes(search.toLowerCase())) ||
+      (song.originalJDVersion && song.originalJDVersion == search) ||
+      (song.tags && song.tags.includes(search))
     );
   }), search.toLowerCase());
 }
@@ -181,7 +181,7 @@ function addJDVersion(songdbs, type = "partyMap") {
   addCategories(generateCategories("ABBA: You Can Dance", filterSongsByJDVersion(songdbs, 4884), type));
   addCategories(generateCategories("Just Dance Asia", filterSongsByJDVersion(songdbs, 4514), type));
   addCategories(generateCategories("Just Dance Kids", filterSongsByJDVersion(songdbs, 123), type));
-  for (let year = 2024; year >= 2014; year--) {
+  for (let year = 2069; year >= 2014; year--) {
     addCategories(generateCategories(`Just Dance ${year}`, filterSongsByJDVersion(songdbs, year), type));
   }
   for (let year = 4; year >= 1; year--) {

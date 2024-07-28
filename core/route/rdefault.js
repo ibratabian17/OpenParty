@@ -285,7 +285,7 @@ exports.initroute = (app, express, server) => {
     if (country == false) {
       country = "US";
     }
-    response.send('{ "country": "' + country + '" }');
+    response.send({ "country": country });
   });
 
   app.post("/carousel/v2/pages/sweat", (req, res) => {
