@@ -2,12 +2,14 @@ var { main } = require('./var')
 var { resolvePath } = require('./helper')
 var { modules } = require('../settings.json')
 var fs = require("fs");  // require https module
+var requestIp = require('./lib/ipResolver.js')
 
 
 function init(app, express) {
     const bodyParser = require("body-parser");
     app.use(express.json());
     app.use(bodyParser.raw());
+    app.use(requestIp.mw())
     app.use((err, req, res, next) => {
         // shareLog('ERROR', `${err}`)
         res.status(500).send('Internal Server Error');

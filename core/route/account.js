@@ -29,15 +29,16 @@ exports.initroute = (app) => {
       console.log('[ACC] Is the key correct? are the files corrupted?')
       console.log('[ACC] Ignore this message if this first run')
       console.log('[ACC] Resetting All User Data...')
+      console.log(err)
     }
 
     // Map over profileIds to retrieve corresponding user profiles or create default profiles
     const responseProfiles = profilesid.map(profileId => {
       const userProfile = decryptedData[profileId]; // Get user profile based on profileId
       if (userProfile) {
-        return { ...userProfile, ip: req.ip, ticket: ticket }; // Add IP to userProfile but not in the response
+        return { ...userProfile, ip: req.clientIp, ticket: ticket }; // Add IP to userProfile but not in the response
       } else {
-        const defaultProfile = { ip: req.ip, ticket: ticket }; // Create a default profile with IP address
+        const defaultProfile = { ip: req.clientIp, ticket: ticket }; // Create a default profile with IP address
         decryptedData[profileId] = defaultProfile; // Add default profile to decrypted data
         return {}; // Return an empty object (don't include defaultProfile in response)
       }
@@ -64,6 +65,7 @@ exports.initroute = (app) => {
       console.log('[ACC] Is the key correct? are the files corrupted?')
       console.log('[ACC] Ignore this message if this first run')
       console.log('[ACC] Resetting All User Data...')
+      console.log(err)
     }
 
     // Find a matching profile based on name or IP address (only one profile)
@@ -75,7 +77,7 @@ exports.initroute = (app) => {
     }
     const matchedProfileId = Object.keys(decryptedData).find(profileId => {
       const userProfile = decryptedData[profileId]; // Get user profile based on profileId
-      return userProfile.name === content.name || userProfile.ticket === ticket || userProfile.ip === req.ip; // Check for name or IP match
+      return userProfile.name === content.name || userProfile.ticket === ticket || userProfile.ip === req.clientIp; // Check for name or IP match
     });
 
     if (matchedProfileId) {

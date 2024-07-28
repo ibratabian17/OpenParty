@@ -9,6 +9,11 @@ const core = {
     generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed
 }
 const DOTW_PATH = path.join(core.getSavefilePath(), 'leaderboard/dotw/');
+const { getSavefilePath } = require('../helper');
+const { encrypt, decrypt } = require('../lib/encryptor')
+
+const secretKey = require('../../database/encryption.json').encrpytion.userEncrypt;
+decryptedData = {};
 
 function generateToolNickname() {
     const prefixes = ["Wordkeeper", "Special", "Krakenbite", "DinosaurFan", "Definehub", "Termtracker", "Lexiconet", "Vocabvault", "Lingolink", "Glossarygenius", "Thesaurustech", "Synonymster", "Definitionary", "Jargonjot", "Idiomizer", "Phraseforge", "Meaningmaker", "Languageledger", "Etymologyengine", "Grammarguard", "Syntaxsense", "Semanticsearch", "Orthographix", "Phraseology", "Vernacularvault", "Dictionet", "Slangscroll", "Lingualist", "Grammargrid", "Lingoledge", "Termtoolbox", "Wordware", "Lexigizmo", "Synosearch", "Thesaurustech", "Phrasefinder", "Vocabvortex", "Meaningmatrix", "Languageledger", "Etymologist", "Grammargate", "Syntaxsphere", "Semanticsearch", "Orthographix", "Phraseplay", "Vernacularvault", "Dictionator", "Slangstack", "Lingolink", "Grammarguide", "Lingopedia", "Termtracker", "Wordwizard", "Lexilist", "Synomate", "Thesaurustool", "Definitizer", "Jargonjunction", "Idiomgenius", "Phrasemaker", "Meaningmate", "Duolingo", "Languagelink", "Etymoengine", "Grammarguru", "Syntaxsage", "Semanticsuite", "Orthography", "Phrasefinder", "Vocabverse", "Lexipedia", "Synoscribe", "Thesaurusware", "Definitionary", "Jargonscribe", "Idiomster", "Phrasetech", "Meaningmax", "Flop", "Slayguy", "Languagelex", "Etymoedge", "Grammargenie", "Syntaxsync", "Semanticsearch", "Orthography", "Phraseforge", "Vernacularex", "Dictionmaster", "Slangster", "Lingoware", "Grammargraph", "Lingomate", "Termmate", "Wordwork", "Lexixpert", "Synostar", "Thesaurusmax", "OculusVision", "FlowerPower", "RustySilver", "Underfire", "Shakeawake", "Truthhand", "Kittywake", "Definize", "Jargonize", "Idiomify", "Phrasemaster", "Meaningmark", "Lingualine", "Etymogenius", "Grammarguard", "Syntaxsmart", "Semanticsearch", "Orthography", "Phrasedex", "Vocabmax", "Lexilock", "Synomind", "Thesaurusmart", "Definify", "Jargonmatrix", "Idiomnet", "Phraseplay", "Meaningmate", "Lingolink", "Etymoexpert", "Grammargetter", "Syntaxsage", "Semanticsearch", "Orthography", "Phrasepad", "Vernacularvibe", "Dictiondom", "Slangster", "Lingolytics", "Grammargenie", "Lingotutor", "Termtracker", "Wordwarp", "Lexisync", "Synomind", "Thesaurusmate", "Definizer", "Jargonify", "Idiomster", "Phraselab", "Meaningmark", "Languageleaf", "Etymoedge", "Grammargrid", "Syntaxsync", "Semanticsuite", "Orthographix", "Phraseforge", "Vernacularvibe", "Dictiondom", "Slangster", "Lingolytics", "Grammargenie", "Lingotutor", "Termtracker", "Wordwarp", "Lexisync", "Synomind", "Thesaurusmate", "Definizer", "Jargonify", "Idiomster", "Phraselab", "Meaningmark", "Languageleaf", "Etymoedge", "Grammargrid", "Syntaxsync", "Semanticsuite", "Orthographix"];
@@ -27,38 +32,37 @@ function generateToolNickname() {
 
 }
 
-const getProfileData = async (req) => {
+function getProfileData(ticket, content, clientIp) {
+    const dataFilePath = path.join(getSavefilePath(), '/account/profiles/user.json');
     try {
-        const ticket = req.header("Authorization");
-        const sku = req.header('X-SkuId');
-        const prodwsurl = "https://prod.just-dance.com/";
-
-        const response = await axios({
-            method: req.method,
-            url: prodwsurl + req.url,
-            headers: {
-                "X-SkuId": sku,
-                "Authorization": ticket,
-                "Content-Type": "application/json"
-            },
-            data: req.body
-        });
-
-        return response.data;
-    } catch (error) {
-        if (error.response) {
-            throw new Error(`HTTP status ${error.response.status}`);
-        } else if (error.request) {
-            throw new Error('Network error');
-        } else {
-            throw new Error(error.message);
+        if (Object.keys(decryptedData).length === 0) {
+            const encryptedData = fs.readFileSync(dataFilePath, 'utf8');
+            decryptedData = JSON.parse(decrypt(encryptedData, secretKey));
         }
+    } catch (err) {
+        decryptedData = {};
+        console.log('[ACC] Unable to read user.json');
+        console.log('[ACC] Is the key correct? are the files corrupted?');
+        console.log('[ACC] Ignore this message if this first run');
+        console.log('[ACC] Resetting All User Data...');
+        console.log(err);
     }
-};
+
+    const matchedProfileId = Object.keys(decryptedData).find(profileId => {
+        const userProfile = decryptedData[profileId];
+        return userProfile.ticket === ticket || userProfile.ip === clientIp;
+    });
+
+    if (matchedProfileId) {
+        return decryptedData[matchedProfileId];
+    } else {
+        return false;
+    }
+}
 
 const getGameVersion = (req) => {
-    const sku = req.header('X-SkuId');
-    return sku.substring(0, 6);
+    const sku = req.header('X-SkuId') || "jd2019-pc-ww";
+    return sku.substring(0, 6) || "jd2019";
 };
 
 const initroute = (app) => {
@@ -115,62 +119,6 @@ const initroute = (app) => {
                     "jdPoints": 0,
                     "portraitBorder": 0,
                     "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
                 });
             res.json(leaderboardData);
         } catch (error) {
@@ -202,62 +150,6 @@ const initroute = (app) => {
                     "jdPoints": 0,
                     "portraitBorder": 0,
                     "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                },
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
                 });
             res.json(leaderboardData);
         } catch (error) {
@@ -267,11 +159,12 @@ const initroute = (app) => {
     });
 
     app.post("/profile/v2/map-ended", async (req, res) => {
-        const codename = req.body;
-
+        const ticket = req.header("Authorization");
+        const clientIp = req.ip;
         try {
-            for (let song of codename) {
-                core.updateMostPlayed(song);
+            const mapList = req.body;
+            for (let song of mapList) {
+                core.updateMostPlayed(song.mapName);
 
                 const dotwFilePath = path.join(DOTW_PATH, `${song.mapName}.json`);
                 if (fs.existsSync(dotwFilePath)) {
@@ -281,9 +174,9 @@ const initroute = (app) => {
                         return res.send('1');
                     }
                 } else {
-                    const profiljson1 = await getProfileData(req);
+                    const profiljson1 = await getProfileData(ticket, song, clientIp);
                     if (!profiljson1) {
-                        return res.status(500).send('Error fetching profile data');
+                        return res.send('1')
                     }
 
                     const jsontodancerweek = {
@@ -304,12 +197,12 @@ const initroute = (app) => {
 
                     fs.writeFileSync(dotwFilePath, JSON.stringify(jsontodancerweek, null, 2));
                     console.log(`DOTW file for ${song.mapName} created!`);
-                    res.send(profiljson1);
+                    res.send('');
                 }
             }
         } catch (error) {
-            console.error(error);
-            res.status(500).send('Internal Server Error');
+            console.log(error)
+            res.status(200).send(''); //keep send 
         }
     });
 
