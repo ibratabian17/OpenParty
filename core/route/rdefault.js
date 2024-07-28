@@ -86,6 +86,19 @@ function returnSongdb(input, res) {
   }
 }
 
+const activeUsers = {};
+const resetTimeout = (ip, platform) => {
+  if (activeUsers[ip]) {
+    clearTimeout(activeUsers[ip].timeout);
+  }
+  activeUsers[ip] = {
+    timestamp: Date.now(),
+    platform: platform || null, // Store platform if it exists, otherwise null
+    timeout: setTimeout(() => {
+      delete activeUsers[ip];
+    }, 20 * 60 * 1000) // 20 minutes
+  };
+};
 
 
 exports.initroute = (app, express, server) => {
@@ -267,12 +280,6 @@ exports.initroute = (app, express, server) => {
   });
 
 
-  //Pong!
-  app.get("/status/v1/ping", (req, res) => {
-    res.send([]);
-  });
-
-
   app.get("/profile/v2/country", function (request, response) {
     var country = requestCountry(request);
     if (country == false) {
@@ -365,6 +372,43 @@ exports.initroute = (app, express, server) => {
 
   app.get("/com-video/v1/com-videos-fullscreen", (req, res) => {
     res.send([]);
+  });
+
+  // Add ServerStats
+  app.get("/status/v1/ping", (req, res) => {
+    const ip = req.ip;
+    const platform = req.header('X-SkuId') || "unknown";
+    resetTimeout(ip, platform);
+    res.send([]);
+  });
+
+  app.get("/status/v1/serverstats", (req, res) => {
+    const activeUserCount = Object.keys(activeUsers).length;
+    let platformCounts = { pc: 0, nx: 0, wiiu: 0, ps4: 0, x1: 0, unknown: 0 };
+
+    // Iterate over activeUsers to count platforms
+    for (const user of Object.values(activeUsers)) {
+      if (user.platform.includes('pc')) {
+        platformCounts.pc += 1;
+      } else if (user.platform.includes('nx')) {
+        platformCounts.nx += 1;
+      } else if (user.platform.includes('wiiu')) {
+        platformCounts.wiiu += 1;
+      } else if (user.platform.includes('ps4')) {
+        platformCounts.ps4 += 1;
+      } else if (user.platform.includes('x1')) {
+        platformCounts.x1 += 1;
+      } else if (user.platform.includes('unknown')) {
+        platformCounts.unknown += 1;
+      }
+    }
+
+    res.send({
+      status: true,
+      onlineUser: activeUserCount,
+      deployTime: deployTime,
+      currentOnlinePlatform: platformCounts
+    });
   });
 
 };
