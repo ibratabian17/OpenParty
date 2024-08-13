@@ -1,4 +1,4 @@
-{
+ {
     "server": {
         "SaveData": {
             "windows": "{Home}\\AppData\\Roaming\\openparty\\",
@@ -7,7 +7,7 @@
         "port": 80,
         "forcePort": false,
         "isPublic": true,
-        "enableSSL": true,
+        "enableSSL": false,
         "domain": "jdu.onrender.com",
         "modName": "Just Dance Unlimited Mod",
         "serverstatus": {
