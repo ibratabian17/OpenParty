@@ -8,7 +8,9 @@ const core = {
     CloneObject: require('../helper').CloneObject, getSavefilePath: require('../helper').getSavefilePath,
     generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed
 }
-const DOTW_PATH = path.join(core.getSavefilePath(), 'leaderboard/dotw/');
+const LEADERBOARD_PATH = path.join(core.getSavefilePath(), 'leaderboard/leaderboard.json');
+const DOTW_PATH = path.join(core.getSavefilePath(), 'leaderboard/dotw.json');
+
 const { getSavefilePath } = require('../helper');
 const { encrypt, decrypt } = require('../lib/encryptor')
 
@@ -30,34 +32,6 @@ function generateToolNickname() {
         return randomSuffix + numbers;
     }
 
-}
-
-function getProfileData(ticket, content, clientIp) {
-    const dataFilePath = path.join(getSavefilePath(), '/account/profiles/user.json');
-    try {
-        if (Object.keys(decryptedData).length === 0) {
-            const encryptedData = fs.readFileSync(dataFilePath, 'utf8');
-            decryptedData = JSON.parse(decrypt(encryptedData, secretKey));
-        }
-    } catch (err) {
-        decryptedData = {};
-        console.log('[ACC] Unable to read user.json');
-        console.log('[ACC] Is the key correct? are the files corrupted?');
-        console.log('[ACC] Ignore this message if this first run');
-        console.log('[ACC] Resetting All User Data...');
-        console.log(err);
-    }
-
-    const matchedProfileId = Object.keys(decryptedData).find(profileId => {
-        const userProfile = decryptedData[profileId];
-        return userProfile.ticket === ticket || userProfile.ip === clientIp;
-    });
-
-    if (matchedProfileId) {
-        return decryptedData[matchedProfileId];
-    } else {
-        return false;
-    }
 }
 
 const getGameVersion = (req) => {
@@ -129,108 +103,128 @@ const initroute = (app) => {
 
     app.get("/leaderboard/v1/maps/:mapName/world", async (req, res) => {
         const { mapName } = req.params;
-
+    
         let leaderboardData = {
             "__class": "LeaderboardList",
             "entries": []
         };
-
+    
         try {
-            leaderboardData.entries.push(
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                });
+            // Read the leaderboard file
+            const leaderboardFilePath = LEADERBOARD_PATH;
+            if (fs.existsSync(leaderboardFilePath)) {
+                const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
+                const leaderboard = JSON.parse(data);
+    
+                // Check if there are entries for the mapName
+                if (leaderboard[mapName]) {
+                    // Sort the leaderboard entries by score in descending order
+                    const sortedEntries = leaderboard[mapName].sort((a, b) => b.score - a.score);
+    
+                    leaderboardData.entries = sortedEntries.map(entry => ({
+                        "__class": "LeaderboardEntry_Online",
+                        "profileId": entry.profileId,
+                        "score": entry.score,
+                        "name": entry.name,
+                        "avatar": entry.avatar,
+                        "country": entry.country,
+                        "platformId": entry.platformId,
+                        "alias": entry.alias,
+                        "aliasGender": entry.aliasGender,
+                        "jdPoints": entry.jdPoints,
+                        "portraitBorder": entry.portraitBorder,
+                        "mapName": mapName
+                    }));
+                }
+            }
+    
             res.json(leaderboardData);
         } catch (error) {
             console.error("Error:", error.message);
             res.status(500).send("Internal Server Error");
         }
     });
-
-    app.post("/profile/v2/map-ended", async (req, res) => {
-        const ticket = req.header("Authorization");
-        const clientIp = req.ip;
-        try {
-            const mapList = req.body;
-            for (let song of mapList) {
-                core.updateMostPlayed(song.mapName);
-
-                const dotwFilePath = path.join(DOTW_PATH, `${song.mapName}.json`);
-                if (fs.existsSync(dotwFilePath)) {
-                    const readFile = fs.readFileSync(dotwFilePath, 'utf-8');
-                    const JSONParFile = JSON.parse(readFile);
-                    if (JSONParFile.score > song.score) {
-                        return res.send('1');
-                    }
-                } else {
-                    const profiljson1 = await getProfileData(ticket, song, clientIp);
-                    if (!profiljson1) {
-                        return res.send('1')
-                    }
-
-                    const jsontodancerweek = {
-                        __class: "DancerOfTheWeek",
-                        score: song.score,
-                        profileId: profiljson1.profileId,
-                        gameVersion: getGameVersion(req),
-                        rank: profiljson1.rank,
-                        name: profiljson1.name,
-                        avatar: profiljson1.avatar,
-                        country: profiljson1.country,
-                        platformId: profiljson1.platformId,
-                        alias: profiljson1.alias,
-                        aliasGender: profiljson1.aliasGender,
-                        jdPoints: profiljson1.jdPoints,
-                        portraitBorder: profiljson1.portraitBorder,
-                    };
-
-                    fs.writeFileSync(dotwFilePath, JSON.stringify(jsontodancerweek, null, 2));
-                    console.log(`DOTW file for ${song.mapName} created!`);
-                    res.send('');
-                }
-            }
-        } catch (error) {
-            console.log(error)
-            res.status(200).send(''); //keep send 
-        }
-    });
+    
 
     app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
-        const dotwFilePath = path.join(DOTW_PATH, `${req.params.map}.json`);
-        if (fs.existsSync(dotwFilePath)) {
-            const readFile = fs.readFileSync(dotwFilePath, 'utf-8');
-            res.send(readFile);
-        } else {
-            res.setHeader('Content-Type', 'application/json; charset=utf-8');
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.send({
-                "__class": "DancerOfTheWeek",
-                "profileId": "00000000-0000-0000-0000-000000000000",
-                "score": 69,
-                "gameVersion": "jd2019",
-                "rank": 1,
-                "name": "NO DOTW",
-                "avatar": 1,
-                "country": 0,
-                "platformId": "3935074714266132752",
-                "alias": 0,
-                "aliasGender": 0,
-                "jdPoints": 0,
-                "portraitBorder": 0
-            });
+        const { map } = req.params;
+    
+        // Path to leaderboard file
+        const leaderboardFilePath = DOTW_PATH;
+    
+        try {
+            if (fs.existsSync(leaderboardFilePath)) {
+                const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
+                const leaderboard = JSON.parse(data);
+    
+                // Check if the map exists in the leaderboard
+                if (leaderboard[map] && leaderboard[map].length > 0) {
+                    // Find the highest score entry for this map
+                    const highestEntry = leaderboard[map].reduce((max, entry) => entry.score > max.score ? entry : max);
+    
+                    const dancerOfTheWeek = {
+                        "__class": "DancerOfTheWeek",
+                        "profileId": highestEntry.profileId,
+                        "score": highestEntry.score,
+                        "gameVersion": highestEntry.gameVersion || "jd2020",
+                        "rank": highestEntry.rank,  // Since it's the highest, assign rank 1
+                        "name": highestEntry.name,
+                        "avatar": highestEntry.avatar,
+                        "country": highestEntry.country,
+                        "platformId": highestEntry.platformId,
+                        "alias": highestEntry.alias,
+                        "aliasGender": highestEntry.aliasGender,
+                        "jdPoints": highestEntry.jdPoints,
+                        "portraitBorder": highestEntry.portraitBorder
+                    };
+    
+                    res.json(dancerOfTheWeek);
+                } else {
+                    // If no entries for the map, return default "NO DOTW" response
+                    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+                    res.setHeader('Access-Control-Allow-Origin', '*');
+                    res.json({
+                        "__class": "DancerOfTheWeek",
+                        "profileId": "00000000-0000-0000-0000-000000000000",
+                        "score": 69,
+                        "gameVersion": "jd2019",
+                        "rank": 1,
+                        "name": "NO DOTW",
+                        "avatar": 1,
+                        "country": 0,
+                        "platformId": "3935074714266132752",
+                        "alias": 0,
+                        "aliasGender": 0,
+                        "jdPoints": 0,
+                        "portraitBorder": 0
+                    });
+                }
+            } else {
+                // If leaderboard file does not exist, return default "NO DOTW" response
+                res.setHeader('Content-Type', 'application/json; charset=utf-8');
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                res.json({
+                    "__class": "DancerOfTheWeek",
+                    "profileId": "00000000-0000-0000-0000-000000000000",
+                    "score": 69,
+                    "gameVersion": "jd2019",
+                    "rank": 1,
+                    "name": "NO DOTW",
+                    "avatar": 1,
+                    "country": 0,
+                    "platformId": "3935074714266132752",
+                    "alias": 0,
+                    "aliasGender": 0,
+                    "jdPoints": 0,
+                    "portraitBorder": 0
+                });
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+            res.status(500).send("Internal Server Error");
         }
     });
+    
 };
 
 module.exports = { initroute };
