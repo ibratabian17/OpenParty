@@ -40,128 +40,74 @@ const getGameVersion = (req) => {
 };
 
 const initroute = (app) => {
-    app.post("/leaderboard/v1/maps/:mapName/friends", async (req, res) => {
+    app.get("/leaderboard/v1/maps/:mapName/:type", async (req, res) => {
         const { mapName } = req.params;
+        switch (req.params.type) {
+            case "friends":
+                return res.send({ __class: "LeaderboardList", entries: [] });
+            case "world": {
+                let leaderboardData = {
+                    "__class": "LeaderboardList",
+                    "entries": []
+                };
 
-        let leaderboardData = {
-            "__class": "LeaderboardList",
-            "entries": []
-        };
+                try {
+                    // Read the leaderboard file
+                    const leaderboardFilePath = LEADERBOARD_PATH;
+                    if (fs.existsSync(leaderboardFilePath)) {
+                        const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
+                        const leaderboard = JSON.parse(data);
 
-        try {
-            leaderboardData.entries.push({
-                "__class": "LeaderboardEntry_Online",
-                "profileId": "00000000-0000-0000-0000-000000000000",
-                "score": 13333,
-                "name": ">:(",
-                "avatar": 1,
-                "country": 0,
-                "platformId": "e3",
-                "alias": 0,
-                "aliasGender": 0,
-                "jdPoints": 0,
-                "portraitBorder": 0,
-                "mapName": mapName
-            });
-            res.json(leaderboardData);
-        } catch (error) {
-            console.error("Error:", error.message);
-            res.status(500).send("Internal Server Error");
-        }
-    });
+                        // Check if there are entries for the mapName
+                        if (leaderboard[mapName]) {
+                            // Sort the leaderboard entries by score in descending order
+                            const sortedEntries = leaderboard[mapName].sort((a, b) => b.score - a.score);
 
-    app.get("/leaderboard/v1/maps/:mapName/countries/:country", async (req, res) => {
-        const { mapName } = req.params;
+                            leaderboardData.entries = sortedEntries.map(entry => ({
+                                "__class": "LeaderboardEntry_Online",
+                                "profileId": entry.profileId,
+                                "score": entry.score,
+                                "name": entry.nickname,
+                                "avatar": entry.avatar,
+                                "country": entry.country,
+                                "platformId": entry.platformId,
+                                "alias": entry.alias,
+                                "aliasGender": entry.aliasGender,
+                                "jdPoints": entry.jdPoints,
+                                "portraitBorder": entry.portraitBorder,
+                                "mapName": mapName
+                            }));
+                        }
+                    }
 
-        let leaderboardData = {
-            "__class": "LeaderboardList",
-            "entries": []
-        };
-
-        try {
-            leaderboardData.entries.push(
-                {
-                    "__class": "LeaderboardEntry_Online",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": Math.floor(Math.random() * 1333) + 12000,
-                    "name": generateToolNickname(),
-                    "avatar": Math.floor(Math.random() * 100),
-                    "country": Math.floor(Math.random() * 20),
-                    "platformId": "e3",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0,
-                    "mapName": mapName
-                });
-            res.json(leaderboardData);
-        } catch (error) {
-            console.error("Error:", error.message);
-            res.status(500).send("Internal Server Error");
-        }
-    });
-
-    app.get("/leaderboard/v1/maps/:mapName/world", async (req, res) => {
-        const { mapName } = req.params;
-    
-        let leaderboardData = {
-            "__class": "LeaderboardList",
-            "entries": []
-        };
-    
-        try {
-            // Read the leaderboard file
-            const leaderboardFilePath = LEADERBOARD_PATH;
-            if (fs.existsSync(leaderboardFilePath)) {
-                const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
-                const leaderboard = JSON.parse(data);
-    
-                // Check if there are entries for the mapName
-                if (leaderboard[mapName]) {
-                    // Sort the leaderboard entries by score in descending order
-                    const sortedEntries = leaderboard[mapName].sort((a, b) => b.score - a.score);
-    
-                    leaderboardData.entries = sortedEntries.map(entry => ({
-                        "__class": "LeaderboardEntry_Online",
-                        "profileId": entry.profileId,
-                        "score": entry.score,
-                        "name": entry.name,
-                        "avatar": entry.avatar,
-                        "country": entry.country,
-                        "platformId": entry.platformId,
-                        "alias": entry.alias,
-                        "aliasGender": entry.aliasGender,
-                        "jdPoints": entry.jdPoints,
-                        "portraitBorder": entry.portraitBorder,
-                        "mapName": mapName
-                    }));
+                    res.json(leaderboardData);
+                } catch (error) {
+                    console.error("Error:", error.message);
+                    res.status(500).send("Internal Server Error");
                 }
             }
-    
-            res.json(leaderboardData);
-        } catch (error) {
-            console.error("Error:", error.message);
-            res.status(500).send("Internal Server Error");
         }
     });
-    
+
 
     app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
         const { map } = req.params;
-    
+
         // Path to leaderboard file
         const leaderboardFilePath = DOTW_PATH;
-    
+
         try {
             if (fs.existsSync(leaderboardFilePath)) {
                 const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
                 const leaderboard = JSON.parse(data);
-    
+                res.setHeader('Content-Type', 'application/json; charset=utf-8');
+                res.setHeader('Access-Control-Allow-Origin', '*');
+
                 // Check if the map exists in the leaderboard
                 if (leaderboard[map] && leaderboard[map].length > 0) {
                     // Find the highest score entry for this map
                     const highestEntry = leaderboard[map].reduce((max, entry) => entry.score > max.score ? entry : max);
-    
+
                     const dancerOfTheWeek = {
                         "__class": "DancerOfTheWeek",
                         "profileId": highestEntry.profileId,
@@ -177,46 +123,19 @@ const initroute = (app) => {
                         "jdPoints": highestEntry.jdPoints,
                         "portraitBorder": highestEntry.portraitBorder
                     };
-    
+
                     res.json(dancerOfTheWeek);
                 } else {
-                    // If no entries for the map, return default "NO DOTW" response
-                    res.setHeader('Content-Type', 'application/json; charset=utf-8');
-                    res.setHeader('Access-Control-Allow-Origin', '*');
                     res.json({
                         "__class": "DancerOfTheWeek",
-                        "profileId": "00000000-0000-0000-0000-000000000000",
-                        "score": 69,
                         "gameVersion": "jd2019",
-                        "rank": 1,
-                        "name": "NO DOTW",
-                        "avatar": 1,
-                        "country": 0,
-                        "platformId": "3935074714266132752",
-                        "alias": 0,
-                        "aliasGender": 0,
-                        "jdPoints": 0,
-                        "portraitBorder": 0
                     });
                 }
             } else {
                 // If leaderboard file does not exist, return default "NO DOTW" response
-                res.setHeader('Content-Type', 'application/json; charset=utf-8');
-                res.setHeader('Access-Control-Allow-Origin', '*');
                 res.json({
                     "__class": "DancerOfTheWeek",
-                    "profileId": "00000000-0000-0000-0000-000000000000",
-                    "score": 69,
                     "gameVersion": "jd2019",
-                    "rank": 1,
-                    "name": "NO DOTW",
-                    "avatar": 1,
-                    "country": 0,
-                    "platformId": "3935074714266132752",
-                    "alias": 0,
-                    "aliasGender": 0,
-                    "jdPoints": 0,
-                    "portraitBorder": 0
                 });
             }
         } catch (error) {
@@ -224,7 +143,7 @@ const initroute = (app) => {
             res.status(500).send("Internal Server Error");
         }
     });
-    
+
 };
 
 module.exports = { initroute };

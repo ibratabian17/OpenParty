@@ -55,6 +55,11 @@ function findUserFromNickname(nickname) {
   return Object.values(decryptedData).find(profile => profile.name === nickname);
 }
 
+const getGameVersion = (req) => {
+  const sku = req.header('X-SkuId') || "jd2019-pc-ww";
+  return sku.substring(0, 6) || "jd2019";
+};
+
 // Add a new user
 function addUser(profileId, userProfile) {
   decryptedData[profileId] = userProfile;
@@ -93,6 +98,45 @@ function readLeaderboard(isDotw = false) {
     return {}; // Return empty object if file doesn't exist
   }
 }
+function generateLeaderboard(UserDataList, req) {
+  // Initialize an empty leaderboard object
+  const leaderboard = {};
+  // Iterate over each user profile
+  Object.entries(UserDataList).forEach(([profileId, userProfile]) => {
+    if (userProfile.scores) {
+      // Iterate over the user's scores for each map
+      Object.entries(userProfile.scores).forEach(([mapName, scoreData]) => {
+        // Initialize the leaderboard for the map if it doesn't exist
+        if (!leaderboard[mapName]) {
+          leaderboard[mapName] = [];
+        }
+
+        // Create a leaderboard entry for this user on this map
+        const leaderboardEntry = {
+          __class: "LeaderboardEntry",
+          score: scoreData.highest, // Assuming 'highest' is the correct property for the highest score
+          profileId: profileId,
+          gameVersion: 'jd2019', // Implement the getGameVersion method if needed
+          rank: userProfile.rank,
+          name: userProfile.name,
+          avatar: userProfile.avatar,
+          country: userProfile.country,
+          platformId: userProfile.platformId,
+          alias: userProfile.alias,
+          aliasGender: userProfile.aliasGender,
+          jdPoints: userProfile.jdPoints,
+          portraitBorder: userProfile.portraitBorder
+        };
+
+        // Add the leaderboard entry to the map's leaderboard
+        leaderboard[mapName].push(leaderboardEntry);
+      });
+    }
+  });
+  console.log('[LEADERBOARD] Leaderboard List Regenerated')
+  return leaderboard;
+}
+
 
 // Helper function to save the leaderboard
 function saveLeaderboard(leaderboard, isDotw = false) {
@@ -177,72 +221,17 @@ exports.initroute = (app) => {
   
     if (matchedProfileId) {
       const userProfile = decryptedData[matchedProfileId];
-      let scoreChanged = false;
-      let updatedScoreMapName = "";
-      let updatedScore = 0;
   
       // Merge new content into existing user profile, overriding or adding properties
       Object.assign(userProfile, content);
   
-      // Implement Leaderboard System for scores
-      if (content.scores) {
-        Object.keys(content.scores).forEach(mapName => {
-          const newScore = content.scores[mapName].highest;
-          const oldScore = (userProfile.scores && userProfile.scores[mapName]?.highest) || 0;
-  
-          if (newScore > oldScore) {
-            userProfile.scores[mapName] = { highest: newScore };
-            scoreChanged = true;
-            updatedScoreMapName = mapName;
-            updatedScore = newScore;
-            console.log(`[ACC] New highest score for ${mapName}: ${newScore}`);
-          }
-        });
-      }
-  
-      if (scoreChanged) {
-        let leaderboard = readLeaderboard(false);
-        if (!leaderboard[updatedScoreMapName]) {
-          leaderboard[updatedScoreMapName] = [];
-        }
-  
-        const currentScores = leaderboard[updatedScoreMapName];
-        const existingEntryIndex = currentScores.findIndex(entry => entry.profileId === matchedProfileId);
-  
-        if (existingEntryIndex !== -1) {
-          // Update leaderboard entry if the new score is higher
-          if (currentScores[existingEntryIndex].score < updatedScore) {
-            currentScores[existingEntryIndex].score = updatedScore;
-            console.log(`[ACC] Updated leaderboard for map ${updatedScoreMapName}`);
-          }
-        } else {
-          // Add a new leaderboard entry
-          const newScoreEntry = {
-            __class: "LeaderboardEntry",
-            score: updatedScore,
-            profileId: matchedProfileId,
-            gameVersion: getGameVersion(req),
-            rank: userProfile.rank,
-            name: userProfile.name,
-            avatar: userProfile.avatar,
-            country: userProfile.country,
-            platformId: userProfile.platformId,
-            alias: userProfile.alias,
-            aliasGender: userProfile.aliasGender,
-            jdPoints: userProfile.jdPoints,
-            portraitBorder: userProfile.portraitBorder,
-            weekOptain: getWeekNumber()
-          };
-  
-          currentScores.push(newScoreEntry);
-          leaderboard[updatedScoreMapName] = currentScores;
-          saveLeaderboard(leaderboard, false);
-        }
-      }
-  
       // Save updated user profile data
       decryptedData[matchedProfileId] = userProfile;
       saveUserData(dataFilePath, decryptedData);
+
+      // Regenerate Leaderboard List
+      const leaderboardlist = generateLeaderboard(decryptedData)
+      saveLeaderboard(leaderboardlist, false);
   
       res.send(decryptedData[matchedProfileId]);
     } else {
