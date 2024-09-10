@@ -180,50 +180,6 @@ exports.initroute = (app, express, server) => {
     }
   });
 
-  app.post("/carousel/v2/pages/party", (req, res) => {
-    var search = ""
-    if (req.body.searchString != "") {
-      search = req.body.searchString
-    } else if (req.body.searchTags != undefined) {
-      search = req.body.searchTags[0]
-    } else {
-      search = ""
-    }
-    res.send(core.CloneObject(core.generateCarousel(search, "partyMap")))
-  });
-  app.post("/carousel/v2/pages/sweat", (req, res) => {
-    var search = ""
-    if (req.body.searchString != "") {
-      search = req.body.searchString
-    } else if (req.body.searchTags != undefined) {
-      search = req.body.searchTags[0]
-    } else {
-      search = ""
-    }
-    res.send(core.CloneObject(core.generateCarousel(search, "sweatMap")))
-  });
-  app.post("/carousel/v2/pages/create-challenge", (req, res) => {
-    var search = ""
-    if (req.body.searchString != "") {
-      search = req.body.searchString
-    } else if (req.body.searchTags != undefined) {
-      search = req.body.searchTags[0]
-    } else {
-      search = ""
-    }
-    res.send(core.CloneObject(core.generateCarousel(search, "create-challenge")))
-  });
-  app.post("/carousel/v2/pages/partycoop", (req, res) => {
-    var search = ""
-    if (req.body.searchString != "") {
-      search = req.body.searchString
-    } else if (req.body.searchTags != undefined) {
-      search = req.body.searchTags[0]
-    } else {
-      search = ""
-    }
-    res.send(core.CloneObject(core.generateCarousel(search, "partyMap")))
-  });
   app.post("/carousel/v2/pages/avatars", function (request, response) {
     response.send(core.main.avatars);
   });
@@ -266,19 +222,47 @@ exports.initroute = (app, express, server) => {
   app.get("/playlistdb/v1/playlists", function (request, response) {
     response.send(core.generatePlaylist().playlistdb);
   });
-  app.post("/carousel/v2/pages/jd2019-playlists", (request, response) => {
-    response.send(core.generatePlaylist().playlistcategory);
-  });
-  app.post("/carousel/v2/pages/jd2020-playlists", (request, response) => {
-    response.send(core.generatePlaylist().playlistcategory);
-  });
-  app.post("/carousel/v2/pages/jd2021-playlists", (request, response) => {
-    response.send(core.generatePlaylist().playlistcategory);
-  });
-  app.post("/carousel/v2/pages/jd2022-playlists", (request, response) => {
-    response.send(core.generatePlaylist().playlistcategory);
-  });
+  app.post("/carousel/v2/pages/:mode", (req, res) => {
+    var search = ""
+    if (req.body.searchString && req.body.searchString != "") {
+        search = req.body.searchString
+    } else if (req.body.searchTags && req.body.searchTags != undefined) {
+        search = req.body.searchTags[0]
+    } else {
+        search = ""
+    }
 
+    let action = null
+    let isPlaylist = false
+
+    switch (req.params.mode) {
+        case "party":
+        case "partycoop":
+            action = "partyMap"
+            break
+
+        case "sweat":
+            action = "sweatMap"
+            break
+
+        case "create-challenge":
+            action = "create-challenge"
+            break
+
+        case "jd2019-playlists":
+        case "jd2020-playlists":
+        case "jd2021-playlists":
+        case "jd2022-playlists":
+            isPlaylist = true
+            break
+    }
+
+    if (isPlaylist) return res.json(core.generatePlaylist().playlistcategory)
+
+    if (action != null)
+        return res.send(core.CloneObject(core.generateCarousel(search, action)))
+    else return res.json({})
+});
 
   app.get("/profile/v2/country", function (request, response) {
     var country = requestCountry(request);
@@ -286,10 +270,6 @@ exports.initroute = (app, express, server) => {
       country = "US";
     }
     response.send({ "country": country });
-  });
-
-  app.post("/carousel/v2/pages/sweat", (req, res) => {
-    res.send(core.main.sweat)
   });
 
   app.get('/leaderboard/v1/coop_points/mine', function (req, res) {
