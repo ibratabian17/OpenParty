@@ -171,7 +171,6 @@ exports.initroute = (app) => {
         try {
           const profileResponse = await axios.get(url, {
             headers: {
-              'Host': 'prod.just-dance.com',
               'User-Agent': req.headers['user-agent'],
               'Accept': req.headers['accept'] || '*/*',
               'Accept-Language': req.headers['accept-language'] || 'en-us,en',

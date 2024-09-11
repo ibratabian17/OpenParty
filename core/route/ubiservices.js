@@ -1,106 +1,159 @@
-//Game
-console.log(`[UBISOURCE] Initializing....`)
+const axios = require('axios');
+const { v4: uuidv4 } = require('uuid');
 const core = {
     main: require('../var').main,
     CloneObject: require('../helper').CloneObject,
-    generateCarousel: require('../carousel/carousel').generateCarousel, generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel, generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel, updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
+    generateCarousel: require('../carousel/carousel').generateCarousel,
+    generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel,
+    generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel,
+    updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
     signer: require('../lib/signUrl')
-}
-const settings = require('../../settings.json')
-const { v4: uuidv4 } = require('uuid');
+};
+const settings = require('../../settings.json');
+const cachedTicket = {};
 
+const prodwsurl = "https://public-ubiservices.ubi.com/";
+
+// Replace placeholders in the object
 const replaceDomainPlaceholder = (obj, domain) => {
     if (typeof obj === 'string') {
-      return obj.replace('{SettingServerDomainVarOJDP}', domain);
+        return obj.replace('{SettingServerDomainVarOJDP}', domain);
     } else if (Array.isArray(obj)) {
-      return obj.map(item => replaceDomainPlaceholder(item, domain));
-    } else if (obj !== null && typeof obj === 'object') {
-      const newObj = {};
-      for (const key in obj) {
-        newObj[key] = replaceDomainPlaceholder(obj[key], domain);
-      }
-      return newObj;
+        return obj.map(item => replaceDomainPlaceholder(item, domain));
+    } else if (obj && typeof obj === 'object') {
+        return Object.keys(obj).reduce((acc, key) => {
+            acc[key] = replaceDomainPlaceholder(obj[key], domain);
+            return acc;
+        }, {});
     }
     return obj;
-  };
+};
 
+// Get client IP from request
+const getClientIp = (req) => req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+// Placeholder function for getting the country based on IP
+const getCountryFromIp = (ip) => 'US';
+
+// Generate a fake ticket for fallback
+const generateFalseTicket = () => {
+    const start = "ew0KIC";
+    const end = "KfQ==";
+    const middleLength = 40;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let middle = '';
+
+    for (let i = 0; i < middleLength; i++) {
+        middle += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    return start + middle + end;
+};
+
+// Initialize routes
 exports.initroute = (app, express, server) => {
-    const prodwsurl = "https://public-ubiservices.ubi.com/"
-    
-    app.get('/:version/applications/:appId/configuration', function (req, res) {
+
+    // Serve application configuration
+    app.get('/:version/applications/:appId/configuration', (req, res) => {
         res.send(core.main.configuration);
     });
-    app.get('/:version/applications/:appId', function (req, res) {
+
+    // Serve alternative application configuration
+    app.get('/:version/applications/:appId', (req, res) => {
         res.send(core.main.configurationnx);
     });
 
+    // Handle session creation
     app.post("/v3/profiles/sessions", async (req, res) => {
-        const sessionId = uuidv4(); // Regenerate UUID for sessionId
-        const now = new Date();
-        const expiration = new Date(now.getTime() + 3 * 60 * 60 * 1000); // 3 hours from now
-
-        // Retrieve client IP from request headers
-        const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        // You can also retrieve client country from request headers or any other source
-
-        res.send({
-            "platformType": "uplay",
-            "ticket": "ew0KICAidmVyIjogIjIiLA0KICAiYWlkIjogIjExMjM0NTY3LWNkMTMtNGU2My1hMzJkLWJhODFmZjRlYTc1NCIsDQogICJlbnYiOiAiU3RlYW0iLA0KICAic2lkIjogImI2MzQyMDdlLTQ3NjYtNGQwMS04M2UzLWQwYzg3Y2FhYmQxOSIsDQogICJ0eXBlIjogIlJlZnJlc2giLA0KICAiZW5jIjogIkpXVCIyNTYiLA0KICAiaXYiOiAic3YwSnlEb2MwQ1hCcF8wV3k2NU1nZz09IiwNCiAgImludCI6ICJIMzQ1Mzg1Ig0KfQ==",
-            "twoFactorAuthenticationTicket": null,
-            "profileId": "67e8e343-d535-4a6a-bb6e-315c5e028d31",
-            "userId": "67e8e343-d535-4a6a-bb6e-315c5e028d31",
-            "nameOnPlatform": "NintendoSwitch",
-            "environment": "Prod",
-            "expiration": expiration.toISOString(), // Convert expiration to ISO string
-            "spaceId": "aaf29a36-17d3-4e69-b93c-7d535a0df492",
-            "clientIp": clientIp, // Dynamic client IP
-            "clientIpCountry": "ID", // Dynamic client country (You may replace "ID" with actual logic)
-            "serverTime": now.toISOString(), // Set serverTime to current time
-            "sessionId": sessionId,
-            "sessionKey": "TqCz5+J0w9e8qpLp/PLr9BCfAc30hKlEJbN0Xr+mbZa=",
-            "rememberMeTicket": null
-        })
+        const clientIp = getClientIp(req);
+        const clientIpCountry = getCountryFromIp(clientIp);
+    
+        try {
+            console.log("[ACC] Fetching Ticket From Official Server");
+    
+            // Modify headers by omitting the Host header
+            const headers = { ...req.headers };
+            delete headers.host;
+    
+            const response = await axios.post(`${prodwsurl}/v3/profiles/sessions`, req.body, { headers });
+            res.send(response.data);
+            console.log("[ACC] Using Official Ticket");
+        } catch (error) {
+            console.log("[ACC] Error fetching from Ubisoft services", error.message);
+            
+            // Fallback response in case Ubisoft service fails
+            const sessionId = uuidv4();
+            const now = new Date();
+            const expiration = new Date(now.getTime() + 3 * 60 * 60 * 1000); // 3 hours from now
+            const userTicket = generateFalseTicket();
+            const profileId = uuidv4();
+            cachedTicket[userTicket] = profileId;
+            console.log('[ACC] Generating Fake Session for ', profileId);
+    
+            res.send({
+                platformType: "uplay",
+                ticket: userTicket,
+                twoFactorAuthenticationTicket: null,
+                profileId,
+                userId: profileId,
+                nameOnPlatform: "NintendoSwitch",
+                environment: "Prod",
+                expiration: expiration.toISOString(),
+                spaceId: uuidv4(),
+                clientIp,
+                clientIpCountry,
+                serverTime: now.toISOString(),
+                sessionId,
+                sessionKey: "TqCz5+J0w9e8qpLp/PLr9BCfAc30hKlEJbN0Xr+mbZa=",
+                rememberMeTicket: null
+            });
+        }
     });
-    app.delete("/v3/profiles/sessions", (req, res) => {
-        res.send()
-    })
-
-    app.get("/v3/profiles", (req, res) => {
-        const profId = `67e8e343-d535-4a6a-bb6e-315c5e028d31/userId/${req.query.idOnPlataform}`
-        res.send({
-            "profiles": [{
-                "profileId": profId,
-                "userId": profId,
-                "platformType": "uplay",
-                "idOnPlatform": profId,
-                "nameOnPlatform": "Ryujinx"
-            }]
-        })
-    });
-
-    app.get("/v1/profiles/me/populations", (req, res) => {
-        const spaceId = `${req.query.spaceIds}/67e8e343-d535-4a6a-bb6e-315c5e028d31`
-        res.send({
-            "spaceId": spaceId,
-            "data": {
-                "US_SDK_APPLICATION_BUILD_ID": "202007232022",
-                "US_SDK_DURABLES": []
-            }
-        })
-    });
-
-    app.get("/v1/applications/34ad0f04-b141-4793-bdd4-985a9175e70d/parameters", (req, res) => {
-        //JD22
-        res.send(replaceDomainPlaceholder(require("../../database/v1/parameters.json"), settings.server.domain));
-    });
-    app.get("/v1/spaces/041c03fa-1735-4ea7-b5fc-c16546d092ca/parameters", (req, res) => {
-        //JD18
-        res.send(replaceDomainPlaceholder(require("../../database/v1/parameters2.json"), settings.server.domain))
-    });
-
     
 
-    app.post("/v3/users/:user", (request, response) => {
-        response.send();
+    // Handle session deletion
+    app.delete("/v3/profiles/sessions", (req, res) => {
+        res.send();
+    });
+
+    // Retrieve profiles based on query parameters
+    app.get("/v3/profiles", (req, res) => {
+        const profileId = `${cachedTicket[req.header('Authorization')] || 'UnknownTicket'}/userId/${req.query.idOnPlatform}`;
+        res.send({
+            profiles: [{
+                profileId,
+                userId: profileId,
+                platformType: "uplay",
+                idOnPlatform: profileId,
+                nameOnPlatform: "Ryujinx"
+            }]
+        });
+    });
+
+    // Serve population data
+    app.get("/v1/profiles/me/populations", (req, res) => {
+        const spaceId = req.query.spaceIds || uuidv4();
+        res.send({
+            spaceId,
+            data: {
+                US_SDK_APPLICATION_BUILD_ID: "202007232022",
+                US_SDK_DURABLES: []
+            }
+        });
+    });
+
+    // Serve application parameters for JD22
+    app.get("/v1/applications/34ad0f04-b141-4793-bdd4-985a9175e70d/parameters", (req, res) => {
+        res.send(replaceDomainPlaceholder(require("../../database/v1/parameters.json"), settings.server.domain));
+    });
+
+    // Serve application parameters for JD18
+    app.get("/v1/spaces/041c03fa-1735-4ea7-b5fc-c16546d092ca/parameters", (req, res) => {
+        res.send(replaceDomainPlaceholder(require("../../database/v1/parameters2.json"), settings.server.domain));
+    });
+
+    // Handle user-related requests (stubbed for now)
+    app.post("/v3/users/:user", (req, res) => {
+        res.send();
     });
 };

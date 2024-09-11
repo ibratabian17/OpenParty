@@ -51,7 +51,7 @@ function returnSongdb(input, res) {
   } else if (isParty && platform === 'nx') {
     res.send(songdb['2018'].nx);
   } else if (isDreynMOD) {
-    res.send(songdb['2017'].pcdreyn);
+    res.send(songdb['2017'].pcparty);
   } else if (isPCParty) {
     res.send(songdb['2017'].pcparty);
   } else if (year && platform) {
