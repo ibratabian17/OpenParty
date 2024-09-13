@@ -113,3 +113,7 @@ For any issues or inquiries, feel free to reach out via GitHub Issues or our com
 We gratefully acknowledge the contributions of the following individuals, whose efforts have been instrumental in the development and success of OpenParty: Wodson for JDCosmos Code, Rama for his leaked JDU Code, Devvie for JDO Code, Connor for JDWorld Code, and Mfadamo for his assistance with JDU. Special thanks to alexandregreff, XFelixBlack for their JDU code contributions, JJRoyale for JD19-22 back-end assistance, JustRex for logging Ubiserver, klucva for general help and support, adrian_flopper as the first back-end developer, and nic for various fixes and improvements.
 
 Each of these contributors has played a vital role in making OpenParty what it is today. Thank you for your hard work and dedication!
+
+## Keep This Project Active
+Saweria : [Click Me to Open Saweria](https://saweria.co/ibraaltabian17)
+Patreon : [Click Me to Open Patreon](https://www.patreon.com/ibratabian17)
