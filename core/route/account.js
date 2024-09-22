@@ -166,7 +166,7 @@ exports.initroute = (app) => {
         return { ...userProfile, ip: req.clientIp, ticket: ticket };
       } else {
         // If the profile is not found locally, fetch from external source
-        console.error(`[ACC] Asking Official Server For: `, profileId);
+        console.log(`[ACC] Asking Official Server For: `, profileId);
         const url = `https://prod.just-dance.com/profile/v2/profiles?profileIds=${encodeURIComponent(profileId)}`;
         // Modify headers by omitting the Host header
         const headers = { ...req.headers };
@@ -179,6 +179,7 @@ exports.initroute = (app) => {
           // Assume the external response contains the profile as `profileData`
           const profileData = profileResponse.data[profileId]; // Adjust according to the actual response format
           if (profileData) {
+            console.log(`[ACC] Account Saved to the server: `, profileId);
             const defaultProfile = { ...profileData, ip: req.clientIp, ticket: ticket };
 
             // Add the fetched profile to local storage
