@@ -177,7 +177,7 @@ exports.initroute = (app) => {
           });
 
           // Assume the external response contains the profile as `profileData`
-          const profileData = profileResponse.data[profileId]; // Adjust according to the actual response format
+          const profileData = profileResponse.data[0]; // Adjust according to the actual response format
           if (profileData) {
             console.log(`[ACC] Account Saved to the server: `, profileId);
             const defaultProfile = { ...profileData, ip: req.clientIp, ticket: ticket };
