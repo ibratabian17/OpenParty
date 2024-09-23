@@ -213,7 +213,7 @@ exports.initroute = (app) => {
     // Find matching profile by name or ticket
     const matchedProfileId = Object.keys(decryptedData).find(profileId => {
       const userProfile = decryptedData[profileId];
-      return userProfile.name === content.name || userProfile.ticket === ticket;
+      return userProfile.name && (userProfile.name === content.name || userProfile.ticket === ticket);
     });
   
     if (matchedProfileId) {
