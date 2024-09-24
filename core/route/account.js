@@ -161,7 +161,7 @@ exports.initroute = (app) => {
       let userProfile = decryptedData[profileId];
 
       // If the profile is found in the local data
-      if (userProfile && Object.keys(userProfile).length >= 2) {
+      if (userProfile && userProfile.name) {
         console.log(`[ACC] Account Found For: `, profileId);
         return { ...userProfile, ip: req.clientIp, ticket: ticket };
       } else {
@@ -213,11 +213,15 @@ exports.initroute = (app) => {
     // Find matching profile by name or ticket
     const matchedProfileId = Object.keys(decryptedData).find(profileId => {
       const userProfile = decryptedData[profileId];
-      return userProfile.name && (userProfile.name === content.name || userProfile.ticket === ticket);
+      return userProfile.name === content.name || userProfile.ticket === ticket;
     });
   
     if (matchedProfileId) {
       const userProfile = decryptedData[matchedProfileId];
+
+      if(!matchedProfileId.name && userProfile.name){
+        console.log('[ACC] New User Registered: ', userProfile.name)
+      }
   
       // Merge new content into existing user profile, overriding or adding properties
       Object.assign(userProfile, content);
