@@ -163,7 +163,7 @@ exports.initroute = (app) => {
       // If the profile is found in the local data
       if (userProfile && userProfile.name) {
         console.log(`[ACC] Account Found For: `, profileId);
-        return { ...userProfile, ip: req.clientIp, ticket: ticket };
+        return { ...userProfile, ip: req.clientIp, ticket: '' };
       } else {
         // If the profile is not found locally, fetch from external source
         console.log(`[ACC] Asking Official Server For: `, profileId);
@@ -184,6 +184,8 @@ exports.initroute = (app) => {
 
             // Add the fetched profile to local storage
             addUser(profileId, defaultProfile);
+
+            defaultProfile.ticket = ''
 
             return defaultProfile;
           }
