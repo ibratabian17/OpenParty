@@ -163,17 +163,18 @@ exports.initroute = (app) => {
       // If the profile is found in the local data
       if (userProfile && userProfile.name) {
         console.log(`[ACC] Account Found For: `, profileId);
-        return { ...userProfile, ip: req.clientIp, ticket: '' };
+        return { ...userProfile, ip: req.clientIp, ticket: '', profileId };
       } else {
         // If the profile is not found locally, fetch from external source
         console.log(`[ACC] Asking Official Server For: `, profileId);
         const url = `https://prod.just-dance.com/profile/v2/profiles?profileIds=${encodeURIComponent(profileId)}`;
+        console.log(url)
         // Modify headers by omitting the Host header
         const headers = { ...req.headers };
         delete headers.host;
         try {
           const profileResponse = await axios.get(url, {
-            headers 
+            headers
           });
 
           // Assume the external response contains the profile as `profileData`
@@ -192,7 +193,10 @@ exports.initroute = (app) => {
         } catch (error) {
           console.error(`[ACC] Error fetching profile for ${profileId}:`, error.message);
           addUser(profileId, { ip: req.clientIp, ticket: ticket });
-          return {}; // If fetch fails, return an empty profile object
+          return {
+            "profileId": profileId,
+            "isExisting": false
+          }; // If fetch fails, return an empty profile object
         }
       }
     }));
@@ -206,28 +210,28 @@ exports.initroute = (app) => {
     const content = req.body;
     content.ticket = ticket;
     const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`);
-  
+
     // Load user data if not already loaded
     if (!decryptedData) {
       loadUserData(dataFilePath);
     }
-  
+
     // Find matching profile by name or ticket
     const matchedProfileId = Object.keys(decryptedData).find(profileId => {
       const userProfile = decryptedData[profileId];
       return userProfile.name === content.name || userProfile.ticket === ticket;
     });
-  
+
     if (matchedProfileId) {
       const userProfile = decryptedData[matchedProfileId];
 
-      if(!matchedProfileId.name && userProfile.name){
+      if (!matchedProfileId.name && userProfile.name) {
         console.log('[ACC] New User Registered: ', userProfile.name)
       }
-  
+
       // Merge new content into existing user profile, overriding or adding properties
       Object.assign(userProfile, content);
-  
+
       // Save updated user profile data
       decryptedData[matchedProfileId] = userProfile;
       saveUserData(dataFilePath, decryptedData);
@@ -235,7 +239,7 @@ exports.initroute = (app) => {
       // Regenerate Leaderboard List
       const leaderboardlist = generateLeaderboard(decryptedData)
       saveLeaderboard(leaderboardlist, false);
-  
+
       res.send(decryptedData[matchedProfileId]);
     } else {
       console.error("[ACC] Can't Find UUID: ", matchedProfileId);
