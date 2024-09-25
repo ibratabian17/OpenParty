@@ -168,13 +168,16 @@ exports.initroute = (app) => {
         // If the profile is not found locally, fetch from external source
         console.log(`[ACC] Asking Official Server For: `, profileId);
         const url = `https://prod.just-dance.com/profile/v2/profiles?profileIds=${encodeURIComponent(profileId)}`;
-        console.log(url)
-        // Modify headers by omitting the Host header
-        const headers = { ...req.headers };
-        delete headers.host;
         try {
           const profileResponse = await axios.get(url, {
-            headers
+            headers: {
+              'Host': 'prod.just-dance.com',
+              'User-Agent': req.headers['user-agent'],
+              'Accept': req.headers['accept'] || '/',
+              'Accept-Language': 'en-us,en',
+              'Authorization': req.headers['authorization'] ,
+              'X-SkuId': req.headers['x-skuid'],
+            }
           });
 
           // Assume the external response contains the profile as `profileData`
