@@ -3,13 +3,14 @@ const axios = require("axios");
 const path = require('path');
 const { getSavefilePath } = require('../helper');
 const { encrypt, decrypt } = require('../lib/encryptor');
+const { updateMostPlayed } = require('../carousel/carousel');
 
 const secretKey = require('../../database/encryption.json').encrpytion.userEncrypt;
 const ubiwsurl = "https://public-ubiservices.ubi.com";
 const prodwsurl = "https://prod.just-dance.com";
-let decryptedData = null;
-let cachedLeaderboard = null;
-let cachedDotw = null;
+let decryptedData;
+let cachedLeaderboard;
+let cachedDotw;
 
 const LEADERBOARD_PATH = path.join(getSavefilePath(), 'leaderboard/leaderboard.json');
 const DOTW_PATH = path.join(getSavefilePath(), 'leaderboard/dotw.json');
@@ -47,7 +48,12 @@ function saveUserData(dataFilePath, data) {
 
 // Find user by ticket
 function findUserFromTicket(ticket) {
-  return Object.values(decryptedData).find(profile => profile.ticket === ticket);
+  const matchedProfileId = Object.keys(decryptedData).find(profileId => {
+    const userProfile = decryptedData[profileId];
+    return userProfile.ticket === ticket && userProfile.name;
+});
+if (!matchedProfileId) console.log('[ACC] Unable To Find User From Ticket')
+return matchedProfileId
 }
 
 // Find user by nickname
@@ -81,7 +87,7 @@ function readLeaderboard(isDotw = false) {
         cachedLeaderboard = data
         return JSON.parse(data);
       } else {
-        return cachedLeaderboard
+        return cachedLeaderboard || {}
       }
     }
     return {}; // Return empty object if file doesn't exist
@@ -92,7 +98,7 @@ function readLeaderboard(isDotw = false) {
         cachedDotw = data
         return JSON.parse(data);
       } else {
-        return cachedDotw
+        return cachedDotw || {}
       }
     }
     return {}; // Return empty object if file doesn't exist
@@ -141,6 +147,12 @@ function generateLeaderboard(UserDataList, req) {
 // Helper function to save the leaderboard
 function saveLeaderboard(leaderboard, isDotw = false) {
   fs.writeFileSync(isDotw ? DOTW_PATH : LEADERBOARD_PATH, JSON.stringify(leaderboard, null, 2));
+}
+
+//Load User Data
+if (!decryptedData) {
+  const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`);
+  loadUserData(dataFilePath);
 }
 
 // Initialize routes
@@ -253,14 +265,15 @@ exports.initroute = (app) => {
 
   app.post("/profile/v2/map-ended", async (req, res) => {
     const ticket = req.header("Authorization");
+    const SkuId = req.header("X-SkuId") || "jd2019";
     const clientIp = req.ip;
 
     try {
       const mapList = req.body;
-      let leaderboard = readLeaderboard(true);  // Load the current leaderboard data
+      var leaderboard = readLeaderboard(true);  // Load the current leaderboard data
 
       for (let song of mapList) {
-        core.updateMostPlayed(song.mapName);
+        updateMostPlayed(song.mapName);
 
         // Initialize the map in the leaderboard if it doesn't exist
         if (!leaderboard[song.mapName]) {
@@ -291,7 +304,7 @@ exports.initroute = (app) => {
             __class: "LeaderboardEntry",
             score: song.score,
             profileId: profile.profileId,
-            gameVersion: getGameVersion(req),
+            gameVersion: SkuId.split('-')[0],
             rank: profile.rank,
             name: profile.name,
             avatar: profile.avatar,
