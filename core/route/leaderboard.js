@@ -43,26 +43,76 @@ const initroute = (app) => {
     app.get("/leaderboard/v1/maps/:mapName/:type", async (req, res) => {
         const { mapName } = req.params;
         switch (req.params.type) {
+            case "dancer-of-the-week":
+                try {
+                    if (fs.existsSync(DOTW_PATH)) {
+                        const data = fs.readFileSync(DOTW_PATH, 'utf-8');
+                        const leaderboard = JSON.parse(data);
+    
+                        // Check if the map exists in the leaderboard
+                        if (leaderboard[mapName] && leaderboard[mapName].length > 0) {
+                            // Find the highest score entry for this map
+                            const highestEntry = leaderboard[mapName].reduce((max, entry) => entry.score > max.score ? entry : max);
+    
+                            const dancerOfTheWeek = {
+                                "__class": "DancerOfTheWeek",
+                                "profileId": highestEntry.profileId,
+                                "score": highestEntry.score,
+                                "gameVersion": highestEntry.gameVersion || "jd2020",
+                                "rank": highestEntry.rank,  // Since it's the highest, assign rank 1
+                                "name": highestEntry.name,
+                                "avatar": highestEntry.avatar,
+                                "country": highestEntry.country,
+                                "platformId": highestEntry.platformId,
+                                "alias": highestEntry.alias,
+                                "aliasGender": highestEntry.aliasGender,
+                                "jdPoints": highestEntry.jdPoints,
+                                "portraitBorder": highestEntry.portraitBorder
+                            };
+    
+                            res.json(dancerOfTheWeek);
+                        } else {
+                            res.json({
+                                "__class": "DancerOfTheWeek",
+                                "gameVersion": "jd2019",
+                            });
+                        }
+                    } else {
+                        console.log('[ACC] Unable to find DOTW Files')
+                        // If leaderboard file does not exist, return default "NO DOTW" response
+                        res.json({
+                            "__class": "DancerOfTheWeek",
+                            "gameVersion": "jd2019",
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error:", error.message);
+                    res.status(500).send("Internal Server Error");
+                }
+                break; // <--- Add this break
+    
             case "friends":
-                return res.send({ __class: "LeaderboardList", entries: [] });
+                res.send({ __class: "LeaderboardList", entries: [] });
+                break; // <--- Add this break
+    
             case "world": {
                 let leaderboardData = {
                     "__class": "LeaderboardList",
                     "entries": []
                 };
-
+    
                 try {
                     // Read the leaderboard file
                     const leaderboardFilePath = LEADERBOARD_PATH;
                     if (fs.existsSync(leaderboardFilePath)) {
                         const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
                         const leaderboard = JSON.parse(data);
-
+    
                         // Check if there are entries for the mapName
                         if (leaderboard[mapName]) {
                             // Sort the leaderboard entries by score in descending order
                             const sortedEntries = leaderboard[mapName].sort((a, b) => b.score - a.score);
-
+    
                             leaderboardData.entries = sortedEntries.map(entry => ({
                                 "__class": "LeaderboardEntry_Online",
                                 "profileId": entry.profileId,
@@ -79,70 +129,19 @@ const initroute = (app) => {
                             }));
                         }
                     }
-
+    
                     res.json(leaderboardData);
                 } catch (error) {
                     console.error("Error:", error.message);
                     res.status(500).send("Internal Server Error");
                 }
+                break; // <--- Add this break
             }
         }
     });
+    
 
 
-    app.get("/leaderboard/v1/maps/:map/dancer-of-the-week", (req, res) => {
-        const { map } = req.params;
-
-        // Path to leaderboard file
-        const leaderboardFilePath = DOTW_PATH;
-
-        try {
-            if (fs.existsSync(leaderboardFilePath)) {
-                const data = fs.readFileSync(leaderboardFilePath, 'utf-8');
-                const leaderboard = JSON.parse(data);
-                res.setHeader('Content-Type', 'application/json; charset=utf-8');
-                res.setHeader('Access-Control-Allow-Origin', '*');
-
-                // Check if the map exists in the leaderboard
-                if (leaderboard[map] && leaderboard[map].length > 0) {
-                    // Find the highest score entry for this map
-                    const highestEntry = leaderboard[map].reduce((max, entry) => entry.score > max.score ? entry : max);
-
-                    const dancerOfTheWeek = {
-                        "__class": "DancerOfTheWeek",
-                        "profileId": highestEntry.profileId,
-                        "score": highestEntry.score,
-                        "gameVersion": highestEntry.gameVersion || "jd2020",
-                        "rank": highestEntry.rank,  // Since it's the highest, assign rank 1
-                        "name": highestEntry.name,
-                        "avatar": highestEntry.avatar,
-                        "country": highestEntry.country,
-                        "platformId": highestEntry.platformId,
-                        "alias": highestEntry.alias,
-                        "aliasGender": highestEntry.aliasGender,
-                        "jdPoints": highestEntry.jdPoints,
-                        "portraitBorder": highestEntry.portraitBorder
-                    };
-
-                    res.json(dancerOfTheWeek);
-                } else {
-                    res.json({
-                        "__class": "DancerOfTheWeek",
-                        "gameVersion": "jd2019",
-                    });
-                }
-            } else {
-                // If leaderboard file does not exist, return default "NO DOTW" response
-                res.json({
-                    "__class": "DancerOfTheWeek",
-                    "gameVersion": "jd2019",
-                });
-            }
-        } catch (error) {
-            console.error("Error:", error.message);
-            res.status(500).send("Internal Server Error");
-        }
-    });
 
 };
 

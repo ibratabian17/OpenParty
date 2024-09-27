@@ -271,6 +271,7 @@ exports.initroute = (app) => {
     try {
       const mapList = req.body;
       var leaderboard = readLeaderboard(true);  // Load the current leaderboard data
+      console.log(leaderboard)
 
       for (let song of mapList) {
         updateMostPlayed(song.mapName);
@@ -301,10 +302,10 @@ exports.initroute = (app) => {
         } else {
           // No existing entry for this profile, add a new one
           const newScoreEntry = {
-            __class: "LeaderboardEntry",
-            score: song.score,
+            __class: "DancerOfTheWeek",
             profileId: profile.profileId,
-            gameVersion: SkuId.split('-')[0],
+            score: song.score,
+            gameVersion: SkuId.split('-')[0] || "jd2019",
             rank: profile.rank,
             name: profile.name,
             avatar: profile.avatar,
@@ -315,7 +316,7 @@ exports.initroute = (app) => {
             jdPoints: profile.jdPoints,
             portraitBorder: profile.portraitBorder,
             weekOptain: getWeekNumber()
-          };
+        }
 
           currentScores.push(newScoreEntry);
           leaderboard[song.mapName] = currentScores
