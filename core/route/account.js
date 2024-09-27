@@ -51,9 +51,8 @@ function findUserFromTicket(ticket) {
   const matchedProfileId = Object.keys(decryptedData).find(profileId => {
     const userProfile = decryptedData[profileId];
     return userProfile.ticket === ticket && userProfile.name;
-});
-if (!matchedProfileId) console.log('[ACC] Unable To Find User From Ticket')
-return matchedProfileId
+  });
+  return matchedProfileId
 }
 
 // Find user by nickname
@@ -74,10 +73,6 @@ function addUser(profileId, userProfile) {
   saveUserData(dataFilePath, decryptedData);
 }
 
-function findUserFromTicket(ticket) {
-  return Object.values(decryptedData).find(profile => profile.ticket === ticket);
-}
-
 // Helper function to read the leaderboard
 function readLeaderboard(isDotw = false) {
   if (!isDotw) {
@@ -90,7 +85,7 @@ function readLeaderboard(isDotw = false) {
         return cachedLeaderboard || {}
       }
     }
-    return {}; // Return empty object if file doesn't exist
+    return JSON.parse(Leaderboard); // Return empty object if file doesn't exist
   } else {
     if (!cachedDotw) {
       if (fs.existsSync(DOTW_PATH)) {
@@ -101,7 +96,7 @@ function readLeaderboard(isDotw = false) {
         return cachedDotw || {}
       }
     }
-    return {}; // Return empty object if file doesn't exist
+    return JSON.parse(cachedDotw); // Return empty object if file doesn't exist
   }
 }
 function generateLeaderboard(UserDataList, req) {
@@ -271,31 +266,37 @@ exports.initroute = (app) => {
     try {
       const mapList = req.body;
       var leaderboard = readLeaderboard(true);  // Load the current leaderboard data
-      console.log(leaderboard)
 
       for (let song of mapList) {
         updateMostPlayed(song.mapName);
 
         // Initialize the map in the leaderboard if it doesn't exist
         if (!leaderboard[song.mapName]) {
+          console.log(`${JSON.stringify(leaderboard)} doesnt exist`)
           leaderboard[song.mapName] = [];
         }
 
         // Find the user profile
-        const profile = findUserFromTicket(ticket);
+        const profile = findUserFromTicket(ticket); 
         if (!profile) {
+          console.log('[DOTW] Unable to find the Profile')
+          return res.send('1');
+        }
+        const currentProfile = decryptedData[profile]
+        if (!currentProfile) {
+          console.log('[DOTW] Unable to find Pid: ', currentProfile)
           return res.send('1');
         }
 
         // Check if an entry for this profileId already exists
         const currentScores = leaderboard[song.mapName];
-        const existingEntryIndex = currentScores.findIndex(entry => entry.profileId === profile.profileId);
+        const existingEntryIndex = currentScores.findIndex(entry => entry.profileId === profile);
 
         if (existingEntryIndex !== -1) {
           // Entry exists for this profile, update if the new score is higher
-          if (currentScores[existingEntryIndex].score < song.score) {
+          if ((currentScores[existingEntryIndex].score < song.score) && song.score <= 13334) {
             currentScores[existingEntryIndex].score = song.score;
-            console.log(`[LEADERBOARD] Updated score dotw list on map ${song.mapName}`);
+            console.log(`[DOTW] Updated score dotw list on map ${song.mapName}`);
           } else {
             return res.send('1'); // Do nothing if the new score is lower
           }
@@ -303,24 +304,24 @@ exports.initroute = (app) => {
           // No existing entry for this profile, add a new one
           const newScoreEntry = {
             __class: "DancerOfTheWeek",
-            profileId: profile.profileId,
+            profileId: profile,
             score: song.score,
             gameVersion: SkuId.split('-')[0] || "jd2019",
-            rank: profile.rank,
-            name: profile.name,
-            avatar: profile.avatar,
-            country: profile.country,
-            platformId: profile.platformId,
-            alias: profile.alias,
-            aliasGender: profile.aliasGender,
-            jdPoints: profile.jdPoints,
-            portraitBorder: profile.portraitBorder,
+            rank: currentProfile.rank,
+            name: currentProfile.name,
+            avatar: currentProfile.avatar,
+            country: currentProfile.country,
+            platformId: currentProfile.platformId,
+            alias: currentProfile.alias,
+            aliasGender: currentProfile.aliasGender,
+            jdPoints: currentProfile.jdPoints,
+            portraitBorder: currentProfile.portraitBorder,
             weekOptain: getWeekNumber()
         }
 
           currentScores.push(newScoreEntry);
           leaderboard[song.mapName] = currentScores
-          console.log(`[LEADERBOARD] Added new score for ${profile.name} on map ${song.mapName}`);
+          console.log(`[DOTW] Added new score for ${currentProfile.name} on map ${song.mapName}`);
         }
       }
 
