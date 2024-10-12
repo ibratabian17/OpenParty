@@ -13,6 +13,7 @@ const core = {
 }
 const path = require('path');
 const signer = require('../lib/signUrl')
+const ipResolver = require('../lib/ipResolver')
 const deployTime = Date.now()
 
 //load nohud list
@@ -356,7 +357,7 @@ exports.initroute = (app, express, server) => {
 
   // Add ServerStats
   app.get("/status/v1/ping", (req, res) => {
-    const ip = req.ip;
+    const ip = ipResolver.getClientIp(req);
     const platform = req.header('X-SkuId') || "unknown";
     resetTimeout(ip, platform);
     res.send([]);
