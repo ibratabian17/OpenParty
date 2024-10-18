@@ -296,6 +296,7 @@ exports.initroute = (app) => {
           // Entry exists for this profile, update if the new score is higher
           if ((currentScores[existingEntryIndex].score < song.score) && song.score <= 13334) {
             currentScores[existingEntryIndex].score = song.score;
+            currentScores[existingEntryIndex].weekOptain = getWeekNumber()
             console.log(`[DOTW] Updated score dotw list on map ${song.mapName}`);
           } else {
             return res.send('1'); // Do nothing if the new score is lower
