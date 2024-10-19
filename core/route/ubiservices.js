@@ -7,10 +7,12 @@ const core = {
     generateSweatCarousel: require('../carousel/carousel').generateSweatCarousel,
     generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel,
     updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
-    signer: require('../lib/signUrl')
+    signer: require('../lib/signUrl'),
+    ipResolver: require('../lib/ipResolver')
 };
 const settings = require('../../settings.json');
 const cachedTicket = {};
+const ipCache = {}; // Cache untuk menyimpan ticket berdasarkan IP
 
 const prodwsurl = "https://public-ubiservices.ubi.com/";
 
@@ -30,7 +32,7 @@ const replaceDomainPlaceholder = (obj, domain) => {
 };
 
 // Get client IP from request
-const getClientIp = (req) => req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+const getClientIp = (req) => ipResolver.getClientIp(req);
 
 // Placeholder function for getting the country based on IP
 const getCountryFromIp = (ip) => 'US';
@@ -81,6 +83,12 @@ exports.initroute = (app, express, server) => {
         } catch (error) {
             console.log("[ACC] Error fetching from Ubisoft services", error.message);
             
+            // Check if there's already a session for this IP
+            if (ipCache[clientIp]) {
+                console.log(`[ACC] Returning cached session cracked for IP ${clientIp}`);
+                return res.send(ipCache[clientIp]);
+            }
+
             // Fallback response in case Ubisoft service fails
             const sessionId = uuidv4();
             const now = new Date();
@@ -88,9 +96,10 @@ exports.initroute = (app, express, server) => {
             const userTicket = generateFalseTicket();
             const profileId = uuidv4();
             cachedTicket[userTicket] = profileId;
+
             console.log('[ACC] Generating Fake Session for ', profileId);
     
-            res.send({
+            const sessionData = {
                 platformType: "uplay",
                 ticket: userTicket,
                 twoFactorAuthenticationTicket: null,
@@ -106,11 +115,15 @@ exports.initroute = (app, express, server) => {
                 sessionId,
                 sessionKey: "TqCz5+J0w9e8qpLp/PLr9BCfAc30hKlEJbN0Xr+mbZa=",
                 rememberMeTicket: null
-            });
+            };
+
+            // Cache the session based on the IP
+            ipCache[clientIp] = sessionData;
+
+            res.send(sessionData);
         }
     });
     
-
     // Handle session deletion
     app.delete("/v3/profiles/sessions", (req, res) => {
         res.send();
