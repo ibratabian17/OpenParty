@@ -32,7 +32,7 @@ const replaceDomainPlaceholder = (obj, domain) => {
 };
 
 // Get client IP from request
-const getClientIp = (req) => ipResolver.getClientIp(req);
+const getClientIp = (req) => core.ipResolver.getClientIp(req);
 
 // Placeholder function for getting the country based on IP
 const getCountryFromIp = (ip) => 'US';
