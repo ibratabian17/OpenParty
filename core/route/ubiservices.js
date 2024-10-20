@@ -8,8 +8,9 @@ const core = {
     generateCoopCarousel: require('../carousel/carousel').generateCoopCarousel,
     updateMostPlayed: require('../carousel/carousel').updateMostPlayed,
     signer: require('../lib/signUrl'),
-    ipResolver: require('../lib/ipResolver')
+    ipResolver: require('../lib/ipResolver'),
 };
+const { addUserId, updateUserTicket } = require('./account');
 const settings = require('../../settings.json');
 const cachedTicket = {};
 const ipCache = {}; // Cache untuk menyimpan ticket berdasarkan IP
@@ -41,7 +42,7 @@ const getCountryFromIp = (ip) => 'US';
 const generateFalseTicket = () => {
     const start = "ew0KIC";
     const end = "KfQ==";
-    const middleLength = 40;
+    const middleLength = 60;
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let middle = '';
 
@@ -79,6 +80,8 @@ exports.initroute = (app, express, server) => {
     
             const response = await axios.post(`${prodwsurl}/v3/profiles/sessions`, req.body, { headers });
             res.send(response.data);
+            addUserId(response.data.profileId, response.data.userId)
+            updateUserTicket(response.data.profileId, `Ubi_v1 ${response.data.ticket}`)
             console.log("[ACC] Using Official Ticket");
         } catch (error) {
             console.log("[ACC] Error fetching from Ubisoft services", error.message);
@@ -114,7 +117,7 @@ exports.initroute = (app, express, server) => {
                 serverTime: now.toISOString(),
                 sessionId,
                 sessionKey: "TqCz5+J0w9e8qpLp/PLr9BCfAc30hKlEJbN0Xr+mbZa=",
-                rememberMeTicket: null
+                rememberMeTicket: null,
             };
 
             // Cache the session based on the IP
