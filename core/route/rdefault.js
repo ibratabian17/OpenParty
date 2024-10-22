@@ -3,6 +3,7 @@ console.log(`[DEFROUTE] Initializing....`)
 var requestCountry = require("request-country");
 const settings = require('../../settings.json');
 var md5 = require('md5');
+const fs = require('fs');
 const core = {
   main: require('../var').main,
   generatePlaylist: require('../lib/playlist').generatePlaylist,
@@ -105,7 +106,7 @@ const resetTimeout = (ip, platform) => {
 exports.initroute = (app, express, server) => {
   app.get("/songdb/v1/songs", (req, res) => {
     if (checkAuth(req, res)) {
-      returnSongdb(req.header('X-SkuId'), res);
+      returnSongdb(req.header('X-SkuId') || "jd2022-pc-ww", res);
     }
   });
 
@@ -226,44 +227,44 @@ exports.initroute = (app, express, server) => {
   app.post("/carousel/v2/pages/:mode", (req, res) => {
     var search = ""
     if (req.body.searchString && req.body.searchString != "") {
-        search = req.body.searchString
+      search = req.body.searchString
     } else if (req.body.searchTags && req.body.searchTags != undefined) {
-        search = req.body.searchTags[0]
+      search = req.body.searchTags[0]
     } else {
-        search = ""
+      search = ""
     }
 
     let action = null
     let isPlaylist = false
 
     switch (req.params.mode) {
-        case "party":
-        case "partycoop":
-            action = "partyMap"
-            break
+      case "party":
+      case "partycoop":
+        action = "partyMap"
+        break
 
-        case "sweat":
-            action = "sweatMap"
-            break
+      case "sweat":
+        action = "sweatMap"
+        break
 
-        case "create-challenge":
-            action = "create-challenge"
-            break
+      case "create-challenge":
+        action = "create-challenge"
+        break
 
-        case "jd2019-playlists":
-        case "jd2020-playlists":
-        case "jd2021-playlists":
-        case "jd2022-playlists":
-            isPlaylist = true
-            break
+      case "jd2019-playlists":
+      case "jd2020-playlists":
+      case "jd2021-playlists":
+      case "jd2022-playlists":
+        isPlaylist = true
+        break
     }
 
     if (isPlaylist) return res.json(core.generatePlaylist().playlistcategory)
 
     if (action != null)
-        return res.send(core.CloneObject(core.generateCarousel(search, action)))
+      return res.send(core.CloneObject(core.generateCarousel(search, action)))
     else return res.json({})
-});
+  });
 
   app.get("/profile/v2/country", function (request, response) {
     var country = requestCountry(request);
@@ -390,6 +391,19 @@ exports.initroute = (app, express, server) => {
       deployTime: deployTime,
       currentOnlinePlatform: platformCounts
     });
+  });
+
+
+
+  app.get('/openparty/server/:page', function (req, res) {
+    const filePath = path.join(__dirname, '../page/', req.params.page);
+  
+    // Check if the file exists before trying to send it
+    if (fs.existsSync(filePath)) {
+      res.sendFile(filePath);
+    } else {
+      res.status(404).send('Not Found');
+    }
   });
 
 };

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Test System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #121212; /* Night mode background */
+      color: #e0e0e0; /* Light text on dark background */
+    }
+    label {
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background-color: #1f1f1f; /* Dark container background */
+      border: 1px solid #333;
+      border-radius: 10px;
+    }
+    input, textarea, select {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #333;
+      color: #e0e0e0;
+      border: 1px solid #555;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff4081;
+    }
+    pre {
+      background-color: #1f1f1f;
+      color: #e0e0e0;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>URL Test System</h2>
+
+    <label for="url">Enter URL:</label>
+    <input type="text" id="url" placeholder="Enter URL">
+
+    <label for="method">Select Request Method:</label>
+    <select id="method">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+
+    <label for="headers">Enter Headers (JSON format):</label>
+    <textarea id="headers" rows="4" placeholder='{"Content-Type": "application/json"}'></textarea>
+
+    <label for="body">Enter Body (if POST/PUT) (JSON format):</label>
+    <textarea id="body" rows="4" placeholder='{"key": "value"}'></textarea>
+
+    <button onclick="sendRequest()">Send Request</button>
+
+    <h3>Output:</h3>
+    <pre id="output">Waiting for response...</pre>
+  </div>
+
+  <script>
+    async function sendRequest() {
+      const url = document.getElementById('url').value;
+      const method = document.getElementById('method').value;
+      const headersInput = document.getElementById('headers').value;
+      const bodyInput = document.getElementById('body').value;
+      const output = document.getElementById('output');
+
+      // Attempt to parse headers as JSON
+      let headers = {};
+      try {
+        headers = JSON.parse(headersInput);
+      } catch (e) {
+        output.textContent = 'Invalid headers. Make sure they are in JSON format.';
+        headers = {}
+      }
+
+      // Setup fetch options
+      const options = {
+        method: method,
+        headers: headers
+      };
+
+      // Add body for POST or PUT methods
+      if (method === 'POST' || method === 'PUT') {
+        try {
+          options.body = JSON.stringify(JSON.parse(bodyInput));
+          headers["Content-Type"] = "application/json"
+        } catch (e) {
+          options.body = bodyInput;
+        }
+      }
+
+      try {
+        const response = await fetch(url, options);
+        const responseText = await response.text();
+
+        // Display status and response
+        output.textContent = `Status: ${response.status}\n\nResponse:\n${responseText}`;
+      } catch (error) {
+        // Handle fetch error
+        output.textContent = `Error: ${error.message}`;
+      }
+    }
+  </script>
+</body>
+</html>
