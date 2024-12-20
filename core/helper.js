@@ -47,15 +47,34 @@ function getSavefilePath() {
 
 
 //Check Savedata Dir before starting
-if (!fs.existsSync(getSavefilePath())) {
-  console.log(`[HELPER] ${getSavefilePath()} Doesn't Exist!`)
-  fs.mkdirSync(getSavefilePath());
-  fs.mkdirSync(path.join(getSavefilePath(), 'account/profiles'), { recursive: true });
-  fs.mkdirSync(path.join(getSavefilePath(), 'carousel/pages'), { recursive: true });
-  fs.mkdirSync(path.join(getSavefilePath(), 'Platforms/openparty-all'), { recursive: true });
-  fs.mkdirSync(path.join(getSavefilePath(), 'leaderboard/dotw'), { recursive: true });
-  fs.mkdirSync(path.join(getSavefilePath(), 'server-log'), { recursive: true });
-}
+const ensureDirectoryExists = (dirPath) => {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+    console.log(`[HELPER] Created directory: ${dirPath}`);
+  }
+};
+
+const baseDir = getSavefilePath();
+console.log(`[HELPER] Checking SaveData dir`);
+
+// Pastikan direktori utama ada
+ensureDirectoryExists(baseDir);
+
+// Pastikan semua subfolder ada
+const directoriesToEnsure = [
+  'account/profiles',
+  'carousel/pages',
+  'Platforms/openparty-all',
+  'leaderboard/dotw',
+  'server-log',
+  'wdf',
+];
+
+directoriesToEnsure.forEach((relativePath) => {
+  const fullPath = path.join(baseDir, relativePath);
+  ensureDirectoryExists(fullPath);
+});
+
 
 function loadJsonFile(layeredPath, originalPath) {
   const savedDataPath = path.join(getSavefilePath(), layeredPath);
