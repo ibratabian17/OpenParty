@@ -89,6 +89,36 @@ function updateUserTicket(profileId, Ticket) {
   saveUserData(dataFilePath, decryptedData);
 }
 
+// Update or override user data
+function updateUser(profileId, userProfile) {
+  if (!decryptedData[profileId]) {
+      console.log(`[ACC] User ${profileId} not found. Creating new user.`);
+      decryptedData[profileId] = userProfile; // Create a new profile
+  } else {
+      // Merge new data into the existing profile
+      decryptedData[profileId] = {
+          ...decryptedData[profileId], // Existing data
+          ...userProfile              // New data to override specific fields
+      };
+  }
+
+  // Save the updated data
+  const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`);
+  saveUserData(dataFilePath, decryptedData);
+}
+
+
+// Retrieve user data
+function getUserData(profileId) {
+  if (decryptedData[profileId]) {
+      return decryptedData[profileId];
+  } else {
+      console.log(`[ACC] User ${profileId} not found.`);
+      return null;
+  }
+}
+
+
 // Helper function to read the leaderboard
 function readLeaderboard(isDotw = false) {
   if (!isDotw) {
@@ -170,6 +200,8 @@ module.exports = {
   loadUserData,
   addUser,
   addUserId,
+  getUserData,
+  updateUser,
   updateUserTicket,
   cachedLeaderboard,
   cachedDotw,

@@ -10,7 +10,7 @@ const core = {
     signer: require('../lib/signUrl'),
     ipResolver: require('../lib/ipResolver'),
 };
-const { addUserId, updateUserTicket } = require('./account');
+const { addUserId, updateUserTicket, getUserData, updateUser } = require('./account');
 const settings = require('../../settings.json');
 const cachedTicket = {};
 const ipCache = {}; // Cache untuk menyimpan ticket berdasarkan IP
@@ -53,6 +53,30 @@ const generateFalseTicket = () => {
     return start + middle + end;
 };
 
+const atob = (base64) => Buffer.from(base64, 'base64').toString('utf-8');
+const parseCustomAuthHeader = (authorization) => {
+    const [method, encoded] = authorization.split(" ");
+    if (method !== "uplaypc_v1" || !encoded.includes("t=")) {
+        return null;
+    }
+
+    // Ambil bagian setelah "t=" pertama saja
+    const encodedPart = encoded.substring(encoded.indexOf("t=") + 2);
+
+    // Decode Base64 setelah "t="
+    const decoded = atob(encodedPart);
+    const [tag, encodedProfileId, profileId, username, email, encodedPassword] = decoded.split(":");
+
+    if (tag !== "JDParty") return null;
+
+    return {
+        profileId,
+        username,
+        email,
+        password: atob(encodedPassword),
+    };
+};
+
 // Initialize routes
 exports.initroute = (app, express, server) => {
 
@@ -71,61 +95,91 @@ exports.initroute = (app, express, server) => {
         const clientIp = getClientIp(req);
         const clientIpCountry = getCountryFromIp(clientIp);
     
-        try {
-            console.log("[ACC] Fetching Ticket From Official Server");
-    
-            // Modify headers by omitting the Host header
-            const headers = { ...req.headers };
-            delete headers.host;
-    
-            const response = await axios.post(`${prodwsurl}/v3/profiles/sessions`, req.body, { headers });
-            res.send(response.data);
-            addUserId(response.data.profileId, response.data.userId)
-            updateUserTicket(response.data.profileId, `Ubi_v1 ${response.data.ticket}`)
-            console.log("[ACC] Using Official Ticket");
-        } catch (error) {
-            console.log("[ACC] Error fetching from Ubisoft services", error.message);
-            
-            // Check if there's already a session for this IP
-            if (ipCache[clientIp]) {
-                console.log(`[ACC] Returning cached session cracked for IP ${clientIp}`);
-                return res.send(ipCache[clientIp]);
-            }
-
-            // Fallback response in case Ubisoft service fails
-            const sessionId = uuidv4();
+        // Helper to generate session data
+        const generateSessionData = (profileId, username, clientIp, clientIpCountry, ticket) => {
             const now = new Date();
-            const expiration = new Date(now.getTime() + 3 * 60 * 60 * 1000); // 3 hours from now
-            const userTicket = generateFalseTicket();
-            const profileId = uuidv4();
-            cachedTicket[userTicket] = profileId;
-
-            console.log('[ACC] Generating Fake Session for ', profileId);
+            const expiration = new Date(now.getTime() + 3 * 60 * 60 * 1000); // 3 hours
     
-            const sessionData = {
+            const data = {
                 platformType: "uplay",
-                ticket: userTicket,
+                ticket,
                 twoFactorAuthenticationTicket: null,
                 profileId,
                 userId: profileId,
-                nameOnPlatform: "NintendoSwitch",
+                nameOnPlatform: username,
                 environment: "Prod",
                 expiration: expiration.toISOString(),
                 spaceId: uuidv4(),
                 clientIp,
                 clientIpCountry,
                 serverTime: now.toISOString(),
-                sessionId,
+                sessionId: uuidv4(),
                 sessionKey: "TqCz5+J0w9e8qpLp/PLr9BCfAc30hKlEJbN0Xr+mbZa=",
                 rememberMeTicket: null,
             };
-
-            // Cache the session based on the IP
-            ipCache[clientIp] = sessionData;
-
-            res.send(sessionData);
+            return data;
+        };
+    
+        // Remove Host header
+        const headers = { ...req.headers };
+        delete headers.host;
+    
+        const customAuthData = parseCustomAuthHeader(headers.authorization);
+    
+        if (customAuthData) {
+            console.log("[ACC] CustomAuth detected, verifying...");
+    
+            const { profileId, username, email, password } = customAuthData;
+            const userData = getUserData(profileId);
+            const ticket = `CustomAuth${headers.authorization.split(" t=")[1]}`
+    
+            if (userData && userData.password === password) {
+                console.log("[ACC] CustomAuth login: ", atob(username));
+                updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}`});
+                const sessionData = generateSessionData(profileId, username, clientIp, clientIpCountry, ticket)
+                res.send(sessionData);
+                return;
+            }
+    
+            if (!userData) {
+                console.log("[ACC] CustomAuth register: ", atob(username));
+                updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
+                res.send(generateSessionData(profileId, atob(username), clientIp, clientIpCountry, ticket));
+                return;
+            }
+        }
+    
+        try {
+            console.log("[ACC] Fetching Ticket From Official Server");
+            const response = await axios.post(`${prodwsurl}/v3/profiles/sessions`, req.body, { headers });
+    
+            res.send(response.data);
+            console.log("[ACC] Using Official Ticket");
+    
+            // Update user mappings
+            addUserId(response.data.profileId, response.data.userId);
+            updateUserTicket(response.data.profileId, `Ubi_v1 ${response.data.ticket}`);
+        } catch (error) {
+            console.log("[ACC] Error fetching from Ubisoft services", error.message);
+    
+            if (ipCache[clientIp]) {
+                console.log(`[ACC] Returning cached session for IP ${clientIp}`);
+                return res.send(ipCache[clientIp]);
+            }
+    
+            const profileId = uuidv4();
+            const userTicket = generateFalseTicket();
+            cachedTicket[userTicket] = profileId;
+    
+            console.log("[ACC] Generating Fake Session for", profileId);
+    
+            const fakeSession = generateSessionData(profileId, "NintendoSwitch", clientIp, clientIpCountry, userTicket);
+            ipCache[clientIp] = fakeSession;
+    
+            res.send(fakeSession);
         }
     });
+    
     
     // Handle session deletion
     app.delete("/v3/profiles/sessions", (req, res) => {
