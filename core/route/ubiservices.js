@@ -133,14 +133,14 @@ exports.initroute = (app, express, server) => {
             const userData = getUserData(profileId);
             const ticket = `CustomAuth${headers.authorization.split(" t=")[1]}`
 
-            if (userData && btoa(userData.password) === password) {
+            if (userData && atob(userData.password) === password) {
                 console.log("[ACC] CustomAuth login: ", atob(username));
                 updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
                 const sessionData = generateSessionData(profileId, username, clientIp, clientIpCountry, ticket)
                 res.send(sessionData);
                 return;
-            } else if (userData && btoa(userData.password) !== password) {
-                console.log("[ACC] CustomAuth login failed: ", atob(username));
+            } else if (userData && atob(userData.password) !== password) {
+                console.log("[ACC] CustomAuth login password failed: ", atob(username));
             }
 
             if (!userData) {
