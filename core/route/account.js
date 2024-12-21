@@ -303,7 +303,7 @@ module.exports = {
 
           // Save updated user profile data
           decryptedData[matchedProfileId] = userProfile;
-          console.error("[ACC] Updated User ", matchedProfileId);
+          console.log("[ACC] Updated User ", matchedProfileId);
           saveUserData(dataFilePath, decryptedData);
 
           // Regenerate Leaderboard List

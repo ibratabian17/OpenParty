@@ -94,12 +94,12 @@ exports.initroute = (app, express, server) => {
     app.post("/v3/profiles/sessions", async (req, res) => {
         const clientIp = getClientIp(req);
         const clientIpCountry = getCountryFromIp(clientIp);
-    
+
         // Helper to generate session data
         const generateSessionData = (profileId, username, clientIp, clientIpCountry, ticket) => {
             const now = new Date();
             const expiration = new Date(now.getTime() + 3 * 60 * 60 * 1000); // 3 hours
-    
+
             const data = {
                 platformType: "uplay",
                 ticket,
@@ -119,28 +119,30 @@ exports.initroute = (app, express, server) => {
             };
             return data;
         };
-    
+
         // Remove Host header
         const headers = { ...req.headers };
         delete headers.host;
-    
+
         const customAuthData = parseCustomAuthHeader(headers.authorization);
-    
+
         if (customAuthData) {
             console.log("[ACC] CustomAuth detected, verifying...");
-    
+
             const { profileId, username, email, password } = customAuthData;
             const userData = getUserData(profileId);
             const ticket = `CustomAuth${headers.authorization.split(" t=")[1]}`
-    
-            if (userData && userData.password === password) {
+
+            if (userData && btoa(userData.password) === password) {
                 console.log("[ACC] CustomAuth login: ", atob(username));
-                updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}`});
+                updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
                 const sessionData = generateSessionData(profileId, username, clientIp, clientIpCountry, ticket)
                 res.send(sessionData);
                 return;
+            } else if (userData && btoa(userData.password) !== password) {
+                console.log("[ACC] CustomAuth login failed: ", atob(username));
             }
-    
+
             if (!userData) {
                 console.log("[ACC] CustomAuth register: ", atob(username));
                 updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
@@ -148,39 +150,39 @@ exports.initroute = (app, express, server) => {
                 return;
             }
         }
-    
+
         try {
             console.log("[ACC] Fetching Ticket From Official Server");
             const response = await axios.post(`${prodwsurl}/v3/profiles/sessions`, req.body, { headers });
-    
+
             res.send(response.data);
             console.log("[ACC] Using Official Ticket");
-    
+
             // Update user mappings
             addUserId(response.data.profileId, response.data.userId);
             updateUserTicket(response.data.profileId, `Ubi_v1 ${response.data.ticket}`);
         } catch (error) {
             console.log("[ACC] Error fetching from Ubisoft services", error.message);
-    
+
             if (ipCache[clientIp]) {
                 console.log(`[ACC] Returning cached session for IP ${clientIp}`);
                 return res.send(ipCache[clientIp]);
             }
-    
+
             const profileId = uuidv4();
             const userTicket = generateFalseTicket();
             cachedTicket[userTicket] = profileId;
-    
+
             console.log("[ACC] Generating Fake Session for", profileId);
-    
+
             const fakeSession = generateSessionData(profileId, "NintendoSwitch", clientIp, clientIpCountry, userTicket);
             ipCache[clientIp] = fakeSession;
-    
+
             res.send(fakeSession);
         }
     });
-    
-    
+
+
     // Handle session deletion
     app.delete("/v3/profiles/sessions", (req, res) => {
         res.send();
