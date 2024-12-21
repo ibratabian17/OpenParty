@@ -95,11 +95,10 @@ function updateUser(profileId, userProfile) {
       console.log(`[ACC] User ${profileId} not found. Creating new user.`);
       decryptedData[profileId] = userProfile; // Create a new profile
   } else {
+    const currentUserData = decryptedData[profileId];
+    Object.assign(currentUserData, userProfile)
       // Merge new data into the existing profile
-      decryptedData[profileId] = {
-          ...decryptedData[profileId], // Existing data
-          ...userProfile              // New data to override specific fields
-      };
+      decryptedData[profileId] = currentUserData
   }
 
   // Save the updated data
