@@ -135,13 +135,13 @@ exports.initroute = (app, express, server) => {
 
             if (userData && userData.password && userData.email && userData.password === password) {
                 console.log("[ACC] CustomAuth login: ", atob(username));
-                updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
+                updateUser(profileId, { username: atob(username), nickname: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
                 const sessionData = generateSessionData(profileId, username, clientIp, clientIpCountry, ticket)
                 res.send(sessionData);
                 return;
             } else if (!userData || !userData.password || !userData.email) {
                 console.log("[ACC] CustomAuth register: ", atob(username));
-                updateUser(profileId, { username: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
+                updateUser(profileId, { username: atob(username), nickname: atob(username), email, password, userId: profileId, ticket: `Ubi_v1 ${ticket}` });
                 res.send(generateSessionData(profileId, atob(username), clientIp, clientIpCountry, ticket));
                 return;
             } else {
