@@ -344,7 +344,6 @@ module.exports = {
       res.send(responseProfiles);
     });
 
-
     app.post("/profile/v2/map-ended", async (req, res) => {
       const ticket = req.header("Authorization");
       const SkuId = req.header("X-SkuId") || "jd2019";

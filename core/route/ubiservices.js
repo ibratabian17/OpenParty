@@ -53,6 +53,7 @@ const generateFalseTicket = () => {
     return start + middle + end;
 };
 
+
 const atob = (base64) => Buffer.from(base64, 'base64').toString('utf-8');
 const parseCustomAuthHeader = (authorization) => {
     const [method, encoded] = authorization.split(" ");
