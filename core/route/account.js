@@ -276,6 +276,10 @@ module.exports = {
     app.post("/profile/v2/profiles", (req, res) => {
       try {
         const ticket = req.header("Authorization");
+        if (!ticket) {
+          return res.status(400).send("Authorization header is required");
+        }
+
         const content = req.body;
         content.ticket = ticket;
         const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`);
@@ -288,14 +292,17 @@ module.exports = {
         // Find matching profile by name or ticket
         const matchedProfileId = Object.keys(decryptedData).find(profileId => {
           const userProfile = decryptedData[profileId];
-          return userProfile.name === content.name || userProfile.ticket === ticket;
+          return userProfile && (userProfile.name === content.name || userProfile.ticket === ticket);
         });
+
+        console.log('ACC Found: ', matchedProfileId)
 
         if (matchedProfileId) {
           const userProfile = decryptedData[matchedProfileId];
+          const previousName = userProfile.name;
 
-          if (!matchedProfileId.name && userProfile.name) {
-            console.log('[ACC] New User Registered: ', userProfile.name)
+          if (!previousName && content.name) {
+            console.log('[ACC] New User Registered: ', content.name);
           }
 
           // Merge new content into existing user profile, overriding or adding properties
@@ -303,20 +310,21 @@ module.exports = {
 
           // Save updated user profile data
           decryptedData[matchedProfileId] = userProfile;
-          console.error("[ACC] Updated User ", matchedProfileId);
+          console.log("[ACC] Updated User ", matchedProfileId);
           saveUserData(dataFilePath, decryptedData);
 
           // Regenerate Leaderboard List
-          const leaderboardlist = generateLeaderboard(decryptedData)
+          const leaderboardlist = generateLeaderboard(decryptedData);
           saveLeaderboard(leaderboardlist, false);
 
-          res.send(decryptedData[matchedProfileId]);
+          res.status(200).send(decryptedData[matchedProfileId]);
         } else {
-          console.error("[ACC] Can't Find UUID: ", matchedProfileId);
+          console.error("[ACC] Can't Find UUID: ", content.name || 'Unknown');
           res.status(404).send("Profile not found.");
         }
       } catch (err) {
-        console.log(err)
+        console.error("[ACC] Error processing profile update:", err);
+        res.status(500).send("Internal server error");
       }
     });
 
