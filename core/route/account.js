@@ -21,6 +21,7 @@ function loadUserData(dataFilePath) {
     try {
       const encryptedData = fs.readFileSync(dataFilePath, 'utf8');
       decryptedData = JSON.parse(decrypt(encryptedData, secretKey));
+      console.log('[ACC] User Data Loaded, Total: ', Object.keys(decryptedData).length);
     } catch (err) {
       console.log('[ACC] Unable to read user.json');
       console.log('[ACC] Is the key correct? Are the files corrupted?');
@@ -92,14 +93,14 @@ function updateUserTicket(profileId, Ticket) {
 // Update or override user data
 function updateUser(profileId, userProfile) {
   if (!decryptedData[profileId]) {
-      console.log(`[ACC] User ${profileId} not found. Creating new user.`);
-      decryptedData[profileId] = userProfile; // Create a new profile
+    console.log(`[ACC] User ${profileId} not found. Creating new user.`);
+    decryptedData[profileId] = userProfile; // Create a new profile
   } else {
-      // Merge new data into the existing profile
-      decryptedData[profileId] = {
-          ...decryptedData[profileId], // Existing data
-          ...userProfile              // New data to override specific fields
-      };
+    // Merge new data into the existing profile
+    decryptedData[profileId] = {
+      ...decryptedData[profileId], // Existing data
+      ...userProfile              // New data to override specific fields
+    };
   }
 
   // Save the updated data
@@ -111,10 +112,10 @@ function updateUser(profileId, userProfile) {
 // Retrieve user data
 function getUserData(profileId) {
   if (decryptedData[profileId]) {
-      return decryptedData[profileId];
+    return decryptedData[profileId];
   } else {
-      console.log(`[ACC] User ${profileId} not found.`);
-      return null;
+    console.log(`[ACC] User ${profileId} not found.`);
+    return null;
   }
 }
 
@@ -207,6 +208,70 @@ module.exports = {
   cachedDotw,
   initroute: (app) => {
 
+    app.post("/profile/v2/profiles", (req, res) => {
+      try {
+
+        const ticket = req.header("Authorization");
+
+        if (!ticket) {
+          return res.status(400).send("Authorization header is required");
+        }
+
+        const content = req.body;
+        content.ticket = ticket;
+        const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`);
+
+        // Load user data if not already loaded
+        if (!decryptedData) {
+          loadUserData(dataFilePath);
+        }
+
+        // Find matching profile by name or ticket
+        const matchedProfileId = Object.keys(decryptedData).find(profileId => {
+          const userProfile = decryptedData[profileId];
+          return userProfile && (userProfile.name === content.name || userProfile.ticket === ticket);
+        });
+
+        console.log('[ACC] Matched profile ID:', matchedProfileId);
+
+        if (matchedProfileId) {
+          const userProfile = decryptedData[matchedProfileId];
+          const previousName = userProfile.name;
+
+          if (!previousName && content.name) {
+            console.log('[ACC] New User Registered:', content.name);
+          }
+
+          // Merge new content into existing user profile
+          Object.assign(userProfile, content);
+
+          decryptedData[matchedProfileId] = userProfile;
+          console.log('[ACC] Updating user:', content.name);
+          saveUserData(dataFilePath, decryptedData);
+
+          const leaderboardlist = generateLeaderboard(decryptedData);
+          saveLeaderboard(leaderboardlist, false);
+
+          const sanitizedProfile = { ...decryptedData[matchedProfileId] };
+          delete sanitizedProfile.ip;
+          delete sanitizedProfile.ticket;
+          delete sanitizedProfile.email;
+          delete sanitizedProfile.password;
+          res.status(200).send(sanitizedProfile);
+        } else {
+          console.log('[ACC] Profile not found for:', content.name || 'Unknown');
+          res.status(404).send("Profile not found.");
+        }
+      } catch (err) {
+        console.error('[ACC] Error details:', {
+          message: err.message,
+          stack: err.stack,
+          name: err.name
+        });
+        res.status(500).send("Internal server error");
+      }
+    });
+
     // Endpoint to get profiles based on profileIds
     app.get("/profile/v2/profiles", async (req, res) => {
       const ticket = req.header("Authorization");
@@ -228,7 +293,13 @@ module.exports = {
             decryptedData[profileId].ticket = ticket;
             console.log('[ACC] Updated Ticket For ', userProfile.name)
           }
-          return { ...userProfile, ip: req.clientIp, ticket: '', profileId };
+          const sanitizedProfile = { ...userProfile };
+          // Remove sensitive data
+          delete sanitizedProfile.ip;
+          delete sanitizedProfile.ticket;
+          delete sanitizedProfile.email;
+          delete sanitizedProfile.password;
+          return { ...sanitizedProfile, profileId };
         } else {
           // If the profile is not found locally, fetch from external source
           console.log(`[ACC] Asking Official Server For: `, profileId);
@@ -245,87 +316,32 @@ module.exports = {
               }
             });
 
-            // Assume the external response contains the profile as `profileData`
-            const profileData = profileResponse.data[0]; // Adjust according to the actual response format
+            const profileData = profileResponse.data[0];
             if (profileData) {
               console.log(`[ACC] Account Saved to the server: `, profileId);
-              const defaultProfile = { ...profileData, ip: req.clientIp, ticket: ticket };
-
-              // Add the fetched profile to local storage
+              const defaultProfile = { ...profileData, ticket: ticket };
               addUser(profileId, defaultProfile);
 
-              defaultProfile.ticket = ''
+              // Remove sensitive data before sending
+              delete profileData.ip;
+              delete profileData.ticket;
+              delete profileData.email;
+              delete profileData.password;
 
-              return defaultProfile;
+              return profileData;
             }
           } catch (error) {
             console.error(`[ACC] Error fetching profile for ${profileId}:`, error.message);
-            addUser(profileId, { ip: req.clientIp, ticket: ticket });
+            addUser(profileId, { ticket: ticket });
             return {
               "profileId": profileId,
               "isExisting": false
-            }; // If fetch fails, return an empty profile object
+            };
           }
         }
       }));
 
       res.send(responseProfiles);
-    });
-
-
-    app.post("/profile/v2/profiles", (req, res) => {
-      try {
-        const ticket = req.header("Authorization");
-        if (!ticket) {
-          return res.status(400).send("Authorization header is required");
-        }
-
-        const content = req.body;
-        content.ticket = ticket;
-        const dataFilePath = path.join(getSavefilePath(), `/account/profiles/user.json`);
-
-        // Load user data if not already loaded
-        if (!decryptedData) {
-          loadUserData(dataFilePath);
-        }
-
-        // Find matching profile by name or ticket
-        const matchedProfileId = Object.keys(decryptedData).find(profileId => {
-          const userProfile = decryptedData[profileId];
-          return userProfile && (userProfile.name === content.name || userProfile.ticket === ticket);
-        });
-
-        console.log('ACC Found: ', matchedProfileId)
-
-        if (matchedProfileId) {
-          const userProfile = decryptedData[matchedProfileId];
-          const previousName = userProfile.name;
-
-          if (!previousName && content.name) {
-            console.log('[ACC] New User Registered: ', content.name);
-          }
-
-          // Merge new content into existing user profile, overriding or adding properties
-          Object.assign(userProfile, content);
-
-          // Save updated user profile data
-          decryptedData[matchedProfileId] = userProfile;
-          console.log("[ACC] Updated User ", matchedProfileId);
-          saveUserData(dataFilePath, decryptedData);
-
-          // Regenerate Leaderboard List
-          const leaderboardlist = generateLeaderboard(decryptedData);
-          saveLeaderboard(leaderboardlist, false);
-
-          res.status(200).send(decryptedData[matchedProfileId]);
-        } else {
-          console.error("[ACC] Can't Find UUID: ", content.name || 'Unknown');
-          res.status(404).send("Profile not found.");
-        }
-      } catch (err) {
-        console.error("[ACC] Error processing profile update:", err);
-        res.status(500).send("Internal server error");
-      }
     });
 
 
