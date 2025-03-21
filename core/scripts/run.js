@@ -1,57 +1,112 @@
-const { spawnSync } = require('child_process');
+const { spawn } = require('child_process');
 const fs = require('fs');
+const path = require('path');
 
-let outputLogs = [];
-
-function start() {
-  const { stdout, stderr, status } = spawnSync('node', ['jduparty.js']);
-
-  if (stdout) {
-    const log = {
-      method: 'LOG',
-      url: stdout.toString().trim(),
-      timestamp: new Date().toISOString()
-    };
-    outputLogs.push(log);
-
-    fs.writeFileSync('database/tmp/logs.txt', JSON.stringify(outputLogs));
-  }
-
-  if (stderr) {
-    const log = {
-      method: 'LOG ERROR',
-      url: stderr.toString().trim(),
-      timestamp: new Date().toISOString()
-    };
-    outputLogs.push(log);
-
-    fs.writeFileSync('database/tmp/logs.txt', JSON.stringify(outputLogs));
-  }
-
-  console.log(`[PARTY] child process exited with code ${status}`);
-  if (status === 42) { // Replace 42 with your desired exit code
-    start(); // Restart the process
-  }
-}
-
-function generateLog(req, res, next) {
-  counted++;
-  if (!req.url.startsWith('/party/panel/')) {
-    const log = {
-      timestamp: new Date().toISOString(),
-      message: `[PARTY] ${req.method} ${req.url}`
-    };
-    requestLogs.push(log);
-    if (requestLogs.length > 50) {
-      requestLogs.shift();
+class ProcessManager {
+  constructor() {
+    this.outputLogs = [];
+    this.requestLogs = [];
+    this.process = null;
+    this.restartCount = 0;
+    this.maxRestarts = 10;
+    this.restartDelay = 1000;
+    this.logPath = path.join(__dirname, '../database/tmp/logs.txt');
+    
+    // Ensure log directory exists
+    const logDir = path.dirname(this.logPath);
+    if (!fs.existsSync(logDir)) {
+      fs.mkdirSync(logDir, { recursive: true });
     }
-    fs.appendFileSync('database/tmp/logs.txt', `${JSON.stringify(log)}\n`);
   }
-  next();
+
+  start() {
+    this.process = spawn('node', ['server.js'], {
+      stdio: 'pipe',
+      detached: false
+    });
+
+    this.process.stdout.on('data', (data) => {
+      this.logOutput('INFO', data.toString().trim());
+    });
+
+    this.process.stderr.on('data', (data) => {
+      this.logOutput('ERROR', data.toString().trim());
+    });
+
+    this.process.on('exit', (code) => {
+      console.log(`[PARTY] Process exited with code ${code}`);
+      
+      if (code === 42) {
+        if (this.restartCount < this.maxRestarts) {
+          console.log(`[PARTY] Restarting process in ${this.restartDelay}ms...`);
+          setTimeout(() => this.start(), this.restartDelay);
+          this.restartCount++;
+        } else {
+          console.error('[PARTY] Max restart attempts reached');
+        }
+      }
+    });
+  }
+
+  logOutput(level, message) {
+    // Write directly to console
+    console.log(`${message}`);
+    
+    const log = {
+      level,
+      message,
+      timestamp: new Date().toISOString()
+    };
+    
+    this.outputLogs.push(log);
+    if (this.outputLogs.length > 100) {
+      this.outputLogs.shift();
+    }
+
+    fs.appendFileSync(this.logPath, JSON.stringify(log) + '\n');
+  }
+
+  generateLog(req, res, next) {
+    if (!req.url.startsWith('/party/panel/')) {
+      const log = {
+        timestamp: new Date().toISOString(),
+        method: req.method,
+        url: req.url,
+        ip: req.ip
+      };
+      
+      this.requestLogs.push(log);
+      if (this.requestLogs.length > 50) {
+        this.requestLogs.shift();
+      }
+      
+      fs.appendFileSync(this.logPath, JSON.stringify(log) + '\n');
+    }
+    next();
+  }
+
+  stop() {
+    if (this.process) {
+      this.process.kill();
+      this.process = null;
+    }
+  }
 }
 
-start();
+const manager = new ProcessManager();
+manager.start();
 
+// Handle process signals
 process.on('SIGINT', () => {
-  process.exit();
+  console.log('[PARTY] Gracefully shutting down...');
+  manager.stop();
+  process.exit(0);
 });
+
+process.on('SIGTERM', () => {
+  console.log('[PARTY] Terminating...');
+  manager.stop();
+  process.exit(0);
+});
+
+module.exports = manager;
