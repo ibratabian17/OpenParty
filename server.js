@@ -1,19 +1,14 @@
-// Ibratabian17's jdu
+/**
+ * OpenParty - Class-based entry point
+ * This file serves as the entry point for the class-based version of OpenParty
+ */
 
-const express = require("express");
-const app = express();
-console.log(`[MAIN] Starting daemon`);
-process.title = "OpenParty | Custom Just Dance Unlimited Server";
-
+// Import dependencies
 const settings = require('./settings.json');
-const core = require('./core/core');
-const port = settings.server.forcePort ? settings.server.port : process.env.PORT || settings.server.port;
-const isPublic = settings.server.isPublic ? "0.0.0.0" : "127.0.0.1";
+const Server = require('./core/classes/Server');
 
-// Initialize Express.js
-const server = app.listen(port, isPublic, () => {
-  core.init(app, express, server);
-  console.log(`[MAIN] listening on ${isPublic}:${port}`);
-  console.log(`[MAIN] Open panel to see more log`);
-  console.log(`[MAIN] Running on ${process.env.NODE_ENV} session`);
-});
+console.log(`[MAIN] Starting OpenParty with class-based architecture`);
+
+// Create and start the server
+const server = new Server(settings);
+server.start();

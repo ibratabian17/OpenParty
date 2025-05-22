@@ -17,9 +17,15 @@
     },
     "modules": [
         {
-            "name": "FAKEWDF",
+            "name": "WDFPlugin",
             "description": "Create a fake response for WDF so that the mod can run on older version",
-            "path": "{dirname}/core/wdf/fakewdf.js",
+            "path": "{dirname}/core/wdf/FakeWdfPlugin.js",
+            "execution": "init"
+        },
+        {
+            "name": "HelloWorldPlugin",
+            "description": "A simple example plugin that demonstrates the plugin system",
+            "path": "{dirname}/plugins/HelloWorldPlugin.js",
             "execution": "init"
         }
     ]

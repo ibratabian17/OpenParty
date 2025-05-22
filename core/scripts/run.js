@@ -1,6 +1,7 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const Logger = require('../utils/logger');
 
 class ProcessManager {
   constructor() {
@@ -10,7 +11,8 @@ class ProcessManager {
     this.restartCount = 0;
     this.maxRestarts = 10;
     this.restartDelay = 1000;
-    this.logPath = path.join(__dirname, '../database/tmp/logs.txt');
+    this.logPath = path.join(__dirname, '../database/data/tmp/logs.txt');
+    this.logger = new Logger('PARTY');
     
     // Ensure log directory exists
     const logDir = path.dirname(this.logPath);
@@ -34,23 +36,27 @@ class ProcessManager {
     });
 
     this.process.on('exit', (code) => {
-      console.log(`[PARTY] Process exited with code ${code}`);
+      this.logger.info(`Process exited with code ${code}`);
       
       if (code === 42) {
         if (this.restartCount < this.maxRestarts) {
-          console.log(`[PARTY] Restarting process in ${this.restartDelay}ms...`);
+          this.logger.info(`Restarting process in ${this.restartDelay}ms...`);
           setTimeout(() => this.start(), this.restartDelay);
           this.restartCount++;
         } else {
-          console.error('[PARTY] Max restart attempts reached');
+          this.logger.error('Max restart attempts reached');
         }
       }
     });
   }
 
   logOutput(level, message) {
-    // Write directly to console
-    console.log(`${message}`);
+    // Use the logger for output
+    if (level === 'INFO') {
+      this.logger.info(message);
+    } else if (level === 'ERROR') {
+      this.logger.error(message);
+    }
     
     const log = {
       level,
@@ -98,13 +104,13 @@ manager.start();
 
 // Handle process signals
 process.on('SIGINT', () => {
-  console.log('[PARTY] Gracefully shutting down...');
+  manager.logger.info('Gracefully shutting down...');
   manager.stop();
   process.exit(0);
 });
 
 process.on('SIGTERM', () => {
-  console.log('[PARTY] Terminating...');
+  manager.logger.info('Terminating...');
   manager.stop();
   process.exit(0);
 });

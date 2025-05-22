@@ -1,10 +1,13 @@
 const axios = require('axios');
 const fs = require('fs');
+const path = require('path'); // Add path module
 const { loadJsonFile } = require('./helper');
 const songdb = require('./lib/songdb').songdbF;
 const settings = require('../settings.json');
+const Logger = require('./utils/logger');
+const logger = new Logger('VAR');
 
-console.log('[VAR] Initializing....');
+logger.info('Initializing....');
 
 const replaceDomainPlaceholder = (obj, domain) => {
   if (typeof obj === 'string') {
@@ -29,27 +32,26 @@ const main = {
     durango: loadJsonFile('Platforms/jd2017-durango/sku-packages.json', '../database/Platforms/jd2017-durango/sku-packages.json'),
     orbis: loadJsonFile('Platforms/jd2017-orbis/sku-packages.json', '../database/Platforms/jd2017-orbis/sku-packages.json'),
   },
-  entities: replaceDomainPlaceholder(require('../database/v2/entities.json'), settings.server.domain),
-  configuration: replaceDomainPlaceholder(require('../database/v1/configuration.json'), settings.server.domain),
-  subscription: require('../database/db/subscription.json'),
-  packages: require('../database/packages.json'),
-  block: require('../database/carousel/block.json'),
-  leaderboard: require("../database/db/leaderboard.json"),
-  quests: require("../database/db/quests.json"),
-  questsnx: require("../database/db/quests-nx.json"),
-  questspc: require("../database/db/quests-pc.json"),
-  items: require("../database/db/items.json"),
-  upsellvideos: require("../database/carousel/pages/upsell-videos.json"),
-  dancemachine_pc: require("../database/db/dancemachine_pc.json"),
-  dancemachine_nx: require("../database/db/dancemachine_nx.json"),
-  avatars: require("../database/db/avatars.json"),
-  dancerprofile: require("../database/db/dancerprofile.json"),
-  aliases: require("../database/db/aliases.json"),
-  home: require("../database/db/home.json"),
-  jdtv: require("../database/db/jdtv.json"),
-  playlistdb: require("../database/db/playlistdb.json"),
-  playlists: require("../database/db/playlists.json"),
-  create_playlist: require("../database/carousel/pages/create_playlist.json"),
+  entities: replaceDomainPlaceholder(require('../database/config/v2/entities.json'), settings.server.domain),
+  configuration: replaceDomainPlaceholder(require('../database/config/v1/configuration.json'), settings.server.domain),
+  subscription: require('../database/data/db/subscription.json'),
+  packages: require('../database/config/packages.json'),
+  block: require('../database/data/carousel/block.json'),
+  quests: require("../database/data/db/quests.json"),
+  questsnx: require("../database/data/db/quests-nx.json"),
+  questspc: require("../database/data/db/quests-pc.json"),
+  items: require("../database/data/db/items.json"),
+  upsellvideos: require("../database/data/carousel/pages/upsell-videos.json"),
+  dancemachine_pc: require("../database/data/db/dancemachine_pc.json"),
+  dancemachine_nx: require("../database/data/db/dancemachine_nx.json"),
+  avatars: require("../database/data/db/avatars.json"),
+  dancerprofile: require("../database/data/db/dancerprofile.json"),
+  aliases: require("../database/data/db/aliases.json"),
+  home: require("../database/data/db/home.json"),
+  jdtv: require("../database/data/db/jdtv.json"),
+  playlistdb: require("../database/data/db/playlistdb.json"),
+  playlists: require("../database/data/db/playlists.json"),
+  create_playlist: require("../database/data/carousel/pages/create_playlist.json"),
   songdb: { "2016": {}, "2017": {}, "2018": {}, "2019": {}, "2020": {}, "2021": {}, "2022": {} },
   localisation: loadJsonFile('Platforms/openparty-all/localisation.json', '../database/Platforms/openparty-all/localisation.json')
 };

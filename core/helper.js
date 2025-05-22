@@ -4,13 +4,13 @@ const axios = require('axios');
 const os = require('os');
 const path = require('path');
 const settings = require('../settings.json');
+const Logger = require('./utils/logger');
+const logger = new Logger('HELPER');
+
 const downloader = {
 };
 function CloneObject(ObjectC) {
   return JSON.parse(JSON.stringify(ObjectC))
-}
-function readDatabaseJson(path) {
-  return JSON.parse(fs.readFileSync(`${__dirname}/../database/${path}`, 'utf8'));
 }
 var donotlog = {}
 
@@ -50,12 +50,12 @@ function getSavefilePath() {
 const ensureDirectoryExists = (dirPath) => {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
-    console.log(`[HELPER] Created directory: ${dirPath}`);
+    logger.info(`Created directory: ${dirPath}`);
   }
 };
 
 const baseDir = getSavefilePath();
-console.log(`[HELPER] Checking SaveData dir`);
+logger.info(`Checking SaveData dir`);
 
 // Pastikan direktori utama ada
 ensureDirectoryExists(baseDir);
@@ -82,14 +82,14 @@ function loadJsonFile(layeredPath, originalPath) {
     return require(savedDataPath);
   } else {
     if (!donotlog[path.basename(savedDataPath)]) {
-      console.log(`[HELPER] Serving ${path.basename(savedDataPath)} from Static Database`)
+      logger.info(`Serving ${path.basename(savedDataPath)} from Static Database`)
       donotlog[path.basename(savedDataPath)] = true
     }
     return require(originalPath);
   }
 }
 
-function resolvePath(input=""){
+function resolvePath(input = "") {
   var new_input = input.replace('{dirname}', process.cwd())
   new_input = new_input.replace('{Home}', os.homedir())
   return new_input
@@ -97,5 +97,5 @@ function resolvePath(input=""){
 
 
 module.exports = {
-  CloneObject, readDatabaseJson, downloader, extractSkuIdInfo, getSavefilePath, loadJsonFile, resolvePath
+  CloneObject, downloader, extractSkuIdInfo, getSavefilePath, loadJsonFile, resolvePath
 }

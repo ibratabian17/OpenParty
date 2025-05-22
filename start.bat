@@ -1,3 +1,4 @@
 @echo off
-echo Please Use 'PM2' instead of using 'start.bat'
+echo Starting OpenParty with class-based architecture...
 node server.js
+pause

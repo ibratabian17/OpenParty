@@ -2,6 +2,8 @@ const settings = require('../../settings.json');
 const fs = require('fs');
 const path = require('path');
 const { loadJsonFile } = require('../helper');
+const Logger = require('../utils/logger');
+const logger = new Logger('SONGDB');
 
 const songdbF = {};
 const main = {
@@ -143,9 +145,9 @@ songdbF.generate = function () {
 };
 
 songdbF.generateSonglist = function () {
-  console.log(`[SONGDB] Processing Songdbs`)
+  logger.info(`Processing Songdbs`)
   songdbF.generate()
-  console.log(`[SONGDB] ${Object.keys(main.songdb[2017].pc).length} Maps Loaded`)
+  logger.info(`${Object.keys(main.songdb[2017].pc).length} Maps Loaded`)
   return main.songdb
 }
 

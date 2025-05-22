@@ -1,5 +1,6 @@
 const { loadJsonFile } = require('../helper')
-const inputJson = loadJsonFile('carousel/playlist.json', '../database/carousel/playlist.json');
+const path = require('path');
+const inputJson = loadJsonFile('carousel/playlist.json', '../database/data/carousel/playlist.json');
 const ClassList = require('./playlist-Class.json')
 const WEEKLY_PLAYLIST_PREFIX = 'DFRecommendedFU';
 
