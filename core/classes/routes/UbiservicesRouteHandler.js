@@ -80,6 +80,7 @@ class UbiservicesRouteHandler extends RouteHandler {
 
         // Handle user-related requests (stubbed for now)
         this.registerPost(app, '/v3/users/:user', this.handlePostUsers);
+        this.registerGet(app, '/v3/users/:user', this.handleGetUsers);
 
 
         console.log(`[ROUTE] ${this.name} routes initialized`);
@@ -248,6 +249,15 @@ class UbiservicesRouteHandler extends RouteHandler {
      * @param {Response} res - The response object
      */
     handlePostUsers(req, res) {
+        res.send(); // No specific action needed for this stubbed endpoint
+    }
+
+    /**
+     * Handle user-related requests (stubbed for now)
+     * @param {Request} req - The request object
+     * @param {Response} res - The response object
+     */
+    handleGetUsers(req, res) {
         res.send(); // No specific action needed for this stubbed endpoint
     }
 

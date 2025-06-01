@@ -97,7 +97,7 @@ class AccountRepository {
                 songsPlayedJson,
                 favoritesJson
             ],
-            function(err) {
+            (err) => {
                 if (err) {
                     this.logger.error(`Error saving account ${account.profileId} to DB:`, err.message);
                     reject(err);
@@ -243,7 +243,7 @@ class AccountRepository {
     async delete(profileId) {
         const db = getDb();
         return new Promise((resolve, reject) => {
-            db.run('DELETE FROM user_profiles WHERE profileId = ?', [profileId], function(err) {
+            db.run('DELETE FROM user_profiles WHERE profileId = ?', [profileId], (err) => {
                 if (err) {
                     this.logger.error(`Error deleting account ${profileId} from DB:`, err.message);
                     reject(err);
