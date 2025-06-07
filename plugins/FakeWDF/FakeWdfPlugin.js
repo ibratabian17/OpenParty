@@ -3,8 +3,8 @@
  * Handles World Dance Floor (WDF) related routes as a plugin
  */
 const axios = require('axios');
-const Plugin = require('../classes/Plugin'); // Assuming Plugin is located at ../core/classes/Plugin.js
-const Logger = require('../utils/logger');
+const Plugin = require('../../core/classes/Plugin'); // Assuming Plugin is located at ../core/classes/Plugin.js
+const Logger = require('../../core/utils/logger');
 
 class WDFPlugin extends Plugin {
     /**

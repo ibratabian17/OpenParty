@@ -14,7 +14,8 @@ class Plugin {
     this.name = name;
     this.description = description;
     this.enabled = true;
-    this.logger = new Logger(name); // Use plugin name as module name for logger
+    this.logger = new Logger(name); // Use  name as module name for logger
+    this.manifest = null; // To store manifest data
   }
 
   /**

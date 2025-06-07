@@ -6,6 +6,7 @@ const RouteHandler = require('./RouteHandler');
 const CarouselService = require('../../services/CarouselService');
 const coreMain = require('../../var').main; // Assuming core.main is needed for various carousel data
 const Logger = require('../../utils/logger');
+const AccountService = require('../../services/AccountService'); // Import AccountService to get profileId
 
 class CarouselRouteHandler extends RouteHandler {
     constructor() {
@@ -76,6 +77,9 @@ class CarouselRouteHandler extends RouteHandler {
             search = req.body.searchTags[0];
         }
 
+        // Get profileId for personalization
+        const profileId = req.query.profileId || await AccountService.findUserFromTicket(req.header('Authorization'));
+
         let action = null;
         let isPlaylist = false;
 
@@ -100,11 +104,13 @@ class CarouselRouteHandler extends RouteHandler {
 
         if (isPlaylist) {
             // Assuming core.generatePlaylist is still needed for playlist categories
+            // TODO: Potentially personalize playlists as well if needed in the future
             return res.json(require('../../lib/playlist').generatePlaylist().playlistcategory);
         }
 
         if (action != null) {
-            return res.send(await CarouselService.generateCarousel(search, action));
+            // Pass profileId to generateCarousel for personalization
+            return res.send(await CarouselService.generateCarousel(search, action, profileId));
         }
         
         return res.json({});

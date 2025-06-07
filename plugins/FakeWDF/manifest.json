@@ -1,0 +1,8 @@
+{
+  "name": "FakeWdfPlugin",
+  "version": "1.0.0",
+  "description": "Create a fake response for WDF so that the mod can run on older version.",
+  "main": "FakeWdfPlugin.js",
+  "author": "OpenParty",
+  "execution": "init"
+}

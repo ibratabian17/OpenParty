@@ -1,0 +1,103 @@
+{
+	"parameters": {
+		"us-staging": {
+			"fields": {
+				"spaceId": "59f82720-778f-427a-a0bd-e81cb112c044"
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientClub": {
+			"fields": {
+				"ps4ClubWebsite": "https://static8.cdn.ubi.com/u/sites/uplay/index.html",
+				"xoneLaunchPath": "Ms-xbl-55C5EE27://default?url=/games/{deepLink}&context={context}&titleid={gameTitleId}&env={clubEnvName}&genomeid={applicationId}&actioncompleted={actionCompletedList}&debug={debug}&spaceId={spaceId}&applicationId={applicationId}",
+				"dynamicPanelUrl": "https://{env}public-ubiservices.ubi.com/v1/profiles/{profileId}/club/dynamicPanel/MyProfile.png?spaceId={spaceId}&noRedirect=true",
+				"psApiClubWebsite": "https://static8.cdn.ubi.com/u/sites/uplay/index.html",
+				"ps4PsnoLaunchPath": "psno://localhost/?response_type=code&client_id=171ca84a-371e-412b-a807-6531f3f1e454&scope=psn%3As2s&redirect_uri={ps4ClubWebsiteUrlEncoded}&state={ps4ClubWebsiteArgumentsPsnoEncoded}",
+				"psApiPsnoLaunchPath": "psno://localhost/?response_type=code&client_id=171ca84a-371e-412b-a807-6531f3f1e454&scope=psn%3As2s&redirect_uri={psApiClubWebsiteUrlEncoded}&state={psApiClubWebsiteArgumentsPsnoEncoded}",
+				"stadiaClubWebsiteUrl": "https://static8.cdn.ubi.com/u/sites/UbisoftClub/Stadia/index.html?url=/games/{deepLink}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&env={env}&displayMode={displayMode}&locale={locale}&actioncompleted={actionCompletedList}&jotunVersion={jotunVersion}&jotunBinaryVersion={jotunBinaryVersion}&ticket={ticket}",
+				"switchClubWebsiteUrl": "https://static8.cdn.ubi.com/u/sites/UbisoftClub/NintendoSwitch/index.html?url=/games/{deepLink}&ussdkversion={usSdkVersionName}&env={clubEnvName}&actioncompleted={actionCompletedList}&forceLang={forceLang}&profileId={profileId}&ticket={ticket}&context={context}&debug={debug}&spaceId={spaceId}&applicationId={applicationId}",
+				"ps4ClubWebsiteArguments": "url=/games/{deepLink}&spaceId={spaceId}&applicationId={applicationId}&context={context}&env={clubEnvName}&genomeid={applicationId}&actioncompleted={actionCompletedList}&ussdkversion={usSdkVersionName}&debug={debug}{geometry}&ticket={ticket}&profileid={profileId}",
+				"psApiClubWebsiteArguments": "url=/games/{deepLink}&spaceId={spaceId}&applicationId={applicationId}&context={context}&env={clubEnvName}&genomeid={applicationId}&actioncompleted={actionCompletedList}&ussdkversion={usSdkVersionName}&debug={debug}{geometry}&ticket={ticket}&profileId={profileId}&psEnterButton={psEnterButton}"
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientUplay": {
+			"fields": {
+				"ps4UplayUrl": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ubiTicket={ubiTicket}&firstPartyToken={firstPartyToken}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}&psEnterButton={psEnterButton}&platformVariant={platformVariant}",
+				"ps5UplayUrl": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ubiTicket={ubiTicket}&firstPartyToken={firstPartyToken}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}&platformVariant={platformVariant}",
+				"ounceUplayUrl": "https://{env}connect.cdn.ubisoft.com/overlay/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ubiTicket={ubiTicket}&firstPartyToken={firstPartyToken}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}&platformVariant={platformVariant}",
+				"switchUplayUrl": "https://{env}connect.cdn.ubisoft.com/overlay/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ubiTicket={ubiTicket}&firstPartyToken={firstPartyToken}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}&platformVariant={platformVariant}",
+				"psnUplayClientId": "171ca84a-371e-412b-a807-6531f3f1e454",
+				"iosUplayWebLaunchUrl": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ticket={ticket}&env={environment}&playerSessionId={playerSessionId}&deviceType=phone&isStandalone=false",
+				"xoneUplayUWPLaunchUrl": "Ms-xbl-55C5EE27://default?isUbisoftConnect=true&baseURL={env}overlay.cdn.ubisoft.com/default/&microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}",
+				"xoneUplayWebLaunchUrl": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ubiTicket={ubiTicket}&firstPartyToken={firstPartyToken}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}&platformVariant={platformVariant}",
+				"macosUplayWebLaunchUrl": "https://{env}overlay.cdn.ubisoft.com/default/?spaceId={spaceId}&applicationId={applicationId}&platform=macos&locale={locale}&env={environment}&deviceType=desktop",
+				"androidUplayWebLaunchUrl": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ticket={ticket}&env={environment}&playerSessionId={playerSessionId}&deviceType=phone&isStandalone=false",
+				"iosUplayWebCompletionUrl": "ubisoftconnectscheme:",
+				"scarlettUplayUWPLaunchUrl": "Ms-xbl-55C5EE27://default?isUbisoftConnect=true&baseURL={env}overlay.cdn.ubisoft.com/default/&microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}",
+				"scarlettUplayWebLaunchUrl": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&profileId={profileId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ubiTicket={ubiTicket}&firstPartyToken={firstPartyToken}&env={environment}&deviceType=tv&playerSessionId={playerSessionId}&platformVariant={platformVariant}",
+				"xoneUplayWebCompletionUrl": "about:blank",
+				"macosUplayWebCompletionUrl": "ubisoftconnectscheme:",
+				"ounceUplayWebCompletionUrl": "uplayscheme:",
+				"switchUplayWebCompletionUrl": "uplayscheme:",
+				"androidUplayWebCompletionUrl": "ubisoftconnectscheme:",
+				"iosUplayWebLaunchUrlMicroApp": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ticket={ticket}&env={environment}&playerSessionId={playerSessionId}&deviceType=phone&profileId={profileId}&isStandalone=false",
+				"scarlettUplayWebCompletionUrl": "about:blank",
+				"androidUplayWebLaunchUrlMicroApp": "https://{env}overlay.cdn.ubisoft.com/default/?microApp={microApp}&microAppParams={microAppParams}&spaceId={spaceId}&applicationId={applicationId}&platform={platform}&locale={locale}&sdkVersion={sdkVersion}&ticket={ticket}&env={environment}&playerSessionId={playerSessionId}&deviceType=phone&profileId={profileId}&isStandalone=false"
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientUrlsPlaceholders": {
+			"fields": {
+				"baseurl_ws": {
+					"China": "wss://public-ws-ubiservices.ubisoft.cn/",
+					"Standard": "wss://{env}public-ws-ubiservices.ubi.com",
+					"China_GAAP": "wss://gaap.ubiservices.ubi.com:16000"
+				},
+				"baseurl_aws": {
+					"China": "https://public-ubiservices.ubisoft.cn",
+					"Standard": "https://{env}public-ubiservices.ubi.com",
+					"China_GAAP": "https://gaap.ubiservices.ubi.com:12000"
+				},
+				"baseurl_msr": {
+					"China": "https://public-ubiservices.ubisoft.cn",
+					"Standard": "https://msr-{env}public-ubiservices.ubi.com",
+					"China_GAAP": "https://gaap.ubiservices.ubi.com:12000"
+				}
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientLogin": {
+			"fields": {
+				"populationHttpRequestOptimizationEnabled": true,
+				"populationHttpRequestOptimizationRetryCount": 0,
+				"populationHttpRequestOptimizationRetryTimeoutIntervalMsec": 5000,
+				"populationHttpRequestOptimizationRetryTimeoutIncrementMsec": 1000
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientFeaturesSwitches": {
+			"fields": {
+				"populationsAutomaticUpdate": true,
+				"forcePrimarySecondaryStoreSyncOnReturnFromBackground": true
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientChina": {
+			"fields": {
+				"websocketHost": "public-ws-ubiservices.ubi.com",
+				"tLogApplicationId": "",
+				"tLogApplicationKey": "",
+				"tLogApplicationName": ""
+			},
+			"relatedPopulation": null
+		},
+		"us-sdkClientUrls": {
+			"fields": {
+				"populations": "{baseurl_aws}/{version}/profiles/me/populations",
+				"profilesToken": "{baseurl_aws}/{version}/profiles/{profileId}/tokens/{token}"
+			},
+			"relatedPopulation": null
+		}
+	}
+}

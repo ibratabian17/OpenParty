@@ -13,10 +13,13 @@
   "author": "PartyService",
   "license": "MIT",
   "dependencies": {
+    "archiver": "^7.0.1",
     "axios": "^1.8.4",
+    "bcrypt": "^6.0.0",
     "body-parser": "^1.20.3",
     "chalk": "^5.4.1",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "fs": "^0.0.1-security",
     "md5": "^2.3.0",
     "pm2": "^6.0.5",

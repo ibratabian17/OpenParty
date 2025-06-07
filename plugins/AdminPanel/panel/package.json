@@ -1,0 +1,11 @@
+{
+  "name": "openparty-admin-panel",
+  "version": "1.0.0",
+  "description": "Admin panel plugin for OpenParty server",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express-session": "^1.17.3",
+    "connect-sqlite3": "^0.9.13"
+  }
+}

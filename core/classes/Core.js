@@ -7,7 +7,7 @@ const { resolvePath } = require('../helper');
 const PluginManager = require('./PluginManager');
 const Router = require('./Router');
 const ErrorHandler = require('./ErrorHandler');
-const bodyParser = require('body-parser');
+const express = require('express'); // bodyParser is part of express now
 const requestIp = require('../lib/ipResolver.js');
 const Logger = require('../utils/logger');
 
@@ -20,6 +20,7 @@ class Core {
     this.settings = settings;
     this.pluginManager = new PluginManager();
     this.router = new Router();
+    this.appInstance = null; // To store app instance for plugins if needed
     this.logger = new Logger('CORE');
   }
 
@@ -31,6 +32,7 @@ class Core {
    */
   async init(app, express, server) {
     this.logger.info('Initializing core...');
+    this.appInstance = app; // Store app instance
     
     // Initialize the database
     const { initializeDatabase } = require('../database/sqlite');
@@ -42,8 +44,11 @@ class Core {
         process.exit(1); // Exit if database cannot be initialized
     }
 
+    // Set pluginManager on the app instance so plugins can access it
+    app.set('pluginManager', this.pluginManager);
+
     // Configure middleware
-    this.configureMiddleware(app, express);
+    this.configureMiddleware(app); // express module not needed here anymore
     
     // Load plugins
     this.pluginManager.loadPlugins(this.settings.modules);
@@ -68,9 +73,10 @@ class Core {
    * @param {Express} app - The Express application instance
    * @param {Express} express - The Express module
    */
-  configureMiddleware(app, express) {
+  configureMiddleware(app) {
     app.use(express.json());
-    app.use(bodyParser.raw());
+    app.use(express.urlencoded({ extended: true })); // Added for form data
+    // app.use(express.raw()); // If you need raw body parsing, uncomment this and ensure AdminPanelPlugin doesn't re-add it.
     app.use(requestIp.mw());
     
     // Use centralized error handler

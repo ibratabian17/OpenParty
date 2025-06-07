@@ -97,20 +97,45 @@ class DatabaseManager {
                         // Create user_profiles table
                         this._db.run(`CREATE TABLE IF NOT EXISTS user_profiles (
                             profileId TEXT PRIMARY KEY,
+                            userId TEXT, -- Already present
+                            username TEXT,
+                            nickname TEXT,
                             name TEXT,
+                            email TEXT,
+                            password TEXT, -- Consider hashing if storing sensitive passwords
+                            ticket TEXT,
                             alias TEXT,
                             aliasGender INTEGER,
                             avatar TEXT,
                             country TEXT,
-                            createdAt TEXT,
-                            ticket TEXT,
                             platformId TEXT,
                             jdPoints INTEGER,
                             portraitBorder TEXT,
-                            -- Store scores and songsPlayed as JSON strings
-                            scores TEXT, 
-                            songsPlayed TEXT,
-                            favorites TEXT
+                            rank INTEGER,
+                            scores TEXT, -- JSON stored as TEXT
+                            favorites TEXT, -- JSON stored as TEXT
+                            songsPlayed TEXT, -- JSON array stored as TEXT
+                            progression TEXT, -- JSON stored as TEXT
+                            history TEXT, -- JSON stored as TEXT
+                            skin TEXT,
+                            diamondPoints INTEGER,
+                            unlockedAvatars TEXT, -- JSON array stored as TEXT
+                            unlockedSkins TEXT, -- JSON array stored as TEXT
+                            unlockedAliases TEXT, -- JSON array stored as TEXT
+                            unlockedPortraitBorders TEXT, -- JSON array stored as TEXT
+                            wdfRank INTEGER,
+                            stars INTEGER,
+                            unlocks INTEGER,
+                            populations TEXT, -- JSON array stored as TEXT
+                            inProgressAliases TEXT, -- JSON array stored as TEXT
+                            language TEXT,
+                            firstPartyEnv TEXT,
+                            syncVersions TEXT, -- JSON stored as TEXT
+                            otherPids TEXT, -- JSON array stored as TEXT
+                            stats TEXT, -- JSON stored as TEXT
+                            mapHistory TEXT, -- JSON stored as TEXT
+                            createdAt TEXT,
+                            updatedAt TEXT
                         )`, (err) => {
                             if (err) {
                                 this.logger.error('Error creating user_profiles table:', err.message);

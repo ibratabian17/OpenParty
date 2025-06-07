@@ -1,0 +1,8 @@
+{
+  "name": "HelloWorld",
+  "version": "1.0.0",
+  "description": "A simple Hello World plugin.",
+  "main": "HelloWorld.js",
+  "author": "OpenParty",
+  "execution": "init"
+}

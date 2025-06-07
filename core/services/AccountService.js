@@ -86,18 +86,41 @@ class AccountService {
     async updateUser(profileId, userData) {
         this.logger.info(`Updating user ${profileId}`);
         let account = await AccountRepository.findById(profileId);
-        
+
+        const processedUserData = { ...userData };
+
+        // Pre-process favorites: if it's an array of mapNames, convert to model's object structure
+        if (Array.isArray(processedUserData.favorites)) {
+            const newFavorites = {};
+            for (const mapName of processedUserData.favorites) {
+                if (typeof mapName === 'string') { // Ensure items are strings
+                    newFavorites[mapName] = { addedAt: new Date().toISOString() };
+                }
+            }
+            processedUserData.favorites = newFavorites;
+            this.logger.info(`Processed 'favorites' array to object for profile ${profileId}`);
+        }
+
+        // Pre-process songsPlayed: if it's a number (e.g., from older formats), ignore it
+        // to prevent corrupting the 'songsPlayed' array of map names in the model.
+        if (processedUserData.hasOwnProperty('songsPlayed') && typeof processedUserData.songsPlayed === 'number') {
+            this.logger.warn(`Received 'songsPlayed' as a number (${processedUserData.songsPlayed}) for profile ${profileId}. This will be ignored as the model expects an array of map names for 'songsPlayed'.`);
+            delete processedUserData.songsPlayed; // Do not pass it to account.update if it's a number
+        }
+
+        // Add any other necessary pre-processing for other fields here
+
         if (!account) {
             account = new Account({ 
                 profileId,
-                ...userData
+                ...processedUserData // Use processed data for new account
             });
             this.logger.info(`Created new user ${profileId}`);
         } else {
-            account.update(userData);
+            account.update(processedUserData); // Pass processed data for update
             this.logger.info(`Updated existing user ${profileId}`);
         }
-        
+
         return AccountRepository.save(account);
     }
 

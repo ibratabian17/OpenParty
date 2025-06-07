@@ -2,7 +2,7 @@
  * Example HelloWorld Plugin for OpenParty
  * Demonstrates how to create a plugin using the new class-based architecture
  */
-const Plugin = require('../core/classes/Plugin');
+const Plugin = require('../../core/classes/Plugin'); // Adjusted path
 
 class HelloWorldPlugin extends Plugin {
   /**

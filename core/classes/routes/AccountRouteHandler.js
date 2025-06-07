@@ -4,10 +4,11 @@
  */
 const axios = require('axios');
 const RouteHandler = require('./RouteHandler'); // Assuming RouteHandler is in the same directory
-const { updateMostPlayed } = require('../../carousel/carousel'); // Adjust path as needed
+const MostPlayedService = require('../../services/MostPlayedService');
 const AccountService = require('../../services/AccountService'); // Import the AccountService
 const { getDb } = require('../../database/sqlite');
 const Logger = require('../../utils/logger');
+const { v4: uuidv4 } = require('uuid'); // Import uuid for generating new profile IDs
 
 class AccountRouteHandler extends RouteHandler {
     /**
@@ -123,6 +124,66 @@ class AccountRouteHandler extends RouteHandler {
     }
 
     /**
+     * Helper: Read the last reset week from the database.
+     * @returns {Promise<number>} The last reset week number.
+     * @private
+     */
+    async readLastResetWeek() {
+        const db = getDb();
+        return new Promise((resolve, reject) => {
+            db.get('SELECT value FROM config WHERE key = ?', ['last_reset_week'], (err, row) => {
+                if (err) {
+                    this.logger.error(`Error reading last_reset_week from DB: ${err.message}`);
+                    reject(err);
+                } else {
+                    resolve(row ? parseInt(row.value, 10) : 0); // Default to 0 if not found
+                }
+            });
+        });
+    }
+
+    /**
+     * Helper: Write the current week to the database.
+     * @param {number} weekNumber - The current week number.
+     * @returns {Promise<void>}
+     * @private
+     */
+    async writeLastResetWeek(weekNumber) {
+        const db = getDb();
+        return new Promise((resolve, reject) => {
+            db.run('INSERT OR REPLACE INTO config (key, value) VALUES (?, ?)', ['last_reset_week', weekNumber.toString()], (err) => {
+                if (err) {
+                    this.logger.error(`Error writing last_reset_week to DB: ${err.message}`);
+                    reject(err);
+                } else {
+                    this.logger.info(`Updated last_reset_week in DB to week ${weekNumber}`);
+                    resolve();
+                }
+            });
+        });
+    }
+
+    /**
+     * Helper: Clear all entries from the main leaderboard table.
+     * @returns {Promise<void>} A promise that resolves when the table is cleared.
+     * @private
+     */
+    async clearLeaderboard() {
+        const db = getDb();
+        return new Promise((resolve, reject) => {
+            db.run('DELETE FROM leaderboard', [], (err) => {
+                if (err) {
+                    this.logger.error(`Error clearing leaderboard table:`, err.message);
+                    reject(err);
+                } else {
+                    this.logger.info(`Cleared leaderboard table.`);
+                    resolve();
+                }
+            });
+        });
+    }
+
+    /**
      * Helper: Read leaderboard data from SQLite.
      * @param {boolean} isDotw - True if reading Dancer of the Week leaderboard.
      * @returns {Promise<Object>} A promise that resolves to the leaderboard data.
@@ -147,14 +208,37 @@ class AccountRouteHandler extends RouteHandler {
                             data[row.mapName].push(row);
                         });
                     } else {
-                        // For DOTW, assume a single entry per week or handle as needed
-                        // For now, just return the rows as an array, or the first row if only one is expected
+                        // For DOTW, return the week number of the first entry if available
+                        // and all entries.
                         if (rows.length > 0) {
-                            data.week = this.getWeekNumber(); // Assuming 'week' property is used to check current week
+                            data.week = rows[0].weekNumber; // Assuming weekNumber is stored in the row
                             data.entries = rows;
+                        } else {
+                            data.week = null;
+                            data.entries = [];
                         }
                     }
                     resolve(data);
+                }
+            });
+        });
+    }
+
+    /**
+     * Helper: Clear all entries from the dotw leaderboard table.
+     * @returns {Promise<void>} A promise that resolves when the table is cleared.
+     * @private
+     */
+    async clearDotwLeaderboard() {
+        const db = getDb();
+        return new Promise((resolve, reject) => {
+            db.run('DELETE FROM dotw', [], (err) => {
+                if (err) {
+                    this.logger.error(`Error clearing dotw table:`, err.message);
+                    reject(err);
+                } else {
+                    this.logger.info(`Cleared dotw table.`);
+                    resolve();
                 }
             });
         });
@@ -218,7 +302,11 @@ class AccountRouteHandler extends RouteHandler {
                 if (isDotw) {
                     stmt = db.prepare(`INSERT OR REPLACE INTO ${tableName} (mapName, profileId, username, score, timestamp, gameVersion, rank, name, avatar, country, platformId, alias, aliasGender, jdPoints, portraitBorder, weekNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
                 } else {
-                    stmt = db.prepare(`INSERT OR REPLACE INTO ${tableName} (mapName, profileId, username, score, timestamp) VALUES (?, ?, ?, ?, ?)`);
+                    stmt = db.prepare(`INSERT OR REPLACE INTO ${tableName} (
+                        mapName, profileId, username, score, timestamp, name, 
+                        gameVersion, rank, avatar, country, platformId, 
+                        alias, aliasGender, jdPoints, portraitBorder
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
                 }
                 
                 const promises = leaderboardEntries.map(entry => {
@@ -253,6 +341,16 @@ class AccountRouteHandler extends RouteHandler {
                                 entry.username,
                                 entry.score,
                                 entry.timestamp,
+                                entry.name,
+                                entry.gameVersion,
+                                entry.rank,
+                                entry.avatar,
+                                entry.country,
+                                entry.platformId,
+                                entry.alias,
+                                entry.aliasGender,
+                                entry.jdPoints,
+                                entry.portraitBorder,
                                 (err) => {
                                     if (err) rejectRun(err);
                                     else resolveRun();
@@ -297,44 +395,42 @@ class AccountRouteHandler extends RouteHandler {
      * @param {Response} res - The response object
      */
     async handlePostProfiles(req, res) {
-        const profileId = req.body?.profileId || req.body?.userId;
-        
-        if (!profileId) {
-            return res.status(400).send({ message: "Missing profileId or userId" });
+        const authHeader = req.header('Authorization');
+        const ticket = authHeader ? authHeader : null; // Keep the full header as ticket
+
+        if (!ticket) {
+            this.logger.warn(`POST /profile/v2/profiles: Missing Authorization header (ticket).`);
+            return res.status(400).send({ message: "Missing Authorization header (ticket)." });
         }
-        
-        const userData = await AccountService.getUserData(profileId); // Await getUserData
-        
+
+        const profileId = await AccountService.findUserFromTicket(ticket);
+
+        if (!profileId) {
+            this.logger.warn(`POST /profile/v2/profiles: Profile not found for provided ticket.`);
+            return res.status(400).send({ message: "Profile not found for provided ticket." });
+        }
+
+        let userData = await AccountService.getUserData(profileId);
+
         if (userData) {
             this.logger.info(`Updating existing profile ${profileId}`);
             
             // Update only the fields present in the request body, preserving other fields
-            const updatedProfile = await AccountService.updateUser(profileId, req.body); // Await updateUser
+            // Ensure the ticket is updated if present in the header
+            const updateData = { ...req.body };
+            updateData.ticket = ticket; // Always update ticket from header
+            const updatedProfile = await AccountService.updateUser(profileId, updateData);
             
             return res.send({
                 __class: "UserProfile",
-                ...updatedProfile.toJSON()
+                ...updatedProfile.toPublicJSON()
             });
         } else {
-            this.logger.info(`Creating new profile ${profileId}`);
-            
-            // Create a new profile with default values and request body values
-            const newProfile = await AccountService.updateUser(profileId, { // Await updateUser
-                ...req.body,
-                name: req.body.name || "Player",
-                alias: req.body.alias || "default",
-                aliasGender: req.body.aliasGender || 2,
-                scores: req.body.scores || {},
-                songsPlayed: req.body.songsPlayed || [],
-                avatar: req.body.avatar || "UI/menu_avatar/base/light.png",
-                country: req.body.country || "US",
-                createdAt: new Date().toISOString()
-            });
-            
-            return res.send({
-                __class: "UserProfile",
-                ...newProfile.toJSON()
-            });
+            // This case should ideally not be reached if profileId is always found via ticket
+            // However, if it is, it means a ticket was provided but no profile exists for it.
+            // As per previous instruction, we should not create a new profile here.
+            this.logger.error(`POST /profile/v2/profiles: Unexpected state - profileId found via ticket but no existing user data.`);
+            return res.status(400).send({ message: "Profile not found for provided ticket." });
         }
     }
 
@@ -344,51 +440,51 @@ class AccountRouteHandler extends RouteHandler {
      * @param {Response} res - The response object
      */
     async handleGetProfiles(req, res) {
-        // Get the profileId from query parameters or authorization header
-        const profileId = req.query.profileId || await this.findUserFromTicket(req.header('Authorization')); // Await findUserFromTicket
-        
+        const profileIdsParam = req.query.profileIds;
+
+        if (profileIdsParam) {
+            try {
+                const requestedProfileIds = profileIdsParam.split(',');
+                const profiles = [];
+
+                for (const reqProfileId of requestedProfileIds) {
+                    const profile = await AccountService.getUserData(reqProfileId);
+                    if (profile) {
+                        profiles.push({
+                            __class: "UserProfile",
+                            ...profile.toPublicJSON()
+                        });
+                    } else {
+                        profiles.push({
+                            profileId: reqProfileId,
+                            isExisting: false
+                        });
+                    }
+                }
+                return res.send(profiles);
+            } catch (error) {
+                this.logger.error('Error processing profileIds:', error);
+                return res.status(400).send({ message: "Invalid profileIds format" });
+            }
+        }
+
+        // Fallback for single profile request or if profileIds is not present
+        const profileId = req.query.profileId || await this.findUserFromTicket(req.header('Authorization'));
+
         if (!profileId) {
             return res.status(400).send({ message: "Missing profileId" });
         }
-        
-        const userProfile = await AccountService.getUserData(profileId); // Await getUserData
-        
+
+        const userProfile = await AccountService.getUserData(profileId);
+
         if (!userProfile) {
             this.logger.info(`Profile ${profileId} not found`);
             return res.status(404).send({ message: "Profile not found" });
         }
-        
-        // If query contains specific profile requests by IDs
-        if (req.query.requestedProfiles) {
-            try {
-                const requestedProfiles = JSON.parse(req.query.requestedProfiles);
-                const profiles = {};
-                
-                // Get each requested profile
-                for (const reqProfileId of requestedProfiles) {
-                    const profile = await AccountService.getUserData(reqProfileId); // Await getUserData
-                    if (profile) {
-                        profiles[reqProfileId] = {
-                            __class: "UserProfile",
-                            ...profile.toJSON()
-                        };
-                    }
-                }
-                
-                return res.send({
-                    __class: "ProfilesContainer",
-                    profiles: profiles
-                });
-            } catch (error) {
-                this.logger.error('Error parsing requestedProfiles:', error);
-                return res.status(400).send({ message: "Invalid requestedProfiles format" });
-            }
-        }
-        
-        // Return single profile
+
         return res.send({
             __class: "UserProfile",
-            ...userProfile.toJSON()
+            ...userProfile.toPublicJSON()
         });
     }
 
@@ -399,7 +495,7 @@ class AccountRouteHandler extends RouteHandler {
      */
     async handleMapEnded(req, res) {
         const { mapName, score } = req.body;
-        const profileId = req.query.profileId || await this.findUserFromTicket(req.header('Authorization')); // Await findUserFromTicket
+        const profileId = req.query.profileId || await this.findUserFromTicket(req.header('Authorization'));
         
         if (!profileId) {
             return res.status(400).send({ message: "Missing profileId" });
@@ -409,21 +505,32 @@ class AccountRouteHandler extends RouteHandler {
             return res.status(400).send({ message: "Missing mapName or score" });
         }
         
-        const userProfile = await AccountService.getUserData(profileId); // Await getUserData
+        const userProfile = await AccountService.getUserData(profileId);
         
         if (!userProfile) {
             this.logger.info(`Profile ${profileId} not found`);
             return res.status(404).send({ message: "Profile not found" });
         }
         
+        // Perform weekly leaderboard reset check
+        const currentWeek = this.getWeekNumber();
+        const lastResetWeek = await this.readLastResetWeek();
+
+        if (currentWeek !== lastResetWeek) {
+            this.logger.info(`New week detected: ${currentWeek}. Resetting all leaderboards.`);
+            await this.clearLeaderboard(); // Clear main leaderboard
+            await this.clearDotwLeaderboard(); // Clear DOTW leaderboard
+            await this.writeLastResetWeek(currentWeek); // Update last reset week
+        }
+        
         // Update most played maps
-        updateMostPlayed(mapName);
+        await MostPlayedService.updateMostPlayed(mapName);
         
         // Update user's score for this map
         const currentScore = userProfile.scores?.[mapName]?.highest || 0;
         const newHighest = Math.max(currentScore, score);
         
-        await AccountService.updateUserScore(profileId, mapName, { // Await updateUserScore
+        await AccountService.updateUserScore(profileId, mapName, {
             highest: newHighest,
             lastPlayed: new Date().toISOString(),
             history: [
@@ -437,24 +544,36 @@ class AccountRouteHandler extends RouteHandler {
         
         // Add to songsPlayed array if not already present
         if (!userProfile.songsPlayed?.includes(mapName)) {
-            await AccountService.updateUser(profileId, { // Await updateUser
+            await AccountService.updateUser(profileId, {
                 songsPlayed: [...(userProfile.songsPlayed || []), mapName]
             });
         }
         
-        // Update leaderboards
+        // Update leaderboards (main and DOTW)
         const allAccounts = await AccountService.getAllAccounts();
         const leaderboardEntries = this.generateLeaderboard(allAccounts, req);
-        await this.saveLeaderboard(leaderboardEntries);
+        await this.saveLeaderboard(leaderboardEntries); // Save to main leaderboard
         
-        // Update DOTW (Dancer of the Week) leaderboard if it's a new week
-        const currentWeek = this.getWeekNumber();
-        const dotwData = await this.readLeaderboard(true);
-        
-        if (!dotwData.week || dotwData.week !== currentWeek) {
-            this.logger.info(`New week detected: ${currentWeek}, resetting DOTW`);
-            await this.saveLeaderboard([], true);
-        }
+        // Save current map's score to DOTW
+        await this.saveLeaderboard([
+            {
+                mapName: mapName,
+                profileId: profileId,
+                username: userProfile.name,
+                score: newHighest,
+                timestamp: new Date().toISOString(),
+                gameVersion: this.getGameVersion(req),
+                rank: userProfile.rank,
+                name: userProfile.name,
+                avatar: userProfile.avatar,
+                country: userProfile.country,
+                platformId: userProfile.platformId,
+                alias: userProfile.alias,
+                aliasGender: userProfile.aliasGender,
+                jdPoints: userProfile.jdPoints,
+                portraitBorder: userProfile.portraitBorder
+            }
+        ], true); // Save to DOTW leaderboard
         
         return res.send({
             __class: "MapEndResult",
@@ -504,9 +623,42 @@ class AccountRouteHandler extends RouteHandler {
             return res.status(404).send({ message: "Profile not found" });
         }
         
+        const clientIp = req.ip; // Get client IP
+        const authHeader = req.header('Authorization');
+        const ticket = authHeader ? authHeader.split(' ')[1] : null; // Extract ticket from "Ubi_v1 <ticket>"
+
+        // Determine platformType from X-SkuId
+        const skuId = req.header('X-SkuId') || '';
+        let platformType = 'pc'; // Default
+        if (skuId.includes('nx')) {
+            platformType = 'switch';
+        } else if (skuId.includes('ps4') || skuId.includes('orbis')) {
+            platformType = 'ps4';
+        } else if (skuId.includes('xboxone') || skuId.includes('durango')) {
+            platformType = 'xboxone';
+        } else if (skuId.includes('wiiu')) {
+            platformType = 'wiiu';
+        }
+
+        const serverTime = new Date().toISOString();
+        const expiration = new Date(Date.now() + 3600 * 1000).toISOString(); // Expires in 1 hour
+
         return res.send({
-            sessionId: profileId,
-            trackingEnabled: false
+            platformType: platformType,
+            ticket: ticket,
+            twoFactorAuthenticationTicket: null,
+            profileId: userProfile.profileId,
+            userId: userProfile.userId, // Assuming userId is stored in Account model
+            nameOnPlatform: userProfile.name || userProfile.nickname,
+            environment: "Prod", // Static for now
+            expiration: expiration,
+            spaceId: "cd052712-ba1d-453a-89b9-08778888d380", // Static from example
+            clientIp: clientIp,
+            clientIpCountry: "US", // Static for now, requires IP lookup for dynamic
+            serverTime: serverTime,
+            sessionId: userProfile.profileId, // Keeping profileId as sessionId as per current implementation
+            sessionKey: "KJNTFMD24XOPTmpgGU3MXPuhAx3IMYSYG4YgyhPJ8rVkQDHzK1MmiOtHKrQiyL/HCOsJNCfX63oRAsyGe9CDiQ==", // Placeholder
+            rememberMeTicket: null
         });
     }
 

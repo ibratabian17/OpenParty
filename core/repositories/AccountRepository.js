@@ -30,20 +30,48 @@ class AccountRepository {
                     rows.forEach(row => {
                         try {
                             const accountData = {
+                                // Existing fields
                                 profileId: row.profileId,
+                                userId: row.userId,
+                                username: row.username,
+                                nickname: row.nickname,
                                 name: row.name,
+                                email: row.email,
+                                password: row.password, // Should be handled securely if stored
+                                ticket: row.ticket,
                                 alias: row.alias,
                                 aliasGender: row.aliasGender,
                                 avatar: row.avatar,
                                 country: row.country,
-                                createdAt: row.createdAt,
-                                ticket: row.ticket,
                                 platformId: row.platformId,
                                 jdPoints: row.jdPoints,
                                 portraitBorder: row.portraitBorder,
+                                rank: row.rank,
                                 scores: row.scores ? JSON.parse(row.scores) : {},
                                 songsPlayed: row.songsPlayed ? JSON.parse(row.songsPlayed) : [],
-                                favorites: row.favorites ? JSON.parse(row.favorites) : []
+                                favorites: row.favorites ? JSON.parse(row.favorites) : {},
+                                progression: row.progression ? JSON.parse(row.progression) : {},
+                                history: row.history ? JSON.parse(row.history) : {},
+                                createdAt: row.createdAt,
+                                updatedAt: row.updatedAt,
+                                // New fields
+                                skin: row.skin,
+                                diamondPoints: row.diamondPoints,
+                                unlockedAvatars: row.unlockedAvatars ? JSON.parse(row.unlockedAvatars) : [],
+                                unlockedSkins: row.unlockedSkins ? JSON.parse(row.unlockedSkins) : [],
+                                unlockedAliases: row.unlockedAliases ? JSON.parse(row.unlockedAliases) : [],
+                                unlockedPortraitBorders: row.unlockedPortraitBorders ? JSON.parse(row.unlockedPortraitBorders) : [],
+                                wdfRank: row.wdfRank,
+                                stars: row.stars,
+                                unlocks: row.unlocks,
+                                populations: row.populations ? JSON.parse(row.populations) : [],
+                                inProgressAliases: row.inProgressAliases ? JSON.parse(row.inProgressAliases) : [],
+                                language: row.language,
+                                firstPartyEnv: row.firstPartyEnv,
+                                syncVersions: row.syncVersions ? JSON.parse(row.syncVersions) : {},
+                                otherPids: row.otherPids ? JSON.parse(row.otherPids) : [],
+                                stats: row.stats ? JSON.parse(row.stats) : {},
+                                mapHistory: row.mapHistory ? JSON.parse(row.mapHistory) : { classic: [], kids: [] }
                             };
                             accounts[row.profileId] = new Account(accountData);
                         } catch (parseError) {
@@ -75,27 +103,73 @@ class AccountRepository {
         const scoresJson = JSON.stringify(accountData.scores || {});
         const songsPlayedJson = JSON.stringify(accountData.songsPlayed || []);
         const favoritesJson = JSON.stringify(accountData.favorites || []);
+        const progressionJson = JSON.stringify(accountData.progression || {});
+        const historyJson = JSON.stringify(accountData.history || {});
+        // Stringify new JSON fields
+        const unlockedAvatarsJson = JSON.stringify(accountData.unlockedAvatars || []);
+        const unlockedSkinsJson = JSON.stringify(accountData.unlockedSkins || []);
+        const unlockedAliasesJson = JSON.stringify(accountData.unlockedAliases || []);
+        const unlockedPortraitBordersJson = JSON.stringify(accountData.unlockedPortraitBorders || []);
+        const populationsJson = JSON.stringify(accountData.populations || []);
+        const inProgressAliasesJson = JSON.stringify(accountData.inProgressAliases || []);
+        const syncVersionsJson = JSON.stringify(accountData.syncVersions || {});
+        const otherPidsJson = JSON.stringify(accountData.otherPids || []);
+        const statsJson = JSON.stringify(accountData.stats || {});
+        const mapHistoryJson = JSON.stringify(accountData.mapHistory || { classic: [], kids: [] });
 
         return new Promise((resolve, reject) => {
             db.run(`INSERT OR REPLACE INTO user_profiles (
-                profileId, name, alias, aliasGender, avatar, country, createdAt, ticket, 
-                platformId, jdPoints, portraitBorder, scores, songsPlayed, favorites
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                profileId, userId, username, nickname, name, email, password, ticket,
+                alias, aliasGender, avatar, country, platformId, jdPoints, portraitBorder, rank,
+                scores, songsPlayed, favorites, progression, history,
+                skin, diamondPoints, unlockedAvatars, unlockedSkins, unlockedAliases, unlockedPortraitBorders,
+                wdfRank, stars, unlocks, populations, inProgressAliases, language, firstPartyEnv,
+                syncVersions, otherPids, stats, mapHistory,
+                createdAt, updatedAt
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
             [
                 accountData.profileId,
+                accountData.userId,
+                accountData.username,
+                accountData.nickname,
                 accountData.name,
+                accountData.email,
+                accountData.password, // Ensure this is handled securely (e.g., hashed) if stored
+                accountData.ticket,
                 accountData.alias,
                 accountData.aliasGender,
                 accountData.avatar,
                 accountData.country,
-                accountData.createdAt,
-                accountData.ticket,
                 accountData.platformId,
                 accountData.jdPoints,
                 accountData.portraitBorder,
+                accountData.rank,
                 scoresJson,
                 songsPlayedJson,
-                favoritesJson
+                favoritesJson,
+                progressionJson,
+                historyJson,
+                // New fields
+                accountData.skin,
+                accountData.diamondPoints,
+                unlockedAvatarsJson,
+                unlockedSkinsJson,
+                unlockedAliasesJson,
+                unlockedPortraitBordersJson,
+                accountData.wdfRank,
+                accountData.stars,
+                accountData.unlocks,
+                populationsJson,
+                inProgressAliasesJson,
+                accountData.language,
+                accountData.firstPartyEnv,
+                syncVersionsJson,
+                otherPidsJson,
+                statsJson,
+                mapHistoryJson,
+                // Timestamps
+                accountData.createdAt,
+                accountData.updatedAt
             ],
             (err) => {
                 if (err) {
@@ -124,20 +198,48 @@ class AccountRepository {
                 } else if (row) {
                     try {
                         const accountData = {
+                            // Existing fields
                             profileId: row.profileId,
+                            userId: row.userId,
+                            username: row.username,
+                            nickname: row.nickname,
                             name: row.name,
+                            email: row.email,
+                            password: row.password,
+                            ticket: row.ticket,
                             alias: row.alias,
                             aliasGender: row.aliasGender,
                             avatar: row.avatar,
                             country: row.country,
-                            createdAt: row.createdAt,
-                            ticket: row.ticket,
                             platformId: row.platformId,
                             jdPoints: row.jdPoints,
                             portraitBorder: row.portraitBorder,
+                            rank: row.rank,
                             scores: row.scores ? JSON.parse(row.scores) : {},
                             songsPlayed: row.songsPlayed ? JSON.parse(row.songsPlayed) : [],
-                            favorites: row.favorites ? JSON.parse(row.favorites) : []
+                            favorites: row.favorites ? JSON.parse(row.favorites) : {},
+                            progression: row.progression ? JSON.parse(row.progression) : {},
+                            history: row.history ? JSON.parse(row.history) : {},
+                            createdAt: row.createdAt,
+                            updatedAt: row.updatedAt,
+                            // New fields
+                            skin: row.skin,
+                            diamondPoints: row.diamondPoints,
+                            unlockedAvatars: row.unlockedAvatars ? JSON.parse(row.unlockedAvatars) : [],
+                            unlockedSkins: row.unlockedSkins ? JSON.parse(row.unlockedSkins) : [],
+                            unlockedAliases: row.unlockedAliases ? JSON.parse(row.unlockedAliases) : [],
+                            unlockedPortraitBorders: row.unlockedPortraitBorders ? JSON.parse(row.unlockedPortraitBorders) : [],
+                            wdfRank: row.wdfRank,
+                            stars: row.stars,
+                            unlocks: row.unlocks,
+                            populations: row.populations ? JSON.parse(row.populations) : [],
+                            inProgressAliases: row.inProgressAliases ? JSON.parse(row.inProgressAliases) : [],
+                            language: row.language,
+                            firstPartyEnv: row.firstPartyEnv,
+                            syncVersions: row.syncVersions ? JSON.parse(row.syncVersions) : {},
+                            otherPids: row.otherPids ? JSON.parse(row.otherPids) : [],
+                            stats: row.stats ? JSON.parse(row.stats) : {},
+                            mapHistory: row.mapHistory ? JSON.parse(row.mapHistory) : { classic: [], kids: [] }
                         };
                         resolve(new Account(accountData));
                     } catch (parseError) {
@@ -166,20 +268,48 @@ class AccountRepository {
                 } else if (row) {
                     try {
                         const accountData = {
+                            // Existing fields
                             profileId: row.profileId,
+                            userId: row.userId,
+                            username: row.username,
+                            nickname: row.nickname,
                             name: row.name,
+                            email: row.email,
+                            password: row.password,
+                            ticket: row.ticket,
                             alias: row.alias,
                             aliasGender: row.aliasGender,
                             avatar: row.avatar,
                             country: row.country,
-                            createdAt: row.createdAt,
-                            ticket: row.ticket,
                             platformId: row.platformId,
                             jdPoints: row.jdPoints,
                             portraitBorder: row.portraitBorder,
+                            rank: row.rank,
                             scores: row.scores ? JSON.parse(row.scores) : {},
                             songsPlayed: row.songsPlayed ? JSON.parse(row.songsPlayed) : [],
-                            favorites: row.favorites ? JSON.parse(row.favorites) : []
+                            favorites: row.favorites ? JSON.parse(row.favorites) : {},
+                            progression: row.progression ? JSON.parse(row.progression) : {},
+                            history: row.history ? JSON.parse(row.history) : {},
+                            createdAt: row.createdAt,
+                            updatedAt: row.updatedAt,
+                            // New fields
+                            skin: row.skin,
+                            diamondPoints: row.diamondPoints,
+                            unlockedAvatars: row.unlockedAvatars ? JSON.parse(row.unlockedAvatars) : [],
+                            unlockedSkins: row.unlockedSkins ? JSON.parse(row.unlockedSkins) : [],
+                            unlockedAliases: row.unlockedAliases ? JSON.parse(row.unlockedAliases) : [],
+                            unlockedPortraitBorders: row.unlockedPortraitBorders ? JSON.parse(row.unlockedPortraitBorders) : [],
+                            wdfRank: row.wdfRank,
+                            stars: row.stars,
+                            unlocks: row.unlocks,
+                            populations: row.populations ? JSON.parse(row.populations) : [],
+                            inProgressAliases: row.inProgressAliases ? JSON.parse(row.inProgressAliases) : [],
+                            language: row.language,
+                            firstPartyEnv: row.firstPartyEnv,
+                            syncVersions: row.syncVersions ? JSON.parse(row.syncVersions) : {},
+                            otherPids: row.otherPids ? JSON.parse(row.otherPids) : [],
+                            stats: row.stats ? JSON.parse(row.stats) : {},
+                            mapHistory: row.mapHistory ? JSON.parse(row.mapHistory) : { classic: [], kids: [] }
                         };
                         resolve(new Account(accountData));
                     } catch (parseError) {
@@ -208,20 +338,48 @@ class AccountRepository {
                 } else if (row) {
                     try {
                         const accountData = {
+                            // Existing fields
                             profileId: row.profileId,
+                            userId: row.userId,
+                            username: row.username,
+                            nickname: row.nickname,
                             name: row.name,
+                            email: row.email,
+                            password: row.password,
+                            ticket: row.ticket,
                             alias: row.alias,
                             aliasGender: row.aliasGender,
                             avatar: row.avatar,
                             country: row.country,
-                            createdAt: row.createdAt,
-                            ticket: row.ticket,
                             platformId: row.platformId,
                             jdPoints: row.jdPoints,
                             portraitBorder: row.portraitBorder,
+                            rank: row.rank,
                             scores: row.scores ? JSON.parse(row.scores) : {},
                             songsPlayed: row.songsPlayed ? JSON.parse(row.songsPlayed) : [],
-                            favorites: row.favorites ? JSON.parse(row.favorites) : []
+                            favorites: row.favorites ? JSON.parse(row.favorites) : {},
+                            progression: row.progression ? JSON.parse(row.progression) : {},
+                            history: row.history ? JSON.parse(row.history) : {},
+                            createdAt: row.createdAt,
+                            updatedAt: row.updatedAt,
+                            // New fields
+                            skin: row.skin,
+                            diamondPoints: row.diamondPoints,
+                            unlockedAvatars: row.unlockedAvatars ? JSON.parse(row.unlockedAvatars) : [],
+                            unlockedSkins: row.unlockedSkins ? JSON.parse(row.unlockedSkins) : [],
+                            unlockedAliases: row.unlockedAliases ? JSON.parse(row.unlockedAliases) : [],
+                            unlockedPortraitBorders: row.unlockedPortraitBorders ? JSON.parse(row.unlockedPortraitBorders) : [],
+                            wdfRank: row.wdfRank,
+                            stars: row.stars,
+                            unlocks: row.unlocks,
+                            populations: row.populations ? JSON.parse(row.populations) : [],
+                            inProgressAliases: row.inProgressAliases ? JSON.parse(row.inProgressAliases) : [],
+                            language: row.language,
+                            firstPartyEnv: row.firstPartyEnv,
+                            syncVersions: row.syncVersions ? JSON.parse(row.syncVersions) : {},
+                            otherPids: row.otherPids ? JSON.parse(row.otherPids) : [],
+                            stats: row.stats ? JSON.parse(row.stats) : {},
+                            mapHistory: row.mapHistory ? JSON.parse(row.mapHistory) : { classic: [], kids: [] }
                         };
                         resolve(new Account(accountData));
                     } catch (parseError) {

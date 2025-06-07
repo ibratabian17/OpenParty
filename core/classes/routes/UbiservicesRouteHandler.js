@@ -75,12 +75,19 @@ class UbiservicesRouteHandler extends RouteHandler {
         // Serve application parameters for JD22
         this.registerGet(app, '/v1/applications/34ad0f04-b141-4793-bdd4-985a9175e70d/parameters', this.handleGetParametersJD22);
 
+        // Serve application parameters for JD21
+        this.registerGet(app, '/v1/applications/c8cfd4b7-91b0-446b-8e3b-7edfa393c946/parameters', this.handleGetParametersJD21);
+
         // Serve application parameters for JD18
         this.registerGet(app, '/v1/spaces/041c03fa-1735-4ea7-b5fc-c16546d092ca/parameters', this.handleGetParametersJD18);
 
         // Handle user-related requests (stubbed for now)
+        this.registerGet(app, '/v3/policies/:langID', this.handleGetPolicies); // New policies route
+        this.registerPost(app, '/v3/users', this.handlePostUsersNew); // New POST /v3/users route
         this.registerPost(app, '/v3/users/:user', this.handlePostUsers);
         this.registerGet(app, '/v3/users/:user', this.handleGetUsers);
+
+        
 
 
         console.log(`[ROUTE] ${this.name} routes initialized`);
@@ -239,8 +246,76 @@ class UbiservicesRouteHandler extends RouteHandler {
      * @param {Request} req - The request object
      * @param {Response} res - The response object
      */
+    /**
+     * Serve application parameters for JD21
+     * @param {Request} req - The request object
+     * @param {Response} res - The response object
+     */
+    handleGetParametersJD21(req, res) {
+        res.send(this.replaceDomainPlaceholder(require("../../database/config/v1/jd21/parameters.json"), this.settings.server.domain));
+    }
+
+    /**
+     * Serve application parameters for JD18
+     * @param {Request} req - The request object
+     * @param {Response} res - The response object
+     */
     handleGetParametersJD18(req, res) {
         res.send(this.replaceDomainPlaceholder(require("../../database/config/v1/parameters2.json"), this.settings.server.domain));
+    }
+
+    /**
+     * Handle user-related requests (stubbed for now)
+     * @param {Request} req - The request object
+     * @param {Response} res - The response object
+     */
+    /**
+     * Handle GET /v3/policies/:langID
+     * @param {Request} req - The request object
+     * @param {Response} res - The response object
+     */
+    handleGetPolicies(req, res) {
+        res.send({
+            "termOfSaleContent": "",
+            "policyAcceptance": "I accept Ubisoft's Terms of Use, Terms of Sale and Privacy Policy.",
+            "policyAcceptanceIsRequired": true,
+            "policyAcceptanceDefaultValue": false,
+            "policyLocaleCode": "en-US",
+            "minorAccount": {
+              "ageRequired": 7,
+              "isDigitalSignatureRequiredForAccountCreation": true,
+              "privacyPolicyContent": "Basically We Need Ur Ticket and IP for assigning cracked user only. We dont care about your data."
+            },
+            "adultAccount": {
+              "ageRequired": 18
+            },
+            "legalOptinsKey": "eyJ2dG91IjoiNC4wIiwidnBwIjoiNC4xIiwidnRvcyI6IjIuMSIsImx0b3UiOiJlbi1VUyIsImxwcCI6ImVuLVVTIiwibHRvcyI6ImVuLVVTIn0",
+            "ageRequired": 13,
+            "communicationOptInDefaultValue": true,
+            "privacyPolicyContent": "Who Need Those",
+            "termOfUseContent": "Who Need Those"
+          });
+    }
+
+    /**
+     * Handle POST /v3/users
+     * @param {Request} req - The request object
+     * @param {Response} res - The response object
+     */
+    handlePostUsersNew(req, res) {
+        res.send({
+            country: 'US',
+            ageGroup: 'Adult',
+            email: 'MFADAMO_JD2016@ubisoft.com',
+            legalOptinsKey: 'eyJ2dG91IjoiNC4wIiwidnBwIjoiNC4xIiwidnRvcyI6IjIuMSIsImx0b3UiOiJlbi1VUyIsImxwcCI6ImVuLVVTIiwibHRvcyI6ImVuLVVTIn0',       
+            password: '#JD2016ubi42',
+            gender: 'NOT_DEFINED',
+            preferredLanguage: 'FR',
+            nameOnPlatform: 'MFADAMO_J_JD2016',
+            accountType: 'Ubisoft',
+            profileId: "f7d85441-265d-4c9c-b1e3-25af3182091a",
+            userId: "4f7fc740-da32-4f2d-a81e-18faf7a1262d"
+          });
     }
 
     /**

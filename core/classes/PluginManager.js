@@ -4,8 +4,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const Plugin = require('./Plugin'); // This is the Plugin class PluginManager uses for comparison
-const { resolvePath } = require('../helper');
+const Plugin = require('./Plugin');
 const Logger = require('../utils/logger');
 
 class PluginManager {
@@ -19,37 +18,86 @@ class PluginManager {
 
     /**
      * Load plugins from settings
-     * @param {Object} modules - The modules configuration from settings.json
      * @returns {Map} The loaded plugins
      */
-    loadPlugins(modules) {
-        this.logger.info('Loading plugins...');
-        
-        // Log the Plugin class that PluginManager is using for comparison
-        this.logger.info('Plugin class used for comparison:', Plugin.name);
+    loadPlugins() {
+        this.logger.info('Loading plugins from plugins directory...');
+        this.plugins.clear(); // Clear existing plugins before reloading
 
-        modules.forEach((item) => {
+        const pluginsDir = path.resolve(__dirname, '../../plugins');
+
+        if (!fs.existsSync(pluginsDir)) {
+            this.logger.warn(`Plugins directory not found: ${pluginsDir}`);
+            return this.plugins;
+        }
+
+        const pluginFolders = fs.readdirSync(pluginsDir, { withFileTypes: true })
+            .filter(dirent => dirent.isDirectory())
+            .map(dirent => dirent.name);
+
+        pluginFolders.forEach(folderName => {
+            const pluginFolderPath = path.join(pluginsDir, folderName);
+            const manifestPath = path.join(pluginFolderPath, 'manifest.json');
+
+            if (!fs.existsSync(manifestPath)) {
+                this.logger.warn(`Manifest.json not found in plugin folder: ${folderName}. Skipping.`);
+                return;
+            }
+
             try {
-                const plugin = require(resolvePath(item.path));
-                
-                // Log the Plugin class that the loaded plugin is extending
-                this.logger.info(`Loaded plugin '${item.path}' extends:`, Object.getPrototypeOf(plugin.constructor).name);
+                const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
 
-                // Verify that the plugin extends the Plugin class
-                if (plugin instanceof Plugin) {
-                    this.plugins.set(plugin.name, plugin);
-                    this.logger.info(`Loaded plugin: ${plugin.name}`);
+                if (!manifest.name || !manifest.main || !manifest.execution) {
+                    this.logger.error(`Invalid manifest.json in ${folderName}: Missing name, main, or execution. Skipping.`);
+                    return;
+                }
+
+                const mainPluginFile = path.join(pluginFolderPath, manifest.main);
+                if (!fs.existsSync(mainPluginFile)) {
+                    this.logger.error(`Main plugin file '${manifest.main}' not found in ${folderName} at ${mainPluginFile}. Skipping.`);
+                    return;
+                }
+
+                const pluginInstance = require(mainPluginFile);
+
+                if (pluginInstance instanceof Plugin) {
+                    const originalPluginName = pluginInstance.name;
+                    pluginInstance.manifest = manifest;
+                    pluginInstance.name = manifest.name; // Override name from manifest
+                    pluginInstance.description = manifest.description || pluginInstance.description; // Override description
+
+                    // If the name was overridden by the manifest, update the logger instance to use the new name
+                    if (pluginInstance.logger.moduleName !== manifest.name) {
+                        this.logger.info(`Plugin class-defined name ('${originalPluginName}') differs from manifest ('${manifest.name}') for plugin in folder '${folderName}'. Updating logger to use manifest name '${manifest.name}'.`);
+                        pluginInstance.logger = new Logger(manifest.name); // Re-initialize logger with manifest name
+                    }
+
+                    this.plugins.set(manifest.name, pluginInstance);
+                    this.logger.info(`Loaded plugin: ${manifest.name} (v${manifest.version || 'N/A'}) from ${folderName}`);
                 } else {
-                    this.logger.error(`Error: ${item.path} is not a valid plugin. It does not extend the expected 'Plugin' class.`);
-                    // Provide more detail if the instanceof check fails
-                    this.logger.error(`Expected Plugin constructor:`, Plugin);
-                    this.logger.error(`Actual plugin's prototype chain constructor:`, Object.getPrototypeOf(plugin.constructor));
+                    this.logger.error(`Error: ${mainPluginFile} from ${folderName} is not a valid plugin. It does not extend the 'Plugin' class.`);
                 }
             } catch (error) {
-                this.logger.error(`Error loading plugin ${item.path}: ${error.message}`);
+                this.logger.error(`Error loading plugin from ${folderName}: ${error.message}\n${error.stack}`);
             }
         });
-        
+
+        // Process overrides
+        const pluginsToOverride = new Set();
+        this.plugins.forEach(pInstance => {
+            if (pInstance.manifest && Array.isArray(pInstance.manifest.override)) {
+                pInstance.manifest.override.forEach(pluginNameToOverride => {
+                    pluginsToOverride.add(pluginNameToOverride);
+                });
+            }
+        });
+
+        pluginsToOverride.forEach(pluginNameToOverride => {
+            if (this.plugins.has(pluginNameToOverride) && this.plugins.get(pluginNameToOverride).isEnabled()) {
+                this.logger.info(`Plugin '${pluginNameToOverride}' is being overridden and will be disabled by another plugin.`);
+                this.plugins.get(pluginNameToOverride).disable();
+            }
+        });
         return this.plugins;
     }
 
@@ -61,23 +109,21 @@ class PluginManager {
     initializePlugins(app, executionType) {
         this.logger.info(`Initializing ${executionType} plugins...`);
         
-        this.plugins.forEach((plugin) => {
-            // Assuming isEnabled() exists on the Plugin base class or is handled otherwise
-            if (plugin.isEnabled && plugin.isEnabled()) { 
+        this.plugins.forEach((pluginInstance) => {
+            if (pluginInstance.manifest && pluginInstance.isEnabled && pluginInstance.isEnabled()) {
                 try {
-                    // Get the plugin's configuration from settings.json
-                    const pluginConfig = this.getPluginConfig(plugin.name);
-                    if (pluginConfig && pluginConfig.execution === executionType) {
-                        this.logger.info(`Calling initroute for plugin: ${plugin.name} (Execution Type: ${executionType})`);
-                        plugin.initroute(app);
+                    if (pluginInstance.manifest.execution === executionType) {
+                        this.logger.info(`Calling initroute for plugin: ${pluginInstance.name} (Execution Type: ${executionType})`);
+                        pluginInstance.initroute(app);
                     } else {
-                        this.logger.info(`Skipping plugin ${plugin.name}: Execution type mismatch or no config.`);
+                        // This log can be verbose, uncomment if needed for debugging
+                        // this.logger.info(`Skipping plugin ${pluginInstance.name}: Execution type mismatch (Plugin: ${pluginInstance.manifest.execution}, Required: ${executionType}).`);
                     }
                 } catch (error) {
-                    this.logger.error(`Error initializing plugin ${plugin.name}: ${error.message}`);
+                    this.logger.error(`Error initializing plugin ${pluginInstance.name}: ${error.message}\n${error.stack}`);
                 }
-            } else {
-                this.logger.info(`Skipping disabled plugin: ${plugin.name}`);
+            } else if (pluginInstance.manifest && (!pluginInstance.isEnabled || !pluginInstance.isEnabled())) {
+                this.logger.info(`Skipping disabled plugin: ${pluginInstance.name}`);
             }
         });
     }
@@ -97,24 +143,6 @@ class PluginManager {
      */
     getPlugins() {
         return this.plugins;
-    }
-
-    /**
-     * Get the configuration for a plugin from settings.json
-     * @param {string} name - The name of the plugin
-     * @returns {Object|null} The plugin configuration or null if not found
-     */
-    getPluginConfig(name) {
-        // IMPORTANT: Adjust this path if your settings.json is not located relative to PluginManager.js
-        // For example, if PluginManager is in 'core/classes' and settings.json is in the root,
-        // '../../settings.json' is likely correct.
-        try {
-            const settings = require('../../settings.json');
-            return settings.modules.find(module => module.name === name) || null;
-        } catch (error) {
-            this.logger.error(`Error loading settings.json: ${error.message}`);
-            return null;
-        }
     }
 }
 

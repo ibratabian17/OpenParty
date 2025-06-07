@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenParty Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#2d2d2d',
+                        tertiary: '#404040',
+                        accent: '#007bff',
+                        success: '#28a745',
+                        warning: '#ffc107',
+                        error: '#dc3545'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: theme('colors.primary');
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.tertiary');
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.accent');
+        }
+
+        /* Toast animations */
+        @keyframes slideIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .toast-enter {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(45deg, theme('colors.accent'), #00a8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-primary text-white min-h-screen font-sans">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-64 bg-secondary min-h-screen p-6 flex flex-col gap-6 shadow-lg">
+            <div class="pb-4 border-b border-tertiary">
+                <h1 class="text-2xl font-bold gradient-text mb-1">OpenParty</h1>
+                <p class="text-gray-400 text-sm">Admin Panel</p>
+            </div>
+            <nav class="flex flex-col gap-6">
+                <div class="space-y-2">
+                    <h2 class="text-xs uppercase tracking-wider text-gray-400 px-2">Server</h2>
+                    <div class="flex flex-col gap-1">
+                        <a onclick="showSection('overview')" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-chart-line w-5"></i>
+                            <span>Overview</span>
+                        </a>
+                        <a onclick="showSection('plugins')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-puzzle-piece w-5"></i>
+                            <span>Plugins</span>
+                        </a>
+                        <a onclick="showSection('savedata')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-database w-5"></i>
+                            <span>Savedata</span>
+                        </a>
+                        <a onclick="showSection('backups')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-archive w-5"></i>
+                            <span>Backups</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-xs uppercase tracking-wider text-gray-400 px-2">System</h2>
+                    <div class="flex flex-col gap-1">
+                        <a onclick="showSection('updates')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-sync w-5"></i>
+                            <span>Updates</span>
+                        </a>
+                        <a onclick="showSection('logs')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-file-alt w-5"></i>
+                            <span>Logs</span>
+                        </a>
+                        <a onclick="showSection('settings')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all hover:bg-tertiary hover:translate-x-1">
+                            <i class="fas fa-cog w-5"></i>
+                            <span>Settings</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            <!-- Overview Section -->
+            <section id="overview" class="space-y-6">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-semibold">Server Overview</h2>
+                    <div class="status-indicator online flex items-center gap-2 px-4 py-2 rounded-lg bg-success/20 text-success">
+                        <i class="fas fa-circle text-xs"></i>
+                        <span>Online</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card-hover bg-secondary rounded-xl p-6 shadow-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-gray-400 mb-2">Active Players</h3>
+                                <div class="text-2xl font-semibold" data-stat="activeUsers">0</div>
+                            </div>
+                            <div class="text-success">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-secondary rounded-xl p-6 shadow-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-gray-400 mb-2">Songs Available</h3>
+                                <div class="text-2xl font-semibold" data-stat="totalSongs">0</div>
+                            </div>
+                            <div class="text-accent">
+                                <i class="fas fa-music text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-secondary rounded-xl p-6 shadow-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-gray-400 mb-2">Server Uptime</h3>
+                                <div class="text-2xl font-semibold" data-stat="uptime">0h</div>
+                            </div>
+                            <div class="text-warning">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-secondary rounded-xl p-6 shadow-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-gray-400 mb-2">Active Plugins</h3>
+                                <div class="text-2xl font-semibold" data-stat="activePlugins">0</div>
+                            </div>
+                            <div class="text-accent">
+                                <i class="fas fa-puzzle-piece text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">Quick Actions</h3>
+                    <div class="flex gap-4">
+                        <button onclick="toggleMaintenance()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-warning text-black font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                            <i class="fas fa-tools"></i>
+                            Toggle Maintenance Mode
+                        </button>
+                        <button onclick="createBackup()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                            <i class="fas fa-save"></i>
+                            Create Backup
+                        </button>
+                        <button onclick="restartServer()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-error font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                            <i class="fas fa-power-off"></i>
+                            Restart Server
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Plugins Section -->
+             <div id="plugins" class="hidden space-y-6">
+                 <div class="flex justify-between items-center">
+                     <h2 class="text-2xl font-semibold flex items-center gap-3">
+                         <i class="fas fa-puzzle-piece text-accent"></i>
+                         Plugins
+                     </h2>
+                     <button onclick="reloadPlugins()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                         <i class="fas fa-sync"></i>
+                         Reload Plugins
+                     </button>
+                 </div>
+                 <div class="bg-secondary rounded-xl overflow-hidden shadow-lg">
+                     <table class="w-full">
+                         <thead class="bg-tertiary">
+                             <tr>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Version</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                             </tr>
+                         </thead>
+                         <tbody id="pluginsList" class="divide-y divide-tertiary"></tbody>
+                     </table>
+                 </div>
+             </div>
+
+             <!-- Savedata Section -->
+             <div id="savedata" class="hidden space-y-6">
+                 <div class="flex justify-between items-center">
+                     <h2 class="text-2xl font-semibold flex items-center gap-3">
+                         <i class="fas fa-database text-accent"></i>
+                         Savedata
+                     </h2>
+                 </div>
+                 <div class="bg-secondary rounded-xl overflow-hidden shadow-lg">
+                     <table class="w-full">
+                         <thead class="bg-tertiary">
+                             <tr>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">File</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Size</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Last Modified</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                             </tr>
+                         </thead>
+                         <tbody id="savedataList" class="divide-y divide-tertiary"></tbody>
+                     </table>
+                 </div>
+             </div>
+
+             <!-- Backups Section -->
+             <div id="backups" class="hidden space-y-6">
+                 <div class="flex justify-between items-center">
+                     <h2 class="text-2xl font-semibold flex items-center gap-3">
+                         <i class="fas fa-archive text-accent"></i>
+                         Backups
+                     </h2>
+                     <button onclick="createBackup()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                         <i class="fas fa-save"></i>
+                         Create Backup
+                     </button>
+                 </div>
+                 <div class="bg-secondary rounded-xl overflow-hidden shadow-lg">
+                     <table class="w-full">
+                         <thead class="bg-tertiary">
+                             <tr>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Date</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Size</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Type</th>
+                                 <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                             </tr>
+                         </thead>
+                         <tbody id="backupsList" class="divide-y divide-tertiary"></tbody>
+                     </table>
+                 </div>
+             </div>
+
+             <!-- Updates Section -->
+             <div id="updates" class="hidden space-y-6">
+                 <div class="flex justify-between items-center">
+                     <h2 class="text-2xl font-semibold flex items-center gap-3">
+                         <i class="fas fa-sync text-accent"></i>
+                         Updates
+                     </h2>
+                     <button onclick="checkUpdates()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                         <i class="fas fa-sync"></i>
+                         Check for Updates
+                     </button>
+                 </div>
+                 <div id="updateStatus" class="bg-secondary rounded-xl p-6 shadow-lg"></div>
+             </div>
+
+             <!-- Logs Section -->
+             <div id="logs" class="hidden space-y-6">
+                 <div class="flex justify-between items-center">
+                     <h2 class="text-2xl font-semibold flex items-center gap-3">
+                         <i class="fas fa-file-alt text-accent"></i>
+                         Logs
+                     </h2>
+                     <select id="logLevel" class="bg-tertiary text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent">
+                         <option value="all">All Levels</option>
+                         <option value="info">Info</option>
+                         <option value="warning">Warning</option>
+                         <option value="error">Error</option>
+                     </select>
+                 </div>
+                 <div id="logs-container" class="bg-secondary rounded-xl p-6 font-mono text-sm overflow-x-auto shadow-lg"></div>
+             </div>
+
+             <!-- Settings Section -->
+             <div id="settings" class="hidden space-y-6">
+                 <div class="flex justify-between items-center">
+                     <h2 class="text-2xl font-semibold flex items-center gap-3">
+                         <i class="fas fa-cog text-accent"></i>
+                         Settings
+                     </h2>
+                 </div>
+                 <form id="settingsForm" class="bg-secondary rounded-xl p-6 shadow-lg space-y-6">
+                     <div class="space-y-2">
+                         <label for="adminPassword" class="block text-sm font-medium text-gray-400">Admin Password</label>
+                         <input type="password" id="adminPassword" name="adminPassword" class="w-full bg-tertiary text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent">
+                     </div>
+                     <div class="flex items-center gap-3">
+                         <input type="checkbox" id="autoBackup" name="autoBackup" class="w-5 h-5 rounded bg-tertiary border-gray-600 text-accent focus:ring-accent">
+                         <label for="autoBackup" class="text-sm font-medium text-gray-400">Enable Automatic Backups</label>
+                     </div>
+                     <button type="submit" class="flex items-center gap-2 px-6 py-3 rounded-lg bg-accent font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                         <i class="fas fa-save"></i>
+                         Save Settings
+                     </button>
+                 </form>
+             </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Show/hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('main > div').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active', 'bg-accent');
+            });
+            const activeNav = document.querySelector(`.nav-item[onclick="showSection('${sectionId}')"]`);
+            activeNav.classList.add('active', 'bg-accent');
+
+            // Refresh data for the current section
+            refreshCurrentSection(sectionId);
+        }
+
+        // Toast notifications
+        function showToast(message, type = 'success') {
+            // Remove existing toasts
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                document.body.removeChild(existingToast);
+            }
+
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast-enter fixed bottom-6 right-6 px-6 py-4 rounded-lg shadow-lg z-50 flex items-center gap-3';
+            
+            // Set background color based on type
+            if (type === 'success') {
+                toast.classList.add('bg-secondary', 'border-l-4', 'border-success');
+                toast.innerHTML = `<i class="fas fa-check-circle text-success"></i> ${message}`;
+            } else if (type === 'error') {
+                toast.classList.add('bg-secondary', 'border-l-4', 'border-error');
+                toast.innerHTML = `<i class="fas fa-exclamation-circle text-error"></i> ${message}`;
+            } else if (type === 'info') {
+                toast.classList.add('bg-secondary', 'border-l-4', 'border-accent');
+                toast.innerHTML = `<i class="fas fa-info-circle text-accent"></i> ${message}`;
+            } else if (type === 'warning') {
+                toast.classList.add('bg-secondary', 'border-l-4', 'border-warning');
+                toast.innerHTML = `<i class="fas fa-exclamation-triangle text-warning"></i> ${message}`;
+            }
+            
+            document.body.appendChild(toast);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                toast.style.transition = 'all 0.3s ease-out';
+                
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Utility functions
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString();
+        }
+
+        function formatUptime(seconds) {
+            const days = Math.floor(seconds / 86400);
+            const hours = Math.floor((seconds % 86400) / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            
+            let result = '';
+            if (days > 0) result += `${days}d `;
+            if (hours > 0 || days > 0) result += `${hours}h `;
+            result += `${minutes}m`;
+            
+            return result;
+        }
+
+        // Fetch server stats
+        function fetchStats() {
+            fetch('/panel/api/stats')
+                .then(response => response.json())
+                .then(data => {
+                    // Update stats
+                    Object.keys(data).forEach(key => {
+                        const elements = document.querySelectorAll(`[data-stat="${key}"]`);
+                        elements.forEach(element => {
+                            if (key === 'uptime') {
+                                element.textContent = formatUptime(data[key]);
+                            } else if (key === 'lastBackup' && data[key]) {
+                                element.textContent = formatDate(data[key]);
+                            } else {
+                                element.textContent = data[key];
+                            }
+                        });
+                    });
+
+                    // Update server status
+                    fetch('/panel/api/status')
+                        .then(response => response.json())
+                        .then(statusData => {
+                            const statusIndicator = document.querySelector('.status-indicator');
+                            if (statusData.maintenance) {
+                                statusIndicator.classList.remove('bg-success/20', 'text-success');
+                                statusIndicator.classList.add('bg-warning/20', 'text-warning');
+                                statusIndicator.innerHTML = '<i class="fas fa-circle text-xs"></i><span>Maintenance</span>';
+                            } else {
+                                statusIndicator.classList.remove('bg-warning/20', 'text-warning');
+                                statusIndicator.classList.add('bg-success/20', 'text-success');
+                                statusIndicator.innerHTML = '<i class="fas fa-circle text-xs"></i><span>Online</span>';
+                            }
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching stats:', error);
+                });
+        }
+
+        // Load plugins
+        function loadPlugins() {
+            fetch('/panel/api/plugins')
+                .then(response => response.json())
+                .then(data => {
+                    const pluginsList = document.getElementById('pluginsList');
+                    pluginsList.innerHTML = '';
+                    
+                    data.forEach(plugin => {
+                        const row = document.createElement('tr');
+                        row.className = 'hover:bg-tertiary/50';
+                        row.innerHTML = `
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="text-sm font-medium">${plugin.name}</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">${plugin.version || 'N/A'}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${plugin.enabled ? 'bg-success/20 text-success' : 'bg-error/20 text-error'}">
+                                    ${plugin.enabled ? 'Enabled' : 'Disabled'}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="togglePlugin('${plugin.name}', ${!plugin.enabled})" class="text-accent hover:text-accent/80 transition-colors">
+                                    ${plugin.enabled ? 'Disable' : 'Enable'}
+                                </button>
+                            </td>
+                        `;
+                        pluginsList.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading plugins:', error);
+                    showToast('Failed to load plugins', 'error');
+                });
+        }
+
+        // Load savedata
+        function loadSavedata() {
+            fetch('/panel/api/savedata')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch savedata');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const savedataList = document.getElementById('savedataList');
+                    savedataList.innerHTML = '';
+                    
+                    if (!data || data.length === 0) {
+                        const emptyRow = document.createElement('tr');
+                        emptyRow.innerHTML = `
+                            <td colspan="4" class="px-6 py-8 text-center text-gray-400">
+                                No savedata files found
+                            </td>
+                        `;
+                        savedataList.appendChild(emptyRow);
+                        return;
+                    }
+                    
+                    data.forEach(file => {
+                        const row = document.createElement('tr');
+                        row.className = 'hover:bg-tertiary/50';
+                        row.innerHTML = `
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <i class="fas fa-file-alt text-accent mr-2"></i>
+                                    <div class="text-sm font-medium">${file.name}</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">${formatBytes(file.size)}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">${formatDate(file.modified)}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="/panel/api/savedata/download/${file.name}" download class="text-accent hover:text-accent/80 transition-colors mr-3">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </td>
+                        `;
+                        savedataList.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading savedata:', error);
+                    showToast('Failed to load savedata: ' + error.message, 'error');
+                    
+                    const savedataList = document.getElementById('savedataList');
+                    savedataList.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="px-6 py-8 text-center text-error">
+                                Failed to load savedata: ${error.message}
+                            </td>
+                        </tr>
+                    `;
+                });
+        }
+
+        // Load backups
+        function loadBackups() {
+            fetch('/panel/api/backups')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch backups');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const backupsList = document.getElementById('backupsList');
+                    backupsList.innerHTML = '';
+                    
+                    if (!data || data.length === 0) {
+                        const emptyRow = document.createElement('tr');
+                        emptyRow.innerHTML = `
+                            <td colspan="4" class="px-6 py-8 text-center text-gray-400">
+                                No backups found. Create your first backup using the button above.
+                            </td>
+                        `;
+                        backupsList.appendChild(emptyRow);
+                        return;
+                    }
+                    
+                    data.forEach(backup => {
+                        const row = document.createElement('tr');
+                        row.className = 'hover:bg-tertiary/50';
+                        row.innerHTML = `
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium">${formatDate(backup.date)}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">${formatBytes(backup.size)}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-accent/20 text-accent">
+                                    ${backup.type}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="/panel/api/backups/download/${backup.filename}" download class="text-accent hover:text-accent/80 transition-colors mr-3">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                                <button onclick="deleteBackup('${backup.filename}')" class="text-error hover:text-error/80 transition-colors">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </td>
+                        `;
+                        backupsList.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading backups:', error);
+                    showToast('Failed to load backups: ' + error.message, 'error');
+                    
+                    const backupsList = document.getElementById('backupsList');
+                    backupsList.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="px-6 py-8 text-center text-error">
+                                Failed to load backups: ${error.message}
+                            </td>
+                        </tr>
+                    `;
+                });
+        }
+        
+        function deleteBackup(filename) {
+            if (confirm('Are you sure you want to delete this backup? This action cannot be undone.')) {
+                showToast('Deleting backup...', 'info');
+                fetch(`/panel/api/backups/delete/${filename}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to delete backup');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            showToast('Backup deleted successfully');
+                            loadBackups(); // Refresh backups list
+                        } else {
+                            showToast(data.message || 'Failed to delete backup', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting backup:', error);
+                        showToast('Failed to delete backup: ' + error.message, 'error');
+                    });
+            }
+        }
+
+        // Action handlers
+        function reloadPlugins() {
+            showToast('Reloading plugins...', 'info');
+            loadPlugins();
+            setTimeout(() => {
+                showToast('Plugins reloaded successfully');
+                fetchStats(); // Update stats after reloading plugins
+            }, 1000);
+        }
+
+        function togglePlugin(name, enable) {
+            showToast(`${enable ? 'Enabling' : 'Disabling'} plugin...`, 'info');
+            fetch('/panel/api/plugins/toggle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, enable })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(`Plugin ${enable ? 'enabled' : 'disabled'} successfully`);
+                        loadPlugins();
+                        fetchStats(); // Update stats after toggling plugin
+                    } else {
+                        showToast(data.message || 'Failed to toggle plugin', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error toggling plugin:', error);
+                    showToast('Failed to toggle plugin', 'error');
+                });
+        }
+
+        function updateServer() {
+            showToast('Updating server...', 'info');
+            fetch('/panel/api/update', {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast('Server updated successfully');
+                    } else {
+                        showToast(data.message || 'Failed to update server', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating server:', error);
+                    showToast('Failed to update server', 'error');
+                });
+        }
+
+        function createBackup() {
+            showToast('Creating backup...', 'info');
+            fetch('/panel/api/backup', {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast('Backup created successfully');
+                        loadBackups(); // Refresh backups list
+                        fetchStats(); // Update last backup time
+                    } else {
+                        showToast(data.message || 'Failed to create backup', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error creating backup:', error);
+                    showToast('Failed to create backup', 'error');
+                });
+        }
+
+        function toggleMaintenance() {
+            showToast('Toggling maintenance mode...', 'info');
+            fetch('/panel/api/maintenance', {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(`Maintenance mode ${data.enabled ? 'enabled' : 'disabled'}`);
+                        fetchStats(); // Update server status
+                    } else {
+                        showToast(data.message || 'Failed to toggle maintenance mode', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error toggling maintenance mode:', error);
+                    showToast('Failed to toggle maintenance mode', 'error');
+                });
+        }
+
+        function restartServer() {
+            if (confirm('Are you sure you want to restart the server?')) {
+                showToast('Restarting server...', 'warning');
+                fetch('/panel/api/restart', {
+                    method: 'POST'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showToast('Server is restarting');
+                            // Show countdown
+                            let countdown = 30;
+                            const interval = setInterval(() => {
+                                countdown--;
+                                if (countdown <= 0) {
+                                    clearInterval(interval);
+                                    window.location.reload();
+                                }
+                            }, 1000);
+                        } else {
+                            showToast(data.message || 'Failed to restart server', 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error restarting server:', error);
+                        showToast('Failed to restart server', 'error');
+                    });
+            }
+        }
+
+        function checkUpdates() {
+            showToast('Checking for updates...', 'info');
+            fetch('/panel/api/check-updates')
+                .then(response => response.json())
+                .then(data => {
+                    const updateStatus = document.getElementById('updateStatus');
+                    if (data.available) {
+                        updateStatus.innerHTML = `
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">Update Available</h3>
+                                    <p class="text-gray-400 mb-4">Version ${data.version} is available. You are currently on version ${data.currentVersion}.</p>
+                                    <div class="text-sm text-gray-400 mb-4">${data.changelog || 'No changelog available'}</div>
+                                </div>
+                                <button onclick="updateServer()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-success font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                                    <i class="fas fa-cloud-download-alt"></i>
+                                    Update Now
+                                </button>
+                            </div>
+                        `;
+                        showToast('Update available!', 'info');
+                    } else {
+                        updateStatus.innerHTML = `
+                            <div class="text-center py-8">
+                                <i class="fas fa-check-circle text-success text-4xl mb-4"></i>
+                                <h3 class="text-xl font-semibold mb-2">Up to Date</h3>
+                                <p class="text-gray-400">You are running the latest version (${data.currentVersion}).</p>
+                            </div>
+                        `;
+                        showToast('No updates available');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking for updates:', error);
+                    showToast('Failed to check for updates', 'error');
+                });
+        }
+
+        // Refresh current section data
+        function refreshCurrentSection(sectionId) {
+            switch (sectionId) {
+                case 'overview':
+                    fetchStats();
+                    break;
+                case 'plugins':
+                    loadPlugins();
+                    break;
+                case 'savedata':
+                    loadSavedata();
+                    break;
+                case 'backups':
+                    loadBackups();
+                    break;
+                case 'updates':
+                    checkUpdates();
+                    break;
+                case 'logs':
+                    loadLogs();
+                    break;
+                case 'settings':
+                    loadSettings();
+                    break;
+            }
+        }
+        
+        function loadLogs() {
+            const logsContainer = document.getElementById('logs-container');
+            logsContainer.innerHTML = '<div class="flex justify-center"><div class="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>';
+            
+            fetch('/panel/api/logs')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch logs');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.logs || data.logs.length === 0) {
+                        logsContainer.innerHTML = '<div class="text-gray-400 text-center py-8">No logs available</div>';
+                        return;
+                    }
+                    
+                    // Create log level filter
+                    const filterContainer = document.createElement('div');
+                    filterContainer.className = 'mb-4 flex items-center';
+                    filterContainer.innerHTML = `
+                        <label class="mr-2 text-sm font-medium text-gray-400">Filter by level:</label>
+                        <select id="log-level-filter" class="bg-secondary border border-gray-700 text-white rounded-md py-1 px-2 focus:ring-2 focus:ring-accent focus:border-accent focus:outline-none transition-all duration-200">
+                            <option value="all">All Levels</option>
+                            <option value="info">Info</option>
+                            <option value="warn">Warning</option>
+                            <option value="error">Error</option>
+                            <option value="debug">Debug</option>
+                        </select>
+                    `;
+                    
+                    // Create logs table
+                    const table = document.createElement('div');
+                    table.className = 'overflow-x-auto';
+                    table.innerHTML = `
+                        <table class="min-w-full divide-y divide-gray-700">
+                            <thead class="bg-secondary">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Timestamp</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Level</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Message</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logs-table-body" class="bg-tertiary divide-y divide-gray-700">
+                            </tbody>
+                        </table>
+                    `;
+                    
+                    // Clear and append new content
+                    logsContainer.innerHTML = '';
+                    logsContainer.appendChild(filterContainer);
+                    logsContainer.appendChild(table);
+                    
+                    const tableBody = document.getElementById('logs-table-body');
+                    
+                    // Function to render logs based on filter
+                    function renderLogs(filter = 'all') {
+                        tableBody.innerHTML = '';
+                        
+                        const filteredLogs = filter === 'all' 
+                            ? data.logs 
+                            : data.logs.filter(log => log.level.toLowerCase() === filter);
+                        
+                        if (filteredLogs.length === 0) {
+                            const emptyRow = document.createElement('tr');
+                            emptyRow.innerHTML = `
+                                <td colspan="3" class="px-6 py-4 text-center text-gray-400">No logs matching the selected filter</td>
+                            `;
+                            tableBody.appendChild(emptyRow);
+                            return;
+                        }
+                        
+                        filteredLogs.forEach(log => {
+                            const row = document.createElement('tr');
+                            
+                            // Determine level-based styling
+                            let levelClass = '';
+                            switch(log.level.toLowerCase()) {
+                                case 'error':
+                                    levelClass = 'text-error';
+                                    break;
+                                case 'warn':
+                                    levelClass = 'text-warning';
+                                    break;
+                                case 'info':
+                                    levelClass = 'text-info';
+                                    break;
+                                case 'debug':
+                                    levelClass = 'text-gray-400';
+                                    break;
+                            }
+                            
+                            const timestamp = new Date(log.timestamp).toLocaleString();
+                            
+                            row.innerHTML = `
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">${timestamp}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm ${levelClass} font-medium">${log.level}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">${log.message}</td>
+                            `;
+                            
+                            tableBody.appendChild(row);
+                        });
+                    }
+                    
+                    // Initial render
+                    renderLogs();
+                    
+                    // Set up filter change event
+                    document.getElementById('log-level-filter').addEventListener('change', function() {
+                        renderLogs(this.value);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading logs:', error);
+                    logsContainer.innerHTML = `<div class="text-error text-center py-8">Failed to load logs: ${error.message}</div>`;
+                });
+        }
+        
+        function loadSettings() {
+            const settingsForm = document.getElementById('settingsForm');
+            settingsForm.innerHTML = '<div class="flex justify-center"><div class="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>';
+            
+            fetch('/panel/api/settings')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch settings');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Create settings form
+                    let formHTML = `
+                        <div class="space-y-6">
+                            <h3 class="text-lg font-medium">Server Settings</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="serverPort" class="block text-sm font-medium text-gray-400">Server Port</label>
+                                    <input type="number" id="serverPort" name="serverPort" value="${data.port || ''}" 
+                                        class="w-full bg-tertiary text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="serverDomain" class="block text-sm font-medium text-gray-400">Server Domain</label>
+                                    <input type="text" id="serverDomain" name="serverDomain" value="${data.domain || ''}" 
+                                        class="w-full bg-tertiary text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent">
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label class="block text-sm font-medium text-gray-400">Server Options</label>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="maintenanceMode" name="maintenanceMode" ${data.maintenance ? 'checked' : ''}
+                                            class="w-5 h-5 rounded bg-tertiary border-gray-600 text-accent focus:ring-accent">
+                                        <label for="maintenanceMode" class="text-sm font-medium text-gray-400">Maintenance Mode</label>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="enableSSL" name="enableSSL" ${data.ssl?.enabled ? 'checked' : ''}
+                                            class="w-5 h-5 rounded bg-tertiary border-gray-600 text-accent focus:ring-accent">
+                                        <label for="enableSSL" class="text-sm font-medium text-gray-400">Enable SSL</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-lg font-medium pt-4">Admin Panel Settings</h3>
+                            <div class="space-y-2">
+                                <label for="adminPassword" class="block text-sm font-medium text-gray-400">Admin Password</label>
+                                <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter new password to change"
+                                    class="w-full bg-tertiary text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent">
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label class="block text-sm font-medium text-gray-400">Backup Settings</label>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="autoBackup" name="autoBackup" ${data.autoBackup ? 'checked' : ''}
+                                            class="w-5 h-5 rounded bg-tertiary border-gray-600 text-accent focus:ring-accent">
+                                        <label for="autoBackup" class="text-sm font-medium text-gray-400">Enable Automatic Backups</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <button type="submit" class="flex items-center gap-2 px-6 py-3 rounded-lg bg-accent font-medium transition-all hover:shadow-lg hover:-translate-y-0.5">
+                                    <i class="fas fa-save"></i>
+                                    Save Settings
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    settingsForm.innerHTML = formHTML;
+                    
+                    // Handle form submission
+                    settingsForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        const formData = {
+                            port: parseInt(document.getElementById('serverPort').value, 10),
+                            domain: document.getElementById('serverDomain').value,
+                            maintenance: document.getElementById('maintenanceMode').checked,
+                            ssl: {
+                                enabled: document.getElementById('enableSSL').checked
+                            },
+                            autoBackup: document.getElementById('autoBackup').checked
+                        };
+                        
+                        // Only include password if it was changed
+                        const password = document.getElementById('adminPassword').value;
+                        if (password) {
+                            formData.adminPassword = password;
+                        }
+                        
+                        // Save settings
+                        fetch('/panel/api/settings', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    showToast('Settings saved successfully');
+                                    // Reload settings to show updated values
+                                    loadSettings();
+                                } else {
+                                    showToast(data.message || 'Failed to save settings', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error saving settings:', error);
+                                showToast('Failed to save settings: ' + error.message, 'error');
+                            });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading settings:', error);
+                    settingsForm.innerHTML = `<div class="text-error text-center py-8">Failed to load settings: ${error.message}</div>`;
+                });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show overview section by default
+            showSection('overview');
+            
+            // Set up auto-refresh
+            const refreshInterval = setInterval(() => {
+                const activeSection = document.querySelector('main > div:not(.hidden)');
+                if (activeSection) {
+                    refreshCurrentSection(activeSection.id);
+                }
+            }, 30000); // Refresh every 30 seconds
+            
+            // Clean up interval on page unload
+            window.addEventListener('beforeunload', () => {
+                clearInterval(refreshInterval);
+            });
+        });
+    </script>
+</body>
+</html>

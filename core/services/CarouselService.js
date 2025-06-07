@@ -10,28 +10,31 @@ class CarouselService {
      * Generate a carousel based on search criteria and type.
      * @param {string} search - The search string or tag.
      * @param {string} type - The type of carousel (e.g., "partyMap", "sweatMap").
+     * @param {string} [profileId=null] - The profile ID for personalization.
      * @returns {Object} The generated carousel object.
      */
-    generateCarousel(search, type) {
-        return generateCarousel(search, type);
+    generateCarousel(search, type, profileId = null) {
+        return generateCarousel(search, type, profileId);
     }
 
     /**
      * Generate a cooperative carousel.
      * @param {string} search - The search string or tag.
+     * @param {string} [profileId=null] - The profile ID for personalization.
      * @returns {Object} The generated cooperative carousel object.
      */
-    generateCoopCarousel(search) {
-        return generateCoopCarousel(search);
+    generateCoopCarousel(search, profileId = null) {
+        return generateCoopCarousel(search, profileId);
     }
 
     /**
      * Generate a sweat carousel.
      * @param {string} search - The search string or tag.
+     * @param {string} [profileId=null] - The profile ID for personalization.
      * @returns {Object} The generated sweat carousel object.
      */
-    generateSweatCarousel(search) {
-        return generateSweatCarousel(search);
+    generateSweatCarousel(search, profileId = null) {
+        return generateSweatCarousel(search, profileId);
     }
 
     /**
