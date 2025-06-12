@@ -57,11 +57,17 @@ songdbF.generateSongdb = function (platform = 'pc', version = '2017', style = fa
   const newDb = {};
 
   Object.keys(songdbF.db).forEach(codename => {
+    const check = {
+      missing: false,
+      log: [
+
+      ]
+    }
     let song = { ...songdbF.db[codename] };
     let assets = songdbF.getAsset(platform, codename, style);
     song.assets = assets; // USE Platform Specific Assets
 
-    if (2020 >= version) song.mapPreviewMpd = songdbF.generateMPD(codename, 'vp8');
+    if (2020 >= version) song.mapPreviewMpd = song?.mapPreviewMpd?.vp8 ? song.mapPreviewMpd.vp8 : song.mapPreviewMpd;
 
     // Handle custom type name localization
     if (song.customTypeNameId) {
@@ -87,16 +93,16 @@ songdbF.generateSongdb = function (platform = 'pc', version = '2017', style = fa
 };
 
 // Function to handle MPD generation for video encoding
-songdbF.getMultiMPD = function (codename) {
+songdbF.getMultiMPD = function (song) {
   return {
-    "vp8": songdbF.generateMPD(codename, 'vp8'),
-    "vp9": songdbF.generateMPD(codename, 'vp9')
+    "vp8": songdbF.getMPD(song, 'vp8'),
+    "vp9": songdbF.getMPD(song, 'vp9')
   };
 };
 
 // Generate MPD XML dynamically
-songdbF.generateMPD = function (codename, codec) {
-  return `<?xml version=\"1.0\"?>\r\n<MPD xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:mpeg:DASH:schema:MPD:2011\" xsi:schemaLocation=\"urn:mpeg:DASH:schema:MPD:2011\" type=\"static\" mediaPresentationDuration=\"PT30S\" minBufferTime=\"PT1S\" profiles=\"urn:webm:dash:profile:webm-on-demand:2012\">\r\n\t<Period id=\"0\" start=\"PT0S\" duration=\"PT30S\">\r\n\t\t<AdaptationSet id=\"0\" mimeType=\"video/webm\" codecs=\"${codec}\" lang=\"eng\" maxWidth=\"720\" maxHeight=\"370\" subsegmentAlignment=\"true\" subsegmentStartsWithSAP=\"1\" bitstreamSwitching=\"true\">\r\n\t\t\t<Representation id=\"0\" bandwidth=\"648085\">\r\n\t\t\t\t<BaseURL>jmcs://jd-contents/${codename}/${codename}_MapPreviewNoSoundCrop_LOW.vp9.webm</BaseURL>\r\n\t\t\t\t<SegmentBase indexRange=\"621-1111\">\r\n\t\t\t\t\t<Initialization range=\"0-621\" />\r\n\t\t\t\t</SegmentBase>\r\n\t\t\t</Representation>\r\n\t\t\t<Representation id=\"1\" bandwidth=\"1492590\">\r\n\t\t\t\t<BaseURL>jmcs://jd-contents/${codename}/${codename}_MapPreviewNoSoundCrop_MID.vp9.webm</BaseURL>\r\n\t\t\t\t<SegmentBase indexRange=\"621-1111\">\r\n\t\t\t\t\t<Initialization range=\"0-621\" />\r\n\t\t\t\t</SegmentBase>\r\n\t\t\t</Representation>\r\n\t\t\t<Representation id=\"2\" bandwidth=\"2984529\">\r\n\t\t\t\t<BaseURL>jmcs://jd-contents/${codename}/${codename}_MapPreviewNoSoundCrop_HIGH.vp9.webm</BaseURL>\r\n\t\t\t\t<SegmentBase indexRange=\"621-1111\">\r\n\t\t\t\t\t<Initialization range=\"0-621\" />\r\n\t\t\t\t</SegmentBase>\r\n\t\t\t</Representation>\r\n\t\t\t<Representation id=\"3\" bandwidth=\"5942260\">\r\n\t\t\t\t<BaseURL>jmcs://jd-contents/${codename}/${codename}_MapPreviewNoSoundCrop_ULTRA.vp9.webm</BaseURL>\r\n\t\t\t\t<SegmentBase indexRange=\"621-1118\">\r\n\t\t\t\t\t<Initialization range=\"0-621\" />\r\n\t\t\t\t</SegmentBase>\r\n\t\t\t</Representation>\r\n\t\t</AdaptationSet>\r\n\t</Period>\r\n</MPD>\r\n`;
+songdbF.getMPD = function (song, codec) {
+  return song.mapPreviewMpd[codec] ? song.mapPreviewMpd[codec] : "vp8";
 };
 
 // Generate URLs if not available
