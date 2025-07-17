@@ -140,10 +140,20 @@ class DatabaseManager {
                             if (err) {
                                 this.logger.error('Error creating user_profiles table:', err.message);
                                 reject(err);
-                            } else {
-                                this.logger.info('All tables created. Resolving initialize promise.');
-                                resolve(this._db);
                             }
+                        });
+
+                        // Create config table
+                        this._db.run(`CREATE TABLE IF NOT EXISTS config (
+                            key TEXT PRIMARY KEY,
+                            value TEXT
+                        )`, (err) => {
+                            if (err) {
+                                this.logger.error('Error creating config table:', err.message);
+                                return reject(err);
+                            }
+                            this.logger.info('All tables created. Resolving initialize promise.');
+                            resolve(this._db);
                         });
                     });
                 }

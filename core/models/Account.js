@@ -89,7 +89,7 @@ class Account {
         };
 
         const simpleOverwriteKeys = [
-            'profileId', 'userId', 'username', 'nickname', 'name', 'email', 'password', 'ticket',
+            'profileId', 'userId', 'username', 'nickname', 'name', 'email', 'password',
             'avatar', 'country', 'platformId', 'alias', 'aliasGender', 'jdPoints',
             'portraitBorder', 'rank', 'skin', 'diamondPoints', 'wdfRank', 'stars',
             'unlocks', 'language', 'firstPartyEnv'
@@ -212,49 +212,9 @@ class Account {
      * @returns {Object} Plain object representation
      */
     toJSON() {
-        return {
-            profileId: this.profileId,
-            userId: this.userId,
-            username: this.username,
-            nickname: this.nickname,
-            name: this.name,
-            email: this.email,
-            password: this.password,
-            ticket: this.ticket,
-            avatar: this.avatar,
-            country: this.country,
-            platformId: this.platformId,
-            alias: this.alias,
-            aliasGender: this.aliasGender,
-            jdPoints: this.jdPoints,
-            portraitBorder: this.portraitBorder,
-            rank: this.rank,
-            scores: this.scores,
-            favorites: this.favorites,
-            songsPlayed: this.songsPlayed,
-            progression: this.progression,
-            history: this.history,
-            // New fields
-            skin: this.skin,
-            diamondPoints: this.diamondPoints,
-            unlockedAvatars: this.unlockedAvatars,
-            unlockedSkins: this.unlockedSkins,
-            unlockedAliases: this.unlockedAliases,
-            unlockedPortraitBorders: this.unlockedPortraitBorders,
-            wdfRank: this.wdfRank,
-            stars: this.stars,
-            unlocks: this.unlocks,
-            populations: this.populations,
-            inProgressAliases: this.inProgressAliases,
-            language: this.language,
-            firstPartyEnv: this.firstPartyEnv,
-            syncVersions: this.syncVersions,
-            otherPids: this.otherPids,
-            stats: this.stats,
-            mapHistory: this.mapHistory,
-            createdAt: this.createdAt,
-            updatedAt: this.updatedAt
-        };
+        const data = { ...this };
+        delete data.ticket;
+        return data;
     }
 
     /**
@@ -262,46 +222,7 @@ class Account {
      * @returns {Object} Sanitized plain object representation
      */
     toPublicJSON() {
-        const publicData = {
-            profileId: this.profileId,
-            userId: this.userId,
-            username: this.username,
-            nickname: this.nickname,
-            name: this.name,
-            avatar: this.avatar,
-            country: this.country,
-            platformId: this.platformId,
-            alias: this.alias,
-            aliasGender: this.aliasGender,
-            jdPoints: this.jdPoints,
-            portraitBorder: this.portraitBorder,
-            rank: this.rank,
-            scores: this.scores,
-            favorites: this.favorites,
-            songsPlayed: this.songsPlayed,
-            progression: this.progression,
-            history: this.history,
-            // New fields
-            skin: this.skin,
-            diamondPoints: this.diamondPoints,
-            unlockedAvatars: this.unlockedAvatars,
-            unlockedSkins: this.unlockedSkins,
-            unlockedAliases: this.unlockedAliases,
-            unlockedPortraitBorders: this.unlockedPortraitBorders,
-            wdfRank: this.wdfRank,
-            stars: this.stars,
-            unlocks: this.unlocks,
-            populations: this.populations,
-            inProgressAliases: this.inProgressAliases,
-            language: this.language,
-            firstPartyEnv: this.firstPartyEnv,
-            syncVersions: this.syncVersions,
-            otherPids: this.otherPids,
-            stats: this.stats,
-            mapHistory: this.mapHistory,
-            createdAt: this.createdAt,
-            updatedAt: this.updatedAt
-        };
+        const publicData = this.toJSON();
         // Explicitly remove sensitive fields if they were somehow added
         delete publicData.email;
         delete publicData.password;

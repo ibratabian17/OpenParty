@@ -2,6 +2,7 @@
  * Ubiservices Route Handler for OpenParty
  * Handles Ubisoft services related routes
  */
+const crypto = require('crypto');
 const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
 const RouteHandler = require('./RouteHandler'); // Assuming RouteHandler is in the same directory
@@ -158,7 +159,8 @@ class UbiservicesRouteHandler extends RouteHandler {
 
             // Update user mappings
             AccountService.addUserId(response.data.profileId, response.data.userId);
-            AccountService.updateUserTicket(response.data.profileId, `Ubi_v1 ${response.data.ticket}`);
+            const hashedTicket = crypto.createHash('sha256').update(`Ubi_v1 ${response.data.ticket}`).digest('hex');
+            AccountService.updateUserTicket(response.data.profileId, hashedTicket);
         } catch (error) {
             console.log("[ACC] Error fetching from Ubisoft services", error.message);
 

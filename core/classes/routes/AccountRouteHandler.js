@@ -2,6 +2,7 @@
  * Account Route Handler for OpenParty
  * Handles user account-related routes
  */
+const crypto = require('crypto');
 const axios = require('axios');
 const RouteHandler = require('./RouteHandler'); // Assuming RouteHandler is in the same directory
 const MostPlayedService = require('../../services/MostPlayedService');
@@ -418,7 +419,8 @@ class AccountRouteHandler extends RouteHandler {
             // Update only the fields present in the request body, preserving other fields
             // Ensure the ticket is updated if present in the header
             const updateData = { ...req.body };
-            updateData.ticket = ticket; // Always update ticket from header
+            const hashedTicket = crypto.createHash('sha256').update(ticket).digest('hex');
+            updateData.ticket = hashedTicket; // Always update ticket from header
             const updatedProfile = await AccountService.updateUser(profileId, updateData);
             
             return res.send({

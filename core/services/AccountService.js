@@ -1,6 +1,7 @@
 /**
  * Service for handling account-related business logic
  */
+const crypto = require('crypto');
 const Account = require('../models/Account');
 const AccountRepository = require('../repositories/AccountRepository');
 const Logger = require('../utils/logger');
@@ -27,7 +28,8 @@ class AccountService {
      */
     async findUserFromTicket(ticket) {
         this.logger.info(`Finding user from ticket`);
-        const account = await AccountRepository.findByTicket(ticket);
+        const hashedTicket = crypto.createHash('sha256').update(ticket).digest('hex');
+        const account = await AccountRepository.findByTicket(hashedTicket);
         return account ? account.profileId : null;
     }
 
@@ -73,7 +75,8 @@ class AccountService {
             account = new Account({ profileId });
         }
         
-        account.update({ ticket });
+        const hashedTicket = crypto.createHash('sha256').update(ticket).digest('hex');
+        account.update({ ticket: hashedTicket });
         return AccountRepository.save(account);
     }
 
